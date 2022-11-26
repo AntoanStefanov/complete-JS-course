@@ -1,0 +1,5 @@
+== => compares value of variables ex.
+a = 10, b = "10", a == b, True. (loose comparison)
+
+=== => compares value and data type of variables
+ex. a = 10, b = "10", a === b, False. (strict comparison)
