@@ -88,4 +88,26 @@ linking js file to html file -> <script src="./app.js"></script>
 when the js file is in same folder as the html file, src="script.js", full path is NOT needed.
 
 
+10.
+value is a piece of data.
+we store value in variables, so we can reuse them.
+let name = 'Antoan' -> declaring a variable. and saves it in PC's memory.
+
+naming conventions
+
+    camelCase - variables, functions /firstName, title, sumTwoNumbers, add/.
+
+    cannot start with digit /WRONG -> 3yearsOld/.
+
+    can ONLY contain letters, numbers, underscores and dollar sign $.
+
+    Always start with lowercase letter.
+
+    variables with all upper case letters are for constants(the values will never change).
+    ex. let PI = 3.14;
+
+    descriptive names -> important for clean code.
+
+
+
 
