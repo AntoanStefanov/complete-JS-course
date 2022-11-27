@@ -13,7 +13,8 @@ let a = 11;
 error,
 expect in web console - https://stackoverflow.com/questions/64582489/why-can-let-be-re-declared-in-the-devtools-console-in-chrome-other-browsers
 
-semi colons ; ->
+semi colons ; -> let programming language know that we are done with this line.
+good coding practice, he believes that it makes the code a bit cleaner.
 Even Google's summarized ES6 style guide continues to require semi-colons. There is a good reason. As developers we should know that when you remove a feature there will inevitably be users who relied on that feature to help them accomplish their task (in this case, we all program and write code :)).
 
 8.
@@ -70,6 +71,21 @@ JS is attached to webpages. At least when we build frontend applications.
 JS needs to be attached to HTML doc.
 
 <script> tag allows writing JS in html file.
+when js is between script tags, it's called inline script.
++ we dont load another file.
+- pretty bad for seperating website content from JS logic.
+! JS code needs to be seperated from HTML file. 
+Seperation OF CONCERNS. / between presentation and logic. / 
 
-script tag is added in head tag, right below  the style tag, if any.
+script.js name is common when its content is JS script.
+
+inline script tag is added in head tag, right below  the style tag, if any.
+
+console is an environment for executing small pieces of code. /kinda testing/
+
+! ! ! WHEN LINKING FILE SCRIPT TAG is at the end of the body tag. ! ! !
+linking js file to html file -> <script src="./app.js"></script>
+when the js file is in same folder as the html file, src="script.js", full path is NOT needed.
+
+
 
