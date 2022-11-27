@@ -64,5 +64,12 @@ ES -> EcmaScript
 - Learn modern JavaScript from beginning, but without forgetting the older parts. /ES5/ -> important stuff  will be shown in course.
 
 9.
+starter folder has html file because,
+JS is attached to webpages. At least when we build frontend applications.
 
+JS needs to be attached to HTML doc.
+
+<script> tag allows writing JS in html file.
+
+script tag is added in head tag, right below  the style tag, if any.
 
