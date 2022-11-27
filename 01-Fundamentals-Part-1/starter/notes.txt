@@ -1,5 +1,39 @@
+7. 
 == => compares value of variables ex.
 a = 10, b = "10", a == b, True. (loose comparison)
 
 === => compares value and data type of variables
 ex. a = 10, b = "10", a === b, False. (strict comparison)
+
+var is function scoped  &&  let is block scoped.
+var variables are hoisted.
+let => declare before use. Can't be redeclared ex.
+let a = 10;
+let a = 11;
+error,
+expect in web console - https://stackoverflow.com/questions/64582489/why-can-let-be-re-declared-in-the-devtools-console-in-chrome-other-browsers
+
+semi colons ; ->
+Even Google's summarized ES6 style guide continues to require semi-colons. There is a good reason. As developers we should know that when you remove a feature there will inevitably be users who relied on that feature to help them accomplish their task (in this case, we all program and write code :)).
+
+8.
+JS is a high level object-oriented, multi-paradigm programming language.
+    programming language -> allow us to write code for computer instructions.
+    high-level -> we don't have to worry about complex stuff like memory management.
+    object-oriented -> mostly based on objects, for storing most kinds of data.
+    multi-paradigm -> we can use different styles of programming. /imperative, declarative/ programming.
+
+Role of JS in web development. Why we use it ?
+
+HTML, CSS and JavaScript work all together to create beautiful, interactive, dynamic websites/web applications.
+HTML -> content of the page /text, buttons, images/.
+CSS -> presentation of the HTML content /styling, laying out the elements/ on a webpage.
+JS -> programming language of the internet. /interactive and dynamic effects/ to any webpage,
+manipulation of content or css, load data from remote servers, building applications in the browser -> called web applications.
+
+HTML -> nouns, CSS -> adjectives, JavaScript -> verbs.
+<p></p>, p {color: red}, p.hide()
+
+recap:
+JS is used for dynamic effects and applications in the browser(web applications).
+web apps almost same as on our computers and phones every day.
