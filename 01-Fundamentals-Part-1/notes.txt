@@ -108,6 +108,17 @@ naming conventions
 
     descriptive names -> important for clean code.
 
+12. Data types
+
+Every value in JS is either an object OR a primitive data type. 
+A value is a primitive when it's not an object.
+
+let me = {                  let firstName = 'Tony';
+    name: 'Tony'            let number = 3;
+};
+
+7 primitive data types:
+
 
 
 
