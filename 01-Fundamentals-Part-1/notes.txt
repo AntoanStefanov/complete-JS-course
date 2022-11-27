@@ -118,7 +118,37 @@ let me = {                  let firstName = 'Tony';
 };
 
 7 primitive data types:
+- number -> floating point number, used for decimals and integers / 5.25, 3 ( is actually 3.00) /
+- string -> sequence of characters, used for text. /"Tony"/
+- boolean -> logical type only true or false -> used for taking decisions / let isClicked = true; /
+- undefined -> value taken by a variable that is declared but not defined yet('empty value') / let isClicked; /
+- null -> also means 'empty value', but is used in different situations.
+- symbol (ES2015/ES6) -> value that is unique and cannot be changed (not useful for now).
+- big int (ES2020/ES11) -> larger integers that number type can't hold.
 
+! JS has dynamic typing => when creating a new variable, you do not have to manually define the data type.
+!! The value has a type, NOT the variable. Variables simply store values WHICH values have types.
 
+We can assign two different types of values to the same variable. line 1: let test = 1 | line 4: let test = "Tony".
+No problem at all.
 
+Use comments to describe code below if needed or dividing code into different sections.
+U can also ignore code , can be useful. // comment ctrl + /
+
+!! JS is interpreted language, which means its executed from top to bottom.
+
+!! typeof is an operator. same as +, - operators.
+
+let keyword is when declaring a new variable. Can't redeclare a variable.
+When changing value of declared variable, let is not needed.
+
+!! undefined IS BOTH THE VALUE AND THE DATA TYPE. 
+    let firstName; // defining a varaible WITH NO value.
+    console.log(firstName); // returns undefined as value of the variable.
+    console.log(typeof firstName); // returns undefined as type in string format.
+
+!!!!!
+// error in typeof operator!
+console.log(typeof null); // returns object, which is bug. It should return null just lke undefined data type
+// not resolved because of legacy reasons.
 
