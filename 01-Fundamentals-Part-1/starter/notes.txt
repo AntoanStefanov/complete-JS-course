@@ -37,3 +37,32 @@ HTML -> nouns, CSS -> adjectives, JavaScript -> verbs.
 recap:
 JS is used for dynamic effects and applications in the browser(web applications).
 web apps almost same as on our computers and phones every day.
+
+JS libraries and frameworks -> React, Angular, Vue
+Tools that make writing modern, large scale web applications easier and faster.
+All these libraries and frameworks are still 100% based on JS.
+
+- Learn JS properly, before these frameworks.
+
+JS language and the web browser are two seperate things.
+When we use  JS in the web browser, we create so called frontend applications.
+This means JS can also run outside the browser.
+It's possible to use JS on a web server, using techonology called Node.js, which doesn't need browser.
+This allows us to create so called backend applications, which are simply app that run on a web server,
+and interact with data bases.
+
+In this course we will build frontend web applications.
+
+mention: JS is used to build mobile/desktop applications also. /React Native, Ionic/
+
+JS Releases/Versions.
+
+- 2015 HUGE UPDATE TO the language -> ES2015, more often called ES6.
+ES -> EcmaScript
+2015, 2016, ... -> Modern JS /every year - new updates to JS./
+
+- Learn modern JavaScript from beginning, but without forgetting the older parts. /ES5/ -> important stuff  will be shown in course.
+
+9.
+
+
