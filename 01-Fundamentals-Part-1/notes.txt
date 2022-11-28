@@ -152,3 +152,47 @@ When changing value of declared variable, let is not needed.
 console.log(typeof null); // returns object, which is bug. It should return null just lke undefined data type
 // not resolved because of legacy reasons.
 
+13. let, const, var
+let and const were introduced in ES6. => they are modern JS.
+
+var is old way.
+
+let is used to declare variables that can change during execution of the program.
+
+const is when we declare a variable that are NOT supposed to change during execution of the program
+
+A value of a const variable can NOT be changed.
+
+? !! LET OR CONST ?
+As a best practice, for writing clean code.
+It's recommended to use const BY DEFAULT, 
+and let only when u are really sure that the variable needs to be changed at some point.
+
+Changing variables can lead to bugs.
+
+When using const - variable naming convention ? UPPER_CASE or no ?
+
+Do not use var.  
+
+When use uppercase for const variables?
+    In previous lection you sayed that the name of the const-variable should be in uppercase.
+    I knew, in this code, the variables are simple examples.
+    But when should i definitly write the const variables in uppercase?
+
+1 reply
+Jonas - Instructor
+Hi Leo,
+
+    The uppercase is more for things that are really impossible to change,
+    like pi or Plank's constant or anything like that.
+    We will use uppercase constant also in the forkify project in Section 18 :)
+Jonas
+
+
+// !!!!!!!!
+// use const BY DEFAULT, let when u are rEALLY SURE that the variable
+// needs to change at some point in future.
+!
+As a general rule, you should always declare variables with const,
+if you realize that the value of the variable needs to change,
+go back and change it to let.

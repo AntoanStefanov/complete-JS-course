@@ -1,13 +1,18 @@
 // 10. Values and Variables
-let country = 'Bulgaria';
-let contient = 'Europe';
+const country = 'Bulgaria';
+const contient = 'Europe';
 let population = 6.4;
 
 console.log(country, contient, population);
 
 // 12. Data Types
 
-let isIsland = false;
+const isIsland = false;
 let language;
 
 console.log(typeof isIsland, typeof population, typeof country, typeof language);
+
+
+// 13. let, const, var
+
+language = 'Bulgarian';
