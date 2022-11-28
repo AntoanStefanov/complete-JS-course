@@ -205,6 +205,8 @@ arithmetic, comparison, logic, assignment operators and many more.
 
 // 15. Operator Precedence
 
+    !! https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table
+
 17. Strings and Template Literals
 
 const secondMessage = `I'm ${firstName}`;
@@ -222,7 +224,7 @@ type conversion is when we manually convert from one type to another. /explicitl
 type coercion is when JS automatically converts types,
 behind the scenes for us. /necessary in some situations/ implicitly.
 
-
+LEARN AND EMBRACE TYPE COERCION.
 
 
 

@@ -110,6 +110,8 @@ console.log(isFullAge);
 
 // 15. Operator Precedence
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table
+
 // 17. Strings and Template Literals
 
 const firstName = 'Antoan';
@@ -179,7 +181,6 @@ console.log(century);
 
 // 20. Type Conversion and Coercion
 
-
 // Type Conversion
 const inputYear = '2020'; // string for example user input. It come as string.
 console.log(Number(inputYear)); // the original value is not converted.
@@ -203,4 +204,38 @@ console.log(String(23), 23); // 23 as string (white color).
 // type coercion happens when two value have different types.
 // JS will convert one of the value type to match the other one.
 
+//           string + number + string
+console.log('I am ' + 23 + ' years old'); // I am 23 years old
 
+// using strings + operator used triggers a coercion to strings.
+// this is why number is converted to string.
+
+// not all the operators do type coercion to /string.
+
+// - operator triggers a coercion to numbers.
+console.log('23' - '10' - 3); // 10
+// - operator triggers the opposite coercion of +.
+// JS here converted strings to numbers.
+
+// + operator triggers a coercion to strings.
+console.log('23' + '10' + 3); // 23103
+
+// * operator triggers a coercion to numbers.
+console.log('23' * '2'); // 46
+// ^ same goes for / operator.
+console.log('23' / '2'); // 11.5
+
+let n = '1' + 1;
+console.log(n); // 11 as string
+n -= 1;
+console.log(n); // 10 as number
+
+console.log('11', 11); // white, yellow
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table
+console.log(2 + 3 + 4 + '5'); // left to right(+ operator) => 2 + 3 = 5 + 4 = 9 +'5' = '95'
+
+console.log('10' - '4' - '3' - 2 + '5');
+// left to right(- operator) => 10 - 4 = 6 - 3 = 3 - 2 = 1 + '5' = '15'
+
+// LEARN AND EMBRACE TYPE COERCION.
