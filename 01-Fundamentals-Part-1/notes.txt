@@ -212,5 +212,18 @@ const secondMessage = `I'm ${firstName}, a ${year- birthYear} years old ${curren
 
 
 // 18. Taking Decisions: if
+    ---
+
+// 20. Type Conversion and Coercion
+
+There is type conversion and type coercion.
+
+type conversion is when we manually convert from one type to another. /explicitly/
+type coercion is when JS automatically converts types,
+behind the scenes for us. /necessary in some situations/ implicitly.
+
+
+
+
 
 

@@ -143,7 +143,7 @@ console.log(`String
 multiple
 lines`);
 
-*/
+
 
 // 18. Taking Decisions: if
 
@@ -174,4 +174,33 @@ if (birthYear <= 2000) {
 }
 
 console.log(century);
+
+*/
+
+// 20. Type Conversion and Coercion
+
+
+// Type Conversion
+const inputYear = '2020'; // string for example user input. It come as string.
+console.log(Number(inputYear)); // the original value is not converted.
+console.log(inputYear + 18); // 202018 -> string then adding, will result as string.
+console.log(Number(inputYear) + 18); // 2038
+
+// What if we try to convert something to a number that is impossible to convert ?
+
+console.log(Number('Antoan')); // NaN -> Not A Number.  ! NaN -> INVALID NUMBER !
+// JS returns this NaN value whenever an operation that involves numbers fails to produce a new number.
+console.log(typeof NaN); // type is number.
+
+console.log(String(23), 23); // 23 as string (white color).
+
+// JS can only conver to three types. -> Number, String, Boolean
+// Cannot be converted to undefined or null.
+
+// We rarely have to convert anything manually, JS will convert it automatically. /Type Coercion/.
+
+// Type Coercion
+// type coercion happens when two value have different types.
+// JS will convert one of the value type to match the other one.
+
 
