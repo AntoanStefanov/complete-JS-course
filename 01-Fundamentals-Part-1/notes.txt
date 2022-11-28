@@ -196,3 +196,12 @@ Jonas
 As a general rule, you should always declare variables with const,
 if you realize that the value of the variable needs to change,
 go back and change it to let.
+
+// 14. Basic Operators
+
+what is operator ? 
+- transforms/combine values. All kind of work with values.
+arithmetic, comparison, logic, assignment operators and many more.
+
+// 15. Operator Precedence
+

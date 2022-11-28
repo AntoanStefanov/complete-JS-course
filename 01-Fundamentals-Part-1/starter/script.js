@@ -38,7 +38,7 @@ console.log(typeof null); // returns object, which is bug. It should return null
 
 let age = 30; // let used when we will change the variable durin execution.
 age = 31; // here we reassign a value to the variable.
-// MY IDEA OF IT. The birthYear is relative for each person. But PI is THE SAME for each person, which means its CAPITAL. 
+// MY IDEA OF IT. The birthYear is relative for each person. But PI is THE SAME for each person, which means its CAPITAL.
 // Kinda like analogy.
 const birthYear = 2000; // or const BIRTH_YEAR ???
 // The uppercase is more for things that are really impossible to change,
@@ -50,7 +50,6 @@ const birthYear = 2000; // or const BIRTH_YEAR ???
 // const ID;
 
 // ??  When using const - variable naming convention ? UPPER_CASE or no ?
-
 
 // DO NOT USE VAR. it's before ES6.
 
@@ -65,3 +64,47 @@ const birthYear = 2000; // or const BIRTH_YEAR ???
 // As a general rule, you should always declare variables with const,
 // if you realize that the value of the variable needs to change,
 // go back and change it to let.
+
+// 14. Basic Operators
+
+const futureYear = 2037; // use const by default.
+
+const ageTony = futureYear - 2001; // minus operator.
+const ageMiha = futureYear - 2018;
+console.log(ageTony, ageMiha);
+
+console.log(ageTony * 2, ageMiha / 2, 2 ** 4); // exponentiation operator **
+
+// + operator can be used to join/concatenate strings.
+
+const firstName = 'Antoan';
+const lastName = 'Stefanov';
+
+console.log(firstName + ' ' + lastName);
+
+// typeof operator
+
+// assignment operators -> =
+let x = 10 + 5; // = is assignment operator. + operator.
+// + operator is executed before assignment operator (=).
+// BASED ON operator precedence.
+console.log(x); // 15.
+x += 10; // x = x + 10; 25.
+x *= 4; // x = x * 4; 100.
+console.log(x); // 100
+x++; // x = x + 1;
+console.log(x); // 101;
+x--;
+x--;
+console.log(x); // 99;
+
+// comparison operators -> produces boolean values.
+// < > <= >=.
+// console.log(ageTony > ageMiha); // true.
+
+const isFullAge = ageMiha >= 18;
+console.log(isFullAge);
+
+
+// 15. Operator Precedence
+

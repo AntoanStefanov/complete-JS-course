@@ -10,9 +10,23 @@ console.log(country, contient, population);
 const isIsland = false;
 let language;
 
-console.log(typeof isIsland, typeof population, typeof country, typeof language);
-
+console.log(
+  typeof isIsland,
+  typeof population,
+  typeof country,
+  typeof language
+);
 
 // 13. let, const, var
 
 language = 'Bulgarian';
+
+// 14. Basic Operators
+const halfPopulation = population / 2;
+console.log(halfPopulation);
+population++;
+console.log(population);
+console.log(population > 6);
+console.log(population < 33);
+
+// 15. Operator Precedence
