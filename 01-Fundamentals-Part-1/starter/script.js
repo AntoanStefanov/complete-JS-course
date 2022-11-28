@@ -111,3 +111,36 @@ console.log(isFullAge);
 // 15. Operator Precedence
 
 */
+
+// 17. Strings and Template Literals
+
+const firstName = 'Antoan';
+const currentJob = 'learner';
+const birthYear = 2000;
+const year = 2022;
+
+// year - birthYear returns number, how it's added as a string ?
+// anwser -> type coercion. IN this case, Js will basically convert the number to a string.
+// so concatenation is possible.
+const message =
+  "I'm " + firstName + ', a ' + (year - birthYear) + ' years old ' + currentJob;
+console.log(message);
+
+// from ES6 we have a much better tool to create strings like the above one.
+// It's called Template literals.
+
+//  write string as template, and insert the variables, then they will be replaced.
+
+const secondMessage = `I'm ${firstName}, a ${
+  year - birthYear
+} years old ${currentJob}!`;
+console.log(secondMessage);
+
+// `` with no variables is possible too
+console.log(`Hello from ticks.`);
+
+// `` for multiline string
+
+console.log(`String
+multiple
+lines`);

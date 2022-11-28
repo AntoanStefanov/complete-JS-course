@@ -205,3 +205,8 @@ arithmetic, comparison, logic, assignment operators and many more.
 
 // 15. Operator Precedence
 
+17. Strings and Template Literals
+
+const secondMessage = `I'm ${firstName}`;
+const secondMessage = `I'm ${firstName}, a ${year- birthYear} years old ${currentJob}`;
+
