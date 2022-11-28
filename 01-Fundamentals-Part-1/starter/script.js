@@ -110,8 +110,6 @@ console.log(isFullAge);
 
 // 15. Operator Precedence
 
-*/
-
 // 17. Strings and Template Literals
 
 const firstName = 'Antoan';
@@ -144,3 +142,36 @@ console.log(`Hello from ticks.`);
 console.log(`String
 multiple
 lines`);
+
+*/
+
+// 18. Taking Decisions: if
+
+const age = 15;
+
+// if else control structure.
+if (age >= 18) {
+  console.log('Sarah can start driving license.');
+} else {
+  const yearsLeft = 18 - age;
+  console.log(
+    `Sarah cannot start driving license. Come back after ${yearsLeft} years.`
+  );
+}
+
+// second example.
+const birthYear = 2000;
+let century;
+
+if (birthYear <= 2000) {
+  // if we declared century in this block, It will not be accessible outside the block.
+  // let century = 20;
+  century = 20;
+} else {
+  // century in this block, It will not be accessible outside the block.
+  // let century = 21;
+  century = 21;
+}
+
+console.log(century);
+
