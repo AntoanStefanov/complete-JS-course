@@ -54,3 +54,7 @@ dkms.conf
 
 *.jpg
 *.png
+node_modules
+.eslintrc.json
+package.json
+package-lock.json

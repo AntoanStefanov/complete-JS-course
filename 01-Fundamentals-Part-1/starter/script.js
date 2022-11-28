@@ -29,22 +29,24 @@ console.log(firstName); // returns undefined as value of the variable.
 console.log(typeof firstName); // returns undefined as type in string format.
 
 // error in typeof operator!
-console.log(typeof null); // returns object, which is bug. It should return null just lke undefined data type
+console.log(typeof null);
+// returns object, which is bug.
+It should return null just lke undefined data type
 // not resolved because of legacy reasons.
-
-*/
 
 // 13. let, const, var
 
 let age = 30; // let used when we will change the variable durin execution.
 age = 31; // here we reassign a value to the variable.
-// MY IDEA OF IT. The birthYear is relative for each person. But PI is THE SAME for each person, which means its CAPITAL.
+// MY IDEA OF IT. The birthYear is relative for each person.
+// But PI is THE SAME for each person, which means its CAPITAL.
 // Kinda like analogy.
 const birthYear = 2000; // or const BIRTH_YEAR ???
 // The uppercase is more for things that are really impossible to change,
 // like pi or Plank's constant or anything like that.
 
-// birthYear = 2001; // Cannot reassign the variable. Cannot be mutated. It's constant variable.
+// birthYear = 2001; // Cannot reassign the variable. Cannot be mutated.
+It's constant variable.
 
 // We cannot create empty constant variables.
 // const ID;
@@ -108,3 +110,4 @@ console.log(isFullAge);
 
 // 15. Operator Precedence
 
+*/
