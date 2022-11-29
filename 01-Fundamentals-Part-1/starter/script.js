@@ -177,8 +177,6 @@ if (birthYear <= 2000) {
 
 console.log(century);
 
-*/
-
 // 20. Type Conversion and Coercion
 
 // Type Conversion
@@ -239,3 +237,51 @@ console.log('10' - '4' - '3' - 2 + '5');
 // left to right(- operator) => 10 - 4 = 6 - 3 = 3 - 2 = 1 + '5' = '15'
 
 // LEARN AND EMBRACE TYPE COERCION.
+
+*/
+
+// 21. Truthy and Falsy Values
+
+// This happens when we convert not-boolean types to boolean.
+
+// 5 Falsy values:
+// 1 - 0
+// 2 - '' (empty string)
+// 3 - undefined
+// 4 - null
+// 5 - NaN
+
+// Everything else is truthy values.
+
+console.log(Boolean(0)); // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean('Tony')); // false
+console.log(Boolean({})); // empty object true
+console.log(Boolean(NaN)); // false
+
+// In practice, the conversion to boolean is implicit, not explicit.
+// In other words, it's type coercion.
+
+// When JS do type coercion to booleans?
+
+// 1. Situation - when using logical operators
+// 2. Situation - in logical context /in if else condition /.
+
+const money = 0;
+
+if (money) {
+  // if else condition is converted to boolean.
+  console.log("Don't spend it all.");
+} else {
+  console.log('Work.');
+}
+
+// Another useful case: check if value is defined or not
+
+let height;
+
+if (height) {
+  console.log('Height is defined.');
+} else {
+  console.log('Height is undefined.');
+}

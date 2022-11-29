@@ -226,6 +226,9 @@ behind the scenes for us. /necessary in some situations/ implicitly.
 
 LEARN AND EMBRACE TYPE COERCION.
 
+21. Truthy and Falsy Values
+
+
 
 
 
