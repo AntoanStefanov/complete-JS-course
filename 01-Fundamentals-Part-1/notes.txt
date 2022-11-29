@@ -251,3 +251,13 @@ values MUST be exactly the same to return true.
 
 Use !==, strict difference operator.
 
+
+23. Boolean logic.
+  // And, Or & Not operators.
+  // NOT operator ! => has precedence over AND & OR,
+  // which means first we invert the values, and only then they are combined. with AND | OR.
+
+
+24. Logical operators
+
+

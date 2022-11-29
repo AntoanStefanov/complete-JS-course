@@ -284,8 +284,6 @@ if (height) {
   console.log('Height is undefined.');
 }
 
-*/
-
 // 22. Equality Operators: == vs. ===
 
 const age = 18;
@@ -318,3 +316,15 @@ if (favNumber === 23) {
 if (favNumber !== 23) {
   console.log("Fav number is NOT 23");
 }
+
+
+
+// 23. Boolean logic.
+  // And, Or & Not operators.
+  // NOT operator ! => has precedence over AND & OR,
+  // which means first we invert the values, and only then they are combined. with AND | OR.
+
+*/
+
+// 24. Logical operators
+ 
