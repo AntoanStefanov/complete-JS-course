@@ -328,3 +328,25 @@ if (favNumber !== 23) {
 
 // 24. Logical operators
  
+const hasDriversLicense = true; // A
+const hasGoodVision = true; // B
+
+console.log(hasDriversLicense && hasGoodVision); // && -> AND operator
+console.log(hasDriversLicense || hasGoodVision); // || -> OR operator
+console.log(!hasGoodVision); // ! -> NOT operator /inverting value/
+
+if (hasDriversLicense && hasGoodVision) { 
+  console.log("Can drive!");
+} else {
+  console.log("Someone else should drive!");
+}
+
+const isTired = true; // C
+
+console.log(hasDriversLicense || hasGoodVision || isTired); // || -> OR operator
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+  console.log("Can drive!");
+} else {
+  console.log("Someone else should drive!");
+}
