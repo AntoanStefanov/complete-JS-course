@@ -228,7 +228,26 @@ LEARN AND EMBRACE TYPE COERCION.
 
 21. Truthy and Falsy Values
 
+// 5 Falsy values:
+// 1 - 0
+// 2 - '' (empty string)
+// 3 - undefined
+// 4 - null
+// 5 - NaN
 
 
+22. Equality Operators: == vs. ===
 
+=== strict equality operator which means it does NOT perform type coercion.
+values MUST be exactly the same to return true. 
+? In other words, it compares not even the values, but the data types. ?
+
+== loose equality operator which means it DOES perform type coercion
+
+// 18 == '18' - TRUE (strict equality)
+// 18 === '18' - FALSE (loose equality)
+
+! Use ===, even though u need to convert type manually.
+
+Use !==, strict difference operator.
 

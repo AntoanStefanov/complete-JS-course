@@ -238,8 +238,6 @@ console.log('10' - '4' - '3' - 2 + '5');
 
 // LEARN AND EMBRACE TYPE COERCION.
 
-*/
-
 // 21. Truthy and Falsy Values
 
 // This happens when we convert not-boolean types to boolean.
@@ -284,4 +282,39 @@ if (height) {
   console.log('Height is defined.');
 } else {
   console.log('Height is undefined.');
+}
+
+*/
+
+// 22. Equality Operators: == vs. ===
+
+const age = 18;
+
+// whenever if statement has one line, we don't need {} block.
+if (age === 18) console.log('You just became an adult.');
+// === strict equality operator which means it does NOT perform type coercion.
+
+// 18 == '18' - TRUE (strict equality)
+// 18 === '18' - FALSE (loose equality)
+
+// ! Use ===, == has bug potential
+// ! Use ===, even though u need to convert type manually.
+
+const favNumber = Number(prompt("What's your favourite number?"));
+console.log(favNumber);
+// returns the number in white color(it means as a string).
+console.log(typeof favNumber); // string
+
+if (favNumber === 23) {
+  console.log('23 is cool!');
+} else if (favNumber === 7) {
+  console.log('7 is also cool!');
+} else {
+  console.log('Not cool number!');
+}
+
+// difference operator
+// Use !==, strict difference operator.
+if (favNumber !== 23) {
+  console.log("Fav number is NOT 23");
 }
