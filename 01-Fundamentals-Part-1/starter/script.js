@@ -463,4 +463,17 @@ console.log(`Number is ${2 - 1}.`); // expression needed in template literal.
 
 */
 
-// 28. The conditional (ternary) operator
+// 28. The conditional/ternary operator
+
+// thernary because has 3 parts
+// condition ?(if) true : false; 
+
+// we saw 2 ways of writing conditional (if/else and switch).
+// another one is conditional operator.
+// It allows us to write something similar to if/else statement.
+
+const age = 23;
+// condition ? if true - certain action : if false - certain action. (false action in mandatory)
+age >= 18 ? console.log('Legal age') : console.log('Not so legal');
+
+// it's like writing if/else statement all in ONE line.
