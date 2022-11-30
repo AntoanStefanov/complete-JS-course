@@ -356,7 +356,7 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
 // Alternative way of writing a complicated if/else statement.
 // We use switch when we want to compare 1 value to multiple different options.
 
-const weekDay = 'monday';
+const weekDay = 'tuesday';
 
 // we switch the day. It means it could be any case written below.
 // We compare it to the options(cases).
@@ -385,3 +385,35 @@ switch (weekDay) {
     console.log('no such week day, default.');
     break;
 }
+
+// strict equality
+if (weekDay === 'monday') {
+  console.log('Volleyball');
+  console.log('More lines to be executed');
+} else if (weekDay === 'tuesday') {
+  console.log('Football');
+} else if (weekDay === 'wednesday') {
+  console.log('Tennis table');
+} else if (weekDay === 'thursday' || weekDay === 'friday') {
+  console.log('Basketball');
+} else if (weekDay === 'saturday' || weekDay === 'sunday') {
+  console.log('rest');
+} else {
+  console.log('no such week day, default.');
+}
+
+console.log('done');
+
+// switch and if statements did exactly the same
+// switch -> a little bit more code, but in his opinion it's also a lot more readable.
+// switch easier to understand, if u just read the code.
+
+// if statements have repetitive code  'day === ...', the {},  a little bit wierder. His opinion.
+
+// SWITCH IS BECOMING LESS AND LESS USED, but I should still know about it.
+// There is definitely still a place for it, sometimes.
+
+// In upper example he would prefer the switch statement.
+
+// In the end, it's personal preference.
+// Develop coding style into what I like the most.
