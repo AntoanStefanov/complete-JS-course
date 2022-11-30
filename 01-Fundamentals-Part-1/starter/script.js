@@ -466,7 +466,7 @@ console.log(`Number is ${2 - 1}.`); // expression needed in template literal.
 // 28. The conditional/ternary operator
 
 // thernary because has 3 parts
-// condition ?(if) true : false; 
+// condition ?(if) true : false;
 
 // we saw 2 ways of writing conditional (if/else and switch).
 // another one is conditional operator.
@@ -474,6 +474,48 @@ console.log(`Number is ${2 - 1}.`); // expression needed in template literal.
 
 const age = 23;
 // condition ? if true - certain action : if false - certain action. (false action in mandatory)
-age >= 18 ? console.log('Legal age') : console.log('Not so legal');
+age >= 18 ? console.log('Legal age') : console.log('Not so legal'); // ternary operator is not so much used that way.
 
 // it's like writing if/else statement all in ONE line.
+
+// !!!!!
+// Conditional operator is in fact an operator, an operator always produces a value.
+// In other words, an operator is an expression.
+// This means that if we have a value, we can then assign that value to a variable.
+//  so ternary operator could be very useful for
+// Conditionally declare variables.
+
+const isLegal = age >= 18 ? 'legal' : 'not legal'; // more used case for ternary operator.
+// The whole operator is now an expression. / age >= 18 ? 'legal' : 'not legal' /
+// and expression produces a value.
+// So we can store the value in a variable.
+console.log(isLegal);
+// isLegal is now defined conditionally. In one line.
+// If ternary operator didn't exist, we would have to use if/else statement, with which that wouldn't be so easy.
+// when we want to declare a variable inside of if/else block, we first needed to declare that variable OUTSIDE.
+
+let isLegal2;
+if (age >= 18) {
+  isLegal2 = 'legal';
+} else {
+  isLegal2 = 'not legal';
+}
+// !!!! ALL ABOVE COULD BE DONE THIS EASY -> const isLegal = age >= 18 ? 'legal' : 'not legal';
+// !!! ISN'T IT AMAZING ?
+console.log(isLegal2);
+
+// TAKE IT EVEN FURTHER
+
+// Since the ternary operator is really an expression,
+// WE CAN USE IT, for example IN TEMPLATE LITERAL. (which means we can have conditionals in template literal.)
+
+console.log(`Her age is ${age >= 18 ? 'Legal' : 'Not Legal'}`);
+// whatever result we get from the ternary operator,
+// legal or not legal, will be assembled into the final string.
+
+
+// Ternary operator is not thought as replacement for if/else statements.
+// we still need if/else. for example: when we have bigger block of code, that we need to execute based on condition.
+//  in that case ternary operator is not gonna work.
+// but ternary operator is perfect when we just need to take a quick decision, like the age one above.
+// and where js excepts an expression. just like the template literal.
