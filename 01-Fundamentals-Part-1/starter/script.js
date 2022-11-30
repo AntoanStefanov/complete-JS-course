@@ -324,7 +324,6 @@ if (favNumber !== 23) {
   // NOT operator ! => has precedence over AND & OR,
   // which means first we invert the values, and only then they are combined. with AND | OR.
 
-*/
 
 // 24. Logical operators
  
@@ -349,4 +348,40 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
   console.log("Can drive!");
 } else {
   console.log("Someone else should drive!");
+}
+*/
+
+// 26. The switch statement.
+
+// Alternative way of writing a complicated if/else statement.
+// We use switch when we want to compare 1 value to multiple different options.
+
+const weekDay = 'monday';
+
+// we switch the day. It means it could be any case written below.
+// We compare it to the options(cases).
+switch (weekDay) {
+  case 'monday': // Mapping one activity to each day /STRICT EQUALITY. => day === 'monday'/
+    console.log('Volleyball');
+    console.log('More lines to be executed');
+    break; // without the break the code simply continues exectuting and it stops on next break.
+  // /Comment to check/ -> eslint gives error if break is commented.
+  // / but still u can run it with the eslint error./
+  case 'tuesday':
+    console.log('Football');
+    break;
+  case 'wednesday':
+    console.log('Tennis table');
+    break;
+  case 'thursday':
+  case 'friday': // running same code for two different values
+    console.log('Basketball');
+    break;
+  case 'saturday':
+  case 'sunday': // running same code for two different values
+    console.log('rest');
+    break;
+  default: // executed if all cases are false. Like 'else' statement.
+    console.log('no such week day, default.');
+    break;
 }
