@@ -259,5 +259,10 @@ Use !==, strict difference operator.
 
 
 24. Logical operators
+    Info in script.js / search title there.
 
+27. Statements and Expressions
+    Info in script.js / search title there.
 
+28. The conditional (ternary) operator
+    Info in script.js / search title there.

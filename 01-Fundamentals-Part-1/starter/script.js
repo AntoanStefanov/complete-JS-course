@@ -349,7 +349,6 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
 } else {
   console.log("Someone else should drive!");
 }
-*/
 
 // 26. The switch statement.
 
@@ -417,3 +416,51 @@ console.log('done');
 
 // In the end, it's personal preference.
 // Develop coding style into what I like the most.
+
+
+// 27. Statements and Expressions
+
+// Expression is a piece of code that produces a value.
+// 3 + 4 is an expression. Because produces a value.
+
+// 333 is an expression too. It is an expression whose value is itself.
+
+// true && false && !false -> expression. produces some boolean value.
+
+// Statement is a bigger piece of code,
+// that is executed and which does NOT produce a value on itself.
+
+// Analogy is normal spoken language :
+// A declaration is like a complete sentence,
+// and expression are like the words that make up the sentences.
+
+// The whole program is a sequence of actions.
+// And these actions are statements.
+// statements are the commands which ends with ; . ?Not really sure.
+
+// Example: if/else statement | switch statement.
+
+// statement
+if (23 > 10) {
+  // the string itself '23 is greater than 10' is an expression.
+  const str = '23 is greater than 10';
+  // BUT THE WHOLE 446 line |const str = '23 is greater than 10';| is a STATEMENT/ACTION(declaring a variable). NO value produced.
+  // if something ends with ; it's a STATEMENT/ACTION. Just like a complete sentence.
+}
+// this if statement, doesn't produce a value
+// it declare a variable, but DOES NOT produce a value.
+
+// statements are like full sentences that translate our actions.
+// The actions that we want the program to perform.
+
+// knowing the diff between statements and expressions is important bcs,
+// JS expects statements and expressions in different places. ex. template literals.
+
+// In template literal, we can only insert expressions, but not statements. ${EXPRESSION}.
+const firstName = 'Tony';
+console.log(`I'm ${firstName}.`); // ${} called place holder needs expression/something that produces value./
+console.log(`Number is ${2 - 1}.`); // expression needed in template literal.
+
+*/
+
+// 28. The conditional (ternary) operator
