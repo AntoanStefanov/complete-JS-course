@@ -79,3 +79,5 @@ console.log(age2);
 // So if it's a value, we can store it in a variable, just like 'const a = 3' the number.
 
 // KEEP THIS IN MIND.
+
+// CHECK THIS: Immediately invoked function expression
