@@ -30,3 +30,8 @@ console.log(population > 6);
 console.log(population < 33);
 
 // 15. Operator Precedence
+
+// Ternary operator
+console.log(
+  `${country}'s population is ${population > 33 ? 'above' : 'below'} average.`
+);
