@@ -1,0 +1,7 @@
+33. Functions
+
+The fundamental building block of real world applications are functions.
+Essential concept in the language
+
+Function is a piece of code that we can reuse over and over again in our code.
+It's like a variable but with whole chunks of code.
