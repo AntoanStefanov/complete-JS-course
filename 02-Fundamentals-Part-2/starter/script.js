@@ -45,7 +45,7 @@ console.log(fruitProcessor('banana')); // here 'banana' is an argument.
 
 // THIS IS CALLED FUNCTION DECLARATION.
 // because we simply use the function keyword to declare a function,
-// similar to declaring a variable.
+// similar to declaring a variable. const foo = 42; / function foo() {}
 function calcAge1(birthYear) {
   return 2022 - birthYear;
 }
@@ -81,3 +81,29 @@ console.log(age2);
 // KEEP THIS IN MIND.
 
 // CHECK THIS: Immediately invoked function expression
+
+// The main difference between function declarations and functions expressions is that
+// we can call function declarations BEFORE they are defined in the code.
+
+console.log(sumNums(2, 3));
+
+function sumNums(a, b) {
+  return a + b;
+}
+// This happens because of a process called 'hoisting'. - future section/lecture.
+// It's not such a good idea in many cases,
+// But do we use it that way?
+
+// Which way should I use (declaration or expression) ?
+// Often times is just a matter of personal preference.
+// He prefers function expressions, because,
+// this then forces him into a nice structure,
+// where he has to define all the functions first, at the top of the code,
+// And only then he can call them, this makes the code a bit nicer and more structured.
+// Also he likes having everything stored in variables, both values and functions
+// that's his personal preference. Many devs dont agree with it.
+// And they prefer to use function declarations instead.
+// If I prefer function declarations, just use it then.
+// No problem at all.
+// But I still need to know both of them(expression and declaration functions).
+// Both have place in JS.
