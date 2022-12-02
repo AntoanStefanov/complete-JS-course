@@ -182,7 +182,6 @@ function fruitProcessor(applesNumber, orangesNumber) {
 
 console.log(fruitProcessor(2, 3));
 
-*/
 
 // 37. Reviewing Functions
 
@@ -226,3 +225,96 @@ const calcAgeReview2 = function (birthYear) {
 const calcAgeReview3 = (birthYear) => 2022 - birthYear;
 
 console.log(calcAgeReview(2000), calcAgeReview2(2000), calcAgeReview3(2000));
+
+*/
+
+// 39. Introduction to Arrays.
+// Our first data structure.
+
+// What if we want to store friends' names, so I could use them later in the program.
+
+// const friend1 = 'Josh';
+// const friend2 = 'Jo';
+// const friend3 = 'Jeff';
+
+// Not fun . imagine we want to represent 10 friends ?
+
+// It would be great if we could bundle all these names together.
+// INTO SOME BIGGER CONTAINER ?
+// Well, that's why we have data structures in JS.
+// And Arrays are such a data structure.
+
+// An Array is like a big container into which we can throw variables/values,
+// and then later, reference them.
+
+// Super Important, programming most of the time is all about DATA.
+
+// We get data from somewhere, we store(data structures -> in case we have more than 1 single values)
+// and process it,
+// And then we give some data back.
+
+// The two most important data structures(at least in JS) are Arrays and Objects.
+
+// we can put different values into the array.
+// one way of creating a new array, this way is most used.
+const friends = ['Josh', 'Jo', 'Jeff'];
+console.log(friends);
+
+// Another way of creating a new array
+const years = new Array(1995, 2000, 2001, 2020);
+// Array here he says that is a FUNCTION, because we called it with () and args ?
+console.log(years);
+
+// Array can hold as many items/values as we want,
+// And also values of any type, that we would like.
+// Mixed.
+
+// More usual is using brackets like this. (called liteal syntax).
+// const friends = ['Josh', 'Jo', 'Jeff'];
+
+// Now we know how to create an Array, then how to put elements in it ?
+// But ofc we need to have a way to get them out.
+// And for that we use the square brackets syntax again.
+
+// Logging the first element of the friends array.
+console.log(friends[0]);
+// ARRAYS ARE ZERO-BASED. which means first element is the element number zero(0).
+console.log(friends);
+
+console.log(friends.length); // property, check box info after writing friends for any method/property u need.
+
+// we can use this to automatically get the last element of ANY array.
+// useful so that, we don't have to count the number of elements
+// -1 bcs length is not zero-based.
+console.log(friends[friends.length - 1]);
+// friends[any expression] -> it's not needed to be just a number, like friends[0].
+// friends[friends.length - 1] -> expression in [].
+// remember that expression is something that produces a value.
+// first the expression will be calculated, then it will get the element in friends arr at position 2.
+// We can't put a statement in the [] , UNDERSTAND THE STATEMENT vs. EXPRESSION differences.
+
+// More stuff:
+// the square brackets (friends[0]) it's not only for retrieving elements from the Array.
+// We can also change it to ADD elements to the Array.
+
+// replacing element
+friends[friends.length - 1] = 'Tony';
+console.log(friends);
+
+// WAIT! Didn't he say that we can't mutate/change variables declared with const ?!
+// friends is declared with const, but still able to change one of the elements.
+// Isn't that a contradiction?
+
+// Well, the answer is: ONLY PRIMITIVE VALUES are UNCHANGABLE/IMMUTABLE,
+// but an Array is not a primitive value, bcs
+// The Non-Primitive data type has only one member i.e. the Object. !!!!!!
+
+// We can mutate/change an Array, bcs of the way that JS stores things in memory.
+// More, later about that in section "How JS works behind the scenes".
+
+// for now remember that we can mutate arrays even though they are declared with const.
+// 
+
+// adding element
+friends[friends.length] = 'Bob';
+console.log(friends);
