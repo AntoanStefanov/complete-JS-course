@@ -323,7 +323,33 @@ console.log(friends);
 // !!!!!!!!!!!!
 // Another thing, an Array can actually hold values with different types.
 // const tony = ['Antoan', 'Stefanov', 22];
+
 // we can calculate the age (22) from other values,
 // that works, because in each position, JS simply expects expression.
 const tony = ['Antoan', 'Stefanov', 2022 - 2000];
+// 2022 - 2000 is an expression, and an expression produces a value, which will be stored in the new Array.
 console.log(tony);
+
+// this works for variables too.
+
+const bestDay = 'Friday';
+
+const days = [bestDay, 'Saturday', 'Sunday'];
+// bestDay will be replaced with the actual string(the value of the variable).
+
+console.log(days);
+
+// Out of context but important!
+// !!!!! Either way, the program can store that data in variables.
+//  Each variable has a name, a value, and a type.
+// The value might change over time, and that's why its “variable.”
+
+// we can put array in the array.
+const firstName = 'Antoan';
+
+// with this we have all the relevant data about Antoan, in one handy data structure.
+// Really convenient, bcs we don't have to create one variable for each of the data points.
+const antoan = [firstName, 'Stefanov', 2022 - 2000, 'learner', friends];
+
+// checking all the expressions (firstName, 2022 - 2000, friends) being replaced with the VALUES that they produce.s
+console.log(antoan);
