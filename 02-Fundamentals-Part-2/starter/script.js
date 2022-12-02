@@ -313,8 +313,17 @@ console.log(friends);
 // More, later about that in section "How JS works behind the scenes".
 
 // for now remember that we can mutate arrays even though they are declared with const.
-// 
+// Now what we can't do is to actually replace the entire Array.
+// friends = ['Bob', 'John', 'Maria']; -> error (friends is constant).
 
-// adding element
+// adding element at the end (my thought!)
 friends[friends.length] = 'Bob';
 console.log(friends);
+
+// !!!!!!!!!!!!
+// Another thing, an Array can actually hold values with different types.
+// const tony = ['Antoan', 'Stefanov', 22];
+// we can calculate the age (22) from other values,
+// that works, because in each position, JS simply expects expression.
+const tony = ['Antoan', 'Stefanov', 2022 - 2000];
+console.log(tony);
