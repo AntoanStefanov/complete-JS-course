@@ -1,3 +1,5 @@
+!! DRY (DON'T REPEAT YOURSELF) PRINCIPLE -> functions, nested functions. /More code, more potential bugs./
+!! IF you notice that u write something more than 1 time, you could put the code in function, KINDA ?.
 33. Functions
 
 The fundamental building block of real world applications are functions.
@@ -12,4 +14,9 @@ It's like a variable but with whole chunks of code.
 
 
 35. Arrow Functions
+    Important lecture. check notes in script.js and even the lecture.
+
+
+36. Functions Calling Other Functions
+    Important lecture. check notes in script.js and even the lecture.
 

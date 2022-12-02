@@ -106,7 +106,6 @@ function sumNums(a, b) {
 // But I still need to know both of them(expression and declaration functions).
 // Both have place in JS.
 
-*/
 
 // 35. Arrow Functions
 
@@ -163,3 +162,23 @@ console.log(yearsUntilRetirement(2000, 'Antoan'));
 // that does not mean Arrow functions are not important. They are important!
 
 // He even loves them and use them all the time. Sometimes he doesn't write regular functions at all.
+
+*/
+
+// 36. Functions Calling Other Functions
+// Calling a function from inside another function.
+// DRY PRINCIPLE -> functions.
+// If we wanted to cut the fruit in 3 pieces,
+// we would JUST CHANGE THE number in the cutFruitPieces function.
+// And not observing everywhere that we cut the pieces if we didn't have a function.
+function cutFruitPieces(fruit) {
+  return fruit * 4;
+}
+
+function fruitProcessor(applesNumber, orangesNumber) {
+  const applePieces = cutFruitPieces(applesNumber);
+  const orangePieces = cutFruitPieces(orangesNumber);
+  return `Juice with ${applePieces} apple pieces and ${orangePieces} orange pieces.`;
+}
+
+console.log(fruitProcessor(2, 3));
