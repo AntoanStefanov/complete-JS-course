@@ -8,4 +8,8 @@ It's like a variable but with whole chunks of code.
 
 
 34. Function Declarations vs. Function Expressions
+    Important lecture. check notes in script.js and even the lecture.
+
+
+35. Arrow Functions
 

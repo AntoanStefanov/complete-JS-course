@@ -39,8 +39,6 @@ console.log(juiceMade);
 
 console.log(fruitProcessor('banana')); // here 'banana' is an argument.
 
-*/
-
 // 34. Function Declarations vs. Function Expressions
 
 // THIS IS CALLED FUNCTION DECLARATION.
@@ -107,3 +105,61 @@ function sumNums(a, b) {
 // No problem at all.
 // But I still need to know both of them(expression and declaration functions).
 // Both have place in JS.
+
+*/
+
+// 35. Arrow Functions
+
+// Third type of function, it was added to JS in ES6.
+// That's the arrow function.
+
+// An arrow function is simply a special form of function expression,
+//  that is shorter and therefore faster to write.
+// BUT IT'S STILL FUNCTION EXPRESSION.
+
+// Function expression
+const calcAge2 = function (birthYear) {
+  return 2022 - birthYear;
+};
+
+console.log(calcAge2(2000));
+
+// Arrow expression -> my way
+const calcAge3 = (birthYear) => {
+  return 2022 - birthYear;
+};
+
+console.log(calcAge3(2001));
+
+// Arrow expression -> his way
+// ctrl + , -> search -> arrow parens || prettier.
+// https://hudochenkov.com/posts/arrow-function-parentheses/ !!!!
+// https://arcticicestudio.github.io/styleguide-javascript/rules/arrow_functions.html#single-argument-parentheses !
+// when we want one parameter, we can OMIT the oval brackets ().
+// https://eslint.org/docs/latest/rules/arrow-parens !!
+// when function body(the code block) is one line, we can OMIT 'return' and the curly brackets.
+// the return happens implicitly. Quietly. So, the value will be automatically returned.
+const calcAge4 = (birthYear) => 2022 - birthYear;
+// Excellent for simple one-liner functions. This is gonna be extremely helpful in certain situations.
+
+console.log(calcAge4(2002));
+
+// when more than 1 lines of code is needed, we put it in code block with curly braces.
+// Also we need the return keyword.
+const yearsUntilRetirement = (birthYear, firstName) => {
+  const age = 2022 - birthYear;
+  return `${firstName} has ${65 - age} until retirement`;
+};
+
+console.log(yearsUntilRetirement(2000, 'Antoan'));
+
+// What type of funtion should I use ?
+// Arrow function for everything since they are so easy to write? - NO, but it's also complicated!
+// It's complicated because there is another fundamental difference,
+// between the arrow function and the more traditional functions(function declarations and function expressions).
+// It's the fact that arrow functions do NOT get a so-called 'this' keyword. (in further lecture).
+// We'll keep using mainly the traditional functions(probably the function expressions most),
+// except for very simple one - liner functions(arrow functions).
+// that does not mean Arrow functions are not important. They are important!
+
+// He even loves them and use them all the time. Sometimes he doesn't write regular functions at all.
