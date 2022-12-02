@@ -163,7 +163,6 @@ console.log(yearsUntilRetirement(2000, 'Antoan'));
 
 // He even loves them and use them all the time. Sometimes he doesn't write regular functions at all.
 
-*/
 
 // 36. Functions Calling Other Functions
 // Calling a function from inside another function.
@@ -182,3 +181,48 @@ function fruitProcessor(applesNumber, orangesNumber) {
 }
 
 console.log(fruitProcessor(2, 3));
+
+*/
+
+// 37. Reviewing Functions
+
+// regular function expression.
+const calcAge = function (birthYear) {
+  return 2022 - birthYear;
+};
+
+const yearsUntilRetirement = function (birthYear, firstName) {
+  const age = calcAge(birthYear);
+  const retirement = 65 - age;
+
+  // WE RETURN NUMBERS, and not a string, as we did before, because,
+  // that's usually what we DO.
+  // Especially when we actually recieve a number as an input.(birthYear)!
+  // Good Practice -> When we take a number as argument, we also return a number.
+  if (retirement > 0) {
+    console.log(`${firstName} retires in ${retirement} years`);
+    return retirement; // return will IMMEDIATELY exit the function. https://eslint.org/docs/latest/rules/no-unreachable
+  }
+  console.log(`${firstName} has already retired.`);
+  return -1; // -1 is standard number in programming. It's shows us clearly that this has no meaning.
+};
+
+console.log(yearsUntilRetirement(2000, 'Antoan'));
+console.log(yearsUntilRetirement(1920, 'Roy'));
+
+// function declaration -> function that can be used before it's declared/defined.
+function calcAgeReview(birthYear) {
+  return 2022 - birthYear;
+}
+
+// function expression -> essentially a function value stored in a variable.
+const calcAgeReview2 = function (birthYear) {
+  return 2022 - birthYear;
+};
+
+// arrow function(they are also function expressions, but special ones),
+// -> great for a quick one-line function. Has no 'this' keyword(more later).
+// no return, no curly braces {} => if one line.
+const calcAgeReview3 = (birthYear) => 2022 - birthYear;
+
+console.log(calcAgeReview(2000), calcAgeReview2(2000), calcAgeReview3(2000));

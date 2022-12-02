@@ -20,3 +20,4 @@ It's like a variable but with whole chunks of code.
 36. Functions Calling Other Functions
     Important lecture. check notes in script.js and even the lecture.
 
+ctrl D , selection -> options. add/select next occurrence.
