@@ -353,3 +353,28 @@ const antoan = [firstName, 'Stefanov', 2022 - 2000, 'learner', friends];
 
 // checking all the expressions (firstName, 2022 - 2000, friends) being replaced with the VALUES that they produce.s
 console.log(antoan);
+
+// Small Array Exercise. So we see, why arrays are so useful.
+
+// func expression
+const calcAge = function (birthYear) {
+  return 2022 - birthYear;
+};
+
+// let's say we have an array of birth years, and we want to calculate the ages for some of them.
+
+const birthYears = [2000, 2001, 2002, 2003];
+
+// now we will be able to use the calcAge function and then
+// store the results of calculating the ages for some of the birth years into a new array.
+
+// Since we started with an array it's usualyy a good idea, to also end up with a new array.
+const ages = [
+  calcAge(birthYears[0]), // that line is an expression (an element of an array expects an expression).
+  calcAge(birthYears[birthYears.length - 1]), // that line is an expression (an element of an array expects an expression)
+  // birthYears.length - 1 -> this is also an expression. 
+  // birthYears[any expression] -> it's not needed to be just a number, like birthYears[0].
+];
+// we can place function calls into an Array just fine, because they will produce a value.
+// The function will be executed, and the result of them will be placed in the array.
+console.log(ages);
