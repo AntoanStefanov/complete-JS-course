@@ -378,7 +378,6 @@ const ages = [
 // The function will be executed, and the result of them will be placed in the array.
 console.log(ages);
 
-*/
 
 // 40. Basic Array Operations(Methods)
 
@@ -428,3 +427,75 @@ console.log(friends);
 console.log(friends.includes('Joe')); // returns boolean -> check it's docs. WTF, r u commenting?
 
 // so we can use for conditionals, very useful application of this method
+
+*/
+
+// Introduction to Objects.
+// Object is another data structure. (also known as map, dictionary, hash-table in other languages).
+
+// We used array(data structure) to store multiple related values in the same variable.
+const antoanArray = [
+  'Antoan',
+  'Stefanov',
+  2022 - 2000,
+  'Learner',
+  ['Mike', 'Roy'],
+];
+
+// In array there is no way of giving these elements a name, ex. firstName: 'Antoan', etc...
+// So we can't reference the values by name, but only by their order number. ex. antoanArray[0]
+
+// To solve that problem, we have another data structure in JS, called Object.
+// In object we define key-value pairs. So we can give each value a name. ex. firstName: 'Antoan'
+// These keys are also called PROPERTY.
+
+// const obj = {}; -> an object. (curly brackets/braces).
+
+const antoanObject = {
+  firstName: 'Antoan', // key(variable name)-value pair.
+  secondName: 'Stefanov', // key-value pair...
+  age: 2022 - 2000, // key(variable name) - value(expression).
+  // (property) friends: string[] || (property) friends: (string | number)[] /hold mouse pointer on the key.
+  // which means that variableName: T[] -> means the key holds value of an array with a generic (T)ype ?
+  friends: ['Mike', 1],
+};
+// Now we have an object which contains 5 key-value pairs.
+// These keys are also called PROPERTY.
+// We say that this object, called antoanObject, has 5 properties.
+// we say, property firstName with the value of 'Antoan', and so on...
+
+// Objects are probably the most fundamental concept in the whole JS language.
+// There are many ways of creating objects.
+// And simply writing an object in the code like this is probably the simplest way of creating an object.
+// with the {curly braces}.
+// creating an object with the {curly braces} it's the easiest,
+// and it's called the object literal Syntax.
+// because we are LITERALLY writing down the entire object content.
+
+// ********************
+// const arr = []; is array literal syntax. ->
+// https://www.google.com/search?q=array+literal+js&oq=array+literal+js&aqs=chrome..69i57j0i512l2j0i22i30l7.3015j0j7&sourceid=chrome&ie=UTF-8
+// ********************
+
+
+// We use objects to essentially group together different variables that really belong together.
+// such as the properties of antoanObject
+
+
+// the big difference between objects and arrays is that,
+// in objects the order of these values does NOT matter AT ALL,
+// when we want to retrieve them.
+// KEEP THAT IN MIND.
+
+// So, in arrays the order of which we specify the elements MATTERS a lot,
+// because that's how we access these items.
+// so, we can only access array items using their order number.
+
+// This means,we should use arrays for more ordered data,
+// and objects for more unstructured data, and data that,
+// we actually want to name, and then retrieve from the object,
+// based on that name/property/key.
+
+// How do we get data from object -> in next lecture.
+// my guess ... ->
+console.log(antoanObject.firstName); // firstName is property of the antoanObject.
