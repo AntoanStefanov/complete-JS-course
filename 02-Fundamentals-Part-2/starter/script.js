@@ -498,7 +498,6 @@ const antoanObject = {
 // my guess ... ->
 console.log(antoanObject.firstName); // firstName is property of the antoanObject.
 
-*/
 
 // 43. Dot vs. Bracket Notation
 
@@ -598,7 +597,7 @@ console.log(
 
 // in terms of operator precedence, lets check why it actually works this way,
 // the .(dot) is an operator AND the [](brackets) are operator !!!!
-// google -> mdn operator precedence
+// google -> mdn operator precedence (the table one)
 // IN MDN .(DOT) operator is called 'Member Access'
 // and [] is called 'Computed Member Access'.
 // it's computed because, as he mentioned multiple times,
@@ -611,4 +610,8 @@ console.log(
 
 // same this for antoanObject.friends[0] :
 // antoanObject.friends -> ['Mike', 'John'] -> ['Mike', 'John'][0] -> 'Mike'
+
+*/
+
+// 44. Object Methods
 
