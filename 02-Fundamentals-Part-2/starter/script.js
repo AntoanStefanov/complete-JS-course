@@ -428,9 +428,8 @@ console.log(friends.includes('Joe')); // returns boolean -> check it's docs. WTF
 
 // so we can use for conditionals, very useful application of this method
 
-*/
 
-// Introduction to Objects.
+// 42. Introduction to Objects.
 // Object is another data structure. (also known as map, dictionary, hash-table in other languages).
 
 // We used array(data structure) to store multiple related values in the same variable.
@@ -441,6 +440,7 @@ const antoanArray = [
   'Learner',
   ['Mike', 'Roy'],
 ];
+console.log(antoanArray);
 
 // In array there is no way of giving these elements a name, ex. firstName: 'Antoan', etc...
 // So we can't reference the values by name, but only by their order number. ex. antoanArray[0]
@@ -477,10 +477,8 @@ const antoanObject = {
 // https://www.google.com/search?q=array+literal+js&oq=array+literal+js&aqs=chrome..69i57j0i512l2j0i22i30l7.3015j0j7&sourceid=chrome&ie=UTF-8
 // ********************
 
-
 // We use objects to essentially group together different variables that really belong together.
 // such as the properties of antoanObject
-
 
 // the big difference between objects and arrays is that,
 // in objects the order of these values does NOT matter AT ALL,
@@ -499,3 +497,104 @@ const antoanObject = {
 // How do we get data from object -> in next lecture.
 // my guess ... ->
 console.log(antoanObject.firstName); // firstName is property of the antoanObject.
+
+*/
+
+// 43. Dot vs. Bracket Notation
+
+const antoanObject = {
+  firstName: 'Antoan',
+  lastName: 'Stefanov',
+  age: 2022 - 2000,
+  friends: ['Mike', 'John'],
+};
+
+console.log(antoanObject);
+// in browser console, the object's properties could be ordered alphabetically.
+
+// the order of properties does NOT matter.,
+// bcs we simply get the properties from the object using the key itself.
+// there is 2 ways to do that.
+
+// first way of getting a property from an object is by using the dot notation
+console.log(antoanObject.age);
+// the dot(.) is actually an operator, which will go to the object(antoanObject),
+// and then retrieve property with the name that we specify.
+
+// !!!!!!!!!!!!! A property is a “key: value” pair
+
+// We can do the same thing with the brackets notation.
+console.log(antoanObject['age']); // [string with the key]
+
+// DIFFERENCE between the 2 ways:
+// In the brackets notation obj[here] we can actually put any expression that we'd like.
+// So, we don't have to explicitly write the string obj[here], but instead we can
+// compute it from some operation. /operations is basically an expression/.
+
+// give it a try. Imagine a variable in which we store the repeating part in,
+// firstName and lastName, which is Name.
+
+const nameKey = 'Name';
+
+console.log(antoanObject['first' + nameKey]); // [expression] used.
+console.log(antoanObject['last' + nameKey]); // [expression] used.
+
+// doing something like this is more common than you think.
+// important to understand that,
+// obj[here] WE COULD PUT ANY EXPRESSION.
+
+// this above does not work with the dot notation/operator.
+// console.log(antoanObject.`first` + nameKey);
+
+// that's the reason we need the [] notation.
+// in . notation we have to use the real final property key.
+// not a computed one.
+console.log(antoanObject.age); // like this one (age).
+
+// When we use the dot notation and the brackets notation ?
+// When we need to first compute the property key, we use [] notation.
+// In any other case just use the dot notation. /looks cleaner and easier to use/.
+
+// now, to make the need for brackets notation clearer, let's see another example.
+
+// Let's say we don't know yet what property we want to show,
+// and instead we get this information from some user interface(UI).
+
+// LEt's use the prompt function for that.
+// prompt is yet another built in function in JS.
+const userInterestedIn = prompt(
+  'What do you want to know about Antoan? Choose between firstName, lastName, age, friends'
+); // returns string.
+
+console.log(antoanObject.userInterestedIn); // why ESLINT don't throw error ? .userInterestedIn is ANY ?
+// we get undefined when we try to access a property on object which doesn't exist.
+// so antoanObject does NOT have a property called 'userInterestedIn'.
+
+console.log(userInterestedIn); // string.
+console.log(antoanObject[userInterestedIn]); // brackets notation in useful way [expression].
+
+// If not existing property is given from prompt, make a check ?
+antoanObject[userInterestedIn]
+  ? console.log('Existing property: ' + antoanObject[userInterestedIn])
+  : console.log('No such property: ' + userInterestedIn);
+
+// Now that u know how to access properties from object,
+// le's also learn how to use both the dot/brackets notation,
+// TO ADD new properties to the object.
+// pretty straightforward
+
+antoanObject.location = 'Levski';
+antoanObject['twitter'] = '@antoanstefanov'; // [ any expression ]
+
+console.log(antoanObject);
+
+// small challenge
+
+// "Antoan has 2 friends, and his best friends is called Mike/0 index/"
+
+console.log(
+  `${antoanObject.firstName} has ${antoanObject.friends.length} friends and his best friend is called ${antoanObject.friends[0]}`
+);
+
+// in terms of operator precedence, lets check why it actually works this way,
+// the .(dot) is an operator AND the [](brackets) are operator !!!!
