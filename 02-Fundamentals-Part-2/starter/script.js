@@ -598,3 +598,17 @@ console.log(
 
 // in terms of operator precedence, lets check why it actually works this way,
 // the .(dot) is an operator AND the [](brackets) are operator !!!!
+// google -> mdn operator precedence
+// IN MDN .(DOT) operator is called 'Member Access'
+// and [] is called 'Computed Member Access'.
+// it's computed because, as he mentioned multiple times,
+// we can compute the property keys that we want to access. /expression/
+
+// both have really high priority and,
+//  both are left - to - right and that's why all of the string log works.
+// we have 2 dots /antoanObject.friends.length/ and they are executed left-to-right.
+// antoanObject.friends => ['Mike', 'John'] -> ['Mike', 'John'].length -> 2.
+
+// same this for antoanObject.friends[0] :
+// antoanObject.friends -> ['Mike', 'John'] -> ['Mike', 'John'][0] -> 'Mike'
+
