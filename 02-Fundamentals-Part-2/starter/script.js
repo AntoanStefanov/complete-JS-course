@@ -226,7 +226,6 @@ const calcAgeReview3 = (birthYear) => 2022 - birthYear;
 
 console.log(calcAgeReview(2000), calcAgeReview2(2000), calcAgeReview3(2000));
 
-*/
 
 // 39. Introduction to Arrays.
 // Our first data structure.
@@ -378,3 +377,54 @@ const ages = [
 // we can place function calls into an Array just fine, because they will produce a value.
 // The function will be executed, and the result of them will be placed in the array.
 console.log(ages);
+
+*/
+
+// 40. Basic Array Operations(Methods)
+
+// JS has some built-in methods that we can directly apply on arrays.
+// Let's see some useful array methods.
+
+const friends = ['Jeff', 'Joe', 'Jo'];
+
+// Adding an element to the end of the array
+const returnedPushValue = friends.push('J.J.');
+
+console.log(returnedPushValue); // returns the mutated length of the array.
+// not used ver often, after the push we call it a day,
+// bcs we dont need immediately the length of the mutated array, but if we do we need it, we can use it.
+
+// push is a method, which technically is a function,
+// but any function attach to an object is called method.
+console.log(friends);
+
+// method that adds element to the front of the array.
+friends.unshift('Jonathan'); // it also returns the length of the mutated array, like the push method.
+
+console.log(friends);
+
+// methods to remove element from arrays.
+
+// remove last element from array.
+const removedElement = friends.pop(); // returns the removed element.
+// useful sometimes.
+console.log(friends);
+console.log(removedElement);
+
+// remove first element from array
+const shiftedElement = friends.shift();
+console.log(friends);
+console.log(shiftedElement);
+
+// checking position of an element
+console.log(friends.indexOf('Joe'));
+console.log(friends);
+
+// similar method to indexOf, but which is a bit more modern
+// and in his opinion also more useful.
+// this one is an ES6 method , called includes.
+
+// this method uses STRICT EQUALITY for the check!
+console.log(friends.includes('Joe')); // returns boolean -> check it's docs. WTF, r u commenting?
+
+// so we can use for conditionals, very useful application of this method
