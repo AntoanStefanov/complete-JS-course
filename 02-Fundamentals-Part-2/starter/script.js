@@ -629,8 +629,18 @@ const antoanObject = {
   firstName: 'Antoan',
   lastName: 'Stefanov',
   birthYear: 2000,
+  job: 'learner',
   friends: ['Mike', 'John'],
   hasDriversLicense: true,
+
+  // challenge chech last notes for the lecture.
+  getSummary: function () {
+    return `${this.firstName} is a ${
+      this.age ? this.age : this.calcAge()
+    }-years-old ${this.job}, and he has ${
+      this.hasDriversLicense ? 'a' : 'no'
+    } driver's license.`;
+  },
 
   // function name(key) => function as expression (expression produces a value).
   // calcAge: function (birthYear) {
@@ -725,3 +735,9 @@ console.log(antoanObject.age);
 
 // another small challenge.
 
+// write a method 'getSummary' -> retuns a string, data about antoanObject.
+// 'firstName is a {age}-years-old learner, and he has a/no driver's license.'
+
+console.log(antoanObject.getSummary());
+
+// array.push(1); -> means that arrays are also objects, push is a method of that object.
