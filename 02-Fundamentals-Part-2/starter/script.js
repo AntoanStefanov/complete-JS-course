@@ -615,3 +615,62 @@ console.log(
 
 // 44. Object Methods
 
+// Objects can hold properties of any type, just like arrays.
+// They can hold even arrays, and in fact, they could even hold objects.
+
+// Let's take it further
+// remember, he said that functions are really just another type of value.
+// If a function is just a value, then that means that we can create a key-value pair(property),
+// In which the value is a function.
+
+// So we can add functions to objects.
+
+const antoanObject = {
+  firstName: 'Antoan',
+  lastName: 'Stefanov',
+  birthYear: 2000,
+  friends: ['Mike', 'John'],
+  hasDriversLicense: true,
+
+  // function name(key) => function as expression (expression produces a value).
+  // calcAge: function (birthYear) {
+  //   return 2022 - birthYear;
+  // },
+  // now calcAge is a method(method is a function attached to an object).
+
+  // a function declaration wouldn't work here. we need an expression.
+  // calcAge key holds a function value.
+
+  calcAge: function () {
+    return 2022 - this.birthYear;
+  },
+};
+
+// accessing the objet method. /dot(.) notation/
+console.log(antoanObject.calcAge(antoanObject.birthYear));
+
+// we have access using the [brackets] notation.
+console.log(antoanObject['calcAge'](antoanObject.birthYear)); // [expression]
+
+// We can actually access the birthYear property directly from the antoanObject,
+// instead of having to pass it in.
+
+// !! We can because in every method JS gives us access to a special variable called 'this'.
+// we can change the calcAge function, so that we read the birthYear directly from the object itself.
+// without having to pass it in as a parameter in the function (this one ->):
+
+// ****************************************************************
+// calcAge: function (birthYear) {
+// return 2022 - birthYear;
+// }
+// ****************************************************************
+
+// reformed bcs of the 'this' use.
+// ****************************************************************
+// calcAge: function () {
+  // return 2022 - this.birthYear;
+// }
+// ****************************************************************
+
+// !!! 'this' keyword/object is basially equal to the object ON which the method is called.
+
