@@ -641,16 +641,32 @@ const antoanObject = {
   // a function declaration wouldn't work here. we need an expression.
   // calcAge key holds a function value.
 
+  // calcAge: function () {
+  // console.log(this);
+  // return 2022 - this.birthYear;
+  // if we write antoanObject.birthYear, we will still violate the DRY principle.
+  // let's say if we want to change the name of the object? Then it will not work.
+  // And we will have to change it here also, so u know why, now.
+  // },
+
+  // check line 692.
   calcAge: function () {
-    return 2022 - this.birthYear;
+    // we can use the 'this' keyword also to store a new property.
+    this.age = 2022 - this.birthYear;
+    // we calculate the age  and then we create a new property on the current object,
+    // in this case on the antoanObject
+    return this.age;
+    // of course we don't even need to return anything if we dont want to,
+    // we could make this method only calc the age, but not even return it.
+    // but I think it's a good practice to actually also return it.
   },
 };
 
 // accessing the objet method. /dot(.) notation/
-console.log(antoanObject.calcAge(antoanObject.birthYear));
+// console.log(antoanObject.calcAge(antoanObject.birthYear));
 
 // we have access using the [brackets] notation.
-console.log(antoanObject['calcAge'](antoanObject.birthYear)); // [expression]
+// console.log(antoanObject['calcAge'](antoanObject.birthYear)); // [expression]
 
 // We can actually access the birthYear property directly from the antoanObject,
 // instead of having to pass it in.
@@ -668,9 +684,44 @@ console.log(antoanObject['calcAge'](antoanObject.birthYear)); // [expression]
 // reformed bcs of the 'this' use.
 // ****************************************************************
 // calcAge: function () {
-  // return 2022 - this.birthYear;
+// return 2022 - this.birthYear;
 // }
 // ****************************************************************
 
 // !!! 'this' keyword/object is basially equal to the object ON which the method is called.
+// In other words, it is equal to the object calling the method.
+
+// which object is calling the method ?
+// console.log(antoanObject.calcAge());
+// the object that is calling the method is 'antoanObject'.
+// that means that inside this method(calcAge) the 'this' variable will point to antoanObject object.
+// whatever appears before the dot(.) is the one who is calling the method.
+// therefore in the method, 'this' points to antoanObject.
+// And if 'this' points to antoanObject, then 'this.birthYear' is 2000. /check the object/
+
+// really useful 'this' keyword.
+
+// now, let's say that we need to access the age multiple times in the program.
+// it will look something like this:
+// console.log(antoanObject.calcAge());
+// console.log(antoanObject.calcAge());
+// console.log(antoanObject.calcAge());
+
+// that will work, of course, but the computation in the method will be done 3 times,
+// return 2022 - this.birthYear;
+// No big deal in this case, but  it might be a heavier computation.
+// that takes some more time.
+// it would be a bad practice to do this multiple times,
+// instead what we can do, is to calculate the age ONCE, then store it in the object.
+// and then when we need it at later point, we can then just retrieve the age as a property from the object.
+
+console.log(antoanObject.calcAge());
+console.log(antoanObject.age);
+console.log(antoanObject.age);
+
+// we only needed to calculate the age just once.
+// and from there we simply retrieve the age as a property from the object that we calculated.
+// most efficient solution, let's say.
+
+// another small challenge.
 
