@@ -19,7 +19,10 @@ const john = {
   height: 1.95,
 
   calcBMI: function () {
-    this.BMI = this.mass / this.height ** 2;
+    if (!this.BMI) {
+      // ?
+      this.BMI = this.mass / this.height ** 2;
+    }
     return this.BMI;
   },
 };
@@ -28,7 +31,14 @@ mark.calcBMI();
 john.calcBMI();
 
 if (mark.BMI > john.BMI) {
-  console.log(`Mark's BMI (${mark.BMI}) is higher than John's (${john.BMI})`);
+  console.log(
+    `${mark.firstName}'s BMI (${mark.BMI}) is higher than ${john.firstName}'s (${john.BMI})`
+  );
 } else {
-  console.log(`Mark's BMI (${mark.BMI}) is lower than John's (${john.BMI})`);
+  console.log(
+    `${john.firstName}'s BMI (${john.BMI}) is higher than ${mark.firstName}'s (${mark.BMI})`
+  );
 }
+
+// repeating the calcBMI method. DRY violation, we will see how to avoid in later,
+// using OOP.
