@@ -798,9 +798,53 @@ for (let i = 0; i < antoanArray.length; i++) {
 // let's create a new array which will contain the types of the antoanArray array/ type is object /.
 
 const antoanArrayTypes = []; // empty array.
- 
+
 for (let i = 0; i < antoanArray.length; i++) {
-  antoanArrayTypes[i] = typeof antoanArray[i];
+  // One way of filling an array.
+  // antoanArrayTypes[i] = typeof antoanArray[i];
+
+  // Another way of filling an array.
+  antoanArrayTypes.push(typeof antoanArray[i]);
+  // that's kinda cleaner
 }
 
 console.log(antoanArrayTypes);
+// antoanArrayTypes[10] = 'a';
+// console.log(antoanArrayTypes);
+
+// Let's see more practical example.
+
+const birthYears = [2000, 2005, 2010, 2015];
+const ages = [];
+
+for (let i = 0; i < birthYears.length; i++) {
+  ages.push(2022 - birthYears[i]);
+}
+
+console.log(birthYears);
+console.log(ages);
+
+// To finish, let's learn about two important statements for loops.
+// break / continue.
+
+// continue -> exit the CURRENT iteration of the loop and CONTINUE to the next one.
+// break -> completely terminate the whole loop, NOT just the current iteration.
+
+// continue statement
+for (let i = 0; i < antoanArray.length; i++) {
+  // let's log only items that are strings.
+  const currentItem = antoanArray[i];
+
+  // use ternary operator when u assign a value(true:false), but in this case, if.
+  // ternary when u use the both expressions for true/false.
+  if (typeof currentItem !== 'string') continue;
+  console.log(currentItem);
+}
+
+// break statement
+for (let i = 0; i < antoanArray.length; i++) {
+  // let's log no other items after we found a number.
+  const currentItem = antoanArray[i];
+  if (typeof currentItem === 'number') break;
+  console.log(currentItem);
+}
