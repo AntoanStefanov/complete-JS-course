@@ -611,7 +611,6 @@ console.log(
 // same this for antoanObject.friends[0] :
 // antoanObject.friends -> ['Mike', 'John'] -> ['Mike', 'John'][0] -> 'Mike'
 
-*/
 
 // 44. Object Methods
 
@@ -741,3 +740,37 @@ console.log(antoanObject.age);
 console.log(antoanObject.getSummary());
 
 // array.push(1); -> means that arrays are also objects, push is a method of that object.
+
+*/
+
+// 46. Iteration: The for Loop
+
+// when we learned about if/else statement, we mentioned that
+// !! if/else statement is a control structure.
+// And that there are more control structures.
+
+// One of the other control structures are LOOPS /for loop & while loop/.
+
+// Loops are a fundamental aspect of every programming language.
+// They allow us to automate repetitive tasks.
+// Tasks that we have to perfom over and over again.
+
+// Analogy -> lifting 10 times a dumbell.
+
+// console.log('Lifting weights repetition 1');
+// console.log('Lifting weights repetition 2');
+// console.log('Lifting weights repetition 3');
+// till repetition 10 !!!
+// DRY VIOLATION !!!
+
+// (For) Loop -> Loop that has a counter.
+// for statement
+// thee parts ->
+// initial value of a counter,
+// conditional (evaluated before each iteration of the loop -> if false => loop stops),
+// for loop keeps running while condition is TRUE.
+// increment the counter after each iteration of the loop.
+for (let rep = 1; rep <= 10; rep++) {
+  // rep is available in this code block.
+  console.log(`Lifting weights repetition ${rep}.`);
+}
