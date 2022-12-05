@@ -741,7 +741,6 @@ console.log(antoanObject.getSummary());
 
 // array.push(1); -> means that arrays are also objects, push is a method of that object.
 
-*/
 
 // 46. Iteration: The for Loop
 
@@ -774,3 +773,34 @@ for (let rep = 1; rep <= 10; rep++) {
   // rep is available in this code block.
   console.log(`Lifting weights repetition ${rep}.`);
 }
+
+*/
+
+// 47. Looping Arrays, Breaking and Continuing
+
+// One of the most used applications of for loops is to loop through arrays.
+
+const antoanArray = [
+  'Antoan',
+  'Stefanov',
+  2022 - 2000,
+  'learner',
+  ['Mike', 'Roy', 'John'],
+];
+
+// Let's log every item of the array.
+// note -> array is an object. 7 primitives and 1 non primitive called 'object'.
+
+for (let i = 0; i < antoanArray.length; i++) {
+  console.log(antoanArray[i]);
+}
+
+// let's create a new array which will contain the types of the antoanArray array/ type is object /.
+
+const antoanArrayTypes = []; // empty array.
+ 
+for (let i = 0; i < antoanArray.length; i++) {
+  antoanArrayTypes[i] = typeof antoanArray[i];
+}
+
+console.log(antoanArrayTypes);
