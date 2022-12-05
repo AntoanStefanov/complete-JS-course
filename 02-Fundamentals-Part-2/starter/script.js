@@ -774,7 +774,6 @@ for (let rep = 1; rep <= 10; rep++) {
   console.log(`Lifting weights repetition ${rep}.`);
 }
 
-*/
 
 // 47. Looping Arrays, Breaking and Continuing
 
@@ -847,4 +846,43 @@ for (let i = 0; i < antoanArray.length; i++) {
   const currentItem = antoanArray[i];
   if (typeof currentItem === 'number') break;
   console.log(currentItem);
+}
+
+*/
+
+// 48. Looping Backwards and Loops in Loops.
+
+const antoanArray = [
+  'Antoan',
+  'Stefanov',
+  2022 - 2000,
+  'learner',
+  ['Mike', 'Roy', 'John'],
+];
+
+// Loop it backwards.
+// 4, 3, 2, 1, 0
+
+// for (let i = antoanArray.length - 1; i >= 0; i--) console.log(antoanArray[i]); -> One line ?
+
+// https://stackoverflow.com/questions/22876341/is-it-correct-to-use-one-line-for-loop-in-javascript-without-curly-brackets
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Statements
+
+// All Javascript cares about is what is immediately after the for statement.
+// It can be a statement block(multiple statements in curly brackets) or a single statement.
+
+// This is true for nearly every control statement in Javascript. (if/else, for loop, while loop?)
+// check the control statements ?
+
+for (let i = antoanArray.length - 1; i >= 0; i--) {
+  const currentItem = antoanArray[i];
+  console.log(currentItem);
+}
+
+// Loop in Loop / Nested Loop /.
+
+for (let exerciseNumber = 1; exerciseNumber <= 3; exerciseNumber++) {
+  for (let rep = 1; rep <= 5; rep++) {
+    console.log(`Exercise ${exerciseNumber}: Repetition ${rep}`);
+  }
 }
