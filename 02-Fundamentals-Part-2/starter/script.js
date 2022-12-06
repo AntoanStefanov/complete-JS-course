@@ -909,7 +909,6 @@ for (let exerciseNumber = 1; exerciseNumber <= 3; exerciseNumber++) {
 
 // Roll a dice until we hit a 6. We don't know how many times will roll, so no counter is needed.
 
-
 // https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
 
 let dice = Math.floor(Math.random() * 6) + 1; // returns a number between 0 and 1;
@@ -917,7 +916,14 @@ let dice = Math.floor(Math.random() * 6) + 1; // returns a number between 0 and 
 // what if first dice is a 6 right away?
 // the while loop will never start.
 // The conclusion is that the while loop does really NOT have to depend on any counter variable.
-// Whenever I need a loop without a counter, I can reach for the while loop
+// Whenever I need a loop without a counter, I can reach for the while loop,
+// This happens whenever I do NOT know beforehand how many iterations the loop will have.
+// In that situation the while loop is the right tool for the job.
+// This happened with the dice, we didn't know how many iterations will the loop have.
+
+// If we know how many iterations we will have, that means we gonna need a counter,
+// for example, looping over an array. (0 -> array.length - 1 OR we know the number of items in the array).
+// therefore the for loop is usually the right choice to loop over an array. 
 
 while (dice !== 6) {
   console.log(dice);
