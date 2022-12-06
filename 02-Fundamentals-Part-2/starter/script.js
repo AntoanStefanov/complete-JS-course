@@ -848,7 +848,6 @@ for (let i = 0; i < antoanArray.length; i++) {
   console.log(currentItem);
 }
 
-*/
 
 // 48. Looping Backwards and Loops in Loops.
 
@@ -885,4 +884,42 @@ for (let exerciseNumber = 1; exerciseNumber <= 3; exerciseNumber++) {
   for (let rep = 1; rep <= 5; rep++) {
     console.log(`Exercise ${exerciseNumber}: Repetition ${rep}`);
   }
+}
+
+*/
+
+// 49. While Loop
+
+// The For Loop -> now used for comparison.
+
+// for (let rep = 1; rep <= 10; rep++) {
+//   console.log(`repetition ${rep}`);
+// }
+
+// While Loop is more versatile than the For Loop.
+// Which means it can be used in a larger variety of situations.
+// It's because it does NOT really need a counter. While Loop only needs a condition.
+// let rep = 1;
+// while (rep <= 10) {
+//   console.log(`repetition ${rep}`);
+//   rep++;
+// }
+
+// Example without depending on a  counter. It will depend on a random variable.
+
+// Roll a dice until we hit a 6. We don't know how many times will roll, so no counter is needed.
+
+
+// https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
+
+let dice = Math.floor(Math.random() * 6) + 1; // returns a number between 0 and 1;
+
+// what if first dice is a 6 right away?
+// the while loop will never start.
+// The conclusion is that the while loop does really NOT have to depend on any counter variable.
+// Whenever I need a loop without a counter, I can reach for the while loop
+
+while (dice !== 6) {
+  console.log(dice);
+  dice = Math.floor(Math.random() * 6) + 1;
 }
