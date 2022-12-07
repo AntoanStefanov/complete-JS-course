@@ -36,6 +36,21 @@ const calcTempAmplitude = function (temperatures) {
   return maxTemp - minTemp;
 };
 
+const calcTempAmplitudes = function (arrays) {
+  const tempAmplitudes = [];
+
+  for (let i = 0; i < arrays.length; i++) {
+    tempAmplitudes.push(calcTempAmplitude(arrays[i]));
+  }
+
+  return tempAmplitudes;
+};
+
+const tempAmplitudes = calcTempAmplitudes([
+  [10, 12],
+  [-20, -21],
+]);
+console.log(tempAmplitudes);
 const tempAmplitude = calcTempAmplitude(temperatures);
 
 console.log(tempAmplitude);
@@ -45,3 +60,6 @@ console.log(calcTempAmplitude([-1, -6]));
 console.log(calcTempAmplitude([1, -6]));
 console.log(calcTempAmplitude([-20, -21]));
 // console.log(calcTempAmplitude(['error', -20, -21]));
+
+// Now, the proj manager says "The function should recieve 2 arrays of temperatures.
+// The rest of the function should work just the same."
