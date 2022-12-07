@@ -21,7 +21,8 @@ const temperatures = [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5];
 const calcTempAmplitude = function (temperatures) {
   let maxTemp = Number.MIN_SAFE_INTEGER;
   let minTemp = Number.MAX_SAFE_INTEGER;
-
+  //   let maxTemp = temperatures[0]; // what if i[0] is an 'error' ? -> NaN, bug in our code.
+  //   let minTemp = temperatures[0]; // what if i[0] is an 'error' ? -> NaN, bug in our code.
   for (let i = 0; i < temperatures.length; i++) {
     const currentTemp = temperatures[i];
 
@@ -43,3 +44,4 @@ console.log(calcTempAmplitude([0, -6]));
 console.log(calcTempAmplitude([-1, -6]));
 console.log(calcTempAmplitude([1, -6]));
 console.log(calcTempAmplitude([-20, -21]));
+// console.log(calcTempAmplitude(['error', -20, -21]));
