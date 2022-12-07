@@ -1,6 +1,8 @@
 // Remember, we're gonna use strict mode in all scripts now!
 'use strict';
 
+/*
+
 // 59. Using Google, StackOverflow and MDN.
 
 // Given an array of temperatures of one day, calculate the temp amplitude.
@@ -70,3 +72,22 @@ console.log(calcTempAmplitude([-20, -21]));
 
 // Now, the proj manager says "The function should recieve 2 arrays of temps.
 // The rest of the function should work just the same."
+
+*/
+
+// 61. Debugging with the console and breakpoints
+
+const measureKelvin = function () {
+  const measurement = {
+    type: 'temp',
+    unit: 'celsius',
+    value: Number(prompt('Degrees celsius: ')),
+  };
+
+  console.table(measurement);
+
+  const kelvin = measurement.value + 273.15;
+  return kelvin;
+};
+
+console.log(measureKelvin());
