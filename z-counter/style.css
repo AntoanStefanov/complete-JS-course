@@ -1,0 +1,19 @@
+* {
+  /* 
+  https://www.w3schools.com/css/css3_box-sizing.asp
+  https://stackoverflow.com/questions/66225760/can-i-use-box-sizing-border-box-in-universal-selector-every-time
+  https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+  */
+  box-sizing: border-box;
+}
+
+body {
+  /* serif fonts have those decorative lines
+  or tapers (also commonly referred to as “tails” or “feet”) while 
+  sans serif fonts don't */
+  /* font-family added in link tag (index.html) */
+  /* How to add font https://youtu.be/dtKciwk_si4?t=152 */
+  /* https://stackoverflow.com/questions/12316501/including-google-fonts-link-or-import */
+  font-family: 'Mukta', sans-serif;
+  margin: 0;
+}
