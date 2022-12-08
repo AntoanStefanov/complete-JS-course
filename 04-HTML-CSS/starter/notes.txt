@@ -1,0 +1,6 @@
+index.html is always the name of the main file in any project.
+
+html -> hypertext markup language,
+used for describing the content of web pages.
+
+
