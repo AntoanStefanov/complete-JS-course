@@ -1,6 +1,7 @@
-<!DOCTYPE html> // this identifies this document as being HTML5
+<!DOCTYPE html>
+<!--  // this identifies this document as being HTML5 -->
 <html lang="en">
-  // lang="en" -> telling the browser we are using english lang.
+  <!-- // lang="en" -> telling the browser we are using english lang. -->
   <head>
     <!-- 
       head tag is like the settings of the page.
@@ -18,11 +19,92 @@
     <!-- h1 - heading -->
     <h1>JavaScript is fun, but so is HTML & CSS!</h1>
     <!-- paragraph -->
-    <p>
+    <p class="first-p">
       You can learn JavaScript without HTML and CSS, but for DOM manipulation
       it's useful to have some basic ideas of HTML & CSS.
+      <!-- an attribute, describes element -->
+      <!-- https://www.w3schools.com/html/html_attributes.asp -->
+      <!-- Attributes usually come in name/value pairs like: name="value" -->
+      <!-- href attribute (hyper) -->
+      You can learn more with <a href="https://google.bg">Google</a>.
+      <!-- the link is right in line with the previous text(p tag - text)
+      that's why we call the anchor element an inline element.
+      so, it flows inline with the rest of the text. -->
     </p>
+    <!-- this h2 element is a block element.
+    because as we see, the h2 is NOT inline with the text of the previous element.
+    it created a new line which only contains the h2 content.
+    huge block. -->
     <h2>Another heading</h2>
-    <p>Just another paragraph.</p>
+    <!-- We will use the class to select the paragraph for style. -->
+    <p class="second-p">Just another paragraph.</p>
+    <!-- source attribute -->
+    <img
+      id="google-image"
+      src="https://i.pcmag.com/imagery/articles/00Cx7vFIetxCuKxQeqPf8mi-66.fit_lim.size_1050x.jpg"
+      alt=""
+      width="300px" height="300px"
+    />
+    <!-- ctrl + S (save) => "/" is added at the end of the img tag,
+    that's beacuse the image element does not have a closing tag.
+    it only has an opening tag, so we close the opening tag by the end with "/",
+    it has NO closing tag, because we dont put any text or smth between the open and close tags.
+    ex. <img src="lala"> NO TEST HERE </img> -> no such thing.
+    that's why it is made as a self closing tag. 
+    it's called SELF-CLOSING TAG.-->
+
+    <!-- As u see different elements, have different attributes. -->
+
+    <!-- There are two important attributees that we can use on ALL elements,
+    and we use these attrs to identify the elements, called 'class' and 'id'.
+    We use classes and ids to essentially name elements, so that we can select them in CSS.
+    In order to style them. We also use use ids and classes to select elements from JS for DOM manipulation.
+    Crucial attributes, especially classes.
+   -->
+
+    <!-- Difference between classes and ids is that IDs have to be unique.
+    Each ID can be used ONCE on the page,
+    while classes can be used over and over again.
+    I cannot have another element with id "google-image".
+    But I can have another paragraph with class "secondP".
+    In practice we almost never user IDs to style or select them from JS.
+    Better practice to use classes.  -->
+
+    <!-- HTML form -->
+    <!-- Introduction of the idea of basically creating boxes. -->
+    <!-- So we want the content of this form to be in a box. -->
+    <!-- There are many ways of creating boxes in HTML. -->
+    <!-- The most generic box is a div. -->
+    <!-- Giving it a name, using id -->
+    <!-- id="your-name" because that's what we gonna do in this form. -->
+    <!-- just an input asking for the user's name, basically. -->
+    <!-- For the id/class names in CSS we use DASH(-) for words seperation. -->
+    <!-- In JS, we would use camelCase, but CSS convetion is "word-one-word-two" -->
+    <!-- "Basically a form" ? But what about the form tag? hmmm :? -->
+    <form id="your-name">
+      <h2>Your name here</h2>
+      <p>Please fill in this form</p>
+      <!-- type attribute specifies the type of data that should be inputted into this element -->
+      <!-- placeholder attr. -->
+      <input type="text" placeholder="Your name" />
+      <!-- input -> one of the elements with NO closing tag. it's a SELF-CLOSING tag. -->
+      <!-- usually a form also has a butoon -->
+      <button>Submit</button>
+      <!-- nothing will happen on submit, bcs we would need some JS for that. -->
+    </form>
+    <!-- he describes this div tag as a form. What about form tag? -->
+    <!-- At the end of the lecture he replaced div tag with form -->
+    <!-- Form contains some input/s and button elements. -->
+    <!-- using form tag instead of div tag is more semantic -->
+    <!-- semantic -> a tag that describes better the content that holds itself. -->
+    <!-- better 'form' than 'div', which (div) is just a generic box. -->
+    <!-- div el is just a generic box which has no meaning at all. -->
+    <!-- Not good for many reasons, ex. for SEO.  -->
+    <!-- When Google searches your page, it's better if it knows exactly what each element means -->
+    <!-- than just having generic boxes without any meaning at all. -->
+    <!-- Using the appropriate element, according to the content that's in it
+    is the idea of semantic HTML. -->
+    <!-- In this case we are creating a form, bcs we have input and a button,
+    so we use the form tag, that HTML givus us, just for this purpose. -->
   </body>
 </html>
