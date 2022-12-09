@@ -17,7 +17,7 @@ property: value */
 body {
   /* here we write the CSS declarations. */
   /* property name : value */
-  background-color: rgb(163, 163, 10);
+  background-color: rgb(244, 244, 122);
   /* IN practice, we use web fonts, ex. from a service like Google Fonts */
   font-family: Arial;
   /* We set the font-family on the body,
@@ -40,5 +40,30 @@ body {
 }
 
 p {
-  color: purple;
+  color: rgb(244, 5, 5);
+}
+
+/* another element selector - h1 */
+h1 {
+  /* Overwriting the browser predefined font-size */
+  font-size: 40px;
+}
+
+/* https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/ */
+
+/* class selector (.class-name) */
+.first-p {
+  /* we can use it on multiple elements. */
+  color: blue;
+}
+
+/* id selector */
+#your-name {
+  /* we use id on ONE element in the html. */
+  background-color: rgb(216, 216, 56);
+  /* border property is so called "shorthand property", because as value we can set multiple values  */
+  /* border: thickness, style, color(is that hex color code?) */
+  border: 4px solid #444;
+  /* border property is not inherited, bcs if it was inherited, then all child elements in the form,
+  would have borders TOO. That wouldn't make sense, that's why border is NOT inherited.  */
 }
