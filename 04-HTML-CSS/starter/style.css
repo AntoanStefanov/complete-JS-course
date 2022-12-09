@@ -1,0 +1,44 @@
+/* 
+We use CSS to style elements,
+to create a layout for the overall page.
+оформление за цялата страница
+
+We seperated the presentation from the content.
+
+We write CSS in external CSS file.
+To style elements, we need to first select them. 
+There are different types of selectors in CSS.
+Most basic selector is the 'element selector',
+with 'element selector' we can select all elements of a certain type,
+ex. 'body'
+that's body element selector (body), {...} -> declaration block,
+bg-color: green -> simple declaration,
+property: value */
+body {
+  /* here we write the CSS declarations. */
+  /* property name : value */
+  background-color: rgb(163, 163, 10);
+  /* IN practice, we use web fonts, ex. from a service like Google Fonts */
+  font-family: Arial;
+  /* We set the font-family on the body,
+    why other elements like the h1 got Arial as font too ?
+    That's because the font family property is a property that GETS INHERITED.
+    All child elements of the body element will automatically get the font assigned to them.
+    That's handy because we dont need to set the font seperately on all these elements.
+    setting font on the body, the font will be set on all the child elements.   */
+
+  /* Most properties actually do NOT get inherited */
+  /* But generally, all the properties related to fonts will be inherited. */
+
+  font-size: 20px;
+  /* 
+  it all got a little bigger, HOWEVER NOT ALL elements have a font-size of 20px now.
+  That's bcs the elements like for ex. h1/h2 have PREDEFINED font-sizes,
+  that are automatically applied from the browser.
+  saw 'user agent stylesheet' in inspect mode where styles are.
+  */
+}
+
+p {
+  color: purple;
+}
