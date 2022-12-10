@@ -5,6 +5,42 @@ to create a layout for the overall page.
 
 We seperated the presentation from the content.
 
+*/
+
+/* margin is outside of any defined borders, padding is inside of any defined borders.
+Both used to create space around elements. */
+
+/* https://www.w3schools.com/css/css_boxmodel.asp */
+
+* {
+  /*  By default some elements get some margin automatically, if we don't define them.
+ That can create some problems when we're trying to style our page.
+ Because of that we usually reset all of the margins and paddings on ALL elements,
+ BEFORE any  thing else called 'Global reset'. */
+  /* 0 pixels, but when we use 0, we don't need to specify unit */
+  padding: 0;
+  margin: 0;
+  /* We always also add box sizing property.
+  It includes the padding and border in the width and height  
+  that we specify for an element.
+  Example: we give width of an element to 100 pixels, and then add a padding of 20px on each side.
+  Then 100 + 20 + 20 = 140px width in TOTAL, which could create problems, if all we wanted was a width of 100px.
+  To fix that, we use box sizing property set to border-box. In this case, if we specify width of 100px,
+  It will always be 100px, no matter padding/border. 
+  https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+  https://www.w3schools.com/css/css3_box-sizing.asp
+
+  !
+  Important: When you set the width and height properties of an element with CSS,
+  you just set the width and height of the content area.
+  To calculate the full size of an element, you must also add padding, borders and margins.
+
+  That's why we use border-box. 
+  */
+  box-sizing: border-box;
+}
+
+/*
 We write CSS in external CSS file.
 To style elements, we need to first select them. 
 There are different types of selectors in CSS.
@@ -37,6 +73,16 @@ body {
   that are automatically applied from the browser.
   saw 'user agent stylesheet' in inspect mode where styles are.
   */
+
+  /* Let's add some padding to the body, 
+  Why do we use padding? bcs we want to add some space INSIDE of the body element.
+  Basically, to create some space between the border of the browser and the content.
+  */
+
+  /* There are other units in CSS, we don't always have to use pixels.
+  We could use %, em, rem or other.
+  But to start out it's okay to use pixels. */
+  padding: 50px;
 }
 
 p {
@@ -47,6 +93,9 @@ p {
 h1 {
   /* Overwriting the browser predefined font-size */
   font-size: 40px;
+  /* we could have used padding-bottom, and result will be the same,
+  but it makes more sense for this space actually to be outside the border. */
+  margin-bottom: 25px;
 }
 
 /* https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/ */
@@ -67,3 +116,27 @@ h1 {
   /* border property is not inherited, bcs if it was inherited, then all child elements in the form,
   would have borders TOO. That wouldn't make sense, that's why border is NOT inherited.  */
 }
+
+/* 67. Introduction to CSS Box Model */
+
+/*
+ The Box model is one of the most  fundamental parts of CSS.
+ Main factor that defines how elements are displayed on a webpage.
+ And also how they are sized.
+ Each element on a webpage can be seen as a rectangular box each box has:
+ content(width, height), padding, border, margin.
+ We can specify all these using CSS properties.
+ NOTE: the are all optional. So, there can be boxes with no margins/padding/border at all.
+ IF we want to create space between two elements(boxes) we will simply use their margin properties in CSS.
+
+ ?
+ Fill area: area that gets filled with background color or background image.
+ Fill area also includes the padding and border.
+ ?
+
+ By default some elements get some margin automatically, if we don't define them.
+ That can create some problems when we're trying to style our page.
+ Because of that we usually reset all of the margins and paddings on ALL elements,
+ BEFORE any  thing else called 'Global reset'.
+ To do that we need to select all of the elements, for that we have special selector (*).
+ */
