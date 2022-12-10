@@ -7,6 +7,8 @@ We seperated the presentation from the content.
 
 */
 
+/* https://www.w3schools.com/html/html_blocks.asp */
+
 /* margin is outside of any defined borders, padding is inside of any defined borders.
 Both used to create space around elements. */
 
@@ -98,6 +100,11 @@ h1 {
   margin-bottom: 25px;
 }
 
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 /* https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/ */
 
 /* class selector (.class-name) */
@@ -115,6 +122,13 @@ h1 {
   border: 4px solid #444;
   /* border property is not inherited, bcs if it was inherited, then all child elements in the form,
   would have borders TOO. That wouldn't make sense, that's why border is NOT inherited.  */
+}
+
+.test {
+  /* https://www.google.com/search?q=how+much+pixels+are+2+em&oq=how+much+pixels+are+2+em&aqs=chrome..69i57j0i22i30l2.3136j0j7&sourceid=chrome&ie=UTF-8#cobssid=s */
+  /* default h1 tag has font-zize: 2em (browser), em takes the parent el. size */
+  /* 2 * 30 => 60px (relative unit) */
+  font-size: 30px;
 }
 
 /* 67. Introduction to CSS Box Model */
