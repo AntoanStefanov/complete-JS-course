@@ -7,7 +7,13 @@ We seperated the presentation from the content.
 
 */
 
-/* https://www.w3schools.com/html/html_blocks.asp */
+/* !!!!!!! */
+/* https://www.w3schools.com/html/html_blocks.asp  --> difference between block/inline elements.*/
+/* Block elements are the elements that are on newline */
+/* A block-level element always takes up the full width available */
+/* Inline does NOT start on new line and only takes up as much width as needed. 
+ex. as much as the text in the inline element. */
+/* Inline elements dont create a whole new box on a whole new line. */
 
 /* margin is outside of any defined borders, padding is inside of any defined borders.
 Both used to create space around elements. */
@@ -89,6 +95,7 @@ body {
 
 p {
   color: rgb(244, 5, 5);
+  margin-bottom: 20px;
 }
 
 /* another element selector - h1 */
@@ -120,6 +127,8 @@ h2 {
   /* border property is so called "shorthand property", because as value we can set multiple values  */
   /* border: thickness, style, color(is that hex color code?) */
   border: 4px solid #444;
+  width: 500px;
+  padding: 30px;
   /* border property is not inherited, bcs if it was inherited, then all child elements in the form,
   would have borders TOO. That wouldn't make sense, that's why border is NOT inherited.  */
 }
@@ -154,3 +163,33 @@ h2 {
  BEFORE any  thing else called 'Global reset'.
  To do that we need to select all of the elements, for that we have special selector (*).
  */
+
+#google-image {
+  margin-bottom: 30px;
+  width: 450px;
+  height: 300px;
+}
+
+/* applying CSS to BOTH selectors */
+/* these two are INLINE elements. (No box OCCUPYING a whole line.), same as an a tag. */
+input,
+button {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+}
+
+a {
+  background-color: yellowgreen;
+}
+
+/* pretty important selector */
+/* WE will use it for JS in DOM manipulation. */
+
+/* We have 2 h2 tags. let's say I want to select the h2 elements that are inside of the form. */
+/* I could add an ID or class to the wanted h2 */
+/* But I could also tell CSS to simply select THIS H2 THAT IS INSIDE of the ELEMENT with ID = 'your-name' */
+
+#your-name > h2 {
+  background-color: #453;
+}
