@@ -164,10 +164,11 @@ h2 {
  To do that we need to select all of the elements, for that we have special selector (*).
  */
 
+ /* If we dont specify img size, it will be as large as it can. Or as large as the source image really is. */
 #google-image {
   margin-bottom: 30px;
-  width: 450px;
-  height: 300px;
+  /* setting only width, the height scales proportionally, vice versa maybe ? */
+  width: 350px;
 }
 
 /* applying CSS to BOTH selectors */
@@ -190,6 +191,8 @@ a {
 /* I could add an ID or class to the wanted h2 */
 /* But I could also tell CSS to simply select THIS H2 THAT IS INSIDE of the ELEMENT with ID = 'your-name' */
 
-#your-name > h2 {
-  background-color: #453;
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity */
+/* https://blogs.halodoc.io/best-practices-that-we-follow-to-avoid-specificity-issues/ */
+#your-name h2 {
+  color: rgb(79, 116, 6);
 }
