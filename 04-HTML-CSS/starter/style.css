@@ -90,7 +90,7 @@ body {
   /* There are other units in CSS, we don't always have to use pixels.
   We could use %, em, rem or other.
   But to start out it's okay to use pixels. */
-  padding: 50px;
+  padding: 40px;
 }
 
 p {
@@ -101,7 +101,7 @@ p {
 /* another element selector - h1 */
 h1 {
   /* Overwriting the browser predefined font-size */
-  font-size: 40px;
+  font-size: 35px;
   /* we could have used padding-bottom, and result will be the same,
   but it makes more sense for this space actually to be outside the border. */
   margin-bottom: 25px;
@@ -110,6 +110,7 @@ h1 {
 h2 {
   margin-bottom: 20px;
   text-align: center;
+  /* font-size: */
 }
 
 /* https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/ */
@@ -128,7 +129,8 @@ h2 {
   /* border: thickness, style, color(is that hex color code?) */
   border: 4px solid #444;
   width: 500px;
-  padding: 30px;
+  height: 200px;
+  padding: 20px;
   /* border property is not inherited, bcs if it was inherited, then all child elements in the form,
   would have borders TOO. That wouldn't make sense, that's why border is NOT inherited.  */
 }
@@ -167,12 +169,14 @@ h2 {
  /* If we dont specify img size, it will be as large as it can. Or as large as the source image really is. */
 #google-image {
   margin-bottom: 30px;
-  /* setting only width, the height scales proportionally, vice versa maybe ? */
+  /* setting only width, the height scales proportionally, and vice versa */
   width: 350px;
+  /* we can still set height, but that will change the aspect ratio. */
 }
 
 /* applying CSS to BOTH selectors */
 /* these two are INLINE elements. (No box OCCUPYING a whole line.), same as an a tag. */
+/* https://sabe.io/classes/css/grouping-nesting-selectors#grouping-css-selectors */
 input,
 button {
   padding: 10px;
@@ -193,6 +197,7 @@ a {
 
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity */
 /* https://blogs.halodoc.io/best-practices-that-we-follow-to-avoid-specificity-issues/ */
+/* https://sabe.io/classes/css/grouping-nesting-selectors#nesting-css-selectors */
 #your-name h2 {
   color: rgb(79, 116, 6);
 }
