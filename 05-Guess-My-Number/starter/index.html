@@ -2,31 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <title>Guess My Number!</title>
+
+    <title>Guess The Number</title>
   </head>
   <body>
     <header>
-      <h1>Guess My Number!</h1>
-      <p class="between">(Between 1 and 20)</p>
       <button class="btn again">Again!</button>
-      <div class="number">?</div>
+      <!-- https://www.w3schools.com/html/html_entities.asp -->
+      <p id="between">&ltBetween 1 and 20&gt</p>
+      <h1>Guess The Number!</h1>
+      <div class="question-mark number">?</div>
+      <hr class="quiz-mark-line" />
     </header>
     <main>
-      <section class="left">
+      <div class="left">
         <input type="number" class="guess" />
         <button class="btn check">Check!</button>
-      </section>
-      <section class="right">
-        <p class="message">Start guessing...</p>
+      </div>
+      <div class="right">
+        <p class="message">Start Guessing...</p>
         <p class="label-score">💯 Score: <span class="score">20</span></p>
         <p class="label-highscore">
           🥇 Highscore: <span class="highscore">0</span>
         </p>
-      </section>
+      </div>
     </main>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
