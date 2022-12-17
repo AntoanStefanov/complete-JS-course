@@ -18,9 +18,16 @@ const resetTotalScores = () => {
   scoreSecondPlayerEl.textContent = 0;
 };
 
+// Hide Dice if needed.
 const hideDice = function () {
+  // add() -> Adds all arguments passed, except those already present.
+  // is classList.contains(...) really necessary, then?
+  // https://stackoverflow.com/questions/36999220/checking-classlist-with-contains-if-a-class-exists-before-add-or-remove
   diceEl.classList.add('hidden');
 };
 
 // Set initial total players' scores.
 resetTotalScores();
+
+// Hide dice at start of game.
+hideDice();
