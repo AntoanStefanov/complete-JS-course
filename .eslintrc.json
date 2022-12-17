@@ -1,0 +1,39 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "google",
+    "overrides": [],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "space-before-function-paren": [
+            "error",
+            {
+                "anonymous": "always",
+                "named": "never",
+                "asyncArrow": "always"
+            }
+        ],
+        "quotes": [
+            "error",
+            "single",
+            {
+                "avoidEscape": true
+            }
+        ],
+        "no-const-assign": "error",
+        "indent": [
+            "error",
+            2
+        ],
+        // https://eslint.org/docs/latest/rules/operator-linebreak
+        "operator-linebreak": [
+            "error",
+            "before"
+        ]
+        // "@typescript-eslint/no-explicit-any": "error" -> How to turn errors for any in JS ?
+    }
+}
