@@ -10,10 +10,10 @@ const scoreFirstPlayerEl = document.querySelector('#score--0'); // CSS Selector
 // but that's relevant though, If selecting 1000 ELs(query), then maybe?
 // Usually he prefers querySelector.
 const scoreSecondPlayerEl = document.getElementById('score--1'); // ID Name
-
-const diceEl = document.querySelector('.dice');
-
 const rollDiceBtn = document.querySelector('.btn--roll');
+const newGameBtn = document.querySelector('.btn--new');
+const holdBtn = document.querySelector('.btn--hold');
+const diceEl = document.querySelector('.dice');
 
 // Resetting the total players' scores.
 const resetTotalScores = () => {
@@ -39,7 +39,8 @@ const diceRoll = () => {
 };
 
 const displayDiceRoll = function (diceNumber) {
-  console.log(diceEl);
+  diceEl.classList.remove('hidden');
+  diceEl.setAttribute('src', `dice-${diceNumber}.png`);
 };
 
 // Set initial total players' scores.
@@ -48,7 +49,8 @@ resetTotalScores();
 // Hide dice at start of game.
 hideDice();
 
-rollDiceBtn.addEventListener('click', function (event) {
+// Rolling dice functionality.
+rollDiceBtn.addEventListener('click', function () {
   const diceNumber = diceRoll();
   displayDiceRoll(diceNumber);
 });
