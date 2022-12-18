@@ -19,27 +19,57 @@ const holdBtn = document.querySelector('.btn--hold');
 const diceEl = document.querySelector('.dice');
 
 // State Varaibles.
-let currentScore = 0;
-let activePlayer = 0;
-let isThereWinner = false;
-const totalScores = [0, 0];
+let totalScores;
+let currentScore;
+let isThereWinner;
+let activePlayer;
 
-// Resetting the total players' scores.
-const resetTotalScores = () => {
+init();
+/**
+ *
+ * */
+function init() {
+  if (isThereWinner) {
+    const activePlayerEl = document.querySelector(`.player--${activePlayer}`);
+    activePlayerEl.classList.remove('player--winner', 'name');
+    isThereWinner = false;
+  }
+
+  totalScores = [0, 0];
+  resetTotalScores();
+
+  resetCurrentScores();
+  resetCurrentScore();
+
+  enableButtons();
+  hideDice();
+
+  firstPlayerEl.classList.add('player--active');
+  secondPlayerEl.classList.remove('player--active');
+  activePlayer = 0;
+}
+
+/**
+ *
+ * */
+function resetTotalScores() {
+  // Resetting the total players' scores.
   // We set Numbers, not Strings.
   // JS will convert them automatically to Strings,
   // To display them on the webpage.
   scoreFirstPlayerEl.textContent = 0;
   scoreSecondPlayerEl.textContent = 0;
-};
+}
 
-// Hide Dice if needed.
-const hideDice = function () {
+/**
+ * Hide Dice if needed.
+ */
+function hideDice() {
   // add() -> Adds all arguments passed, except those already present.
   // is classList.contains(...) really necessary, then?
   // https://stackoverflow.com/questions/36999220/checking-classlist-with-contains-if-a-class-exists-before-add-or-remove
   diceEl.classList.add('hidden');
-};
+}
 
 const diceRoll = () => {
   return (
@@ -63,7 +93,12 @@ const displayCurrentScore = () => {
     currentScore;
 };
 
-const resetCurrentScore = () => (currentScore = 0);
+/**
+ *
+ **/
+function resetCurrentScore() {
+  currentScore = 0;
+}
 
 // Switch players when needed.
 const switchPlayers = function () {
@@ -92,18 +127,21 @@ const disableButtons = () => {
   holdBtn.disabled = true;
 };
 
-const enableButtons = () => {
+/**
+ *
+ */
+function enableButtons() {
   rollDiceBtn.disabled = false;
   holdBtn.disabled = false;
-};
+}
 
-const resetCurrentScores = () => {
+/**
+ *
+ */
+function resetCurrentScores() {
   document.querySelector('#current--0').textContent = 0;
   document.querySelector('#current--1').textContent = 0;
-};
-
-// Hide dice at start of game.
-hideDice();
+}
 
 // Rolling dice functionality.
 rollDiceBtn.addEventListener('click', function () {
@@ -155,24 +193,4 @@ holdBtn.addEventListener('click', function () {
   switchPlayers();
 });
 
-newGameBtn.addEventListener('click', function () {
-  if (isThereWinner) {
-    const activePlayerEl = document.querySelector(`.player--${activePlayer}`);
-    activePlayerEl.classList.remove('player--winner', 'name');
-    isThereWinner = false;
-  }
-
-  totalScores[0] = 0;
-  totalScores[1] = 0;
-  resetTotalScores();
-
-  resetCurrentScores();
-  resetCurrentScore();
-
-  enableButtons();
-  hideDice();
-
-  firstPlayerEl.classList.add('player--active');
-  secondPlayerEl.classList.remove('player--active');
-  activePlayer = 0;
-});
+newGameBtn.addEventListener('click', init);
