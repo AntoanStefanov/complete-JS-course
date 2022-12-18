@@ -39,7 +39,7 @@
             "warn",
             {
                 "vars": "all",
-                "args": "after-used",
+                "args": "all",
                 "ignoreRestSiblings": false
             }
         ]
