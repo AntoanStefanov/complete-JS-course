@@ -40,7 +40,8 @@
             {
                 "vars": "all",
                 "args": "all",
-                "ignoreRestSiblings": false
+                "ignoreRestSiblings": false,
+                "caughtErrors": "all"
             }
         ]
     }
