@@ -32,7 +32,13 @@
         // https://eslint.org/docs/latest/rules/operator-linebreak
         "operator-linebreak": [
             "error",
-            "before"
+            "after",
+            {
+                "overrides": {
+                    "?": "before",
+                    ":": "before"
+                }
+            }
         ],
         // "@typescript-eslint/no-explicit-any": "error" -> How to turn errors for any in JS ?
         "no-unused-vars": [

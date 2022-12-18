@@ -7,6 +7,10 @@ const maxDiceRoll = 6;
 // Selecting elements.
 const firstPlayerEl = document.querySelector('.player--0');
 const secondPlayerEl = document.querySelector('.player--1');
+
+// const firstPlayerCurrentEl = document.querySelector('#current--0');
+// const secondPlayerCurrentEl = document.querySelector('#current--1');
+
 const scoreFirstPlayerEl = document.querySelector('#score--0'); // CSS Selector
 // getElementById is a little bit faster than querySelector,
 // but that's relevant though, If selecting 1000 ELs(query), then maybe?
@@ -19,6 +23,8 @@ const diceEl = document.querySelector('.dice');
 
 // State Varaibles.
 let currentScore = 0;
+let activePlayer = 0;
+const totalScores = [0, 0];
 
 // Resetting the total players' scores.
 const resetTotalScores = () => {
@@ -54,22 +60,28 @@ const displayDiceRoll = function (diceNumber) {
 const addDiceToCurrentScore = (diceNumber) => (currentScore += diceNumber);
 
 // Displaying current score.
-const displayCurrentScore = (currentScore) => {
-  const currentScoreEl = document
-    .querySelector('.player--active')
-    .querySelector('.current-score');
-  currentScoreEl.textContent = currentScore;
+const displayCurrentScore = () => {
+  document.querySelector(`#current--${activePlayer}`).textContent =
+    currentScore;
 };
+
+const resetCurrentScore = () => (currentScore = 0); // why () ?
 
 // Switch players when needed.
 const switchPlayers = function () {
-  if (firstPlayerEl.classList.contains('player--active')) {
-    firstPlayerEl.classList.remove('player--active');
-    secondPlayerEl.classList.add('player--active');
-  } else {
-    firstPlayerEl.classList.add('player--active');
-    secondPlayerEl.classList.remove('player--active');
-  }
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  firstPlayerEl.classList.toggle('player--active');
+  secondPlayerEl.classList.toggle('player--active');
+};
+
+const addCurrentScoreToTotal = () =>
+  (totalScores[activePlayer] += currentScore);
+
+const isCurrentPlayerWinner = () => totalScores[activePlayer] >= 100;
+
+const displayTotalScore = () => {
+  document.querySelector(`#score--${activePlayer}`).textContent =
+    totalScores[activePlayer];
 };
 
 // Set initial total players' scores.
@@ -88,6 +100,8 @@ rollDiceBtn.addEventListener('click', function () {
 
   // 3. Check if dice roll === 1.
   if (diceNumber === 1) {
+    resetCurrentScore();
+    displayCurrentScore();
     // 3.1 Switch players.
     switchPlayers();
     return;
@@ -97,5 +111,23 @@ rollDiceBtn.addEventListener('click', function () {
   addDiceToCurrentScore(diceNumber);
 
   // 5. Display new score.
-  displayCurrentScore(currentScore);
+  displayCurrentScore();
+});
+
+holdBtn.addEventListener('click', function () {
+  // 1. add current score to active player's total.
+  addCurrentScoreToTotal();
+
+  // 2. display total.
+  displayTotalScore();
+
+  // 2. Check if active player has won.
+  if (isCurrentPlayerWinner()) {
+    // Current player won.
+  } else {
+    // If no winner, reset and display current score, then switch players.
+    resetCurrentScore();
+    displayCurrentScore();
+    switchPlayers();
+  }
 });
