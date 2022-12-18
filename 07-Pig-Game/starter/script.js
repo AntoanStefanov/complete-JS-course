@@ -9,6 +9,8 @@ const scoreSecondPlayerEl = document.getElementById('score--1'); // ID Name
 
 const diceEl = document.querySelector('.dice');
 
+const rollDiceBtn = document.querySelector('.btn--roll');
+
 // Resetting the total players' scores.
 const resetTotalScores = () => {
   // We set Numbers, not Strings.
@@ -26,8 +28,16 @@ const hideDice = function () {
   diceEl.classList.add('hidden');
 };
 
+const diceRoll = () => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
 // Set initial total players' scores.
 resetTotalScores();
 
 // Hide dice at start of game.
 hideDice();
+
+rollDiceBtn.addEventListener('click', function (event) {
+  const diceNumber = diceRoll();
+});
