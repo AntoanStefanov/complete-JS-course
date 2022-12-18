@@ -157,6 +157,7 @@ newGameBtn.addEventListener('click', function () {
   if (isThereWinner) {
     const activePlayerEl = document.querySelector(`.player--${activePlayer}`);
     activePlayerEl.classList.remove('player--winner', 'name');
+    isThereWinner = false;
   }
 
   totalScores[0] = 0;
