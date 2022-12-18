@@ -22,7 +22,7 @@ const holdBtn = document.querySelector('.btn--hold');
 const diceEl = document.querySelector('.dice');
 
 // State Varaibles.
-let currentScore = 0;
+let currentScore = 99;
 let activePlayer = 0;
 const totalScores = [0, 0];
 
@@ -84,6 +84,11 @@ const displayTotalScore = () => {
     totalScores[activePlayer];
 };
 
+const showWinner = () => {
+  const winnerEl = document.querySelector(`.player--${activePlayer}`);
+  winnerEl.classList.add('player--winner', 'name');
+};
+
 // Set initial total players' scores.
 resetTotalScores();
 
@@ -115,15 +120,16 @@ rollDiceBtn.addEventListener('click', function () {
 });
 
 holdBtn.addEventListener('click', function () {
-  // 1. add current score to active player's total.
+  // 1. Add current score to active player's total.
   addCurrentScoreToTotal();
 
-  // 2. display total.
+  // 2. Display total.
   displayTotalScore();
 
   // 2. Check if active player has won.
   if (isCurrentPlayerWinner()) {
     // Current player won.
+    showWinner();
   } else {
     // If no winner, reset and display current score, then switch players.
     resetCurrentScore();
