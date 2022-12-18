@@ -102,9 +102,6 @@ const resetCurrentScores = () => {
   document.querySelector('#current--1').textContent = 0;
 };
 
-// Set initial total players' scores.
-resetTotalScores();
-
 // Hide dice at start of game.
 hideDice();
 
