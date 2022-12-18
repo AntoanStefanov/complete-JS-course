@@ -8,9 +8,6 @@ const maxDiceRoll = 6;
 const firstPlayerEl = document.querySelector('.player--0');
 const secondPlayerEl = document.querySelector('.player--1');
 
-// const firstPlayerCurrentEl = document.querySelector('#current--0');
-// const secondPlayerCurrentEl = document.querySelector('#current--1');
-
 const scoreFirstPlayerEl = document.querySelector('#score--0'); // CSS Selector
 // getElementById is a little bit faster than querySelector,
 // but that's relevant though, If selecting 1000 ELs(query), then maybe?
@@ -22,8 +19,9 @@ const holdBtn = document.querySelector('.btn--hold');
 const diceEl = document.querySelector('.dice');
 
 // State Varaibles.
-let currentScore = 0;
+let currentScore = 98;
 let activePlayer = 0;
+let isThereWinner = false;
 const totalScores = [0, 0];
 
 // Resetting the total players' scores.
@@ -65,7 +63,7 @@ const displayCurrentScore = () => {
     currentScore;
 };
 
-const resetCurrentScore = () => (currentScore = 0); // why () ?
+const resetCurrentScore = () => (currentScore = 0);
 
 // Switch players when needed.
 const switchPlayers = function () {
@@ -87,12 +85,16 @@ const displayTotalScore = () => {
 const showWinner = () => {
   const winnerEl = document.querySelector(`.player--${activePlayer}`);
   winnerEl.classList.add('player--winner', 'name');
-  winnerEl.classList.remove('player--active');
 };
 
 const disableButtons = () => {
   rollDiceBtn.disabled = true;
   holdBtn.disabled = true;
+};
+
+const resetCurrentScores = () => {
+  document.querySelector('#current--0').textContent = 0;
+  document.querySelector('#current--1').textContent = 0;
 };
 
 // Set initial total players' scores.
@@ -136,7 +138,7 @@ holdBtn.addEventListener('click', function () {
   if (isCurrentPlayerWinner()) {
     // Current player won.
     showWinner();
-
+    isThereWinner = true;
     // Disable roll dice and hold buttons.
     disableButtons();
 
@@ -149,4 +151,24 @@ holdBtn.addEventListener('click', function () {
   resetCurrentScore();
   displayCurrentScore();
   switchPlayers();
+});
+
+newGameBtn.addEventListener('click', function () {
+  if (isThereWinner) {
+    const activePlayerEl = document.querySelector(`.player--${activePlayer}`);
+    activePlayerEl.classList.remove('player--winner', 'name');
+  }
+
+  totalScores[0] = 0;
+  totalScores[1] = 0;
+  resetTotalScores();
+
+  resetCurrentScores();
+  resetCurrentScore();
+
+  hideDice();
+
+  activePlayer = 0;
+  firstPlayerEl.classList.add('player--active');
+  secondPlayerEl.classList.remove('player--active');
 });
