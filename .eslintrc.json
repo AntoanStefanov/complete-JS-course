@@ -33,7 +33,15 @@
         "operator-linebreak": [
             "error",
             "before"
-        ]
+        ],
         // "@typescript-eslint/no-explicit-any": "error" -> How to turn errors for any in JS ?
+        "no-unused-vars": [
+            "warn",
+            {
+                "vars": "all",
+                "args": "after-used",
+                "ignoreRestSiblings": false
+            }
+        ]
     }
 }

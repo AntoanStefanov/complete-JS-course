@@ -1,5 +1,9 @@
 'use strict';
 
+// set base variables.
+const minDiceRoll = 1;
+const maxDiceRoll = 6;
+
 // Selecting elements.
 const scoreFirstPlayerEl = document.querySelector('#score--0'); // CSS Selector
 // getElementById is a little bit faster than querySelector,
@@ -29,7 +33,13 @@ const hideDice = function () {
 };
 
 const diceRoll = () => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  return (
+    Math.floor(Math.random() * (maxDiceRoll - minDiceRoll + 1)) + minDiceRoll
+  );
+};
+
+const displayDiceRoll = function (diceNumber) {
+  console.log(diceEl);
 };
 
 // Set initial total players' scores.
@@ -40,4 +50,5 @@ hideDice();
 
 rollDiceBtn.addEventListener('click', function (event) {
   const diceNumber = diceRoll();
+  displayDiceRoll(diceNumber);
 });
