@@ -19,7 +19,7 @@ const holdBtn = document.querySelector('.btn--hold');
 const diceEl = document.querySelector('.dice');
 
 // State Varaibles.
-let currentScore = 98;
+let currentScore = 0;
 let activePlayer = 0;
 let isThereWinner = false;
 const totalScores = [0, 0];
