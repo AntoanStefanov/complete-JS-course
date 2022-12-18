@@ -92,6 +92,11 @@ const disableButtons = () => {
   holdBtn.disabled = true;
 };
 
+const enableButtons = () => {
+  rollDiceBtn.disabled = false;
+  holdBtn.disabled = false;
+};
+
 const resetCurrentScores = () => {
   document.querySelector('#current--0').textContent = 0;
   document.querySelector('#current--1').textContent = 0;
@@ -167,9 +172,10 @@ newGameBtn.addEventListener('click', function () {
   resetCurrentScores();
   resetCurrentScore();
 
+  enableButtons();
   hideDice();
 
-  activePlayer = 0;
   firstPlayerEl.classList.add('player--active');
   secondPlayerEl.classList.remove('player--active');
+  activePlayer = 0;
 });
