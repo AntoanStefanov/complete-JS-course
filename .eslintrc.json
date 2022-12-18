@@ -43,6 +43,10 @@
                 "ignoreRestSiblings": false,
                 "caughtErrors": "all"
             }
+        ],
+        "arrow-parens": [
+            "warn",
+            "always"
         ]
     }
 }

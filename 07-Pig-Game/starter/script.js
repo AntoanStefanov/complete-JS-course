@@ -17,6 +17,9 @@ const newGameBtn = document.querySelector('.btn--new');
 const holdBtn = document.querySelector('.btn--hold');
 const diceEl = document.querySelector('.dice');
 
+// State Varaibles.
+let currentScore = 0;
+
 // Resetting the total players' scores.
 const resetTotalScores = () => {
   // We set Numbers, not Strings.
@@ -44,14 +47,17 @@ const diceRoll = () => {
 const displayDiceRoll = function (diceNumber) {
   diceEl.classList.remove('hidden');
   diceEl.setAttribute('src', `dice-${diceNumber}.png`);
+  // diceEl.src = `dice-${diceNumber}.png`;
 };
 
-// Get Active Player's Current Score El, Add Dice Number, Display Current Score.
-const addDiceToCurrentScore = function (diceNumber) {
+// Add Dice Number to Current Score.
+const addDiceToCurrentScore = (diceNumber) => (currentScore += diceNumber);
+
+// Displaying current score.
+const displayCurrentScore = (currentScore) => {
   const currentScoreEl = document
     .querySelector('.player--active')
     .querySelector('.current-score');
-  const currentScore = Number(currentScoreEl.textContent) + diceNumber;
   currentScoreEl.textContent = currentScore;
 };
 
@@ -89,6 +95,7 @@ rollDiceBtn.addEventListener('click', function () {
 
   // 4. Add dice roll to current score.
   addDiceToCurrentScore(diceNumber);
+
   // 5. Display new score.
-  displayCurrentScore(diceNumber);
+  displayCurrentScore(currentScore);
 });
