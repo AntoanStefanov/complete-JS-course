@@ -261,6 +261,125 @@ A JS ENGINE
         STORES ALL THE OBJECTS THAT OUR APP NEEDS.
 
 
+3. 
+
+How the code, executed in the call stack, is compiled/interpreted to machine code,
+so that it actually can be executed afterwards ?
+
+
+/ Science sidenote: compilation vs interpretation.
+                              COMPILATION
+
+  PC's processor only understand 0 and 1 (machine code),
+  therefore every single computer program needs to be converted to machine code.
+
+  This happens using compiler or interpreter.
+
+  So in compilation,
+  the entire source code is converted into machine code at once.
+  This machine code is then written into a binary/portable file,
+  that can be executed on any PC.
+
+             STEP 1                                STEP 2
+  Source Code -> Portable/Binary file: Machine Code -> Program running
+          COMPILATION                             EXECUTION
+
+  Machine Code is built and then it is executed in the CPU / processor /.
+  And the Execution can happen way after the compilation.
+
+  For example, any APP that I am using on my machine RIGHT NOW, has been COMPILED BEFORE.
+  And I am now executing it, way after it's compilation.
+
+                              INTERPRETATION
+
+  Interpreter(преводач): Interpreter runs through the source code and executes it LINE BY LINE.
+
+                                              STEP 1
+                      Source Code ->  EXECUTION LINE BY LINE -> Program running
+                                          Code still needs to be converted to machine code.
+                                                  The convertion happens right BEFORE its execution. 
+
+  JS used to be purely interpreted language, 
+  but the problem with interpreted languages is that,
+  they are MUCH MUCH slower than compiled languages.
+
+  This used to be okay for JS,
+  but now with modern JS and
+  fully fledged web apps that we built and used today,
+  low performance is no longer acceptable.
+
+  Many people still think that JS is an interpreted language,
+  THAT IS NOT REALLY TRUE ANYMORE.
+
+  So, instead of simple interpretation,
+  modern JS engine, now use a mix/hybrid,
+  between compilation and interpretation,
+  called 'JUST-IN-TIME' compilation.
+
+                              JUST-IN-TIME compilation
+
+  JIT compilation: ENTIRE CODE IS CONVERTED INTO MACHINE CODE AT ONCE, THEN EXECUTED IMMEDIATELY.
+
+                              STEP 1          STEP 2
+                    Source Code -> Machine Code -> Program running
+                            COMPILATION      EXECUTION
+
+https://www.google.com/search?q=is+V8+JIT+compiler&oq=is+V8+JIT+compiler&aqs=chrome..69i57j33i10i160l3.8234j0j7&sourceid=chrome&ie=UTF-8
+
+  It's a lot faster than just executing code line by line.
+
+
+LET'S now understand how this(JIT compiler) works in the particular case of JS.
+
+                                              MODERN JIT COMPILATION OF JS
+
+Source code entering the Modern JS engine (ex. V8) -> using JIT compilation. 2.1. step below.
+
+  1. Parse(read) the code.
+  1.1. During the parsing process, the code is parsed into a data structure called 'The Abstract Syntax Tree' /AST/ -> NOT RELATED TO THE DOM TREE.
+  1.1.1 This works by first splitting up each line of code into pieces that are meaningful to the language,
+        like the const or function keyword, and then saving all these pieces into the tree in a structured way.
+                              https://azu.github.io/slide/JSojisan/resources/ast-is-true.png
+                              https://miro.medium.com/max/1200/0*fp0pltRxvzjAkwbU.png
+
+                              AST -> REPRESENTATION OF OUR ENTIRE CODE INSIDE THE ENGINE
+
+  1.2. Parsing process also checks if there any syntax errors.
+  1.3. The resulting tree will later be used to generate the machine code.
+  
+  2. Compilation
+  2.1. Takes the generated AST and compiles it into machine code(0 & 1). / JIT COMPILATION /->means executing the machine code IMMEDIATELY step 3.1./ 
+
+  3. Execution
+  3.1. The machine code gets executed !IMMEDIATELY! 
+  3.2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
