@@ -190,7 +190,7 @@ BTW, in computing,
 Basically, the thread is where our code is actually executed in a machine's processor.
 
 -What if there is a LONG-RUNNING task?
-  ex. -> fetching data from a remote server
+  ex. --> fetching data from a remote server
 
 It sounds like that would block the single thread where the code is running ?
 We don't want that. We want a so-called 'non-blocking behavior'.
