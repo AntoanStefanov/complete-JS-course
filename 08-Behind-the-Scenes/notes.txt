@@ -1,0 +1,215 @@
+89. An High-Level Overview of JavaScript
+
+JS is a 
+        high-level,
+        object-oriented,
+        multi-paradigm
+programming language.
+
+
+JS is a 
+        high-level,
+        prototype-based,
+        object-oriented,
+        multi-paradigm,
+        interpreted(just-in time) compiled,
+        dynamic,
+        single-threaded,
+        garbage-collected
+        programming language with
+                                first-class functions and
+                                non-blocking event loop concurrency model.
+
+
+Topics:
+  1. High-level
+  2. Garbage-collected
+  3. Interpreted or just-in-time compiled.
+  4. Multi-paradigm
+  5. Prototype-based object-oriented
+  6. First-class functions.
+  7. Dynamic
+  8. Single-threaded
+  9. Non-blocking event loop (concurrency model).
+
+1. High-level
+
+Every program that runs on the PC, needs some hardware resources,
+such as memory and CPU to do its work.
+
+- Low Level Languages (C) -> Devs have to manage resources manually.
+- High Level Languages (JS, Python) -> Devs DO NOT have to manage resources manually,
+  everything happens automatically. These languages have so-called 'abstractions',
+  that take all of that work away from us.
+  Downside: Programs will never be as fast/optimized as, ex. C programs.
+
+2. Garbage-collected
+
+One of the powerful tools that takes memory management away from us(devs) is garbage collection(GC).
+
+GC is basically an algorithm inside the JS engine, 
+which automatically removes old, unused objects from the computer memory.
+In order not to clog it up with no-needed stuff. 
+(MR. PROPER) -> cleans our memory from time to time,
+so that we don't have to do it manually in our code.
+
+3. Interpreted or just-in-time compiled.
+
+The difference between an interpreted and a compiled language lies in the result of the process of interpreting or compiling.
+An interpreter produces a result from a program, while a compiler produces a program written in assembly language.
+
+JS is interpreted or just-in-time compiled language.
+
+The PC's processor only understands 0 or 1. (More in next lectures).
+Ultimately every single program needs to be written in zeros and ones (MACHINE CODE).
+
+We write human-readable code, which is an abstraction over the machine code.
+This human-readable code eventually needs to be translated into machine code.
+That step,
+
+CONVERTING CODE TO MACHINE CODE = COMPILING OR INTERPRETING.
+
+It's nessesary in every single programming language, bcs NO ONE writes machine code manually.
+
+In the case of JS, this happens inside the JS Engine.
+
+4. Multi-paradigm (paradigm -> a typical example or pattern of something; a model.)
+
+One of the things that make JS so popular -> the fact that is a multi-paradigm language.
+In programming,
+  A Paradigm -> An approach and mindset of structuring code,
+    which will direct your coding style and technique in a project that uses a certain paradigm.
+
+We can classify paradigms as: Imperative/Declarative. ??
+
+More in next lectures.
+
+Many languages are ONLY Procedural or ONLY Object-oriented or ONLY FUNCTIONAL.
+!JS DOES ALL OF IT. (flexible, versatile). He'll show all of them.
+
+Now, 3 Popular paradigms are 
+  4.1 Procedural Programming -> Процедурно програмиране.
+  4.2 Object-oriented Programming (OOP)  -> Обектно-ориентирано програмиране.
+  4.3 Functional Programming (FP) -> Функционално програмиране.
+
+4.1 Procedural Programming
+
+So, Procedural Programming is what we have been doing so far!
+Which is basically just, ORGINIZING THE CODE IN A VERY LINEAR WAY,
+And then, WITH SOME FUNCTIONS IN BETWEEN.
+
+
+4.2 OOP
+
+So, about the Object-oriented nature of JS,
+IT IS a 5. prototype-based, object-oriented approach.
+
+5.
+What is that? 
+Well,
+1. Almost everything is JS is an object. Expect for PRIMITVE VALUES(numbers, strings, etc.)
+
+Array, for example, is just an object.
+Example: 
+  Why we can create an array and then use the push method on it?
+
+It's because of prototypal inheritance.
+Basically, we create arrays from an array blueprint.
+
+                        Prototype(Template) -> Шаблон
+----------------------------
+Array 
+
+    Array.prototype.push
+    Array.prototype.indexOf
+    *All the array methods
+
+
+The arrays we create in our code inherit the methods from the blueprint(шаблон).
+So that, we can use them on our arrays.
+
+----> OVERSIMPLIFIED. (More about it Later. section 14. OOP with JS)
+
+
+6. First-class functions
+
+JS is a language with first-class functions, which simply means that,
+!FUNCTIONS ARE TREATED AS REGULAR VARIABLES!
+--  Passing functions into other functions as if it was just a regular variable. 
+/ Passing event listener function to the addEventListener method /.
+--  Returning functions from other functions.
+
+IT IS POWERFUL. 
+
+Allows us to use:
+   a lot of powerful techniques.
+   functional-programming(FP / One of the paradigm /).
+
+Not all languages have first-class functions. JS has first-class functions.
+
+It's really helpful.
+
+
+7. Dynamic
+
+JS is dynamic language.
+
+Dynamic actually means dynamically-typed.
+
+Strongly-typed languages (C ...).
+
+In JS, we don't assign data types to variables.
+Instead they only became known, when JS engine executes our code.
+
+let x = 23; / No data type. Types become known at runtime.
+x = 'Jonas'; / Data type of variable is automatically changed.
+
+JS with types -> TypeScript.
+
+8. Single-threaded / 9. Non-blocking event loop (concurrency model).
+
+https://www.google.com/search?q=why+js+is+single+threaded&oq=why+JS+is+snigle+&aqs=chrome.1.69i57j0i13i512j0i22i30l3j0i8i13i30i625.3080j0j7&sourceid=chrome&ie=UTF-8
+
+Very complex topic. Most complex one of the whole course.
+That's why it's kinda at the end of the course.
+
+No specifics now.
+Let's just define some things here.
+
+-What is a concurrency model ?
+It is -> How JS engine handles multiple tasks happening at the same time.
+
+-Why we need that ?
+Because, JS itself runs in one single-thread, which means
+
+JS can ONLY do one thing at a time, therefore we need a way of handling
+MULTIPLE THINGS HAPPENING at the same time.
+
+BTW, in computing,
+-> THREAD is a set of instructions that is executed in the computer's CPU.
+Basically, the thread is where our code is actually executed in a machine's processor.
+
+-What if there is a LONG-RUNNING task?
+  ex. -> fetching data from a remote server
+
+It sounds like that would block the single thread where the code is running ?
+We don't want that. We want a so-called 'non-blocking behavior'.
+
+-How we achieve that?
+
+!important
+BY USING EVENT LOOP.
+the EVENT LOOP takes long-running tasks,
+executes them in the background,
+and then puts them back in the main thread once they are finished.
+
+In a nutshell, the JS's non-blocking event loop concurrency model with a single thread.
+Oversimplified. More later 
+
+
+******
+https://www.google.com/search?q=how+node+js+is+non+blocking&sxsrf=ALiCzsYBgRECiXwifHvsU5WIH8HxkN5q0g%3A1671454620456&ei=nF-gY9y3G8iPxc8PobiNkAc&oq=how+JS+is+non+blo&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAxgAMgYIABAWEB46CggAEEcQ1gQQsAM6BAgjECc6CQgAEBYQHhDxBDoICAAQgAQQywE6CggAEIAEEAoQywE6BQgAEIAEOgUILhCABDoICC4QgAQQ1AI6BwgjEOoCECc6BggjECcQEzoECAAQQzoRCC4QgAQQsQMQgwEQxwEQ0QM6CAgAEIAEELEDOgQILhBDOgsIABCABBCxAxCDAToICAAQsQMQgwE6CAguEIAEEMsBOgcIABCABBANOggIABAWEB4QDzoICAAQFhAeEAo6CwgAEBYQHhAPEPEEOgUIIRCgAToICCEQFhAeEB06CgghEBYQHhAPEB1KBAhBGABKBAhGGABQmxBYw1pg42JoCnABeACAAaQBiAGRGJIBBTEwLjE5mAEAoAEBsAEKyAEIwAEB&sclient=gws-wiz-serp
+https://www.google.com/search?q=how++js+is+non+blocking&sxsrf=ALiCzsaCJXX-QoKmBdfwtD_O1sNGjpqAcQ%3A1671454868416&ei=lGCgY9SEGf6Fxc8PsMKvsAg&ved=0ahUKEwjUnsLN3oX8AhX-QvEDHTDhC4YQ4dUDCA8&uact=5&oq=how++js+is+non+blocking&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIGCAAQBxAeOgoIABBHENYEELADSgQIQRgASgQIRhgAUNoEWNoEYPYGaAFwAXgAgAFbiAFbkgEBMZgBAKABAcgBCMABAQ&sclient=gws-wiz-serp
+******
+
+
