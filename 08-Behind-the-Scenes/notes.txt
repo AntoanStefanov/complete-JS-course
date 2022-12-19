@@ -352,7 +352,23 @@ Source code entering the Modern JS engine (ex. V8) -> using JIT compilation. 2.1
 
   3. Execution
   3.1. The machine code gets executed !IMMEDIATELY! 
-  3.2.
+  3.2. Execution happens in the JS engine's CALL STACK. / next lecture more /.
+
+There is more.
+
+!Modern JS engines have some pretty clever optimizations strategies.
+
+What they do is to create a very unoptimized version of machine code in the beginning, so that it can start executing ASAP.
+Then in the background, this machine code is being optimized and RECOMPILED during the already running program execution.
+This can be done multiple times, and after each optimization the unoptimized machine code is simply swept for the new more optimized code,
+WITHOUT EVER STOPPING EXECUTION, of course.
+
+This process is what makes modern engines such as V8 so fast.
+
+All this parsing, compilation and optimization happens in some special threads inside the engine.
+
+
+
 
 
 
