@@ -365,9 +365,69 @@ WITHOUT EVER STOPPING EXECUTION, of course.
 
 This process is what makes modern engines such as V8 so fast.
 
-All this parsing, compilation and optimization happens in some special threads inside the engine.
+All this parsing, compilation and optimization happens in some special threads inside the engine, that we cannot access from our code.
+Completely seperated from the main thread, that is running in the call stack, executing our own code.
 
 
+                                                      The bigger picture: JS RUNTIME
+                                          A runtime environment is where your program will be executed.
+                          https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648473#overview
+                                                                10:24 min
+
+So, we looked at the JS engine, and how it works behind the scenes in quite some detail.
+To round of this lecture, let's also take a look at
+
+1. WHAT JS RUNTIME IS, in particular, the most common one, which is the BROWSER runtime enviroment / other one is The Node Runtime Environment / ?
+
+  By doing this, we can get the bigger picture of how all the pieces fit together when we use JS.
+
+  We can imagine a JS runtime like as a big box/container,
+  which includes all the things that we need , in order to use JS /in this case/ in the browser.
+
+  The HEART of ANY JS runtime is always a JS engine.
+
+                        RUNTIME IN THE BROWSER
+
+----------------------------------------------------------------
+                               ' They are functionalities PROVIDED to the engine, but NOT PART of the JS language ITSELF.
+                               '      JS simply gets access to these APIs through the global windows object.
+                               '                            (console.log also)
+      JS ENGINE                '       WEB APIs 
+ *Engine alone is NOT enough*  '    DOM       Timers
+    HEAP   CALL STACK          ' Fetch API     ...
+                               ' 
+                               '--------------------------------
+                               ' Data structure that contains all the callback functions that are ready to be executed!
+                               ' For example, we attach event handler functions to DOM elements like a button to react to a click(for example).
+                               ' These Event Handler functions are also called callback functions.
+                               '
+                               '        CALLBACK QUEUE
+                               '  
+                               '    click, timer, data, ...
+                               '      ^
+                               '      |
+                               '   Example: Callback function from DOM event listener.
+                               '
+
+A call stack is a stack data structure that stores information about the active functions of a computer program.
+
+A callback function from the CALLBACK QUEUE is passed to the CALL STACK for EXECUTION,
+      when THE CALL STACK IS EMPTY! (CALLBACK QUEUE ---> CALL STACK), 
+
+This happens by the EVENT LOOP. / Essential for non-blocking concurrency model.
+The event loop takes callback functions from the callback queue and puts them into the call stack, so that they can be executed.
+
+Remember, in the last lecture he said that the EVENT LOOP is how JS's non-blocking concurrency model is implemented.
+
+                                            OVERVIEW of how EVENT LOOP works.
+              We will go over why this makes JS non-blocking in a special lecture about the event loop, later in the course.
+                                          FUNDAMENTAL PIECE OF JS DEVELOPMENT
+                                    EVERY DEVELOPER NEEDS TO UNDERSTAND THIS DEEPLY.
+
+                                      Focus in this course is on JS IN THE BROWSER.
+                                  That's why we analized the browser JS runtime enviroment.
+                                    BUT REMEMBER JS CAN EXIST OUTSIDE OF THE BROWSER.
+                                                    ex. In NODE.JS
 
 
 
