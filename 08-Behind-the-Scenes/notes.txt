@@ -429,33 +429,10 @@ Remember, in the last lecture he said that the EVENT LOOP is how JS's non-blocki
                                     BUT REMEMBER JS CAN EXIST OUTSIDE OF THE BROWSER.
                                                     ex. In NODE.JS
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#specifications -> WEB APIs is where magic happens,
+if timer is set, the time for the timer will be waited in the WEB API, then the waited callback function will be passed to the callback queue,
+the event loop check if the call stack is empty, if it is then it passes the callback function to be executed.
+91. Execution Contexts and The Call Stack
 
 
 
