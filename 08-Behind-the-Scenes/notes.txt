@@ -213,3 +213,63 @@ https://www.google.com/search?q=how++js+is+non+blocking&sxsrf=ALiCzsaCJXX-QoKmBd
 ******
 
 
+90. The JavaScript Engine and Runtime
+https://miro.medium.com/max/700/1*zeKjWCjyAGZ9JN4fvnWsiA.png
+
+1. What is JS engine actually?
+2. What is JS runtime actually?
+3. How JS code is translated to a machine code?
+
+
+1. JS engine is PROGRAM THAT EXECUTES JS CODE.
+
+  There are a lot of steps in doing that,
+  but essentially executing JS code is what an engine does.
+
+Every browser has its own JS engine, most well-known is Google's JS engine - V8.
+
+The V8 engine powers Google Chrome, but also Node.js(used to build server side apps).
+
+JS runtime enviroments -> 
+  the runtime environment of a browser (like Chrome, or Firefox)
+  the Node runtime environment.
+
+2. A runtime environment is where your program will be executed.
+
+Node.js -> JS runtime.
+
+Easy to understand what an engine is.
+
+! More important is to understand its COMPONENTS and how it works.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+A JS ENGINE
+    contains 
+      1. CALL STACK  (STACK LIFO - dishes analogy).
+        THIS IS WHERE OUR CODE IS BEING EXECUTED, 
+
+        using something called "Execution contexts".
+        [----------------] - Execution context
+        [----------------] - Execution context
+        [----------------] - Execution context
+
+
+      2. HEAP (купчина) -> 
+        THIS IS WHERE OBJECTS ARE STORED.
+
+        UNSTRUCTURED MEMORY POOL WHICH,
+        STORES ALL THE OBJECTS THAT OUR APP NEEDS.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
