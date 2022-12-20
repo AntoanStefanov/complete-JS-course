@@ -503,9 +503,9 @@ Once the top-level code is executed/finished,
                       1. First thing, inside any EC is a so-called 'Variable Environment'.
 
               VARIABLE ENVIROMENT stores:
-                                  - let, const, var declarations
-                                  - functions declarations
-                                  - arugments object (special -> contains the passed args to the function that the current EC belongs to).
+                                - let, const, var declarations
+                                - functions declarations
+                                - arugments object (special -> contains the passed args to the function that the current EC belongs to). It's an array.
 
               Basically all the variables that are somehow declared inside a function, will end up in its 'VARIABLE' ENVIROMENT.
 
@@ -530,7 +530,7 @@ Once the top-level code is executed/finished,
 
     So, these are the things nessesary to run each function as well as the code in the top-level.
 
-    
+
 
 
 
