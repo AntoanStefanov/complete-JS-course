@@ -453,10 +453,19 @@ The code is now ready to be executed.
 -- Functions should only be executed when they are called.
 -- Functions' bodies are ONLY executed when called! /Which creates another 'Execution Context'/
 
+                    Global execution context (GEC) is created for top-level code.
 
+2. What exactly is Execution Context ?
 
+Execution Context is an abstract concept, but he defines it as:
 
+                              It's like a box.
+                  Environment in which a piece of JS is executed.
+            Stores all the necessary data for some code to be executed,
+            such as local variables or arguments passed into a function.
 
+            
+            
 
 
 
