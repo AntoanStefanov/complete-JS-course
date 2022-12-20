@@ -494,7 +494,20 @@ Once the top-level code is executed/finished,
                     
           REMEMBER: It's the event loop who providing these new callback functions!
 
-                                  ...Begin at 5:01...
+
+                    So, we know now, what an execution context is, but what's it made of ?
+
+                                    What's inside of execution context (EC) ?
+
+
+                        First thing, inside any EC is a so-called 'Variable Environment'.
+
+                    VARIABLE ENVIROMENT stores:
+                                        - let, const, var declarations
+                                        - functions declarations
+                                        - arugments object (special -> contains the passed args to the function that the current EC belongs to).
+
+                    Basically all the variables that are somehow declared inside a function, will end up in its 'VARIABLE' ENVIROMENT.
 
 
             
