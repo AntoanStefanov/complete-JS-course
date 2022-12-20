@@ -500,17 +500,29 @@ Once the top-level code is executed/finished,
                                     What's inside of execution context (EC) ?
 
 
-                        First thing, inside any EC is a so-called 'Variable Environment'.
+                      1. First thing, inside any EC is a so-called 'Variable Environment'.
 
-                    VARIABLE ENVIROMENT stores:
-                                        - let, const, var declarations
-                                        - functions declarations
-                                        - arugments object (special -> contains the passed args to the function that the current EC belongs to).
+              VARIABLE ENVIROMENT stores:
+                                  - let, const, var declarations
+                                  - functions declarations
+                                  - arugments object (special -> contains the passed args to the function that the current EC belongs to).
 
-                    Basically all the variables that are somehow declared inside a function, will end up in its 'VARIABLE' ENVIROMENT.
+              Basically all the variables that are somehow declared inside a function, will end up in its 'VARIABLE' ENVIROMENT.
+
+        However, a function can also access variables outside of the function. This happens bcs of 'SCOPE CHAIN' (more on that later).
+
+                     2. Scope chain consists of:
+                                    - references to variables that are located outside of the current function.
+
+        To keep track of the scope chain, it is STORED in each EXECUTION CONTEXT (EC).
+
+                     3. 'this' keyword -> Each exec. context also gets this special variable.
+
+                                    - 96. Lecture for more about 'this' keyword.
 
 
-            
+                                    
+
 
 
 
