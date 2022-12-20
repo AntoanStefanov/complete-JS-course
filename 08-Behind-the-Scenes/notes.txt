@@ -552,18 +552,54 @@ Once the top-level code is executed/finished,
 
 
                                       SCOPE CONCEPTS
-    Scoping -> Controls how our program's variables are orginized and accessed by the JS Engine.
+
+    1.Scoping -> Controls how our program's variables are orginized and accessed by the JS Engine.
         "Where do variables live?" / "Where can we access a certain variable and where not?"
 
 
-    In JS, we have something called -->
+  In JS, we have something called -->
+
+    2.Lexical Scoping: Lexical Scoping means:
+        That the way, variables are orginized & accessed, is entirely controlled by the placement of functions & blocks in the program's code.
 
 
-Lexical Scoping: Lexical Scoping means:
-    That the way, variables are orginized & accessed, is entirely controlled by the placement of functions & blocks in the program's code.
+    3.Scope(itself): Space/Environment in which variables/functions are declared (variable enviroment in case of functions).
 
-    
+                              ? DIFFERENCE BETWEEN SCOPE & VARIABLE ENVIROMENT ?
+                              For the case of functions, it's basically the same.
 
+                              There is: GLOBAL scope, FUNCTION scope & BLOCK scope.
+
+
+    4.Scope of a variable: the ENTIRE region of our code, where a certain variable can be accessed.
+
+                          Let's talk about the three different types of scope in JS
+                              p.s. FUNCTIONS ARE JUST VALUES, STORED IN VARIABLES.
+
+            GLOBAL SCOPE               |            FUNCTION SCOPE              |   BLOCK SCOPE(ES6)
+                                       |                                        | ex. if block, for loop block, etc. between {...}
+                                       |                                        |
+  - Outside of any function/block      |   - Variables are accessible only      |  - Variables are accessible only
+                                       |     inside the function, & NOT outside |    INSIDE BLOCK & NOT outside of it.
+  - Variables declared in global scope |                                        |  
+    are accessible everywhere          |   - Also called 'local' scope          |  - BLOCK SCOPES ONLY APPLY FOR 'CONST' & 'LET' DECLARED VARIABLES !!
+                                       |                                        |    that's why we say "let and const variables are block scoped."
+                                       |                                        |    "var is function scoped."(even if created in block scope)
+                                       |                                        |
+                                       |                                        |  - All functions are now also block scoped.(only in strict mode)
+                                                                                     Just like let and const variables, functions declared inside
+                                                                                     a block are ONLY ACCESSIBLE INSIDE THAT BLOCK.
+                                                                                            check "executionContextForDebug.js"
+        
+RECAP:
+    LET & CONST VARIABLES & FUNCTIONS ARE BLOCK SCOPED.
+
+
+                                      Let's learn about the scope chain.
+
+                                          ScopeAndTheScopeChain.js
+                                          
+                                              DEBUG & OBSERVE
 
 
 

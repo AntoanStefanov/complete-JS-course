@@ -1,3 +1,13 @@
+'use strict';
+
+
+// BLOCK SCOPED FUNCTION
+if (true) {
+  const sayHi = () => console.log('Hi');
+  sayHi();
+}
+// sayHi(); ERROR
+
 const firstName = 'Tony';
 
 /**
@@ -21,6 +31,7 @@ function second(x, y) {
 
 const third = function () {
   console.log('hi third');
+  console.log(firstName);
 };
 
 third();
@@ -37,13 +48,13 @@ const aloha = (z, y) => {
 /**
  *@return {number} 1
  */
-function asd() {
+const asd = () => {
   console.log('hi fourth');
   const u = aloha();
   // because 'aloha' func is called inside of a function,
   // I have the func in 'third' func's closure. ??
   return u;
-}
+};
 
 const first = function () {
   let a = 1;
