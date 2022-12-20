@@ -30,6 +30,7 @@ function second(x, y) {
 }
 
 const third = function () {
+  // Closure -> 'ahola' function ? WTF ?
   console.log('hi third');
   console.log(firstName);
 };

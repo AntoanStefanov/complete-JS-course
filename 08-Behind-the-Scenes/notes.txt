@@ -609,6 +609,14 @@ RECAP:
 
 
 
+                                        SCOPE CHAIN vs. CALL STACK
+                                                DIFFERENCE
+
+
+
+                                    
+
+
 
 
 
