@@ -27,6 +27,7 @@ function second(x, y) {
   const c = x + y;
   return c;
 }
+second();
 
 const test = function () {
   const x = 5;
