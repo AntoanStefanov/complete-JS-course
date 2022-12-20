@@ -19,20 +19,20 @@ function second(x, y) {
   return c;
 }
 
-/**
- * @param {number} z
- * @param {number} y
- * @return {number} 0;
- */
-function aloha(z, y) {
-  return z + y;
-}
-
 const third = function () {
   console.log('hi third');
 };
 
 third();
+
+/**
+ * @param {number} z
+ * @param {number} y
+ * @return {number} 0;
+ */
+const aloha = (z, y) => {
+  return z + y;
+};
 
 /**
  *@return {number} 1

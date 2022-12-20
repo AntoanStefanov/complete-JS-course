@@ -536,6 +536,39 @@ Once the top-level code is executed/finished,
 
 
 
+92. Scope and The Scope Chain
+
+                            Scope and Scoping in JS: Concepts
+
+
+          We learned -> each EC has its own Variable Environment, Scope Chain & 'this' keyword.
+
+
+          Now, let's learn what Scope & Scope Chain ARE, why are they important & how they work.
+
+    
+  Let's start by understanding what scoping actually means & learn about some related concepts as well.
+
+
+
+                                      SCOPE CONCEPTS
+    Scoping -> Controls how our program's variables are orginized and accessed by the JS Engine.
+        "Where do variables live?" / "Where can we access a certain variable and where not?"
+
+
+    In JS, we have something called -->
+
+
+Lexical Scoping: Lexical Scoping means:
+    That the way, variables are orginized & accessed, is entirely controlled by the placement of functions & blocks in the program's code.
+
+    
+
+
+
+
+
+
 
 
 
