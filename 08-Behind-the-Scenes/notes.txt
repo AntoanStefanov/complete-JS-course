@@ -531,8 +531,8 @@ Once the top-level code is executed/finished,
     So, these are the things nessesary to run each function as well as the code in the top-level.
 
 
-
-
+                              !!! REMEMBER: JS HAS ONLY ONE THREAD of execution !!!
+                                            !ONE THING AT A TIME!
 
 
 
