@@ -228,6 +228,7 @@ bodyEl.addEventListener('click', function (ev) {
       }
 
       decreaseScore();
+
       if (currentScore === 0) {
         messageEl.textContent = "You've lost! Try Again!";
         checkBtn.disabled = true;
