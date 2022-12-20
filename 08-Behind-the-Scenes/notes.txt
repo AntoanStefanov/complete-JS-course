@@ -520,8 +520,25 @@ Once the top-level code is executed/finished,
 
                                     - 96. Lecture for more about 'this' keyword.
 
+        The content of the EC (variable enviroment, scope chain, 'this' keyword) is generated during 'CREATION' phrase,
+                                                RIGHT BEFORE EXECUTION
 
-                                    
+
+!!!     KEEP IN MIND: EXECUTION CONTEXTS belonging to arrow functions do NOT own /ARGUMENTS (keyword) OBJECT & 'THIS' keyword/    !!!
+!!!           Instead they can use the args object and the 'this' keyword from their closest regular function parent.             !!!
+
+
+    So, these are the things nessesary to run each function as well as the code in the top-level.
+
+    
+
+
+
+
+
+
+
+
 
 
 
