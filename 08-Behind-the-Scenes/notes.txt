@@ -431,8 +431,32 @@ Remember, in the last lecture he said that the EVENT LOOP is how JS's non-blocki
 
 https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#specifications -> WEB APIs is where magic happens,
 if timer is set, the time for the timer will be waited in the WEB API, then the waited callback function will be passed to the callback queue,
-the event loop check if the call stack is empty, if it is then it passes the callback function to be executed.
+the event loop check if the call stack is empty, if it is then it passes the callback function(from the callback queue) to be executed.
+
 91. Execution Contexts and The Call Stack
+
+Let's answer the question
+
+- How is JS code executed?
+
+We already know it happens in the call stack in the engine.
+
+Let's start by supossing our code has just finished compiling.
+The code is now ready to be executed.
+
+              EXECUTION /the step after compilation/
+
+1. 'Global Execution Context' is created. / for top-level code (code that is not inside any function) /
+-- Only the code that is outside of functions will be executed.
+-- Variables that are outside of any functions / top-level code / are being declared.
+-- Functions will only be declared, so that they can be called later, because
+-- Functions should only be executed when they are called.
+-- Functions' bodies are ONLY executed when called! /Which creates another 'Execution Context'/
+
+
+
+
+
 
 
 
