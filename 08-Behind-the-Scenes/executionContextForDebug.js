@@ -29,8 +29,11 @@ function second(x, y) {
 }
 
 const test = function () {
+  const x = 5;
+
   const test1 = () => {
     aloha();
+    console.log(x);
     // third();
     return 0;
   };
@@ -38,6 +41,7 @@ const test = function () {
   const aloha = (z, y) => {
     return z + y;
   };
+
 
   const third = () => {
     console.log('hi third');
