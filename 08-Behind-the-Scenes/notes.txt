@@ -454,7 +454,11 @@ The code is now ready to be executed.
 -- Functions' bodies are ONLY executed when called! /Which creates another 'Execution Context'/
 
                     Global execution context (GEC) is created for top-level code.
+                            !THERE IS ONLY ONE GLOBAL EXECUTION CONTEXT!
+              It's the default context, created for code that is not inside any function
+                          / it's where top-level code will be executed /
 
+                        
 2. What exactly is Execution Context ?
 
 Execution Context is an abstract concept, but he defines it as:
@@ -464,7 +468,35 @@ Execution Context is an abstract concept, but he defines it as:
             Stores all the necessary data for some code to be executed,
             such as local variables or arguments passed into a function.
 
-            
+                JS CODE ALWAYS RUNS INSIDE AN EXECUTION CONTEXT.
+
+
+3. Speacking of execute, now that we have an enviroment, where the top-level code can be executed, it finally is executed (inside GEC).
+-- The execution itself -> the computer CPU processing the machine code that it received.
+
+Once the top-level code is executed/finished,
+
+                    FUNCTIONS FINALLY START TO EXECUTE AS WELL.
+                  / waiting for callbacks also (ex. click event) /. 
+                            Here is how that works.
+
+        For each and every function call, a new execution context will be created,
+        containing all the information that is necessary to run exactly that function.
+    Same goes for methods, of course because, they are simply functions attached to objects.
+
+
+                All these execution contexts together MAKE UP THE CALL STACK.
+
+                      When all the functions are done executing, 
+        the engine will basically keep WAITING for callback functions to arrive,
+                          so that they can be executed.
+            For example, a callback function associated with a click event.
+                    
+          REMEMBER: It's the event loop who providing these new callback functions!
+
+                                  ...Begin at 5:01...
+
+
             
 
 
