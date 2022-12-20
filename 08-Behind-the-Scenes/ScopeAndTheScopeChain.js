@@ -18,7 +18,7 @@ function first() {
   }
 
   /**
-   *
+   * @return {void}
    */
   function second() {
     // Function scope
