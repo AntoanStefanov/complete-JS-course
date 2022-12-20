@@ -598,11 +598,12 @@ RECAP:
                                       Let's learn about the scope chain.
 
                                           ScopeAndTheScopeChain.js
-                                          
+
                                               DEBUG & OBSERVE
 
-
-
+                          EVERY SCOPE HAS ACCESS TO VARIABLES FROM ALL PARENT/OUTER SCOPES.
+                                       THIS ALSO APPLIES TO FUNCTION ARGS.
+                                          THAT'S HOW SCOPE CHAIN WORKS.
 
 
 
