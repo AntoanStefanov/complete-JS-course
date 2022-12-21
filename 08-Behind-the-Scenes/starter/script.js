@@ -20,11 +20,23 @@ function calcAge(birthYear) {
   // scope chain ->
   // this scope checks scope above for that variable and so on. (firstName)
   // Variable Look Up.
+
+  /**
+   * print age
+   */
+  function printAge() {
+    const output = `Name: ${firstName}. \n Your are ${age} years-old, born in ${birthYear}.`;
+    console.log(output);
+  }
+
+  printAge();
+
   console.log(firstName);
-  console.log(lastName); // undefined (fn called before variable declaration)
+  // console.log(lastName);
+  // Error undefined (fn called before variable declaration).
   return age;
 }
 
 const firstName = 'Antoan';
-calcAge(); // function code is executed once it's actually CALLED.
+calcAge(2000); // function code is executed once it's actually CALLED.
 const lastName = 'Stefanov';
