@@ -18,10 +18,13 @@ function calcAge(birthYear) {
   */
   const age = 2027 - birthYear;
   // scope chain ->
-  // this scope checks scope above for that variable. (firstName)
+  // this scope checks scope above for that variable and so on. (firstName)
+  // Variable Look Up.
   console.log(firstName);
+  console.log(lastName); // undefined (fn called before variable declaration)
   return age;
 }
 
 const firstName = 'Antoan';
-calcAge();
+calcAge(); // function code is executed once it's actually CALLED.
+const lastName = 'Stefanov';
