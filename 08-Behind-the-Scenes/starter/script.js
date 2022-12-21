@@ -17,6 +17,8 @@ function calcAge(birthYear) {
     within the given working code block {}.
   */
   const age = 2027 - birthYear;
+  // scope chain ->
+  // this scope checks scope above for that variable. (firstName)
   console.log(firstName);
   return age;
 }

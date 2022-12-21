@@ -38,8 +38,9 @@ const test = function () {
   second();
 
   const test1 = () => {
-    // if aloha()/x/third()/ is used in this scope:
-    // function /f()/ 's CLOSURE HAVE ACCESS TO IT.
+    // if aloha()/x/third()/ is not used in this scope:
+    // function /f()/ 's CLOSURE DOES NOT HAVE ACCESS TO IT.
+    // THAT'S JUST BECAUSE THE FUNCTION/VARIABLE IS NOT USED ANYWHERE.
     aloha();
     console.log(x); // comment it ! Check f()'s closure
     third();
