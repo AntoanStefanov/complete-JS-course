@@ -10,6 +10,7 @@
  */
 function calcAge(birthYear) {
   // Function scope
+
   /*
   https://dev.to/pranav016/advanced-javascript-series-part-42-scope-chains-and-their-working-lexical-and-variable-environments-19d5
     The variable environment maps the local scope of a given environment.
@@ -25,26 +26,39 @@ function calcAge(birthYear) {
    * print age
    */
   function printAge() {
-    const test = `Name: ${firstName}.
-    Your are ${age} years-old, born in ${birthYear}.`;
-
-    console.log(test);
-
+    // Function scope
     const output =
       `Name: ${firstName}.` +
       `Your are ${age} years-old,` +
       `born in ${birthYear}.`;
     console.log(output);
+
+    if (birthYear >= 1981 && birthYear <= 1996) {
+      // var millenial = true; // function scoped
+      const str = `Oh, and you're a millenial, ${firstName}.`;
+      console.log(str);
+
+      /**
+       * Functions are also block scoped, starting in ES6.
+       * Cannot call it outside this block.
+       * @param {number} a
+       * @param {number} b
+       * @return {number}
+       */
+      function add(a, b) {
+        return a + b;
+      }
+      add(1, 1); // Works, calling from the block in which add fn is declared.
+    }
+    // console.log(str); | Error - const & let are block scoped. (ES6)
+    // console.log(millenial); | Works - var is function scoped. (Pre ES6 USE)
+    // add(); | Error - function is block scoped. (ES6)
   }
 
   printAge();
 
-  console.log(firstName);
-  // console.log(lastName);
-  // Error undefined (fn called before variable declaration).
   return age;
 }
 
 const firstName = 'Antoan';
-calcAge(2000); // function code is executed once it's actually CALLED.
-// uncomment const lastName = 'Stefanov';
+calcAge(1994); // function code is executed once it's actually CALLED.
