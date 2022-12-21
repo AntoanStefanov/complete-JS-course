@@ -25,7 +25,10 @@ function calcAge(birthYear) {
    * print age
    */
   function printAge() {
-    const output = `Name: ${firstName}. \n Your are ${age} years-old, born in ${birthYear}.`;
+    const output =
+      `Name: ${firstName}.` +
+      `Your are ${age} years-old,` +
+      `born in ${birthYear}.`;
     console.log(output);
   }
 
@@ -39,4 +42,4 @@ function calcAge(birthYear) {
 
 const firstName = 'Antoan';
 calcAge(2000); // function code is executed once it's actually CALLED.
-const lastName = 'Stefanov';
+// uncomment const lastName = 'Stefanov';
