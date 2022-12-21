@@ -72,3 +72,41 @@ const addExpr = function (a, b) {
 
 const addArrow = (a, b) => a + b; // return a + b, IMPLICITLY.
 */
+
+/*
+// var -> bug example
+
+// numProducts -> undefined. 95. Hoisting and TDZ in Practice
+console.log(numProducts);
+if (!numProducts) deleteShoppingCart(); // output 'All products deleted!'
+
+var numProducts = 10;
+
+/**
+ *
+ */
+/*
+function deleteShoppingCart() {
+  console.log('All products deleted!');
+}
+*/
+
+// BEST PRACTICES, CONCLUSION OF ALL THIS ?
+// - DO NOT USE VAR.
+// - DECLARE VARIABLES AT THE TOP OF EACH SCOPE.
+// - ALWAYS DECLARE ALL YOUR FUNCTIONS FIRST AND USE THEM ONLY AFTER DECLARATION
+
+// Let's check another small difference between const, let, var.
+
+/*
+var x = 1; 
+// var creates a property(x) in the window object (the global object)
+// That can have some implications in some cases.
+
+// We can't find 'y' or 'z' in the window though, why?
+// because they are declare with const/let.
+// So, variables declared that way do not create properties on the global object
+let y = 2;
+const z = 3;
+console.log('test');
+*/
