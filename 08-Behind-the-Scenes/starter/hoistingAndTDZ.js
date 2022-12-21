@@ -96,7 +96,7 @@ function deleteShoppingCart() {
 // - DECLARE VARIABLES AT THE TOP OF EACH SCOPE.
 // - ALWAYS DECLARE ALL YOUR FUNCTIONS FIRST AND USE THEM ONLY AFTER DECLARATION
 
-// Let's check another small difference between const, let, var.
+// Let's check another small difference between let, const, var.
 
 /*
 var x = 1;
