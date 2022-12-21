@@ -152,7 +152,7 @@ rollDiceBtn.addEventListener('click', function () {
   // 2. Display dice.
   displayDiceRoll(diceNumber);
 
-  // 3. Check if dice roll === 1.
+  // 3. Check if dice roll is equal to 1.
   if (diceNumber === 1) {
     resetCurrentScore();
     displayCurrentScore();
