@@ -99,7 +99,7 @@ function deleteShoppingCart() {
 // Let's check another small difference between const, let, var.
 
 /*
-var x = 1; 
+var x = 1;
 // var creates a property(x) in the window object (the global object)
 // That can have some implications in some cases.
 
