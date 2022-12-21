@@ -53,6 +53,13 @@
         "arrow-parens": [
             "warn",
             "always"
+        ],
+        // https://eslint.org/docs/latest/rules/no-undef
+        "no-undef": [
+            "error",
+            {
+                "typeof": true
+            }
         ]
     }
 }
