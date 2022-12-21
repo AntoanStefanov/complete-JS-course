@@ -646,7 +646,7 @@ RECAP:
 
                                    |         HOISTED?            |       INITIAL VALUE     |       SCOPE        |
                                    ------------------------------------------------------------------------------
-      function declarations        |           YES               |      Actual function    | BLOCK(in strict mode)
+      function declarations        |           YES               |      Actual function    | BLOCK(in strict mode) / sloppy mode -> function scope
                                   -------------------------------------------------------------------------------
                                                                  | !COMMON SOURCE OF BUGS! |
       var variables                |           YES               |        undefined        |      FUNCTION      | !!! COMMON SOURCE OF BUGS!!!
