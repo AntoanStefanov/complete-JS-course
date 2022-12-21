@@ -42,7 +42,7 @@
         ],
         // "@typescript-eslint/no-explicit-any": "error" -> How to turn errors for any in JS ?
         "no-unused-vars": [
-            "warn",
+            "error",
             {
                 "vars": "all",
                 "args": "all",
