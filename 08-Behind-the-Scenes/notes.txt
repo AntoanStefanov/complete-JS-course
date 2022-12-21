@@ -652,9 +652,11 @@ RECAP:
       var variables                |           YES               |        undefined        |      FUNCTION      | !!! COMMON SOURCE OF BUGS!!!
                                    ------------------------------------------------------------------------------
       let & const variables        |           NO                |  <uninitialized>,TDZ    |       BLOCK        |
-                                   ------------------------------------------------------------------------------
-      function expressions & arrows|           NO                |  <uninitialized>,TDZ    |       BLOCK        |
-                                  -------------------------------------------------------------------------------
+     ------------------------------------------------------------------------------------------------------------
+                                   |           NO                |  <uninitialized>,TDZ    |       BLOCK        |
+      function expressions & arrow ------------------------------------------------------------------------------
+                                   |           YES               |  if var -> undefined    |      FUNCTION      |
+    -------------------------------------------------------------------------------------------------------------
 
         check var variables -> initial value -> source of bugs -> The reason that we almost never use 'var' in ES6 .
 
@@ -670,7 +672,14 @@ RECAP:
 
 
 
+                                    TEMPORAL DEAD ZONE (TDZ). LET & CONST
+                                            Check hoistingAndTDZ.js
 
+            TDZ -> the region of the scope in which the variable is defined, but can't be used anyway.
+                            It is as if the variable didn't even exist.
+
+
+                !ACCESSING VARIABLES BEFORE DECLARATION IS BAD PRACTICE AND SHOULD BE AVOIDED.!
 
 
 

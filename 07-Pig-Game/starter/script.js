@@ -24,7 +24,6 @@ let currentScore;
 let isThereWinner;
 let activePlayer;
 
-init();
 /**
  *
  * */
@@ -48,6 +47,8 @@ function init() {
   secondPlayerEl.classList.remove('player--active');
   activePlayer = 0;
 }
+
+init();
 
 /**
  *
