@@ -614,6 +614,68 @@ RECAP:
                                     
 
 93. Scoping in Practice.
+      Check script.js.
+
+
+
+                                              94. Variable Environment: Hoisting and The TDZ
+
+                                                            Hoisting in JS
+
+                              Execution context(3 parts): Variable environment, Scope Chain, 'this' keyword
+
+                                                        Variable environment
+                                                  How variables are actually created?   
+
+        Hoisting(mechanism): It makes some types of variables accessible/usable in the code before they are actually declared in the code. 
+                              "Variables lifted to the top of their scope." --> 
+                                                    On surface, that statement is correct.
+                                                    But behind the scenes, that statement is NOT correct.(this is NOT what happens)
+
+                                                    BEHIND THE SCENE OF HOISTING:
+                      BEFORE EXECUTION, code is scanned for variable DECLARATIONS, and for each variable DECLARATION,
+                                            property is created in the variable enviroment OBJECT.
+
+                                    This happens in the 'CREATION' phrase of the Execution Context.
+                                  Then for each variable that is found, a new property is create in the
+                                                    VARIABLE ENVIROMENT OBJECT
+
+
+                                        HOISTING DOES NOT WORK THE SAME FOR ALL VARIABLE TYPES
+
+
+                                   |         HOISTED?            |       INITIAL VALUE     |       SCOPE        |
+                                   ------------------------------------------------------------------------------
+      function declarations        |           YES               |      Actual function    | BLOCK(in strict mode)
+                                  -------------------------------------------------------------------------------
+                                                                 | !COMMON SOURCE OF BUGS! |
+      var variables                |           YES               |        undefined        |      FUNCTION      | !!! COMMON SOURCE OF BUGS!!!
+                                   ------------------------------------------------------------------------------
+      let & const variables        |           NO                |  <uninitialized>,TDZ    |       BLOCK        |
+                                   ------------------------------------------------------------------------------
+      function expressions & arrows|           NO                |  <uninitialized>,TDZ    |       BLOCK        |
+                                  -------------------------------------------------------------------------------
+
+        check var variables -> initial value -> source of bugs -> The reason that we almost never use 'var' in ES6 .
+
+                        <uninitialized> -> in debug mode is 'undefined', BUT, accessing it,
+                        throws ERROR "ReferenceError: Cannot access 'z' before initialization".
+
+                        THESE VARIABLES ARE PLACED IN A SO-CALLED TEMPORAL DEAD ZONE(TDZ).
+                              WHICH MAKES IT SO, THAT WE CAN'T ACCESS THE VARIABLES
+                  BETWEEN THE BEGINNING OF THE SCOPE & THE PLACE WHERE THE VARIABLES ARE DECLARED.
+
+                        AS A CONSEQUENCE if WE TRY TO ACCESS THESE VARIABLES, WE GOT ERROR.
+                              "Cannot access 'variableName' before initialization"
+
+
+
+
+
+
+
+
+
 
 
 
