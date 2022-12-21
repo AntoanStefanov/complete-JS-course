@@ -9,8 +9,13 @@ if (true) {
 
 const firstName = 'Tony';
 
+// const hello = function () {
+//   console.log('Hello');
+// };
+
 /**
- *
+ * !this one is in global scope, debug with live-server,!
+ * !and google chrome debug from VSCode.!
  * @param {number} x
  * @param {number} y
  * @return {number}
@@ -27,15 +32,17 @@ function second(x, y) {
   const c = x + y;
   return c;
 }
-second();
 
 const test = function () {
   const x = 5;
+  second();
 
   const test1 = () => {
+    // if aloha()/x/third()/ is used in this scope:
+    // function /f()/ 's CLOSURE HAVE ACCESS TO IT.
     aloha();
-    console.log(x);
-    // third();
+    console.log(x); // comment it ! Check f()'s closure
+    third();
     return 0;
   };
 
@@ -43,14 +50,13 @@ const test = function () {
     return z + y;
   };
 
-
   const third = () => {
     console.log('hi third');
     console.log(firstName);
   };
 
   const f = () => {
-    // Closure -> 'ahola' function ? WTF ?
+    // Closure -> 'ahola' function ? WTF ? check test1()
     console.log('hi third');
     console.log(firstName);
   };
