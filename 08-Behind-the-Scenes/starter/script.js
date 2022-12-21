@@ -36,6 +36,7 @@ function calcAge(birthYear) {
     if (birthYear >= 1981 && birthYear <= 1996) {
       // var millenial = true; // function scoped
       const str = `Oh, and you're a millenial, ${firstName}.`;
+      const outerVar = 1;
       console.log(str);
 
       /**
@@ -46,13 +47,17 @@ function calcAge(birthYear) {
        * @return {number}
        */
       function add(a, b) {
+        console.log(outerVar);
+
+        console.log(output);
         return a + b;
       }
       add(1, 1); // Works, calling from the block in which add fn is declared.
     }
     // console.log(str); | Error - const & let are block scoped. (ES6)
     // console.log(millenial); | Works - var is function scoped. (Pre ES6 USE)
-    // add(); | Error - function is block scoped. (ES6)
+    // add(); | ONLY IN 'use strict' MODE Error - function is block scoped.(ES6)
+    // Without 'use strict' we can call it outside of the block scope.
   }
 
   printAge();
