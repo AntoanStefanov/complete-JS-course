@@ -25,6 +25,11 @@ function calcAge(birthYear) {
    * print age
    */
   function printAge() {
+    const test = `Name: ${firstName}.
+    Your are ${age} years-old, born in ${birthYear}.`;
+
+    console.log(test);
+
     const output =
       `Name: ${firstName}.` +
       `Your are ${age} years-old,` +
