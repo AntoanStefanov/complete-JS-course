@@ -727,6 +727,39 @@ The 'this' variable will always take the value of (points to) the "owner" of the
             this.js
 
 
+                        98. Regular Functions vs. Arrow Functions
+
+                      Some Pitfalls of the 'this' keyword related to 
+                          regular functions & arrow functions.
+
+                        When we should use and avoid each of them.
+
+                              regularFnVsArrows.js
+                                
+                                  BEST PRACTICES
+
+                      1. NEVER USE AN ARROW FUNCTION AS A METHOD.
+                         Use normal function expressions instead
+
+                      2. NEVER USE 'VAR'. Use 'const', but if u are
+                      sure that the value will be changed, use 'let'
+
+                      3. DECLARE VARIABLES AT THE TOP OF EACH SCOPE.
+                      
+                      4. ALWAYS DECLARE ALL YOUR FUNCTIONS FIRST AND
+                            USE THEM ONLY AFTER THE DECLARATION.
+
+
+arguments keyword -> 
+regularFnVsArrows.js
+https://eslint.org/docs/latest/rules/prefer-rest-params
+arguments does not have methods of Array.prototype, so it’s a bit of an inconvenience.
+                        
+
+
+
+
+
 
 
 
