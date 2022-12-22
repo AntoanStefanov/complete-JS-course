@@ -70,7 +70,7 @@ const test = function () {
 test();
 
 const first = function () {
-  let a = 1;
+  const a = 1;
   const funcTest = () => {
     // const test = 2;
     console.log('Hello');
@@ -83,12 +83,8 @@ const first = function () {
   // console.log(c); Error
   // const b = second(7, 9);
   // const u = aloha();
-  console.log(c);
-
-  a = a + b;
   return a;
 };
 
 const x = first();
-asd();
 console.log(x, firstName);
