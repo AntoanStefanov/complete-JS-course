@@ -708,10 +708,21 @@ The 'this' variable will always take the value of (points to) the "owner" of the
             It depends on how the function is called, and its value is only assigned when the function is actually called.
 
 
+      https://eslint.org/docs/latest/rules/no-invalid-this
+
       Four different ways in which functions can be called:
         1. Method(function attached to an object) -> 'this' = <Object that is calling the method>
         2. Simple function call -> 'this' = undefined /in 'strict' mode/ | Window obj. /in 'sloppy' mode, browser/
-        3. Arrow functions -> 'this' = <this of surrounding function(lexical this)> . Do NOT get own 'this'.
+        3. Arrow functions -> 'this' = <this of surrounding function(lexical this)> . 
+                !!!Do NOT get their own 'this'.!!!
+        4. Event Listener -> 'this' = <DOM element that the handler is attached to>
+        5. new, call, apply, bind (methods) -> <later in course>.
+
+      WHAT 'this' KEYWORD IS NOT:
+        - 'this' does NOT point to the function itself,
+        - 'this' does NOT point to its variable enviroment.
+
+
 
 
 
