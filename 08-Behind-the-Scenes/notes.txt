@@ -756,9 +756,45 @@ https://eslint.org/docs/latest/rules/prefer-rest-params
 arguments does not have methods of Array.prototype, so it’s a bit of an inconvenience.
                         
 
+                      99. Primitives vs. Objects (Primitive vs. Reference Types)
+
+        Learn the big difference between the way primitive types and object are stored in memory.
+
+
+                              PRIMITIVES, OBJECTS AND THE JS ENGINE.
+                                    
+          When, we talk about memory & memory management, it's usual to call primitives, primitive types,
+          and objects -> reference types, because of the different way in which they are stored in memory.
+    
+                        primitive data types:| REFERENCE TYPES -> Everything else are basically objects:
+                            - Number         | - Object literal
+                            - String         | - Arrays
+                            - Boolean        | - Functions
+                            - Undefined      | - Many more...
+                            - Null           |
+                            - Symbol         |              |
+                            - BigInt         |              |
+                            ^primitives^                    |  
+                                 |                          | REFERENCE TYPES ARE STORED IN MEMORY HEAP
+PRIMITIVE TYPES ARE STORED IN THE|CALL STACK                |
+                                 |         JS engine        |
+                                \ /                        \ /
+                   function get executed, here|  objects are stored, here
+                            CALL STACK        |        MEMORY HEAP
+
+
+            PRIMITIVE types are stored in
+            the CALL STACK and by that he 
+            means that primitives are stored in
+            execution contexts in which they 
+            are declared. (Execution contexts run
+            in the call stack).
 
 
 
+
+
+                      
 
 
 
