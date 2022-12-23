@@ -98,6 +98,7 @@ const mariaOne = {
 // we could use a function 'object.assign'.
 
 // SHALLOW COPY (ONLY FIRST LEVEL/primitives/).
+// That does NOT copy the objects of the object. Only primitive types
 const mariaTwo = Object.assign({}, mariaOne);
 // console.log(mariaTwo);
 
@@ -106,6 +107,7 @@ mariaTwo.lastName = 'Arnaudova';
 
 // Lets change array in shallow/first-level copy.
 // The change will apply to both maria objects. Bcs its not deep copy.
+// That does NOT copy the objects of the object. Only primitive types
 mariaTwo.family.push('Megan');
 
 console.log(mariaOne); // mariaOne.lastName did NOT change.
