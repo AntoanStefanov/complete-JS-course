@@ -89,6 +89,6 @@ console.log(firstEl, firstElOfArr, secondElOfArr);
 // then we might try to unpack the array in positions that don't even exist.
 
 // Default values & we do NOT know arr's length.
-
+// For example, it's useful, when we get data from an API.
 const [a = 0, b = 0, c = 0] = [8, 9];
 console.log(a, b, c);
