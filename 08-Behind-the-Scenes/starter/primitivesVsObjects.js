@@ -92,16 +92,32 @@ const mariaOne = {
   firstName: 'Maria',
   lastName: 'Jekova',
   age: 22,
+  family: ['Johnny', 'Becca', 'Rose'], // array is just an object
 };
 // If we really wanted to copy this object,
 // we could use a function 'object.assign'.
 
+// SHALLOW COPY (ONLY FIRST LEVEL/primitives/).
 const mariaTwo = Object.assign({}, mariaOne);
 // console.log(mariaTwo);
 
 // Let's say now, mariaTwo gets married.
 mariaTwo.lastName = 'Arnaudova';
 
+// Lets change array in shallow/first-level copy.
+// The change will apply to both maria objects. Bcs its not deep copy.
+mariaTwo.family.push('Megan');
+
 console.log(mariaOne); // mariaOne.lastName did NOT change.
 //  bcs these now, are two DIFFERENT objects.
 console.log(mariaTwo);
+
+// There is still a problem, bcs using Object.assign(),
+// only work on the FIRST level. In other words,
+// If we have an object inside the object, then this inner object will
+// actually still be the same. It'll still point to the same place in memory.
+// That's why we say Object.assign only creates a SHALLOW copy.
+// NOT A DEEP CLONE, which is what we want.
+
+// A SHALLOW copy will only copy the primitives properties in the first level,
+// A DEEP clone will copy everything(primitives & objects).
