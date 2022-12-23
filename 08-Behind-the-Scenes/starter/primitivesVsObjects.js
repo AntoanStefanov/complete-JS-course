@@ -97,4 +97,11 @@ const mariaOne = {
 // we could use a function 'object.assign'.
 
 const mariaTwo = Object.assign({}, mariaOne);
+// console.log(mariaTwo);
+
+// Let's say now, mariaTwo gets married.
+mariaTwo.lastName = 'Arnaudova';
+
+console.log(mariaOne); // mariaOne.lastName did NOT change.
+//  bcs these now, are two DIFFERENT objects.
 console.log(mariaTwo);
