@@ -79,3 +79,16 @@ console.log(firstValue, numbersArray);
 const [firstEl, , [firstElOfArr, secondElOfArr]] = nestedArray;
 
 console.log(firstEl, firstElOfArr, secondElOfArr);
+
+// Another feature of destructuring assignment,
+// we can also set default values for the variables when we are extracting them.
+// Very useful, in case, we do NOT know the length of the array.
+// This sometimes can happen in REAL World apps.
+
+// If we have an array that is shorter than we might think,
+// then we might try to unpack the array in positions that don't even exist.
+
+// Default values & we do NOT know arr's length.
+
+const [a = 0, b = 0, c = 0] = [8, 9];
+console.log(a, b, c);
