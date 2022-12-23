@@ -1,0 +1,13 @@
+
+                                                103. Destructuring Arrays 
+                                                      /UNPACKING/ Arrays
+
+                                                  arrayDestructuring.js
+
+                                              Destructuring is an ES6 feature.                                                
+
+                              Way on unpacking values from an array or an object into seperate variables.
+
+                    Destructuring is to break complex data structure down into a smaller data structure like a variable.
+
+            For arrays, we use destructuring to retrieve elements from the array and store them into variables in a very easy way.
