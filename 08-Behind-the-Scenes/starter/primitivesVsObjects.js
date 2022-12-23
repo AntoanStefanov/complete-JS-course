@@ -20,6 +20,8 @@ console.log(me); // Here, age = 30.
 console.log(friend);
 */
 
+/*
+
 // Primitive data types
 
 // id: lastName; m.address: 001; value: 'Jeff;
@@ -81,6 +83,18 @@ console.log(maria);
 
 // Completely changing the object with another, /Reassigning a new obj to it/,
 // is completely different than simply changing a property
+*/
 
 // What if we really wanted to copy the object,
 // so that we could then change one of them, without changing the other.
+
+const mariaOne = {
+  firstName: 'Maria',
+  lastName: 'Jekova',
+  age: 22,
+};
+// If we really wanted to copy this object,
+// we could use a function 'object.assign'.
+
+const mariaTwo = Object.assign({}, mariaOne);
+console.log(mariaTwo);
