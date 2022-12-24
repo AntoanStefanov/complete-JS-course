@@ -70,4 +70,7 @@ game.printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
 game.printGoals('Davies', 'Muller');
 game.printGoals(...game.scored);
 
-console.log(game.odds.team1 || game.odds.team2);
+// game.odds.team1 < game.odds.team2 ? console.log('Team1') : console.log('T2');
+
+game.odds.team1 < game.odds.team2 && console.log('Team 1');
+game.odds.team1 > game.odds.team2 && console.log('Team 2');
