@@ -54,3 +54,11 @@ An iterable can be iterated over with the code: for (const x of iterable) { }
 
                     Rest pattern is used where we would write variables names, sep. by comma.
                     Spread pattern is used where we would write values, sep. by comma.
+
+
+
+                                107. Short Circuiting (&& and ||)
+
+                                        AND & OR OPERATOR 
+                                          
+                                        shortCircuiting.js
