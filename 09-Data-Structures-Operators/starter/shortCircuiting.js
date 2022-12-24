@@ -99,7 +99,6 @@ const numberOfGuests = restaurant.numberOfGuests || 0;
 console.log(numberOfGuests);
 // Easier method to set default values, instead of ternary operator, or even
 // worse if-else statement.
-*/
 
 // AND operator, works the opposite way of the OR operator.
 console.log(0 && 'Antoan'); // output: 0
@@ -115,3 +114,15 @@ if (restaurant.orderPizza) {
 // if method does NOT exist, short-circuit will happen, and the return-undefined
 restaurant.orderPizza && restaurant.orderPizza('bacon');
 // restaurant.asd && restaurant.asd('bacon');
+
+*/
+// What if number of guests is actually 0(it will return 10, when we have 0 gues
+restaurant.numberOfGuests = 0; // 0 is falsy value. But we have 0 guests,so now?
+const numberOfGuests = restaurant.numberOfGuests || 10; // output: 10
+console.log(numberOfGuests);
+
+// VERY GOOD SOLUTION TO THIS: THE NULLISH COALescing operator (??)
+// nullish coalescing (нулево сливане) -> ES2020.
+
+const correctNumberOfGuests = restaurant.numberOfGuests ?? 10;
+console.log(correctNumberOfGuests);
