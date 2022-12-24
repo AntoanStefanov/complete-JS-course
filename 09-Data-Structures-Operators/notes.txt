@@ -11,3 +11,9 @@
                     Destructuring is to break complex data structure down into a smaller data structure like a variable.
 
             For arrays, we use destructuring to retrieve elements from the array and store them into variables in a very easy way.
+
+
+                                                104. Destructuring Objects
+                                                
+                                         Useful when dealing with API call's result.
+                                            
