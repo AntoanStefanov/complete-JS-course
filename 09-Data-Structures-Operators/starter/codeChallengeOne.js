@@ -51,15 +51,15 @@ const [players1, players2] = game.players;
 // console.log(players2);
 
 const [gk, ...fieldPlayers] = players1;
-// console.log(gk);
-// console.log(fieldPlayers);
+console.log(gk);
+console.log(fieldPlayers);
 
 const allPlayers = [...players1, ...players2];
 console.log(allPlayers);
 
 const substitudePlayers = ['Thiago', 'Coutinho', 'Perisic'];
 const players1Final = [...players1, ...substitudePlayers];
-
+console.log(players1Final);
 // const {team1, x: draw, team2} = game.odds;
 const {
   odds: {team1, x: draw, team2},
