@@ -14,6 +14,32 @@
 
 
                                                 104. Destructuring Objects
-                                                
+
+                                                  destructuringObject.js
+
                                          Useful when dealing with API call's result.
                                             
+
+                                              105. The Spread Operator (...)
+
+                                                    spreadOperator.js
+
+                                        Used to expand an array into all its elements.
+                                           Unpacking all the array's element at one.
+
+                                        ... takes all the elements from an array,
+                                        and it also does NOT create new variables, so
+                                    We can only used it in places where we would otherwise,
+                                            write values seperated by commas.
+
+                                        Spread Operator works on all so-called iterables.
+
+What is an iterable?
+There are different kinds of iterables in JS, we will talk about all of them.
+For now, iterables are things like arrays, strings, maps, sets, but NOT objects.
+Most of the built-in data structures, but except objects.
+                                    
+A JavaScript iterable is an object that has a Symbol. iterator. 
+The Symbol.
+iterator is a function that returns a next() function.
+An iterable can be iterated over with the code: for (const x of iterable) { }
