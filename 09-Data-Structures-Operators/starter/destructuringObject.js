@@ -24,7 +24,31 @@ const restaurant = {
   order: function (startMenuIndex, mainMenuIndex) {
     return [this.starterMenu[startMenuIndex], this.mainMenu[mainMenuIndex]];
   },
+
+  //             destructuring object, right away. We got 4 variable names.
+  orderDelivery: function ({
+    mainIndex = 0,
+    starterIndex = 1,
+    time = '20:00',
+    address,
+  }) {
+    console.log(time, address, mainIndex, starterIndex);
+    console.log(`Order recieved! ${this.starterMenu[starterIndex]} & \
+${this.mainMenu[mainIndex]} will be delivered to "${address}" at ${time}`);
+  },
 };
+
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Via del Sole, 21',
+  mainIndex: 2,
+  starterIndex: 0,
+});
+
+restaurant.orderDelivery({
+  address: 'Via del Sole, 21',
+  starterIndex: 2,
+});
 
 // variable names MUST EXATCLY MATCH property names.
 //                 {destructuring object}  = object;
@@ -37,12 +61,12 @@ const {
   // prop : variable name to be used.
   restaurantName: bestRestaurantName,
   // prop : variable name to be used.
-  openingHours: hours,
+  openingHours,
   // property same variable name.
   categories,
 } = restaurant;
 
-console.log(bestRestaurantName, categories, hours);
+console.log(bestRestaurantName, categories, openingHours);
 
 // Default value | giving different name as well as giving default value.
 // no menu prop  |
@@ -60,3 +84,10 @@ console.log(a, b);
 
 // Nested objects
 
+const {
+  fri: {open: openHour, close: closeHour},
+} = openingHours;
+
+console.log(openHour, closeHour);
+
+// Example of practical application of this destructuring
