@@ -130,4 +130,4 @@ console.log('correct ' + correctNumberOfGuests);
 // Works ALMOST same as OR operator, but why this work (0)?
 // The nullish coalescing operator works with the idea or with the concept of
 // NULLISH VALUES instead of FALSY VALUES.
-// NULLISH VALUES: null & undefined (NOT 0  or '')
+// NULLISH VALUES: null & undefined (NOT 0 or '')
