@@ -43,6 +43,14 @@ ${this.mainMenu[mainIndex]} will be delivered to "${address}" at ${time}`);
 Box for Home: ${boxForHome ? 'yes' : 'no'}. Restaurant: ${this.restaurantName}`,
     );
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    let str = `Pizza made with ${mainIngredient}`;
+    for (const ingredient of otherIngredients) {
+      str += ', ' + ingredient;
+    }
+    console.log(str);
+  },
 };
 
 // 1) Destructuring.
@@ -86,3 +94,21 @@ const {sat: saturday, ...weekDays} = restaurant.openingHours;
 console.log(saturday, weekDays);
 
 // 2) Functions.
+
+// rest pattern with params -> rest parameters
+const add = function (...numbers) {
+  let sum = 0;
+  for (const num of numbers) sum += num;
+  console.log(sum);
+};
+
+add(1, 2, 3, 4, 5, 6);
+
+const array = [23, 5, 7];
+add(...array);
+
+restaurant.orderPizza('salami', 'tomato sauce', 'cheese', 'pipeeroni');
+restaurant.orderPizza('salami');
+
+// Spread syntax is used where we would otherwise write values, sep. by comma.
+// Rest syntax is used where we would write variables names, sep. by comma.

@@ -51,4 +51,6 @@ An iterable can be iterated over with the code: for (const x of iterable) { }
 
 
                                 106. Rest Pattern and Parameters    
-                                
+
+                    Rest pattern is used where we would write variables names, sep. by comma.
+                    Spread pattern is used where we would write values, sep. by comma.
