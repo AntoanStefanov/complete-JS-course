@@ -46,6 +46,13 @@ const restaurant = {
     console.log(`Order recieved! ${this.starterMenu[starterIndex]} & \
 ${this.mainMenu[mainIndex]} will be delivered to "${address}" at ${time}`);
   },
+
+  orderPasta: function (ingredient, taste, boxForHome) {
+    console.log(
+      `You order pasta with ${ingredient} which taste is ${taste}.\
+Box for Home: ${boxForHome ? 'yes' : 'no'}. Restaurant: ${this.restaurantName}`,
+    );
+  },
 };
 
 restaurant.mainMenu = [...restaurant.mainMenu, 'Steak'];
@@ -77,3 +84,24 @@ console.log(allMenuItems);
 const str = 'Antoan';
 const lettersArray = [...str];
 console.log(lettersArray);
+
+// Multiple values seperated by a comma, are usually only expected,
+// when we pass arguments into a function or when we build a new array.
+// that's what spread operator do (unpacking into multiple values).
+const orderPastaArguments = ['tomato', 'delicious', true];
+restaurant.orderPasta(...orderPastaArguments);
+
+// Since ES2018, spread operator also works on objects.
+// Even though, objects are not iterables.
+
+// Objects: Shallow copy.
+const newRestaurant = {founder: 'Antoan', ...restaurant, parking: 'no'};
+console.log(newRestaurant);
+
+newRestaurant.openingHours.fri.open = 10;
+console.log('newRestaurant friday open ' + newRestaurant.openingHours.fri.open);
+console.log('restaurant friday open ' + restaurant.openingHours.fri.open);
+
+// Shallow copy of objects
+const restaurantCopy = {...restaurant};
+console.log(restaurantCopy);
