@@ -119,10 +119,15 @@ restaurant.orderPizza && restaurant.orderPizza('bacon');
 // What if number of guests is actually 0(it will return 10, when we have 0 gues
 restaurant.numberOfGuests = 0; // 0 is falsy value. But we have 0 guests,so now?
 const numberOfGuests = restaurant.numberOfGuests || 10; // output: 10
-console.log(numberOfGuests);
+console.log('wrong ' + numberOfGuests);
 
 // VERY GOOD SOLUTION TO THIS: THE NULLISH COALescing operator (??)
 // nullish coalescing (нулево сливане) -> ES2020.
 
 const correctNumberOfGuests = restaurant.numberOfGuests ?? 10;
-console.log(correctNumberOfGuests);
+console.log('correct ' + correctNumberOfGuests);
+
+// Works ALMOST same as OR operator, but why this work (0)?
+// The nullish coalescing operator works with the idea or with the concept of
+// NULLISH VALUES instead of FALSY VALUES.
+// NULLISH VALUES: null & undefined (NOT 0  or '')
