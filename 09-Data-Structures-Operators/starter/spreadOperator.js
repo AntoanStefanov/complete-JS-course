@@ -1,5 +1,9 @@
 'use strict';
 
+// spread operator USED FOR:
+// 1.building new arrays
+// 2.passing multiple values into a function.
+
 const arr = [7, 8, 9];
 console.log(arr);
 
