@@ -47,3 +47,8 @@ An iterable can be iterated over with the code: for (const x of iterable) { }
 // Multiple values seperated by a comma, are usually only expected,
 // when we pass arguments into a function or when we build a new array.
 // that's what spread operator do (unpacking values).
+
+
+
+                                106. Rest Pattern and Parameters    
+                                
