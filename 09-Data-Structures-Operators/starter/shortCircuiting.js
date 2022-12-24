@@ -1,37 +1,5 @@
 'use strict';
 
-// AND & OR logical operators.
-// How to use them for short circuit.
-// Until now, we used && and ||  to combine boolean values.
-// We can do more than that with these logical operators.
-
-// OR (||)
-
-// Non-boolean values as operands.
-console.log(3 || 'Antoan'); // output: 3
-
-// The result of the OR operator does NOT always have to be a boolean.
-
-// There are three properties about logical operators.
-// 1. They can use ANY data type.
-// 2. They can return ANY data type.
-// 3. They do 'short-circuiting'(short-circuit evaluation).
-
-// used 2 values that are not booleans, returned a value that was not a boolean.
-console.log(3 || 'Antoan'); // output: 3
-// About short circuit evaluation, in the case of the OR operator,
-// short circuiting means that if one of the given value is a truthy value,
-// it will immediately return that value, not caring about the rest values.
-
-// If no one of the given values is a truthy value, it will return the last one.
-
-const x = false || 0 || ''; // output: '' (empty string) /last value/
-console.log(x);
-
-// That works this way because
-// OR -> if at least one operand is true -> the result is true.
-// If one of the operands is true, we 'short-circuit' the evaluation.
-
 const restaurant = {
   restaurantName: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -85,6 +53,40 @@ Box for Home: ${boxForHome ? 'yes' : 'no'}. Restaurant: ${this.restaurantName}`,
   },
 };
 
+// AND & OR logical operators.
+// How to use them for short circuit.
+// Until now, we used && and ||  to combine boolean values.
+// We can do more than that with these logical operators.
+
+/*
+// OR (||)
+
+// Non-boolean values as operands.
+console.log(3 || 'Antoan'); // output: 3
+
+// The result of the OR operator does NOT always have to be a boolean.
+
+// There are three properties about logical operators.
+// 1. They can use ANY data type.
+// 2. They can return ANY data type.
+// 3. They do 'short-circuiting'(short-circuit evaluation).
+
+// used 2 values that are not booleans, returned a value that was not a boolean.
+console.log(3 || 'Antoan'); // output: 3
+// About short circuit evaluation, in the case of the OR operator,
+// short circuiting means that if one of the given value is a truthy value,
+// it will immediately return that value, not caring about the rest values.
+
+// If no one of the given values is a truthy value, it will return the last one.
+
+const x = false || 0 || ''; // output: '' (empty string) /last value/
+console.log(x);
+
+// That works this way because
+// OR -> if at least one operand is true -> the result is true.
+// If one of the operands is true, we 'short-circuit' the evaluation.
+
+
 // More practical application of it.
 // Let's say, we do not know if that prop exists.
 
@@ -97,3 +99,19 @@ const numberOfGuests = restaurant.numberOfGuests || 0;
 console.log(numberOfGuests);
 // Easier method to set default values, instead of ternary operator, or even
 // worse if-else statement.
+*/
+
+// AND operator, works the opposite way of the OR operator.
+console.log(0 && 'Antoan'); // output: 0
+// AND operator, short-circuits, when the first value is falsy.
+
+// Practical example:
+
+// If this method exists, Let's say we dont know if the method exists.
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('bacon', 'corn');
+}
+
+// if method does NOT exist, short-circuit will happen, and the return-undefined
+restaurant.orderPizza && restaurant.orderPizza('bacon');
+// restaurant.asd && restaurant.asd('bacon');

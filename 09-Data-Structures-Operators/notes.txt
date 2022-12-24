@@ -60,5 +60,7 @@ An iterable can be iterated over with the code: for (const x of iterable) { }
                                 107. Short Circuiting (&& and ||)
 
                                         AND & OR OPERATOR 
-                                          
+
                                         shortCircuiting.js
+
+                                        
