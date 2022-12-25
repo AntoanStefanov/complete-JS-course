@@ -74,9 +74,8 @@ An iterable can be iterated over with the code: for (const x of iterable) { }
 
                                 109. Logical Assignment Operators
 
-
-
                                 111. Looping Arrays: The for-of Loop
 
+                                    112. Enhanced Object Literals      
 
-                                    112. Enhanced Object Literals   
+                                     113. Optional Chaining (?.)
