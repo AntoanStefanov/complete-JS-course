@@ -48,6 +48,22 @@ for (const [key, value] of question) {
   typeof key === 'number' && console.log(`Answer ${key}: ${value}`);
 }
 
-const userAnswer = Number(prompt('Answer is: '));
+// const userAnswer = Number(prompt('Answer is: '));
+const userAnswer = 3;
 
-console.log(question.get(userAnswer === 1));
+console.log(question.get(userAnswer === question.get('correct')));
+
+// Sometimes we need to convert a map to an array..
+// [[key, value], [key, value], ...]
+// MAP TO ARRAY CONVERSION/convert.
+console.log([...question]);
+// map is an iterable, so spread operator is possible.
+
+// we have the methods, that we have on arrays.
+console.log(question.entries());
+console.log(question.keys());
+console.log(question.values());
+// these return MapIterator
+
+// So we can use spread operator(...) to be saved as array
+console.log([...question.values()]);
