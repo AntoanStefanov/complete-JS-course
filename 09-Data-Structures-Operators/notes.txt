@@ -79,3 +79,14 @@ An iterable can be iterated over with the code: for (const x of iterable) { }
                                     112. Enhanced Object Literals      
 
                                      113. Optional Chaining (?.)
+
+
+                            119. Summary: Which Data Structure to Use?
+
+
+    Simple list of values -> ARRAY/SET            KEY:VALUE PAIRS -> OBJECT/MAP
+        /Values with NO description/            /A Key allows us to describe an Value/
+                                                    /Values with description(KEY)/
+
+                                                    
+                                    

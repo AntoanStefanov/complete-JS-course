@@ -29,3 +29,24 @@
 // somewhere.
 
 // So, where do we store collections of data ? Answer: DATA STRUCTURES.
+
+// But, there are 4 built-in data structures in JS.
+// So, now we need a way of deciding between the them (the data structures).
+
+// FIRST QUESTION/DECISION:
+// -> Do we just need a simple list of values? (No description for values).
+// If 'yes', then we're gonna use an array or a set.
+
+// -> Do we need a key/value pairs?
+// If 'yes', then we need object/map (Description for values, aka key.)
+
+// getting data from a web API, bcs in modern JS apps, thats the most common
+// source of data
+
+// Data from web APIs, usually comes in a special data format, called JSON.
+// JSON is essentially just text, so, a long string. BUT
+// IT CAN EASILY be converted to JS objects, bcs it uses the same formatting as
+// JS objects & arrays.
+
+// ARRAYS vs SETS & OBJECTS vs MAPS
+
