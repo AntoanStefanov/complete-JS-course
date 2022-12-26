@@ -15,7 +15,7 @@ const gameEvents = new Map([
 ]);
 
 // 1.
-const events = new Set(gameEvents.values());
+const events = [...new Set(gameEvents.values())];
 console.log(events);
 
 // 2.
@@ -23,4 +23,13 @@ gameEvents.delete(64);
 console.log(gameEvents);
 
 // 3.
+// "An event happened, on average, every 9 minutes"
+console.log(
+  `An event happened, on average, every ${90 / gameEvents.size} minutes`,
+);
 
+// 4.
+// [FIRST HALF] 17: ⚽ GOAL
+for (const [minute, event] of gameEvents) {
+  console.log(`[${minute > 45 ? 'SECOND' : 'FIRST'} HALF] ${minute}: ${event}`);
+}
