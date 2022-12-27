@@ -107,3 +107,17 @@ const priceGB = '288,97';
 const dollarCourse = 1.2;
 const priceUS = Number(priceGB.replace(',', '.')) * dollarCourse;
 console.log(priceUS);
+
+// Practice
+const checkBaggage = function (items) {
+  items = items.toLowerCase();
+  if (items.includes('gun') || items.includes('knife')) {
+    console.log('No flying');
+  } else {
+    console.log('Save Flight!');
+  }
+};
+
+checkBaggage('I have a Laptop, some Food and a pocket Knife');
+checkBaggage('Socks and camera');
+checkBaggage('snacks and a gun');
