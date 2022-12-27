@@ -1,6 +1,7 @@
 'use strict';
 
-const airline = 'TAP Air Portugal';
+/*
+
 const plane = 'A320';
 
 console.log(plane[0]);
@@ -67,3 +68,42 @@ checkMiddleSeat('3E');
 // or str.__proto__ is the same.
 console.log(typeof 'asd'); // string
 console.log(typeof 'asd'.__proto__); // object.
+
+*/
+
+const airline = 'TAP Air Portugal';
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+console.log('Antoan'.toUpperCase());
+
+// Fix capitalization in name
+const passenger = 'tOnY'; // Tony
+
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+
+console.log(passengerCorrect);
+
+// Comparing user input email.
+const email = 'hello@example.com';
+// logs in.
+const loginEmail = '   Hello@Example.com \n';
+
+// const loginLowerCaseEmail = loginEmail.toLowerCase();
+// console.log(loginLowerCaseEmail);
+// const noSpaceloginLowerCaseEmail = loginLowerCaseEmail.replace(/\s/g, '');
+// const trimmedloginLowerCaseEmail = loginLowerCaseEmail.trim();
+// console.log(trimmedloginLowerCaseEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+
+console.log(email === normalizedEmail);
+
+// Replace parts of strings.
+const priceGB = '288,97';
+const dollarCourse = 1.2;
+const priceUS = Number(priceGB.replace(',', '.')) * dollarCourse;
+console.log(priceUS);
