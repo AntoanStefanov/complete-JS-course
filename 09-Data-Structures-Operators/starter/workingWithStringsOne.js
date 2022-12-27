@@ -164,3 +164,7 @@ const maskCreditCardNumber = function (creditCardNumber) {
 
 maskCreditCardNumber(3214389234239899);
 maskCreditCardNumber('3254343123214323');
+
+// Repeat
+const message2 = 'BAD WEATHER... ALL departures DELAYED! ';
+console.log(message2.repeat(6));
