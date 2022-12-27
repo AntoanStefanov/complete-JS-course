@@ -10,6 +10,8 @@ const flights =
 //   🔴 Delayed Arrival from HEL to FAO (12h05)
 //            Departure from FAO to LIS (12h30)
 
+const locationCode = (location) => location.replace(/[0-9]/g, '').toUpperCase();
+
 const eachFlightRawArr = flights.split('+');
 
 let maxLengthMessage = 0;
@@ -18,8 +20,8 @@ for (const rawFlight of eachFlightRawArr) {
   const [action, locationFrom, locationTo, time] = rawFlight.split(';');
 
   const actionStr = action.split('_').slice(1).join(' ');
-  const locationFromStr = locationFrom.replace(/[0-9]/g, '').toUpperCase();
-  const locationToStr = locationTo.replace(/[0-9]/g, '').toUpperCase();
+  const locationFromStr = locationCode(locationFrom);
+  const locationToStr = locationCode(locationTo);
   const timeStr = time.replace(':', 'h');
   let output = `${actionStr} from \
 ${locationFromStr} to ${locationToStr} (${timeStr})`;
