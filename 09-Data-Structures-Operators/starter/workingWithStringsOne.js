@@ -47,4 +47,13 @@ console.log(airline.slice(-2)); // -> 'Portugal' -> al
 console.log(airline.slice(0, -8)); // -> TAP Air
 console.log(airline.slice(-3, -1)); // -> 'Portugal' -> ga
 
+// fn, recieves an airplane seat, logs whether it is a middle seat or not.
+const checkMiddleSeat = function (seat) {
+  const seatPlace = seat.slice(-1);
+  if (seatPlace === 'B' || seatPlace === 'E') console.log('Middle seat');
+  else console.log('Side seat for ya.');
+};
 
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
