@@ -69,8 +69,6 @@ checkMiddleSeat('3E');
 console.log(typeof 'asd'); // string
 console.log(typeof 'asd'.__proto__); // object.
 
-*/
-
 const airline = 'TAP Air Portugal';
 
 console.log(airline.toLowerCase());
@@ -121,3 +119,26 @@ const checkBaggage = function (items) {
 checkBaggage('I have a Laptop, some Food and a pocket Knife');
 checkBaggage('Socks and camera');
 checkBaggage('snacks and a gun');
+
+*/
+
+console.log('a very nice string'.split(' '));
+
+const [firstName, lastName] = 'Antoan Stefanov'.split(' ');
+console.log(firstName, lastName);
+
+console.log(['Mr.', firstName, lastName.toUpperCase()].join(' '));
+
+const passenger = 'jessica ann smith davis';
+const capitalizedName = passenger
+  .split(' ')
+  .map((name) => name[0].toUpperCase() + name.slice(1).toLowerCase())
+  .join(' ');
+
+console.log(capitalizedName);
+
+// Padding a string:
+// Adding a number of characters to the string,
+// until the string has a certain desired length.
+
+
