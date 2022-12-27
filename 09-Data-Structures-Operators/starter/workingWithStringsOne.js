@@ -141,4 +141,26 @@ console.log(capitalizedName);
 // Adding a number of characters to the string,
 // until the string has a certain desired length.
 
+const message = 'Go to gate 23!';
+console.log(message.padStart(20, '#').padEnd(35, '#'));
+console.log('Antoan'.padStart(20, '#').padEnd(35, '#'));
 
+// Credit card number on internet, you never see the entire number.
+// Last 4 digits, rest is masked with some symbol.
+
+const maskCreditCardNumber = function (creditCardNumber) {
+  const lastDigitsLength = 4;
+  // Convert the credit card number to a string
+  // const creditCardNumberAsString = String(creditCardNumber);
+  const creditCardNumberAsString = creditCardNumber + '';
+
+  const cardNumberLength = creditCardNumberAsString.length;
+  const lastFourDigits = creditCardNumberAsString.slice(-lastDigitsLength);
+
+  console.log(
+    lastFourDigits.padStart(cardNumberLength - lastDigitsLength, '#'),
+  );
+};
+
+maskCreditCardNumber(3214389234239899);
+maskCreditCardNumber('3254343123214323');
