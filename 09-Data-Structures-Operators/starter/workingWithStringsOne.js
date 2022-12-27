@@ -57,3 +57,13 @@ const checkMiddleSeat = function (seat) {
 checkMiddleSeat('11B');
 checkMiddleSeat('23C');
 checkMiddleSeat('3E');
+
+// String is primitive, but JS converts it to String Object, with same content,
+// Then it's that object, which has the methods(Str obj inherits from Object 2)
+// This process is called 'boxing', takes the string and puts it into a box,
+// which is the object.
+
+// console.log(new String('Antoan')); // check the String object.
+// or str.__proto__ is the same.
+console.log(typeof 'asd'); // string
+console.log(typeof 'asd'.__proto__); // object.
