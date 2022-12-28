@@ -54,3 +54,16 @@ const newPassport = function (person) {
 newPassport(antoan);
 console.log(antoan);
 checkIn(flight, antoan);
+
+// There are two terms, used all the time when dealing with functions.
+// 'Passing by value'
+// 'Passing by reference'
+
+// JS does NOT have 'passing by reference', ONLY 'passing by value',
+// even though it LOOKS like 'passing by reference'
+
+// That reference, which we pass an object to a function, is STILL A VALUE!
+// It's simply a VALUE that HOLDS a memory address.
+
+// Basically, we pass a reference to the function,
+//  but we do NOT pass by reference
