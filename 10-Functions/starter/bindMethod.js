@@ -80,8 +80,10 @@ bookLX(114, 'Toro Takov');
 
 const bookEW23 = book.bind(eurowings, 23); // we can define the list of args.,23
 // Specifying some of the arguments beforehand, is actually a common pattern,
-// called 'PARTIAL APPLICATION'
+// called 'PARTIAL APPLICATION' means:
+// that a part of the arguments of the original function are already applied/set
 // https://www.google.com/search?q=PARTIAL+APPLICATION+meaning&oq=PARTIAL+APPLICATION+meaning&aqs=chrome..69i57j0i15i22i30j0i15i22i30i625j0i22i30l5j0i15i22i30l2.1423j0j7&sourceid=chrome&ie=UTF-8
+// In this case, 23.
 
 bookEW23('Pesho Takov');
 // bookEW23 only needs the name, bcs we passed/bounded flightNum already above.
@@ -90,3 +92,36 @@ bookEW23('Pesho Takov');
 console.log(lufthansa);
 console.log(eurowings);
 console.log(swiss);
+
+// There are other situations where we can use the bind method, and where
+// it is very useful.
+
+// One example of that is, when we use objects together with event listeners.
+
+lufthansa.planes = 300; // this company has 300 planes.
+lufthansa.buyPlane = function () {
+  console.log(this);
+
+  // no bind. when fn used as an event handler,
+  // in event handler function, the 'this' keyword always points to the element
+  // the 'this' keyword points to the object on which the event listener is set.
+  // in this case the buyPlaneBtn Element - check below where listener is added.
+
+  this.planes++; // add new plane, when btn clicked.
+  console.log(`Planes now: ${this.planes}`);
+};
+
+// const buyPlaneLufthansa = lufthansa.buyPlane.bind(lufthansa);
+// or passing that variable 'buyPlaneLufthansa' to the addEventListener fn ?
+// or passing directly to the addEventListener, as below.
+// Which way is better ? or they are the same?
+
+const buyPlaneBtn = document.querySelector('.buy');
+// Lets attach our event handler to the buy plane button.
+buyPlaneBtn.addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+// We use bind in the addEventHandler fn, because bind returns a new bound fn!
+// in an event handler function, the 'this' keyword always points to the element
+// on which that listener is attached to.
+// We need to manually set the 'this' keyword, in this case.
+// call or bind ? well, we need to pass a function in the addEventListener fn,
+// NOT TO CALL IT. So, bind is the answer.
