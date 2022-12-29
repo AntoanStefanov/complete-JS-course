@@ -19,7 +19,6 @@ Flight: ${this.iataCode}${flightNum}`);
 
 lufthansa.book(239, 'Antoan Stefanov');
 lufthansa.book(365, 'Jonas Smith');
-console.log(lufthansa.bookings);
 
 // Let's say the Lufthansa group created a new airline.
 
@@ -49,4 +48,25 @@ const book = lufthansa.book;
 // call, apply, bind.
 
 book.call(eurowings, 23, 'Sarah Maria');
+
+book.call(lufthansa, 43, 'John Carry');
+console.log(lufthansa);
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+book.call(swiss, 33, 'Roy Pero');
+console.log(swiss);
+
+// There is similar method to the call method, called apply.
+
+// apply method does the same thing.
+// The only difference is that 'apply' does not recieve a list of arguments,
+// after the 'this' keyword is, it does NOT recieve a list of args like 'call'.
+// book.call(swiss, 33, 'Roy Pero'); -> Does NOT recieve ... 33, 'Roy Pero');
+// but instead APPLY RECIEVES AN ARRAY OF ARGUMENTS.
+book.apply(eurowings, [22, 'Alice Pero']);
 console.log(eurowings);
