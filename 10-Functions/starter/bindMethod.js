@@ -79,8 +79,13 @@ bookLX(114, 'Toro Takov');
 // for one specific flight number.
 
 const bookEW23 = book.bind(eurowings, 23); // we can define the list of args.,23
+// Specifying some of the arguments beforehand, is actually a common pattern,
+// called 'PARTIAL APPLICATION'
+// https://www.google.com/search?q=PARTIAL+APPLICATION+meaning&oq=PARTIAL+APPLICATION+meaning&aqs=chrome..69i57j0i15i22i30j0i15i22i30i625j0i22i30l5j0i15i22i30l2.1423j0j7&sourceid=chrome&ie=UTF-8
+
 bookEW23('Pesho Takov');
 // bookEW23 only needs the name, bcs we passed/bounded flightNum already above.
+// Check in debug mode, bookEW23 fn/expand it/, [[boundThis]], [[boundArgs]]
 
 console.log(lufthansa);
 console.log(eurowings);
