@@ -36,11 +36,11 @@ body {
   /* font-family added in link tag (index.html) */
   /* How to add font https://youtu.be/dtKciwk_si4?t=152 */
   /* https://stackoverflow.com/questions/12316501/including-google-fonts-link-or-import */
+  color: #627E8A;
 }
 
 .countdown-container {
   display: flex;
-  justify-content: ;
 }
 
 h1 {
@@ -49,4 +49,15 @@ h1 {
 
 .big-text {
   font-size: 7rem;
+  margin: 0 2rem;
+  margin-top: 16rem;
+  display: flex;
+  height: 9rem;
+}
+
+.countdown-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
