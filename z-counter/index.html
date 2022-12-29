@@ -15,10 +15,6 @@
     <title>CountDown Timer</title>
 
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
-  </head>
-  <body>
-    <h1>Hello Tony</h1>
     <!-- 
       What is script defer?
       defer. 
@@ -27,5 +23,27 @@
       but before firing DOMContentLoaded. Scripts with the defer attribute
       will prevent the DOMContentLoaded event from firing until the script has loaded and finished evaluating
     -->
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h1>New Year's Eve</h1>
+    <div class="countdown-container">
+      <div class="days-container">
+        <p class="big-text" id="days">0</p>
+        <span>days</span>
+      </div>
+      <div class="hours-container">
+        <p class="big-text" id="hours">0</p>
+        <span>hours</span>
+      </div>
+      <div class="minutes-container">
+        <p class="big-text" id="minutes">0</p>
+        <span>minutes</span>
+      </div>
+      <div class="seconds-container">
+        <p class="big-text" id="seconds">0</p>
+        <span>seconds</span>
+      </div>
+    </div>
   </body>
 </html>
