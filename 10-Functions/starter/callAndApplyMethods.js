@@ -68,5 +68,17 @@ console.log(swiss);
 // after the 'this' keyword is, it does NOT recieve a list of args like 'call'.
 // book.call(swiss, 33, 'Roy Pero'); -> Does NOT recieve ... 33, 'Roy Pero');
 // but instead APPLY RECIEVES AN ARRAY OF ARGUMENTS.
-book.apply(eurowings, [22, 'Alice Pero']);
+const flightData = [22, 'Alice Pero'];
+book.apply(eurowings, flightData);
 console.log(eurowings);
+
+// Apply method is NOT that used anymore, in modern JS
+// because now we have a better way of doing the exact same thing.
+
+book.call(swiss, ...flightData); // spread operator
+console.log(swiss);
+
+// use call method instead of apply. if args are in array, use spread operator.
+// Spreading out the arguments.
+
+// call method allows us to EXPLICITLY define the 'this' keyword in any function
