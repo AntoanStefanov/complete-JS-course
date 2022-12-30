@@ -40,5 +40,31 @@ console.log([...arr]);
 
 // The only time u really need the slice method is when
 // u want to chain multiple methods together.calling them one after the other
-
+console.log('----------------------------------------------------------------');
 // SPLICE
+// almost same as slice, difference is that it DOES change the original array.
+// It mutates the original array.
+console.log(arr.splice(3)); // returns deleted elements
+console.log(arr);
+
+// Usually when using splice, the goal is to just delete some elements from arr.
+// One common use case is to simply remove last element
+console.log(arr.splice(-1));
+console.log(arr);
+// I think (really me) that pop is more common for that.
+arr.pop();
+arr.pop();
+console.log(arr);
+
+arr.push(...['a', 'b', 'c', 'd', 'e']);
+console.log(arr);
+
+arr.splice(1, 2);
+console.log(arr);
+
+// REVERSE
+arr.reverse(); // mutates the original array.
+console.log(arr);
+
+// CONCAT
+const arr2 = ['a', 'b', 'c', 'd', 'e'];
