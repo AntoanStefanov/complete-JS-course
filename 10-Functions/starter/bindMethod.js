@@ -125,3 +125,32 @@ buyPlaneBtn.addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
 // We need to manually set the 'this' keyword, in this case.
 // call or bind ? well, we need to pass a function in the addEventListener fn,
 // NOT TO CALL IT. So, bind is the answer.
+
+// Final example of partial application.
+// Another big use case for bind method.
+
+// Many times we are not interested in 'this' keyword.
+// But we still use bind for this
+
+// Partial application -> preset arguments.
+
+const addTax = (rate, value) => value + (value * rate) / 100;
+console.log(addTax(10, 200));
+
+// Let's say that, there is one tax that we use all the time.
+const addVAT = addTax.bind(null, 20); // here, null is for 'this' keyw
+// bind method creates and RETURNS brand new function.
+console.log(addVAT(200));
+
+// Above example with function returning another function.
+
+const addTaxfn = function (rate) {
+  return function (value) {
+    return value + (value * rate) / 100;
+  };
+};
+
+console.log(addTaxfn(20)(200));
+// OR
+const addVATfn = addTaxfn(20);
+console.log(addVATfn(200));
