@@ -47,3 +47,9 @@ booker();
 
 // In a sense, the scope chain is preserved, thorugh closure, even when a scope
 // Has been destroyed, bcs its execution context is gone.
+
+// CLOSURE HAS PRIORITY OVER THE SCOPE CHAIN!.
+
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648683#overview
+
+console.dir(booker);
