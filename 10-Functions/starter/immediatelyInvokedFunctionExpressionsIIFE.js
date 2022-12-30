@@ -50,3 +50,20 @@
 // a good tool for doing this.
 
 // This is also the reason why IIFE were invented.
+
+// {
+//   const isPrivate = 23;
+//   var notPrivate = 46;
+// }
+
+// console.log(isPrivate); // error, BLOCK SCOPE, const, let are block scoped.
+// console.log(notPrivate); // not error, var is function scoped
+
+// this is the reason why now in modern JS, IIFE are not that used anymore.
+// bcs if all we want is to create a new scope for data privacy, all we need
+// to do, is just to create a block(block scope) like this
+// There is no need to create a function for new scope, unless ofc
+// we want to use var for our variables. But we already know, we probably should
+// NOT do that.
+
+// On the other hand, if u want to execute a function just once, u can use IFFE
