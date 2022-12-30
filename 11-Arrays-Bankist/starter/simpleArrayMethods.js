@@ -68,3 +68,9 @@ console.log(arr);
 
 // CONCAT
 const arr2 = ['a', 'b', 'c', 'd', 'e'];
+
+const letters = arr.concat(arr2);
+// above is same as
+console.log([...arr, ...arr2]);
+
+console.log(letters);
