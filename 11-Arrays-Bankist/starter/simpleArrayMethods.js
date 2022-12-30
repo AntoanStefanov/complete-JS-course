@@ -74,3 +74,7 @@ const letters = arr.concat(arr2);
 console.log([...arr, ...arr2]);
 
 console.log(letters);
+
+// JOIN
+console.log(letters.join(' - ')); // returns string with the specified separator
+
