@@ -141,6 +141,7 @@ console.log(addTax(10, 200));
 const addVAT = addTax.bind(null, 20); // here, null is for 'this' keyw
 // bind method creates and RETURNS brand new function.
 console.log(addVAT(200));
+console.dir(addVAT);
 
 // Above example with function returning another function.
 
@@ -154,3 +155,5 @@ console.log(addTaxfn(20)(200));
 // OR
 const addVATfn = addTaxfn(20);
 console.log(addVATfn(200));
+
+console.dir(addVATfn);
