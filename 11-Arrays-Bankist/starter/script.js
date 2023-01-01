@@ -68,20 +68,40 @@ const inputClosePin = document.querySelector('.form__input--pin');
 const displayMovements = function (movements) {
   // Emptying container
   containerMovements.innerHTML = '';
+
+  const movementsFrag = document.createDocumentFragment();
+
   // Adding new Elements.
-  movements.forEach(function (movement, index) {
+  movements.reverse().forEach(function (movement, index) {
+    const movementRowEl = document.createElement('row');
+    movementRowEl.classList.add('movements__row');
+
     const movementType = movement > 0 ? 'deposit' : 'withdrawal';
-    const movementRowHTML = `\
-<div class="movements__row">
-  <div class="movements__type movements__type--${movementType}">\
-${index + 1} ${movementType}</div>
-  <div class="movements__date">3 days ago</div>
-  <div class="movements__value">${movement}</div>
-</div>`;
-    console.log(movementRowHTML);
+    const movementTypeEl = document.createElement('div');
+    movementTypeEl.classList.add(
+      'movements__type',
+      `movements__type--${movementType}`,
+    );
+    movementTypeEl.textContent = `${index + 1} ${movementType}`;
+
+    const movementDateEl = document.createElement('div');
+    movementDateEl.classList.add('movements__date');
+    movementDateEl.textContent = '3 days ago';
+
+    const movementValueEl = document.createElement('div');
+    movementValueEl.classList.add('movements__value');
+    movementValueEl.textContent = movement;
+
+    movementRowEl.appendChild(movementTypeEl);
+    movementRowEl.appendChild(movementDateEl);
+    movementRowEl.appendChild(movementValueEl);
+
+    movementsFrag.appendChild(movementRowEl);
+
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
-    containerMovements.insertAdjacentHTML('afterbegin', movementRowHTML);
+    // containerMovements.insertAdjacentHTML('afterbegin', movementRowHTML);
   });
+  containerMovements.appendChild(movementsFrag);
 };
 
 displayMovements(account1.movements);
