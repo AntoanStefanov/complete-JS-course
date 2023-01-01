@@ -1,9 +1,5 @@
 'use strict';
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// BANKIST APP
-
 // Data
 const account1 = {
   owner: 'Jonas Schmedtmann',
@@ -61,16 +57,31 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
+// 147. Creating DOM Elements.
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// Whenever we do some functionality of our app,
+// Writing our code in the global context is BAD PRACTICE.
+// it's always best to create a function.
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// Intead of working with the global variables,
+// start passing the data into the function that needs it.
+const displayMovements = function (movements) {
+  // Emptying container
+  containerMovements.innerHTML = '';
+  // Adding new Elements.
+  movements.forEach(function (movement, index) {
+    const movementType = movement > 0 ? 'deposit' : 'withdrawal';
+    const movementRowHTML = `\
+<div class="movements__row">
+  <div class="movements__type movements__type--${movementType}">\
+${index + 1} ${movementType}</div>
+  <div class="movements__date">3 days ago</div>
+  <div class="movements__value">${movement}</div>
+</div>`;
+    console.log(movementRowHTML);
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
+    containerMovements.insertAdjacentHTML('afterbegin', movementRowHTML);
+  });
+};
 
-/////////////////////////////////////////////////
+displayMovements(account1.movements);
