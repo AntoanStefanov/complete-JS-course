@@ -65,6 +65,17 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // Intead of working with the global variables,
 // start passing the data into the function that needs it.
+
+// https://stackoverflow.com/questions/11796093/is-there-a-way-to-provide-named-parameters-in-a-function-call-in-javascript
+const createHTMLElement = ({tagName = 'div', classNames = [], textContent}) => {
+  const el = document.createElement(tagName);
+  el.classList.add(...classNames);
+  if (textContent === 0 || textContent) {
+    el.textContent = textContent;
+  }
+  return el;
+};
+
 const displayMovements = function (movements) {
   // Emptying container
   containerMovements.innerHTML = '';
@@ -73,34 +84,36 @@ const displayMovements = function (movements) {
 
   // Adding new Elements.
   movements.reverse().forEach(function (movement, index) {
-    const movementRowEl = document.createElement('row');
-    movementRowEl.classList.add('movements__row');
+    const movementRowEl = createHTMLElement({
+      classNames: 'movements__row',
+    });
 
     const movementType = movement > 0 ? 'deposit' : 'withdrawal';
-    const movementTypeEl = document.createElement('div');
-    movementTypeEl.classList.add(
-      'movements__type',
-      `movements__type--${movementType}`,
-    );
-    movementTypeEl.textContent = `${index + 1} ${movementType}`;
 
-    const movementDateEl = document.createElement('div');
-    movementDateEl.classList.add('movements__date');
-    movementDateEl.textContent = '3 days ago';
+    const movementTypeEl = createHTMLElement({
+      classNames: ['movements__type', `movements__type--${movementType}`],
+      textContent: `${index + 1} ${movementType}`,
+    });
 
-    const movementValueEl = document.createElement('div');
-    movementValueEl.classList.add('movements__value');
-    movementValueEl.textContent = movement;
+    const movementDateEl = createHTMLElement({
+      classNames: ['movements__date'],
+      textContent: '3 days ago',
+    });
 
-    movementRowEl.appendChild(movementTypeEl);
-    movementRowEl.appendChild(movementDateEl);
-    movementRowEl.appendChild(movementValueEl);
+    const movementValueEl = createHTMLElement({
+      classNames: ['movements__value'],
+      textContent: movement,
+    });
 
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/append
+    movementRowEl.append(movementTypeEl, movementDateEl, movementValueEl);
     movementsFrag.appendChild(movementRowEl);
 
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
     // containerMovements.insertAdjacentHTML('afterbegin', movementRowHTML);
+    // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648719#questions
   });
+
   containerMovements.appendChild(movementsFrag);
 };
 
