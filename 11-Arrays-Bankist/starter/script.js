@@ -83,9 +83,11 @@ const displayMovements = function (movements) {
   const movementsFrag = document.createDocumentFragment();
 
   // Adding new Elements.
-  movements.reverse().forEach(function (movement, index) {
+  for (let index = movements.length - 1; index >= 0; index--) {
+    const movement = movements[index];
+
     const movementRowEl = createHTMLElement({
-      classNames: 'movements__row',
+      classNames: ['movements__row'],
     });
 
     const movementType = movement > 0 ? 'deposit' : 'withdrawal';
@@ -112,8 +114,7 @@ const displayMovements = function (movements) {
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
     // containerMovements.insertAdjacentHTML('afterbegin', movementRowHTML);
     // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648719#questions
-  });
-
+  }
   containerMovements.appendChild(movementsFrag);
 };
 
