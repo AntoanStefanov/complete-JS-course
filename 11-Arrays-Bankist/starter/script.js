@@ -154,5 +154,4 @@ const displayBalance = function (account) {
   const balance = calcBalance(account.movements);
   labelBalance.textContent = balance;
 };
-
 displayBalance(account1);
