@@ -77,6 +77,9 @@ const createHTMLElement = ({tagName = 'div', classNames = [], textContent}) => {
 };
 
 const displayMovements = function (movements) {
+  // Each function should actually recieve the data that it will work with,
+  // instead of using global variables.
+
   // Emptying container
   containerMovements.innerHTML = '';
 
@@ -118,3 +121,20 @@ const displayMovements = function (movements) {
 };
 
 displayMovements(account1.movements);
+
+const createUsernames = function (accounts) {
+  // Each function should actually recieve the data that it will work with,
+  // instead of using global variables.
+  // We don't want to rely on the accounts variable, that we already have,
+  // instead, we want to pass it into the function.
+  accounts.forEach(function (account) {
+    const username = account.owner
+      .split(' ')
+      .map((currentName) => currentName[0].toLowerCase())
+      // arrwFn ACTIVELY RETURNS, THERE IS A RETURN KEYWORD, IT IS JUST HIDDEN.
+      .join('');
+
+    account.username = username;
+  });
+};
+createUsernames(accounts);
