@@ -83,9 +83,7 @@ const displayMovements = function (movements) {
   const movementsFrag = document.createDocumentFragment();
 
   // Adding new Elements.
-  for (let index = movements.length - 1; index >= 0; index--) {
-    const movement = movements[index];
-
+  movements.forEach(function (movement, index) {
     const movementRowEl = createHTMLElement({
       classNames: ['movements__row'],
     });
@@ -109,12 +107,13 @@ const displayMovements = function (movements) {
 
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/append
     movementRowEl.append(movementTypeEl, movementDateEl, movementValueEl);
-    movementsFrag.appendChild(movementRowEl);
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend
+    movementsFrag.prepend(movementRowEl);
 
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
     // containerMovements.insertAdjacentHTML('afterbegin', movementRowHTML);
     // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648719#questions
-  }
+  });
   containerMovements.appendChild(movementsFrag);
 };
 
