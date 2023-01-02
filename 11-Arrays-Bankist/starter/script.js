@@ -152,6 +152,6 @@ const calcBalance = (movements) => {
 
 const displayBalance = function (account) {
   const balance = calcBalance(account.movements);
-  labelBalance.textContent = balance;
+  labelBalance.textContent = `${balance} EUR`;
 };
 displayBalance(account1);
