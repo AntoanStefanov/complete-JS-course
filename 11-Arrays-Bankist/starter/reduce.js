@@ -6,5 +6,4 @@ const totalBalance = movements.reduce(
   (totalBalance, movement) => totalBalance + movement,
   0,
 );
-
 console.log(totalBalance);
