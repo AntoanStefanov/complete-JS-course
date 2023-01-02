@@ -3,11 +3,10 @@
 const checkDogs = function (dogsJulia, dogsKate) {
   // creating shallow copy,
   // parameters because it's a bad practice to mutate function
-
-  const dogsJuliaCpy = [...dogsJulia].slice(2);
+  const dogsJuliaCpy = [...dogsJulia].slice(1, -2);
 
   const dogs = [...dogsJuliaCpy, ...dogsKate];
-  console.log(dogs);
+
   dogs.forEach((years, index) => {
     if (years >= 3) {
       console.log(
