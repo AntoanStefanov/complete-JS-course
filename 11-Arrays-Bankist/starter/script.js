@@ -119,7 +119,6 @@ const displayMovements = function (movements) {
   });
   containerMovements.appendChild(movementsFrag);
 };
-
 displayMovements(account1.movements);
 
 const createUsernames = function (accounts) {
@@ -127,7 +126,10 @@ const createUsernames = function (accounts) {
   // instead of using global variables.
   // We don't want to rely on the accounts variable, that we already have,
   // instead, we want to pass it into the function.
-  accounts.forEach(function (account) {
+
+  // forEach method, because we do NOT want to create a new array(map method).
+  // We simply want to modify the array that we get as an input.
+  accounts.forEach((account) => {
     const username = account.owner
       .split(' ')
       .map((currentName) => currentName[0].toLowerCase())
