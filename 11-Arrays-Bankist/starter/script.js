@@ -31,7 +31,8 @@ const account4 = {
 
 const accounts = [account1, account2, account3, account4];
 
-// Elements
+// Elements.
+// Label is basically all the things where we simply want to put some text in.
 const labelWelcome = document.querySelector('.welcome');
 const labelDate = document.querySelector('.date');
 const labelBalance = document.querySelector('.balance__value');
@@ -140,3 +141,18 @@ const createUsernames = function (accounts) {
   });
 };
 createUsernames(accounts);
+
+const calcBalance = (movements) => {
+  const initialBalance = 0;
+  return movements.reduce(
+    (balance, movement) => balance + movement,
+    initialBalance,
+  );
+};
+
+const displayBalance = function (account) {
+  const balance = calcBalance(account.movements);
+  labelBalance.textContent = balance;
+};
+
+displayBalance(account1);
