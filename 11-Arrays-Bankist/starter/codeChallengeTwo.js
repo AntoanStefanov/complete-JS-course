@@ -8,7 +8,7 @@ const calcAverageHumanAge = function (arr) {
   const adultDogs = dogAgesInHumanAges.filter((age) => age >= 18);
 
   const avgHumanAge = adultDogs.reduce(
-    (currentAverage, currentAge, currentIndex, array) =>
+    (currentAverage, currentAge, _, array) =>
       currentAverage + currentAge / array.length,
     0,
   );
