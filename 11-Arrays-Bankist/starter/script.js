@@ -122,6 +122,20 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const calcBalance = (movements) => {
+  const initialBalance = 0;
+  return movements.reduce(
+    (balance, movement) => balance + movement,
+    initialBalance,
+  );
+};
+
+const displayBalance = function (account) {
+  const balance = calcBalance(account.movements);
+  labelBalance.textContent = `${balance} EUR`;
+};
+displayBalance(account1);
+
 const createUsernames = function (accounts) {
   // Each function should actually recieve the data that it will work with,
   // instead of using global variables.
@@ -141,17 +155,3 @@ const createUsernames = function (accounts) {
   });
 };
 createUsernames(accounts);
-
-const calcBalance = (movements) => {
-  const initialBalance = 0;
-  return movements.reduce(
-    (balance, movement) => balance + movement,
-    initialBalance,
-  );
-};
-
-const displayBalance = function (account) {
-  const balance = calcBalance(account.movements);
-  labelBalance.textContent = `${balance} EUR`;
-};
-displayBalance(account1);
