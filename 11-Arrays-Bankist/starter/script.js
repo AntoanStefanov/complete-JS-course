@@ -180,7 +180,7 @@ const updateUI = function (account) {
 
       return movements
         .filter((movement) => movement > 0)
-        .map((deposit) => (deposit * 1.2) / 100)
+        .map((deposit) => (deposit * account.interestRate) / 100)
         .filter((interest) => interest >= 1)
         .reduce(
           (currentInterest, depositInterest) =>
@@ -196,6 +196,15 @@ const updateUI = function (account) {
     displayInterest(account);
   };
   displaySummary(account);
+
+  const clearUsedCredentials = () => {
+    // from right to left, operator precedence MDN
+    inputLoginUsername.value = inputLoginPin.value = '';
+    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/blur
+    inputLoginPin.blur();
+    inputLoginUsername.blur();
+  };
+  clearUsedCredentials();
 };
 
 const createUsernames = function (accounts) {
