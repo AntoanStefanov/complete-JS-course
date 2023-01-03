@@ -78,12 +78,12 @@ const createHTMLElement = ({tagName = 'div', classNames = [], textContent}) => {
 };
 
 const updateUI = function (account) {
-  const displayWelcomeMessage = function (account) {
+  const displayWelcomeMessage = function () {
     labelWelcome.textContent = `Welcome back, ${account.owner.split(' ')[0]}`;
   };
-  displayWelcomeMessage(account);
+  displayWelcomeMessage();
 
-  const displayMovements = function (account) {
+  const displayMovements = function () {
     // Each function should actually recieve the data that it will work with,
     // instead of using global variables.
 
@@ -126,76 +126,72 @@ const updateUI = function (account) {
     });
     containerMovements.appendChild(movementsFrag);
   };
-  displayMovements(account);
+  displayMovements();
 
-  const calcBalance = (movements) => {
+  const calcBalance = () => {
     const initialBalance = 0;
-    return movements.reduce(
+    return account.movements.reduce(
       (balance, movement) => balance + movement,
       initialBalance,
     );
   };
 
-  const displayBalance = function (account) {
+  const displayBalance = function () {
     const balance = calcBalance(account.movements);
     labelBalance.textContent = `${balance}€`;
   };
-  displayBalance(account);
+  displayBalance();
 
-  const displaySummary = function (account) {
-    const calcIncome = function (movements) {
-      const initialIncome = 0;
-      return movements
-        .filter((movement) => movement > 0)
-        .reduce(
-          (currentIncome, movement) => currentIncome + movement,
-          initialIncome,
-        );
-    };
-
-    const displayIncome = function (account) {
-      const income = calcIncome(account.movements);
-      labelSumIn.textContent = `${income}€`;
-    };
-    displayIncome(account);
-
-    const calcOutcome = function (movements) {
-      const initialIncome = 0;
-      return movements
-        .filter((movement) => movement < 0)
-        .reduce(
-          (currentOutcome, movement) => currentOutcome + movement,
-          initialIncome,
-        );
-    };
-
-    const displayOutcome = function (account) {
-      const outcome = calcOutcome(account.movements);
-      labelSumOut.textContent = `${Math.abs(outcome)}€`;
-    };
-    displayOutcome(account);
-
-    const calcInterest = function (movements) {
-      const initialInterest = 0;
-
-      return movements
-        .filter((movement) => movement > 0)
-        .map((deposit) => (deposit * account.interestRate) / 100)
-        .filter((interest) => interest >= 1)
-        .reduce(
-          (currentInterest, depositInterest) =>
-            currentInterest + depositInterest,
-          initialInterest,
-        );
-    };
-
-    const displayInterest = function (account) {
-      const interest = calcInterest(account.movements);
-      labelSumInterest.textContent = `${interest}€`;
-    };
-    displayInterest(account);
+  const calcIncome = function () {
+    const initialIncome = 0;
+    return account.movements
+      .filter((movement) => movement > 0)
+      .reduce(
+        (currentIncome, movement) => currentIncome + movement,
+        initialIncome,
+      );
   };
-  displaySummary(account);
+
+  const displayIncome = function () {
+    const income = calcIncome(account.movements);
+    labelSumIn.textContent = `${income}€`;
+  };
+  displayIncome();
+
+  const calcOutcome = function () {
+    const initialIncome = 0;
+    return account.movements
+      .filter((movement) => movement < 0)
+      .reduce(
+        (currentOutcome, movement) => currentOutcome + movement,
+        initialIncome,
+      );
+  };
+
+  const displayOutcome = function () {
+    const outcome = calcOutcome(account.movements);
+    labelSumOut.textContent = `${Math.abs(outcome)}€`;
+  };
+  displayOutcome();
+
+  const calcInterest = function () {
+    const initialInterest = 0;
+
+    return account.movements
+      .filter((movement) => movement > 0)
+      .map((deposit) => (deposit * account.interestRate) / 100)
+      .filter((interest) => interest >= 1)
+      .reduce(
+        (currentInterest, depositInterest) => currentInterest + depositInterest,
+        initialInterest,
+      );
+  };
+
+  const displayInterest = function () {
+    const interest = calcInterest(account.movements);
+    labelSumInterest.textContent = `${interest}€`;
+  };
+  displayInterest();
 
   const clearUsedCredentials = () => {
     // from right to left, operator precedence MDN
