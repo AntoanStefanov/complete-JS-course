@@ -169,14 +169,18 @@ const displayOutcome = function (account) {
 displayOutcome(account1);
 
 const calcInterest = function (movements) {
+  const initialInterest = 0;
+
   return movements
     .filter((movement) => movement > 0)
-    .map((deposit) => deposit * 0.12)
+    .map((deposit) => deposit * 0.012)
+    .filter((interest) => interest >= 1)
     .reduce(
       (currentInterest, depositInterest) => currentInterest + depositInterest,
-      0,
+      initialInterest,
     );
 };
+
 const displayInterest = function (account) {
   const interest = calcInterest(account.movements);
   labelSumInterest.textContent = `${interest}€`;
