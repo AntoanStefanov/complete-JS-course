@@ -77,7 +77,7 @@ const createHTMLElement = ({tagName = 'div', classNames = [], textContent}) => {
   return el;
 };
 
-const displayMovements = function (movements) {
+const displayMovements = function (account) {
   // Each function should actually recieve the data that it will work with,
   // instead of using global variables.
 
@@ -87,7 +87,7 @@ const displayMovements = function (movements) {
   const movementsFrag = document.createDocumentFragment();
 
   // Adding new Elements.
-  movements.forEach(function (movement, index) {
+  account.movements.forEach(function (movement, index) {
     const movementRowEl = createHTMLElement({
       classNames: ['movements__row'],
     });
@@ -106,7 +106,7 @@ const displayMovements = function (movements) {
 
     const movementValueEl = createHTMLElement({
       classNames: ['movements__value'],
-      textContent: movement,
+      textContent: `${movement}€`,
     });
 
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/append
@@ -120,7 +120,7 @@ const displayMovements = function (movements) {
   });
   containerMovements.appendChild(movementsFrag);
 };
-displayMovements(account1.movements);
+displayMovements(account1);
 
 const calcBalance = (movements) => {
   const initialBalance = 0;
@@ -132,9 +132,56 @@ const calcBalance = (movements) => {
 
 const displayBalance = function (account) {
   const balance = calcBalance(account.movements);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance}€`;
 };
 displayBalance(account1);
+
+const calcIncome = function (movements) {
+  const initialIncome = 0;
+  return movements
+    .filter((movement) => movement > 0)
+    .reduce(
+      (currentIncome, movement) => currentIncome + movement,
+      initialIncome,
+    );
+};
+
+const displayIncome = function (account) {
+  const income = calcIncome(account.movements);
+  labelSumIn.textContent = `${income}€`;
+};
+displayIncome(account1);
+
+const calcOutcome = function (movements) {
+  const initialIncome = 0;
+  return movements
+    .filter((movement) => movement < 0)
+    .reduce(
+      (currentOutcome, movement) => currentOutcome + movement,
+      initialIncome,
+    );
+};
+
+const displayOutcome = function (account) {
+  const outcome = calcOutcome(account.movements);
+  labelSumOut.textContent = `${Math.abs(outcome)}€`;
+};
+displayOutcome(account1);
+
+const calcInterest = function (movements) {
+  return movements
+    .filter((movement) => movement > 0)
+    .map((deposit) => deposit * 0.12)
+    .reduce(
+      (currentInterest, depositInterest) => currentInterest + depositInterest,
+      0,
+    );
+};
+const displayInterest = function (account) {
+  const interest = calcInterest(account.movements);
+  labelSumInterest.textContent = `${interest}€`;
+};
+displayInterest(account1);
 
 const createUsernames = function (accounts) {
   // Each function should actually recieve the data that it will work with,
