@@ -77,115 +77,126 @@ const createHTMLElement = ({tagName = 'div', classNames = [], textContent}) => {
   return el;
 };
 
-const displayMovements = function (account) {
-  // Each function should actually recieve the data that it will work with,
-  // instead of using global variables.
+const updateUI = function (account) {
+  const displayWelcomeMessage = function (account) {
+    labelWelcome.textContent = `Welcome back, ${account.owner.split(' ')[0]}`;
+  };
+  displayWelcomeMessage(account);
 
-  // Emptying container
-  containerMovements.innerHTML = '';
+  const displayMovements = function (account) {
+    // Each function should actually recieve the data that it will work with,
+    // instead of using global variables.
 
-  const movementsFrag = document.createDocumentFragment();
+    // Emptying container
+    containerMovements.innerHTML = '';
 
-  // Adding new Elements.
-  account.movements.forEach(function (movement, index) {
-    const movementRowEl = createHTMLElement({
-      classNames: ['movements__row'],
+    const movementsFrag = document.createDocumentFragment();
+
+    // Adding new Elements.
+    account.movements.forEach(function (movement, index) {
+      const movementRowEl = createHTMLElement({
+        classNames: ['movements__row'],
+      });
+
+      const movementType = movement > 0 ? 'deposit' : 'withdrawal';
+
+      const movementTypeEl = createHTMLElement({
+        classNames: ['movements__type', `movements__type--${movementType}`],
+        textContent: `${index + 1} ${movementType}`,
+      });
+
+      const movementDateEl = createHTMLElement({
+        classNames: ['movements__date'],
+        textContent: '3 days ago',
+      });
+
+      const movementValueEl = createHTMLElement({
+        classNames: ['movements__value'],
+        textContent: `${movement}€`,
+      });
+
+      // https://developer.mozilla.org/en-US/docs/Web/API/Element/append
+      movementRowEl.append(movementTypeEl, movementDateEl, movementValueEl);
+      // https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend
+      movementsFrag.prepend(movementRowEl);
+
+      // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
+      // containerMovements.insertAdjacentHTML('afterbegin', movementRowHTML);
+      // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648719#questions
     });
+    containerMovements.appendChild(movementsFrag);
+  };
+  displayMovements(account);
 
-    const movementType = movement > 0 ? 'deposit' : 'withdrawal';
-
-    const movementTypeEl = createHTMLElement({
-      classNames: ['movements__type', `movements__type--${movementType}`],
-      textContent: `${index + 1} ${movementType}`,
-    });
-
-    const movementDateEl = createHTMLElement({
-      classNames: ['movements__date'],
-      textContent: '3 days ago',
-    });
-
-    const movementValueEl = createHTMLElement({
-      classNames: ['movements__value'],
-      textContent: `${movement}€`,
-    });
-
-    // https://developer.mozilla.org/en-US/docs/Web/API/Element/append
-    movementRowEl.append(movementTypeEl, movementDateEl, movementValueEl);
-    // https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend
-    movementsFrag.prepend(movementRowEl);
-
-    // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
-    // containerMovements.insertAdjacentHTML('afterbegin', movementRowHTML);
-    // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648719#questions
-  });
-  containerMovements.appendChild(movementsFrag);
-};
-displayMovements(account1);
-
-const calcBalance = (movements) => {
-  const initialBalance = 0;
-  return movements.reduce(
-    (balance, movement) => balance + movement,
-    initialBalance,
-  );
-};
-
-const displayBalance = function (account) {
-  const balance = calcBalance(account.movements);
-  labelBalance.textContent = `${balance}€`;
-};
-displayBalance(account1);
-
-const calcIncome = function (movements) {
-  const initialIncome = 0;
-  return movements
-    .filter((movement) => movement > 0)
-    .reduce(
-      (currentIncome, movement) => currentIncome + movement,
-      initialIncome,
+  const calcBalance = (movements) => {
+    const initialBalance = 0;
+    return movements.reduce(
+      (balance, movement) => balance + movement,
+      initialBalance,
     );
-};
+  };
 
-const displayIncome = function (account) {
-  const income = calcIncome(account.movements);
-  labelSumIn.textContent = `${income}€`;
-};
-displayIncome(account1);
+  const displayBalance = function (account) {
+    const balance = calcBalance(account.movements);
+    labelBalance.textContent = `${balance}€`;
+  };
+  displayBalance(account);
 
-const calcOutcome = function (movements) {
-  const initialIncome = 0;
-  return movements
-    .filter((movement) => movement < 0)
-    .reduce(
-      (currentOutcome, movement) => currentOutcome + movement,
-      initialIncome,
-    );
-};
+  const displaySummary = function (account) {
+    const calcIncome = function (movements) {
+      const initialIncome = 0;
+      return movements
+        .filter((movement) => movement > 0)
+        .reduce(
+          (currentIncome, movement) => currentIncome + movement,
+          initialIncome,
+        );
+    };
 
-const displayOutcome = function (account) {
-  const outcome = calcOutcome(account.movements);
-  labelSumOut.textContent = `${Math.abs(outcome)}€`;
-};
-displayOutcome(account1);
+    const displayIncome = function (account) {
+      const income = calcIncome(account.movements);
+      labelSumIn.textContent = `${income}€`;
+    };
+    displayIncome(account);
 
-const calcInterest = function (movements) {
-  const initialInterest = 0;
+    const calcOutcome = function (movements) {
+      const initialIncome = 0;
+      return movements
+        .filter((movement) => movement < 0)
+        .reduce(
+          (currentOutcome, movement) => currentOutcome + movement,
+          initialIncome,
+        );
+    };
 
-  return movements
-    .filter((movement) => movement > 0)
-    .map((deposit) => deposit * 0.012)
-    .filter((interest) => interest >= 1)
-    .reduce(
-      (currentInterest, depositInterest) => currentInterest + depositInterest,
-      initialInterest,
-    );
-};
+    const displayOutcome = function (account) {
+      const outcome = calcOutcome(account.movements);
+      labelSumOut.textContent = `${Math.abs(outcome)}€`;
+    };
+    displayOutcome(account);
 
-const displayInterest = function (account) {
-  const interest = calcInterest(account.movements);
-  labelSumInterest.textContent = `${interest}€`;
+    const calcInterest = function (movements) {
+      const initialInterest = 0;
+
+      return movements
+        .filter((movement) => movement > 0)
+        .map((deposit) => (deposit * 1.2) / 100)
+        .filter((interest) => interest >= 1)
+        .reduce(
+          (currentInterest, depositInterest) =>
+            currentInterest + depositInterest,
+          initialInterest,
+        );
+    };
+
+    const displayInterest = function (account) {
+      const interest = calcInterest(account.movements);
+      labelSumInterest.textContent = `${interest}€`;
+    };
+    displayInterest(account);
+  };
+  displaySummary(account);
 };
-displayInterest(account1);
 
 const createUsernames = function (accounts) {
   // Each function should actually recieve the data that it will work with,
@@ -206,3 +217,27 @@ const createUsernames = function (accounts) {
   });
 };
 createUsernames(accounts);
+
+// Event handler
+let loggedInAccount;
+
+// Enter in input fields of form or clicking the login btn will trigger the event
+btnLogin.addEventListener('click', function (event) {
+  // default behavior, when we click a submit button, is the page to reload.
+  // PAGE RELOADS, BECAUSE THIS IS A BUTTON IN A FORM ELEMENT.
+  // Stop the reloading.
+  event.preventDefault(); // prevent the form from submitting.
+
+  // we take value property of input elements.
+  const username = inputLoginUsername.value;
+  const pin = Number(inputLoginPin.value);
+
+  const account = accounts.find((account) => account.username === username);
+
+  // (account && account.pin === pin)
+  // OPTIONAL CHAINING -> pin will be read only in case account exists.
+  if (account?.pin !== pin) return;
+  loggedInAccount = account;
+  containerApp.style.opacity = 100;
+  updateUI(loggedInAccount);
+});
