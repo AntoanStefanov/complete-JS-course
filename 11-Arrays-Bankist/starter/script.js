@@ -58,6 +58,8 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+let loggedInAccount;
+
 // 147. Creating DOM Elements.
 
 // Whenever we do some functionality of our app,
@@ -130,14 +132,15 @@ const updateUI = function (account) {
 
   const calcBalance = () => {
     const initialBalance = 0;
-    return account.movements.reduce(
+    account.balance = account.movements.reduce(
       (balance, movement) => balance + movement,
       initialBalance,
     );
+    return account.balance;
   };
 
   const displayBalance = function () {
-    const balance = calcBalance(account.movements);
+    const balance = calcBalance();
     labelBalance.textContent = `${balance}€`;
   };
   displayBalance();
@@ -153,7 +156,7 @@ const updateUI = function (account) {
   };
 
   const displayIncome = function () {
-    const income = calcIncome(account.movements);
+    const income = calcIncome();
     labelSumIn.textContent = `${income}€`;
   };
   displayIncome();
@@ -169,7 +172,7 @@ const updateUI = function (account) {
   };
 
   const displayOutcome = function () {
-    const outcome = calcOutcome(account.movements);
+    const outcome = calcOutcome();
     labelSumOut.textContent = `${Math.abs(outcome)}€`;
   };
   displayOutcome();
@@ -188,19 +191,10 @@ const updateUI = function (account) {
   };
 
   const displayInterest = function () {
-    const interest = calcInterest(account.movements);
+    const interest = calcInterest();
     labelSumInterest.textContent = `${interest}€`;
   };
   displayInterest();
-
-  const clearUsedCredentials = () => {
-    // from right to left, operator precedence MDN
-    inputLoginUsername.value = inputLoginPin.value = '';
-    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/blur
-    inputLoginPin.blur();
-    inputLoginUsername.blur();
-  };
-  clearUsedCredentials();
 };
 
 const createUsernames = function (accounts) {
@@ -224,10 +218,8 @@ const createUsernames = function (accounts) {
 createUsernames(accounts);
 
 // Event handler
-let loggedInAccount;
-
 // Enter in input fields of form or clicking the login btn will trigger the event
-btnLogin.addEventListener('click', function (event) {
+const login = function (event) {
   // default behavior, when we click a submit button, is the page to reload.
   // PAGE RELOADS, BECAUSE THIS IS A BUTTON IN A FORM ELEMENT.
   // Stop the reloading.
@@ -245,4 +237,36 @@ btnLogin.addEventListener('click', function (event) {
   loggedInAccount = account;
   containerApp.style.opacity = 100;
   updateUI(loggedInAccount);
-});
+
+  const clearUsedCredentials = () => {
+    // from right to left, operator precedence MDN
+    inputLoginUsername.value = inputLoginPin.value = '';
+    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/blur
+    inputLoginPin.blur();
+    inputLoginUsername.blur();
+  };
+  clearUsedCredentials();
+};
+
+btnLogin.addEventListener('click', login);
+
+const transfer = function (event) {
+  event.preventDefault();
+
+  const recipientAccount = accounts.find(
+    (account) => account.username === inputTransferTo.value,
+  );
+  const moneyAmount = Number(inputTransferAmount.value);
+
+  if (!recipientAccount) return;
+  if (recipientAccount.username === loggedInAccount.username) return;
+  if (moneyAmount <= 0) return;
+  if (loggedInAccount.balance < moneyAmount) return;
+
+  loggedInAccount.movements.push(-moneyAmount);
+  recipientAccount.movements.push(moneyAmount);
+
+  inputTransferTo.value = inputTransferAmount.value = '';
+  updateUI(loggedInAccount);
+};
+btnTransfer.addEventListener('click', transfer);
