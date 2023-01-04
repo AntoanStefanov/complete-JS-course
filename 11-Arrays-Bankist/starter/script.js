@@ -274,7 +274,7 @@ btnTransfer.addEventListener('click', onTransfer);
 
 const onClose = function (event) {
   event.preventDefault();
-  console.log(event);
+
   const username = inputCloseUsername.value;
   const pin = Number(inputClosePin.value);
 
@@ -293,6 +293,6 @@ const onClose = function (event) {
   // https://sentry.io/answers/remove-specific-item-from-array/
   accounts.splice(accountIndex, 1);
   containerApp.style.opacity = 0;
+  labelWelcome.textContent = 'Log in to get started';
 };
-
 btnClose.addEventListener('click', onClose);
