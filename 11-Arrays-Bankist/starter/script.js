@@ -218,7 +218,7 @@ const createUsernames = function (accounts) {
 createUsernames(accounts);
 
 // Event handler
-// Enter in input fields of form or clicking the login btn will trigger the event
+// Enter in input fields of form or clicking the login btn'll trigger the event.
 const login = function (event) {
   // default behavior, when we click a submit button, is the page to reload.
   // PAGE RELOADS, BECAUSE THIS IS A BUTTON IN A FORM ELEMENT.
@@ -247,7 +247,6 @@ const login = function (event) {
   };
   clearUsedCredentials();
 };
-
 btnLogin.addEventListener('click', login);
 
 const transfer = function (event) {
