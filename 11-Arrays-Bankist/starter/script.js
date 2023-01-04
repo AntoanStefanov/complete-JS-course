@@ -219,7 +219,7 @@ createUsernames(accounts);
 
 // Event handler
 // Enter in input fields of form or clicking the login btn'll trigger the event.
-const login = function (event) {
+const onLogin = function (event) {
   // default behavior, when we click a submit button, is the page to reload.
   // PAGE RELOADS, BECAUSE THIS IS A BUTTON IN A FORM ELEMENT.
   // Stop the reloading.
@@ -247,9 +247,10 @@ const login = function (event) {
   };
   clearUsedCredentials();
 };
-btnLogin.addEventListener('click', login);
+btnLogin.addEventListener('click', onLogin);
 
-const transfer = function (event) {
+const onTransfer = function (event) {
+  console.log(event);
   event.preventDefault();
 
   const recipientAccount = accounts.find(
@@ -269,4 +270,29 @@ const transfer = function (event) {
 
   updateUI(loggedInAccount);
 };
-btnTransfer.addEventListener('click', transfer);
+btnTransfer.addEventListener('click', onTransfer);
+
+const onClose = function (event) {
+  event.preventDefault();
+  console.log(event);
+  const username = inputCloseUsername.value;
+  const pin = Number(inputClosePin.value);
+
+  inputCloseUsername.value = inputClosePin.value = '';
+
+  const account = accounts.find((account) => account.username === username);
+
+  if (!account) return;
+  if (account.username !== loggedInAccount.username) return;
+  if (account.pin !== pin) return;
+
+  const accountIndex = accounts.findIndex(
+    (account) => account.username === username,
+  );
+
+  // https://sentry.io/answers/remove-specific-item-from-array/
+  accounts.splice(accountIndex, 1);
+  containerApp.style.opacity = 0;
+};
+
+btnClose.addEventListener('click', onClose);
