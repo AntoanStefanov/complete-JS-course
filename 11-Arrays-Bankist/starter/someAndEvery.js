@@ -31,3 +31,7 @@ console.log(movements.some((movement) => movement > 5000));
 
 console.log(movements.every((movement) => typeof movement === 'number'));
 console.log(movements.every((movement) => movement > 0));
+
+// Separate callback
+const deposit = (movement) => movement > 0;
+console.log(movements.some(deposit));
