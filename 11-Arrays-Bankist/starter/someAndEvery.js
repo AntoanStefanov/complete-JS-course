@@ -35,3 +35,5 @@ console.log(movements.every((movement) => movement > 0));
 // Separate callback
 const deposit = (movement) => movement > 0;
 console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
