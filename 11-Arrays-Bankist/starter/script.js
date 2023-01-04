@@ -79,12 +79,17 @@ const createHTMLElement = ({tagName = 'div', classNames = [], textContent}) => {
   return el;
 };
 
-const updateUI = function (account) {
-  const displayWelcomeMessage = function () {
-    labelWelcome.textContent = `Welcome back, ${account.owner.split(' ')[0]}`;
-  };
-  displayWelcomeMessage();
+const displayMessage = function (messageType) {
+  if (messageType === 'login') {
+    labelWelcome.textContent = `Welcome back, ${
+      loggedInAccount.owner.split(' ')[0]
+    }`;
+  } else {
+    labelWelcome.textContent = 'Log in to get started';
+  }
+};
 
+const updateUI = function (account) {
   const displayMovements = function () {
     // Each function should actually recieve the data that it will work with,
     // instead of using global variables.
@@ -237,6 +242,7 @@ const onLogin = function (event) {
   loggedInAccount = account;
   containerApp.style.opacity = 100;
   updateUI(loggedInAccount);
+  displayMessage('login');
 
   const clearUsedCredentials = () => {
     // from right to left, operator precedence MDN
@@ -272,6 +278,24 @@ const onTransfer = function (event) {
 };
 btnTransfer.addEventListener('click', onTransfer);
 
+const onLoanRequest = function (event) {
+  event.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+  inputLoanAmount.value = '';
+
+  if (amount <= 0) return;
+  const approved = loggedInAccount.movements.some(
+    (movement) => movement > (amount * 10) / 100,
+  );
+
+  if (approved) {
+    loggedInAccount.movements.push(amount);
+    updateUI(loggedInAccount);
+  }
+};
+btnLoan.addEventListener('click', onLoanRequest);
+
 const onClose = function (event) {
   event.preventDefault();
 
@@ -293,6 +317,6 @@ const onClose = function (event) {
   // https://sentry.io/answers/remove-specific-item-from-array/
   accounts.splice(accountIndex, 1);
   containerApp.style.opacity = 0;
-  labelWelcome.textContent = 'Log in to get started';
+  displayMessage('close');
 };
 btnClose.addEventListener('click', onClose);
