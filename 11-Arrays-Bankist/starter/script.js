@@ -257,6 +257,8 @@ const transfer = function (event) {
   );
   const moneyAmount = Number(inputTransferAmount.value);
 
+  inputTransferTo.value = inputTransferAmount.value = '';
+
   if (!recipientAccount) return;
   if (recipientAccount.username === loggedInAccount.username) return;
   if (moneyAmount <= 0) return;
@@ -265,7 +267,6 @@ const transfer = function (event) {
   loggedInAccount.movements.push(-moneyAmount);
   recipientAccount.movements.push(moneyAmount);
 
-  inputTransferTo.value = inputTransferAmount.value = '';
   updateUI(loggedInAccount);
 };
 btnTransfer.addEventListener('click', transfer);
