@@ -23,4 +23,5 @@ console.log(movements.some((movement) => movement > 5000));
 
 // Some method:
 // Determines whether the specified callback function
-//  returns true for any element of an array.
+// returns true for any element of an array.
+// If any element satisfies the condition, some also returns true.
