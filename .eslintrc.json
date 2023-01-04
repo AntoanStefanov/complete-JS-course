@@ -50,7 +50,7 @@
                 "vars": "all",
                 "args": "all",
                 "ignoreRestSiblings": false,
-                "caughtErrors": "all",
+                "caughtErrors": "all"
             }
         ],
         "arrow-parens": [
@@ -64,5 +64,12 @@
                 "typeof": true
             }
         ]
+        // "max-len": [
+        //     "error",
+        //     {
+        //         "code": 80,
+        //         "comments": 65
+        //     }
+        // ]
     }
 }
