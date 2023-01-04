@@ -25,3 +25,9 @@ console.log(movements.some((movement) => movement > 5000));
 // Determines whether the specified callback function
 // returns true for any element of an array.
 // If any element satisfies the condition, some also returns true.
+
+// Every method:
+// If EVERY element satisfies the condition, every method also returns true.
+
+console.log(movements.every((movement) => typeof movement === 'number'));
+console.log(movements.every((movement) => movement > 0));
