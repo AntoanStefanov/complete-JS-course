@@ -46,6 +46,7 @@
             {
                 // https://eslint.org/docs/latest/rules/no-unused-vars#varsignorepattern
                 "varsIgnorePattern": "_",
+                "argsIgnorePattern": "_",
                 // first el, bcs if below "args", ignoring does NOT work.
                 "vars": "all",
                 "args": "all",
