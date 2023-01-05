@@ -30,6 +30,7 @@ const account4 = {
 
 const accounts = [account1, account2, account3, account4];
 
+// 1.
 const bankDepositSum = accounts
   // first the map method will be executed, then the result will be flattened.
   .flatMap((account) => account.movements)
@@ -39,3 +40,16 @@ const bankDepositSum = accounts
   );
 
 console.log(bankDepositSum);
+
+// 2. How many deposits there have been in the bank with at least 1 000.
+const OneThousandDollarsDepositCount = accounts
+  .flatMap((account) => account.movements)
+  .filter((movement) => movement >= 1000).length;
+
+const OneThousandDollarsDepositCount1 = accounts
+  .flatMap((account) => account.movements)
+  .filter((movement) => movement >= 1000)
+  .reduce((counter, _) => ++counter, 0);
+
+console.log(OneThousandDollarsDepositCount);
+console.log(OneThousandDollarsDepositCount1);
