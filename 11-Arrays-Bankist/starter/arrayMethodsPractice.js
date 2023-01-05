@@ -49,7 +49,7 @@ const OneThousandDollarsDepositCount = accounts
 const OneThousandDollarsDepositCount1 = accounts
   .flatMap((account) => account.movements)
   .filter((movement) => movement >= 1000)
-  .reduce((counter, _) => ++counter, 0);
+  .reduce((counter) => ++counter, 0);
 
 console.log(OneThousandDollarsDepositCount);
 console.log(OneThousandDollarsDepositCount1);
