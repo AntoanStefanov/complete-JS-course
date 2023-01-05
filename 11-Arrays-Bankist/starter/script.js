@@ -89,7 +89,7 @@ const displayMessage = function (messageType) {
   }
 };
 
-const displayMovements = function (movements, sort = false) {
+const displayMovements = function (sort) {
   // Each function should actually recieve the data that it will work with,
   // instead of using global variables.
 
@@ -98,7 +98,10 @@ const displayMovements = function (movements, sort = false) {
 
   const movementsFrag = document.createDocumentFragment();
 
-  if (sort) movements.sort((a, b) => a - b);
+  const movements = sort
+    ? loggedInAccount.movements.slice().sort((a, b) => a - b)
+    : loggedInAccount.movements;
+
   // Adding new Elements.
   movements.forEach(function (movement, index) {
     const movementRowEl = createHTMLElement({
@@ -135,7 +138,7 @@ const displayMovements = function (movements, sort = false) {
 };
 
 const updateUI = function (account) {
-  displayMovements(loggedInAccount.movements);
+  displayMovements();
 
   const calcBalance = () => {
     const initialBalance = 0;
@@ -324,13 +327,8 @@ const onClose = function (event) {
 btnClose.addEventListener('click', onClose);
 
 let isSorted = false;
-const onSort = function (event) {
-  if (isSorted) {
-    displayMovements(loggedInAccount.movements);
-    isSorted = false;
-    return;
-  }
-  displayMovements(loggedInAccount.movements.slice(), true);
-  isSorted = true;
+const onSort = function () {
+  displayMovements(!isSorted);
+  isSorted = !isSorted;
 };
 btnSort.addEventListener('click', onSort);
