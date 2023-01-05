@@ -76,8 +76,9 @@ console.log(summaryObject);
 const summaryObject1 = accounts
   .flatMap((account) => account.movements)
   .reduce(
+    // movement > 0 ? (obj.deposits += movement) : (obj.withdrawals += movement)
     (obj, movement) => {
-      movement > 0 ? (obj.deposits += movement) : (obj.withdrawals += movement);
+      obj[movement > 0 ? 'deposits' : 'withdrawals'] += movement;
       return obj;
     },
     {deposits: 0, withdrawals: 0},
