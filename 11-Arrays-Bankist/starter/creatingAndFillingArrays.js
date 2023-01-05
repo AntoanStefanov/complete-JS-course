@@ -50,3 +50,8 @@ console.log(Array.prototype);
 // There is a difference between them.
 // The methods on prototype are executed on already created arrays. arr.sort()
 // the other methods are executed on the Array itself. Array.from()
+
+const nodeListOfMovements = document.querySelectorAll('.movements__value');
+
+const arrayOfMovements = Array.from(nodeListOfMovements);
+console.log(arrayOfMovements);
