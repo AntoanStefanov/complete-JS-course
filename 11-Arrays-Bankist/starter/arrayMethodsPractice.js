@@ -92,19 +92,17 @@ const titleCaseConversion = function (title) {
   const prepositions = ['in', 'with', 'by', 'of', 'on'];
   const conjunctions = ['and', 'or', 'but'];
   const exceptions = [...articles, ...prepositions, ...conjunctions];
-  const upperFirstLetter = (word) => word[0].toUpperCase() + word.slice(1);
+  const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
 
   const titleCase = title
     .toLowerCase()
     .split(' ')
     .map((currentWord) =>
-      exceptions.includes(currentWord)
-        ? currentWord
-        : upperFirstLetter(currentWord),
+      exceptions.includes(currentWord) ? currentWord : capitalize(currentWord),
     )
     .join(' ');
 
-  return upperFirstLetter(titleCase);
+  return capitalize(titleCase);
 };
 
 console.log(titleCaseConversion('the last of the summer wine'));
