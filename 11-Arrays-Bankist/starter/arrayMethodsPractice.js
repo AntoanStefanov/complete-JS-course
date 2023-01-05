@@ -52,3 +52,35 @@ const OneThousandDollarsDepositCount1 = accounts
 
 console.log(OneThousandDollarsDepositCount);
 console.log(OneThousandDollarsDepositCount1);
+
+// 3. advanced case of the reduce method,
+// Create a new object instead of just a number/string.
+// Object that contains the sum of the deposits and of the withdrawals.
+
+const summaryObject = accounts
+  .flatMap((account) => account.movements)
+  .reduce((obj, movement) => {
+    if (!obj.deposits) {
+      obj.deposits = [];
+    }
+    if (!obj.withdrawals) {
+      obj.withdrawals = [];
+    }
+    movement > 0 ? obj.deposits.push(movement) : obj.withdrawals.push(movement);
+
+    return obj;
+  }, {});
+
+console.log(summaryObject);
+
+const summaryObject1 = accounts
+  .flatMap((account) => account.movements)
+  .reduce(
+    (obj, movement) => {
+      movement > 0 ? (obj.deposits += movement) : (obj.withdrawals += movement);
+      return obj;
+    },
+    {deposits: 0, withdrawals: 0},
+  );
+
+console.log(summaryObject1);
