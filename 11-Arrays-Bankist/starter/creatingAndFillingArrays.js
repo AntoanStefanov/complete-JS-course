@@ -42,3 +42,11 @@ console.log(y);
 const z = Array.from({length: 4}, (_, index) => index + 1);
 console.log(z);
 console.log(Array.prototype);
+
+// Check
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of
+// check method on the left side, these which are executed on the Array itself.
+// And these which are executed on the Array prototype.
+// There is a difference between them.
+// The methods on prototype are executed on already created arrays. arr.sort()
+// the other methods are executed on the Array itself. Array.from()
