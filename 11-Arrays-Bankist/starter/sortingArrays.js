@@ -45,3 +45,6 @@ movements1.sort(compareFnAsc);
 console.log(movements1);
 movements1.sort(compareFnDesc);
 console.log(movements1);
+
+// strings descending.
+// https://stackoverflow.com/questions/52030110/sorting-strings-in-descending-order-in-javascript-most-efficiently
