@@ -25,3 +25,20 @@ console.log(x);
 
 a.fill(23, 1, 3);
 console.log(a);
+
+// !
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+// !
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections
+// https://daily.dev/blog/why-do-you-need-to-know-about-array-like-objects
+const y = Array.from({length: 4}, () => 1);
+
+// What if we wanted to recreate the array from our first example [1,2,3,4]?
+// we are using from method on Array CONSTRUCTOR
+console.log(y);
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+const z = Array.from({length: 4}, (_, index) => index + 1);
+console.log(z);
+console.log(Array.prototype);
