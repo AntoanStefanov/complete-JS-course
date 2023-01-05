@@ -89,51 +89,53 @@ const displayMessage = function (messageType) {
   }
 };
 
-const updateUI = function (account) {
-  const displayMovements = function () {
-    // Each function should actually recieve the data that it will work with,
-    // instead of using global variables.
+const displayMovements = function (movements, sort = false) {
+  // Each function should actually recieve the data that it will work with,
+  // instead of using global variables.
 
-    // Emptying container
-    containerMovements.innerHTML = '';
+  // Emptying container
+  containerMovements.innerHTML = '';
 
-    const movementsFrag = document.createDocumentFragment();
+  const movementsFrag = document.createDocumentFragment();
 
-    // Adding new Elements.
-    account.movements.forEach(function (movement, index) {
-      const movementRowEl = createHTMLElement({
-        classNames: ['movements__row'],
-      });
-
-      const movementType = movement > 0 ? 'deposit' : 'withdrawal';
-
-      const movementTypeEl = createHTMLElement({
-        classNames: ['movements__type', `movements__type--${movementType}`],
-        textContent: `${index + 1} ${movementType}`,
-      });
-
-      const movementDateEl = createHTMLElement({
-        classNames: ['movements__date'],
-        textContent: '3 days ago',
-      });
-
-      const movementValueEl = createHTMLElement({
-        classNames: ['movements__value'],
-        textContent: `${movement}€`,
-      });
-
-      // https://developer.mozilla.org/en-US/docs/Web/API/Element/append
-      movementRowEl.append(movementTypeEl, movementDateEl, movementValueEl);
-      // https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend
-      movementsFrag.prepend(movementRowEl);
-
-      // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
-      // containerMovements.insertAdjacentHTML('afterbegin', movementRowHTML);
-      // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648719#questions
+  if (sort) movements.sort((a, b) => a - b);
+  // Adding new Elements.
+  movements.forEach(function (movement, index) {
+    const movementRowEl = createHTMLElement({
+      classNames: ['movements__row'],
     });
-    containerMovements.appendChild(movementsFrag);
-  };
-  displayMovements();
+
+    const movementType = movement > 0 ? 'deposit' : 'withdrawal';
+
+    const movementTypeEl = createHTMLElement({
+      classNames: ['movements__type', `movements__type--${movementType}`],
+      textContent: `${index + 1} ${movementType}`,
+    });
+
+    const movementDateEl = createHTMLElement({
+      classNames: ['movements__date'],
+      textContent: '3 days ago',
+    });
+
+    const movementValueEl = createHTMLElement({
+      classNames: ['movements__value'],
+      textContent: `${movement}€`,
+    });
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/append
+    movementRowEl.append(movementTypeEl, movementDateEl, movementValueEl);
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend
+    movementsFrag.prepend(movementRowEl);
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
+    // containerMovements.insertAdjacentHTML('afterbegin', movementRowHTML);
+    // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648719#questions
+  });
+  containerMovements.appendChild(movementsFrag);
+};
+
+const updateUI = function (account) {
+  displayMovements(loggedInAccount.movements);
 
   const calcBalance = () => {
     const initialBalance = 0;
@@ -320,3 +322,15 @@ const onClose = function (event) {
   displayMessage('close');
 };
 btnClose.addEventListener('click', onClose);
+
+let isSorted = false;
+const onSort = function (event) {
+  if (isSorted) {
+    displayMovements(loggedInAccount.movements);
+    isSorted = false;
+    return;
+  }
+  displayMovements(loggedInAccount.movements.slice(), true);
+  isSorted = true;
+};
+btnSort.addEventListener('click', onSort);
