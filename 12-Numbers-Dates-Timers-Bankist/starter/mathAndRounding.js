@@ -1,4 +1,5 @@
 'use strict';
+// https://stackoverflow.com/questions/14/difference-between-math-floor-and-math-truncate
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
 // CHECK MDN MAX AND MIN
@@ -39,9 +40,19 @@ console.log(getRandomInt(4)); // 1, 2, 3, 4
 // https://stackoverflow.com/questions/14/difference-between-math-floor-and-math-truncate
 
 // min and max included
+// https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
 const randomIntFromInterval = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
 const rndInt = randomIntFromInterval(1, 6);
 console.log(rndInt);
+
+// https://stackoverflow.com/questions/14/difference-between-math-floor-and-math-truncate
+// Rounding ints.
+console.log(Math.round(23.9));
+console.log(Math.round(23.4));
+console.log(Math.round(23.5));
+
+console.log(Math.ceil(23.4));
+console.log(Math.ceil(23.5));
