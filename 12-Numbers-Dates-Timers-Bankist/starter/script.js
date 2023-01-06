@@ -134,7 +134,7 @@ const displayMovements = function (sort) {
 
     const movementValueEl = createHTMLElement({
       classNames: ['movements__value'],
-      textContent: `${movement}€`,
+      textContent: `${movement.toFixed(2)}€`,
     });
 
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/append
@@ -163,7 +163,7 @@ const updateUI = function (account) {
 
   const displayBalance = function () {
     const balance = calcBalance();
-    labelBalance.textContent = `${balance}€`;
+    labelBalance.textContent = `${balance.toFixed(2)}€`;
   };
   displayBalance();
 
@@ -179,7 +179,7 @@ const updateUI = function (account) {
 
   const displayIncome = function () {
     const income = calcIncome();
-    labelSumIn.textContent = `${income}€`;
+    labelSumIn.textContent = `${income.toFixed(2)}€`;
   };
   displayIncome();
 
@@ -195,7 +195,7 @@ const updateUI = function (account) {
 
   const displayOutcome = function () {
     const outcome = calcOutcome();
-    labelSumOut.textContent = `${Math.abs(outcome)}€`;
+    labelSumOut.textContent = `${Math.abs(outcome).toFixed(2)}€`;
   };
   displayOutcome();
 
@@ -214,7 +214,7 @@ const updateUI = function (account) {
 
   const displayInterest = function () {
     const interest = calcInterest();
-    labelSumInterest.textContent = `${interest}€`;
+    labelSumInterest.textContent = `${interest.toFixed(2)}€`;
   };
   displayInterest();
 };
