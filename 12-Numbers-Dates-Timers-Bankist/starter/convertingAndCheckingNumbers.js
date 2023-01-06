@@ -102,17 +102,22 @@ console.log(Number.parseInt('123px', 10));
 console.log(Number.parseFloat('2.5rem'));
 
 // isNaN
-
-// check if any value is a number.
+// check if value is NOT A NUMBER
 console.log(Number.isNaN(20));
 console.log(Number.isNaN('20'));
 console.log(+'20px');
 console.log(Number.isNaN(+'20px'));
 console.log(23 / 0);
 console.log(Number.isNaN(23 / 0));
-// This way is not good to check if a value is a number.
 
 // better way is finite. BEST WAY OF CHECKING IF A VALUE IS A NUMBER.
+// CHECK IF VALUE IS A NUMBER (INTEGER/DECIMAL)
 console.log(Number.isFinite(23));
 console.log(Number.isFinite('23'));
 console.log(Number.isFinite(23 / 0));
+console.log(Number.isFinite(2.2));
+
+// If u are sure that the value is an integer, u can use isInteger()
+console.log(Number.isInteger(2));
+console.log(Number.isInteger(2.3));
+console.log(Number.isInteger('2'));
