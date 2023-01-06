@@ -1,9 +1,29 @@
 'use strict';
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
+// CHECK MDN MAX AND MIN
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min#clipping_a_value_with_math.min
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max#getting_the_maximum_element_of_an_array
+
 
 // square root
-console.log(Math.sqrt(25));
+https: console.log(Math.sqrt(25));
 // same done with exponential operator
 console.log(25 ** (1 / 2));
 console.log(8 ** (1 / 3)); // cubic root
+
+// Max value of a couple of values.
+// Math.max DOES type coercion Math.max(1,2,'23')
+// But it does not do parsint Math.max('23px') => NaN
+console.log(Math.max(1, 2, 3));
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max#getting_the_maximum_element_of_an_array
+
+const arr = [1, 2, 3];
+const max = arr.reduce((a, b) => Math.max(a, b), -Infinity);
+console.log(max);
+
+// Same goes for Math.min
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min
+
+Math.min(1, 2, 3);
