@@ -121,3 +121,4 @@ console.log(Number.isFinite(2.2));
 console.log(Number.isInteger(2));
 console.log(Number.isInteger(2.3));
 console.log(Number.isInteger('2'));
+console.log(Number.isInteger(2.0)); // true, bcs /23 === 23.0 -> true /
