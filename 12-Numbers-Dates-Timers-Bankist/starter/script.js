@@ -1,14 +1,6 @@
 'use strict';
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// BANKIST APP
-
-/////////////////////////////////////////////////
-// Data
-
-// DIFFERENT DATA! Contains movement dates, currency and locale
-
+// DIFFERENT Data
 const account1 = {
   owner: 'Jonas Schmedtmann',
   movements: [200, 455.23, -306.5, 25000, -642.21, -133.9, 79.97, 1300],
@@ -51,8 +43,8 @@ const account2 = {
 
 const accounts = [account1, account2];
 
-/////////////////////////////////////////////////
-// Elements
+// Elements.
+// Label is basically all the things where we simply want to put some text in.
 const labelWelcome = document.querySelector('.welcome');
 const labelDate = document.querySelector('.date');
 const labelBalance = document.querySelector('.balance__value');
@@ -78,176 +70,277 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-/////////////////////////////////////////////////
-// Functions
+let loggedInAccount;
 
-const displayMovements = function (movements, sort = false) {
+// 147. Creating DOM Elements.
+
+// Whenever we do some functionality of our app,
+// Writing our code in the global context is BAD PRACTICE.
+// it's always best to create a function.
+
+// Intead of working with the global variables,
+// start passing the data into the function that needs it.
+
+// https://stackoverflow.com/questions/11796093/is-there-a-way-to-provide-named-parameters-in-a-function-call-in-javascript
+const createHTMLElement = ({tagName = 'div', classNames = [], textContent}) => {
+  const el = document.createElement(tagName);
+  el.classList.add(...classNames);
+  if (textContent === 0 || textContent) {
+    el.textContent = textContent;
+  }
+  return el;
+};
+
+const displayMessage = function (messageType) {
+  if (messageType === 'login') {
+    labelWelcome.textContent = `Welcome back, ${
+      loggedInAccount.owner.split(' ')[0]
+    }`;
+  } else {
+    labelWelcome.textContent = 'Log in to get started';
+  }
+};
+
+const displayMovements = function (sort) {
+  // Each function should actually recieve the data that it will work with,
+  // instead of using global variables.
+
+  // Emptying container
   containerMovements.innerHTML = '';
 
-  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  const movementsFrag = document.createDocumentFragment();
 
-  movs.forEach(function (mov, i) {
-    const type = mov > 0 ? 'deposit' : 'withdrawal';
+  const movements = sort
+    ? loggedInAccount.movements.slice().sort((a, b) => a - b)
+    : loggedInAccount.movements;
 
-    const html = `
-      <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
-        <div class="movements__value">${mov}€</div>
-      </div>
-    `;
+  // Adding new Elements.
+  movements.forEach(function (movement, index) {
+    const movementRowEl = createHTMLElement({
+      classNames: ['movements__row'],
+    });
 
-    containerMovements.insertAdjacentHTML('afterbegin', html);
+    const movementType = movement > 0 ? 'deposit' : 'withdrawal';
+
+    const movementTypeEl = createHTMLElement({
+      classNames: ['movements__type', `movements__type--${movementType}`],
+      textContent: `${index + 1} ${movementType}`,
+    });
+
+    const movementDateEl = createHTMLElement({
+      classNames: ['movements__date'],
+      textContent: '3 days ago',
+    });
+
+    const movementValueEl = createHTMLElement({
+      classNames: ['movements__value'],
+      textContent: `${movement}€`,
+    });
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/append
+    movementRowEl.append(movementTypeEl, movementDateEl, movementValueEl);
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend
+    movementsFrag.prepend(movementRowEl);
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
+    // containerMovements.insertAdjacentHTML('afterbegin', movementRowHTML);
+    // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648719#questions
   });
+  containerMovements.appendChild(movementsFrag);
 };
 
-const calcDisplayBalance = function (acc) {
-  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance}€`;
+const updateUI = function (account) {
+  displayMovements();
+
+  const calcBalance = () => {
+    const initialBalance = 0;
+    account.balance = account.movements.reduce(
+      (balance, movement) => balance + movement,
+      initialBalance,
+    );
+    return account.balance;
+  };
+
+  const displayBalance = function () {
+    const balance = calcBalance();
+    labelBalance.textContent = `${balance}€`;
+  };
+  displayBalance();
+
+  const calcIncome = function () {
+    const initialIncome = 0;
+    return account.movements
+      .filter((movement) => movement > 0)
+      .reduce(
+        (currentIncome, movement) => currentIncome + movement,
+        initialIncome,
+      );
+  };
+
+  const displayIncome = function () {
+    const income = calcIncome();
+    labelSumIn.textContent = `${income}€`;
+  };
+  displayIncome();
+
+  const calcOutcome = function () {
+    const initialIncome = 0;
+    return account.movements
+      .filter((movement) => movement < 0)
+      .reduce(
+        (currentOutcome, movement) => currentOutcome + movement,
+        initialIncome,
+      );
+  };
+
+  const displayOutcome = function () {
+    const outcome = calcOutcome();
+    labelSumOut.textContent = `${Math.abs(outcome)}€`;
+  };
+  displayOutcome();
+
+  const calcInterest = function () {
+    const initialInterest = 0;
+
+    return account.movements
+      .filter((movement) => movement > 0)
+      .map((deposit) => (deposit * account.interestRate) / 100)
+      .filter((interest) => interest >= 1)
+      .reduce(
+        (currentInterest, depositInterest) => currentInterest + depositInterest,
+        initialInterest,
+      );
+  };
+
+  const displayInterest = function () {
+    const interest = calcInterest();
+    labelSumInterest.textContent = `${interest}€`;
+  };
+  displayInterest();
 };
 
-const calcDisplaySummary = function (acc) {
-  const incomes = acc.movements
-    .filter(mov => mov > 0)
-    .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
+const createUsernames = function (accounts) {
+  // Each function should actually recieve the data that it will work with,
+  // instead of using global variables.
+  // We don't want to rely on the accounts variable, that we already have,
+  // instead, we want to pass it into the function.
 
-  const out = acc.movements
-    .filter(mov => mov < 0)
-    .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
-
-  const interest = acc.movements
-    .filter(mov => mov > 0)
-    .map(deposit => (deposit * acc.interestRate) / 100)
-    .filter((int, i, arr) => {
-      // console.log(arr);
-      return int >= 1;
-    })
-    .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest}€`;
-};
-
-const createUsernames = function (accs) {
-  accs.forEach(function (acc) {
-    acc.username = acc.owner
-      .toLowerCase()
+  // forEach method, because we do NOT want to create a new array(map method).
+  // We simply want to modify the array that we get as an input.
+  accounts.forEach((account) => {
+    const username = account.owner
       .split(' ')
-      .map(name => name[0])
+      .map((currentName) => currentName[0].toLowerCase())
+      // arrwFn ACTIVELY RETURNS, THERE IS A RETURN KEYWORD, IT IS JUST HIDDEN.
       .join('');
+
+    account.username = username;
   });
 };
 createUsernames(accounts);
 
-const updateUI = function (acc) {
-  // Display movements
-  displayMovements(acc.movements);
+// Event handler
+// Enter in input fields of form or clicking the login btn'll trigger the event.
+const onLogin = function (event) {
+  // default behavior, when we click a submit button, is the page to reload.
+  // PAGE RELOADS, BECAUSE THIS IS A BUTTON IN A FORM ELEMENT.
+  // Stop the reloading.
+  event.preventDefault(); // prevent the form from submitting.
 
-  // Display balance
-  calcDisplayBalance(acc);
+  // we take value property of input elements.
+  const username = inputLoginUsername.value;
+  const pin = Number(inputLoginPin.value);
 
-  // Display summary
-  calcDisplaySummary(acc);
-};
+  const account = accounts.find((account) => account.username === username);
 
-///////////////////////////////////////
-// Event handlers
-let currentAccount;
+  // (account && account.pin === pin)
+  // OPTIONAL CHAINING -> pin will be read only in case account exists.
+  if (account?.pin !== pin) return;
+  loggedInAccount = account;
+  containerApp.style.opacity = 100;
+  updateUI(loggedInAccount);
+  displayMessage('login');
 
-btnLogin.addEventListener('click', function (e) {
-  // Prevent form from submitting
-  e.preventDefault();
-
-  currentAccount = accounts.find(
-    acc => acc.username === inputLoginUsername.value
-  );
-  console.log(currentAccount);
-
-  if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    // Display UI and message
-    labelWelcome.textContent = `Welcome back, ${
-      currentAccount.owner.split(' ')[0]
-    }`;
-    containerApp.style.opacity = 100;
-
-    // Clear input fields
+  const clearUsedCredentials = () => {
+    // from right to left, operator precedence MDN
     inputLoginUsername.value = inputLoginPin.value = '';
+    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/blur
     inputLoginPin.blur();
+    inputLoginUsername.blur();
+  };
+  clearUsedCredentials();
+};
+btnLogin.addEventListener('click', onLogin);
 
-    // Update UI
-    updateUI(currentAccount);
-  }
-});
+const onTransfer = function (event) {
+  console.log(event);
+  event.preventDefault();
 
-btnTransfer.addEventListener('click', function (e) {
-  e.preventDefault();
-  const amount = Number(inputTransferAmount.value);
-  const receiverAcc = accounts.find(
-    acc => acc.username === inputTransferTo.value
+  const recipientAccount = accounts.find(
+    (account) => account.username === inputTransferTo.value,
   );
-  inputTransferAmount.value = inputTransferTo.value = '';
+  const moneyAmount = Number(inputTransferAmount.value);
 
-  if (
-    amount > 0 &&
-    receiverAcc &&
-    currentAccount.balance >= amount &&
-    receiverAcc?.username !== currentAccount.username
-  ) {
-    // Doing the transfer
-    currentAccount.movements.push(-amount);
-    receiverAcc.movements.push(amount);
+  inputTransferTo.value = inputTransferAmount.value = '';
 
-    // Update UI
-    updateUI(currentAccount);
-  }
-});
+  if (!recipientAccount) return;
+  if (recipientAccount.username === loggedInAccount.username) return;
+  if (moneyAmount <= 0) return;
+  if (loggedInAccount.balance < moneyAmount) return;
 
-btnLoan.addEventListener('click', function (e) {
-  e.preventDefault();
+  loggedInAccount.movements.push(-moneyAmount);
+  recipientAccount.movements.push(moneyAmount);
+
+  updateUI(loggedInAccount);
+};
+btnTransfer.addEventListener('click', onTransfer);
+
+const onLoanRequest = function (event) {
+  event.preventDefault();
 
   const amount = Number(inputLoanAmount.value);
-
-  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
-
-    // Update UI
-    updateUI(currentAccount);
-  }
   inputLoanAmount.value = '';
-});
 
-btnClose.addEventListener('click', function (e) {
-  e.preventDefault();
+  if (amount <= 0) return;
+  const approved = loggedInAccount.movements.some(
+    (movement) => movement > (amount * 10) / 100,
+  );
 
-  if (
-    inputCloseUsername.value === currentAccount.username &&
-    Number(inputClosePin.value) === currentAccount.pin
-  ) {
-    const index = accounts.findIndex(
-      acc => acc.username === currentAccount.username
-    );
-    console.log(index);
-    // .indexOf(23)
-
-    // Delete account
-    accounts.splice(index, 1);
-
-    // Hide UI
-    containerApp.style.opacity = 0;
+  if (approved) {
+    loggedInAccount.movements.push(amount);
+    updateUI(loggedInAccount);
   }
+};
+btnLoan.addEventListener('click', onLoanRequest);
+
+const onClose = function (event) {
+  event.preventDefault();
+
+  const username = inputCloseUsername.value;
+  const pin = Number(inputClosePin.value);
 
   inputCloseUsername.value = inputClosePin.value = '';
-});
 
-let sorted = false;
-btnSort.addEventListener('click', function (e) {
-  e.preventDefault();
-  displayMovements(currentAccount.movements, !sorted);
-  sorted = !sorted;
-});
+  const account = accounts.find((account) => account.username === username);
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
+  if (!account) return;
+  if (account.username !== loggedInAccount.username) return;
+  if (account.pin !== pin) return;
+
+  const accountIndex = accounts.findIndex(
+    (account) => account.username === username,
+  );
+
+  // https://sentry.io/answers/remove-specific-item-from-array/
+  accounts.splice(accountIndex, 1);
+  containerApp.style.opacity = 0;
+  displayMessage('close');
+};
+btnClose.addEventListener('click', onClose);
+
+let isSorted = false;
+const onSort = function () {
+  displayMovements(!isSorted);
+  isSorted = !isSorted;
+};
+btnSort.addEventListener('click', onSort);
