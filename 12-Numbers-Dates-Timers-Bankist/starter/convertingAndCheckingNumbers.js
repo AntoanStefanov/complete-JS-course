@@ -1,5 +1,7 @@
 'use strict';
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
+
 // Learn:
 // How numbers work in JS?
 // How to convert values to numbers?
