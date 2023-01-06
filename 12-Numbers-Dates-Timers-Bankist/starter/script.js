@@ -298,7 +298,7 @@ btnTransfer.addEventListener('click', onTransfer);
 const onLoanRequest = function (event) {
   event.preventDefault();
 
-  const amount = Number(inputLoanAmount.value);
+  const amount = Math.round(inputLoanAmount.value); // round do type coercion
   inputLoanAmount.value = '';
 
   if (amount <= 0) return;
