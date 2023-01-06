@@ -56,3 +56,21 @@ console.log(Math.round(23.5));
 
 console.log(Math.ceil(23.4));
 console.log(Math.ceil(23.5));
+
+// Representing Floating point numbers(decimals)
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed
+// Number.prototype.toFixed() -> in link, left side.
+// Number.prototype.method -> means the method is used on objects
+// created by the object(Number constructor) !
+// If Number.isFinite() -> method is on the Number object ITSELF
+// , not objects created by the Number OBJECT.
+console.log((2.7).toFixed(0)); // '3' => string
+console.log((2.7).toFixed()); // '3' => string
+console.log((2.7).toFixed(2)); // '2.70' => string
+console.log((2.7).toFixed(3)); // '2.700' => string
+console.log((2.345).toFixed(2)); // '2.35' => string | if 3rd num >= 5, round up
+// If we want it as a num
+console.log(+(2.74).toFixed(2)); // 2.74 => num
+
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648879#questions
