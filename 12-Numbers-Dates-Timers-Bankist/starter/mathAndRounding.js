@@ -5,7 +5,6 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min#clipping_a_value_with_math.min
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max#getting_the_maximum_element_of_an_array
 
-
 // square root
 https: console.log(Math.sqrt(25));
 // same done with exponential operator
@@ -26,4 +25,23 @@ console.log(max);
 // Same goes for Math.min
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min
 
-Math.min(1, 2, 3);
+console.log(Math.min(1, 2, 3));
+
+// Constants
+console.log(Math.PI * Number.parseFloat('10px') ** 2);
+
+const getRandomInt = function (max) {
+  return Math.ceil(Math.random() * max);
+};
+
+console.log(getRandomInt(4)); // 1, 2, 3, 4
+// if Math.floor in fn, it can return 0, 1, 2, 3
+// https://stackoverflow.com/questions/14/difference-between-math-floor-and-math-truncate
+
+// min and max included
+const randomIntFromInterval = function (min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+const rndInt = randomIntFromInterval(1, 6);
+console.log(rndInt);
