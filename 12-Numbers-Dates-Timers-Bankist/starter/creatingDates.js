@@ -30,7 +30,7 @@ console.log(date1);
 
 const date2 = new Date('1995-12-17T03:24:00Z'); // this is reliable. check Docs
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#several_ways_to_create_a_date_object
-console.log(date2);
+console.log('b', date2);
 
 const date3 = new Date(1995, 11, 17); // the month is 0-indexed
 const date4 = new Date(1995, 11, 17, 3, 24, 0);
@@ -56,3 +56,28 @@ console.log(date6);
 
 // 3 days in milliseconds
 // 3 * 24 * 60 * 60 * 1000, this is how we convert from days to milliseconds
+
+const dateUTC = new Date('1995-12-17T03:24:00Z');
+const dateTimeZone = new Date('1995-12-17T03:24:00');
+console.log('a' + dateUTC);
+console.log('a' + dateTimeZone);
+
+// There dates we created are just another type of object.
+// Therefore they have their own methods, just like arrays, maps or strings...
+
+// We can use these methods to get or to set components of a date.
+const futureDate = new Date(2037, 10, 19, 15, 23); // month is 0 BASED!
+console.log('futureDate', futureDate);
+console.log('a' + futureDate);
+console.log(futureDate.getFullYear()); // 2037
+console.log(futureDate.getMonth()); // 10 (actually is 11 month /november/)
+console.log(futureDate.getDate()); // 19 that's the day.
+console.log(futureDate.getDay()); // 4 day of the week, using local time,0-based
+console.log(futureDate.getHours()); // 15
+console.log(futureDate.getMinutes()); // 23
+console.log(futureDate.getSeconds()); // 0
+
+console.log(futureDate.toDateString()); // Thu Nov 19 2037
+console.log(futureDate.toISOString()); // 2037-11-19T13:23:00.000Z
+
+// !Very useful method (toISOString), when u want to convert a date obj into str
