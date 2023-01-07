@@ -57,15 +57,19 @@ console.log(date6);
 // 3 days in milliseconds
 // 3 * 24 * 60 * 60 * 1000, this is how we convert from days to milliseconds
 
-const dateUTC = new Date('1995-12-17T03:24:00Z');
-const dateTimeZone = new Date('1995-12-17T03:24:00');
+const dateUTC = new Date('1995-12-17T03:24:00Z'); // no time zone
+const dateTimeZone = new Date('1995-12-17T03:24:00'); // with time zone
+
 console.log('a' + dateUTC);
+// this calls Date.prototype.toString(), which date is interpreted in local time
 console.log('a' + dateTimeZone);
 
 // There dates we created are just another type of object.
 // Therefore they have their own methods, just like arrays, maps or strings...
 
 // We can use these methods to get or to set components of a date.
+
+// THIS WAY INCLUDES THE TIME ZONE. if u get toISOString will return -2h.
 const futureDate = new Date(2037, 10, 19, 15, 23); // month is 0 BASED!
 console.log('futureDate', futureDate);
 console.log('a' + futureDate);
@@ -81,3 +85,8 @@ console.log(futureDate.toDateString()); // Thu Nov 19 2037
 console.log(futureDate.toISOString()); // 2037-11-19T13:23:00.000Z
 
 // !Very useful method (toISOString), when u want to convert a date obj into str
+
+// get the timestamp for the date.
+// timestamp -> millisecs passed since 1st Jan 1970
+console.log(futureDate.getTime()); // 2142249780000 milliseconds since01.01.1970
+console.log(new Date(2142249780000));
