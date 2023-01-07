@@ -48,7 +48,9 @@ console.log(date5);
 
 console.log(new Date(0)); // 1970-01-01T00:00:00.000Z
 // three day after the beginning of the Unix time
+// passing epoch timestamp
 console.log(new Date(3 * 24 * 60 * 60 * 1000)); // 1970-01-04T00:00:00.000Z
+// passing epoch timestamp
 const date6 = new Date(628021800000); // 1989-11-25T18:30:00.000Z
 console.log(date6);
 
