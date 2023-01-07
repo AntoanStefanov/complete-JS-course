@@ -102,3 +102,6 @@ console.log(Date.now());
 // there are also SET versions of all the GET methods. setDate(), setHours()...
 futureDate.setFullYear(now.getFullYear());
 console.log(futureDate);
+
+// AUTOCORRECTION, there is no 32 of january | zero-based month
+console.log(new Date(2023, 0, 32, 22, 4)); // 2023-02-01T20:04:00.000Z
