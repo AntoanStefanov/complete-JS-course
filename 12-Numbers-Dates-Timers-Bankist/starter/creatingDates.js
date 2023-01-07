@@ -61,8 +61,10 @@ const dateUTC = new Date('1995-12-17T03:24:00Z'); // no time zone
 const dateTimeZone = new Date('1995-12-17T03:24:00'); // with time zone
 
 console.log('a' + dateUTC);
+console.log(dateUTC.toISOString());
 // this calls Date.prototype.toString(), which date is interpreted in local time
 console.log('a' + dateTimeZone);
+console.log(dateTimeZone.toISOString());
 
 // There dates we created are just another type of object.
 // Therefore they have their own methods, just like arrays, maps or strings...
@@ -89,4 +91,14 @@ console.log(futureDate.toISOString()); // 2037-11-19T13:23:00.000Z
 // get the timestamp for the date.
 // timestamp -> millisecs passed since 1st Jan 1970
 console.log(futureDate.getTime()); // 2142249780000 milliseconds since01.01.1970
-console.log(new Date(2142249780000));
+console.log(new Date(2142249780000)); // date since since 01.01.1970 from milsec
+
+// Timestamps are IMPORTANT. That there is a special method that we can use to
+// get the timestamp for right now.
+
+// get current timestamp for this exact moment.
+console.log(Date.now());
+
+// there are also SET versions of all the GET methods. setDate(), setHours()...
+futureDate.setFullYear(now.getFullYear());
+console.log(futureDate);
