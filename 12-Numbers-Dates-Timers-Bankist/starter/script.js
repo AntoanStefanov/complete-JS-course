@@ -101,7 +101,7 @@ const displayMessage = function (messageType) {
   }
 };
 
-const displayMovements = function (sort) {
+const displayMovements = function (account, sort = false) {
   // Each function should actually recieve the data that it will work with,
   // instead of using global variables.
 
@@ -111,8 +111,8 @@ const displayMovements = function (sort) {
   const movementsFrag = document.createDocumentFragment();
 
   const movements = sort
-    ? loggedInAccount.movements.slice().sort((a, b) => a - b)
-    : loggedInAccount.movements;
+    ? account.movements.slice().sort((a, b) => a - b)
+    : account.movements;
 
   // Adding new Elements.
   movements.forEach(function (movement, index) {
@@ -127,9 +127,23 @@ const displayMovements = function (sort) {
       textContent: `${index + 1} ${movementType}`,
     });
 
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#several_ways_to_create_a_date_object
+    const movementDate = (date) => {
+      const dateObj = new Date(date);
+
+      const [day, month, year] = [
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+        `${dateObj.getDate()}`.padStart(2, 0),
+        `${dateObj.getMonth() + 1}`.padStart(2, 0),
+        dateObj.getFullYear(),
+        dateObj.getHours(),
+      ];
+      return `${day}/${month}/${year}`;
+    };
+
     const movementDateEl = createHTMLElement({
       classNames: ['movements__date'],
-      textContent: '3 days ago',
+      textContent: `${movementDate(account.movementsDates[index])}`,
     });
 
     const movementValueEl = createHTMLElement({
@@ -150,7 +164,7 @@ const displayMovements = function (sort) {
 };
 
 const updateUI = function (account) {
-  displayMovements();
+  displayMovements(loggedInAccount);
 
   const calcBalance = () => {
     const initialBalance = 0;
@@ -271,11 +285,9 @@ const onLogin = function (event) {
   clearUsedCredentials();
 
   const displayCurrentTime = () => {
-    // day/month/year
     // two ways of filling 0 before unit.
 
     const now = new Date();
-    labelDate.textContent = now;
 
     const displayZeroBeforeUnit = (unit) => (unit < 10 ? `0${unit}` : unit);
 
@@ -329,7 +341,10 @@ const onTransfer = function (event) {
   if (loggedInAccount.balance < moneyAmount) return;
 
   loggedInAccount.movements.push(-moneyAmount);
+  loggedInAccount.movementsDates.push(new Date().toISOString());
+
   recipientAccount.movements.push(moneyAmount);
+  recipientAccount.movementsDates.push(new Date().toISOString());
 
   updateUI(loggedInAccount);
 };
@@ -348,6 +363,7 @@ const onLoanRequest = function (event) {
 
   if (approved) {
     loggedInAccount.movements.push(amount);
+    loggedInAccount.movementsDates.push(new Date().toISOString());
     updateUI(loggedInAccount);
   }
 };
@@ -380,7 +396,7 @@ btnClose.addEventListener('click', onClose);
 
 let isSorted = false;
 const onSort = function () {
-  displayMovements(!isSorted);
+  displayMovements(loggedInAccount, !isSorted);
   isSorted = !isSorted;
 };
 btnSort.addEventListener('click', onSort);
