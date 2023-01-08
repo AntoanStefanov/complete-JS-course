@@ -8,14 +8,14 @@ const account1 = {
   pin: 1111,
 
   movementsDates: [
-    '2019-11-18T21:31:17.178Z',
-    '2019-12-23T07:42:02.383Z',
-    '2020-01-28T09:15:04.904Z',
-    '2020-04-01T10:17:24.185Z',
-    '2020-05-08T14:11:59.604Z',
-    '2020-05-27T17:01:17.194Z',
-    '2020-07-11T23:36:17.929Z',
-    '2020-07-12T10:51:36.790Z',
+    '2022-12-31T10:17:24.185Z',
+    '2023-01-01T10:17:24.185Z',
+    '2023-01-02T19:02:28.795Z',
+    '2023-01-03T19:02:28.795Z',
+    '2023-01-04T19:02:28.795Z',
+    '2023-01-05T19:02:28.795Z',
+    '2023-01-06T19:02:28.795Z',
+    '2023-01-07T19:02:28.795Z',
   ],
   currency: 'EUR',
   locale: 'pt-PT', // de-DE
@@ -129,7 +129,14 @@ const displayMovements = function (account, sort = false) {
 
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#several_ways_to_create_a_date_object
     const movementDate = (date) => {
+      // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648905#questions
+      const calcDaysPassed = (firstDate, secondDate) =>
+        Math.trunc(Math.abs((secondDate - firstDate) / (1000 * 60 * 60 * 24)));
       const dateObj = new Date(date);
+      const daysPassed = calcDaysPassed(dateObj, new Date());
+      if (daysPassed === 0) return 'Today';
+      if (daysPassed === 1) return 'Yesterday';
+      if (daysPassed <= 7) return `${daysPassed} days ago`;
 
       const [day, month, year] = [
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
