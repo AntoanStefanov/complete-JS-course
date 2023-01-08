@@ -277,17 +277,19 @@ const onLogin = function (event) {
     labelDate.textContent = now;
 
     // internationalization, later in this section.
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
     // labelDate.textContent = now.toLocaleString('bg-BG', {timeZone: 'UTC'});
 
     const [day, month, year] = [
       now.getDate(),
-      now.getMonth(),
+      now.getMonth() + 1,
       now.getFullYear(),
     ];
 
-    labelDate.textContent = `${day < 10 ? `0${day}` : `${day}`}/${
-      month < 10 ? `0${month + 1}` : `${month + 1}`
-    }/${year}`;
+    labelDate.textContent = `
+    ${day < 10 ? `0${day}` : `${day}`}/
+    ${month < 10 ? `0${month}` : `${month}`}/${year}`.replace(/\s/g, '');
   };
   displayTodayDate();
 };
