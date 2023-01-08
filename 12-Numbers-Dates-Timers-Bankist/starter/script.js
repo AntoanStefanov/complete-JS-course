@@ -269,8 +269,35 @@ const onLogin = function (event) {
     inputLoginUsername.blur();
   };
   clearUsedCredentials();
+
+  const displayTodayDate = () => {
+    // day/month/year
+
+    const now = new Date();
+    labelDate.textContent = now;
+
+    // internationalization, later in this section.
+    // labelDate.textContent = now.toLocaleString('bg-BG', {timeZone: 'UTC'});
+
+    const [day, month, year] = [
+      now.getDate(),
+      now.getMonth(),
+      now.getFullYear(),
+    ];
+
+    labelDate.textContent = `${day < 10 ? `0${day}` : `${day}`}/${
+      month < 10 ? `0${month + 1}` : `${month + 1}`
+    }/${year}`;
+  };
+  displayTodayDate();
 };
 btnLogin.addEventListener('click', onLogin);
+
+// Fake login, so we dont need to reset all the time
+
+inputLoginUsername.value = 'js';
+inputLoginPin.value = 1111;
+btnLogin.click();
 
 const onTransfer = function (event) {
   console.log(event);
@@ -344,3 +371,5 @@ const onSort = function () {
   isSorted = !isSorted;
 };
 btnSort.addEventListener('click', onSort);
+
+// 176. Adding dates to 'Bankist' App
