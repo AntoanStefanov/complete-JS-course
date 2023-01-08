@@ -136,7 +136,6 @@ const displayMovements = function (account, sort = false) {
         `${dateObj.getDate()}`.padStart(2, 0),
         `${dateObj.getMonth() + 1}`.padStart(2, 0),
         dateObj.getFullYear(),
-        dateObj.getHours(),
       ];
       return `${day}/${month}/${year}`;
     };
