@@ -272,24 +272,30 @@ const onLogin = function (event) {
 
   const displayTodayDate = () => {
     // day/month/year
+    // two ways of filling 0 before unit.
 
     const now = new Date();
     labelDate.textContent = now;
+
+    const displayZeroBeforeUnit = (unit) => (unit < 10 ? `0${unit}` : unit);
 
     // internationalization, later in this section.
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
     // labelDate.textContent = now.toLocaleString('bg-BG', {timeZone: 'UTC'});
 
-    const [day, month, year] = [
-      now.getDate(),
-      now.getMonth() + 1,
+    const [day, month, year, hours, minutes] = [
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+      `${now.getDate()}`.padStart(2, 0),
+      `${now.getMonth() + 1}`.padStart(2, 0),
       now.getFullYear(),
+      now.getHours(),
+      `${now.getMinutes()}`.padStart(2, 0),
     ];
 
-    labelDate.textContent = `
-    ${day < 10 ? `0${day}` : `${day}`}/
-    ${month < 10 ? `0${month}` : `${month}`}/${year}`.replace(/\s/g, '');
+    labelDate.textContent = `${day}/${month}/${year}, ${displayZeroBeforeUnit(
+      hours,
+    )}:${minutes}`;
   };
   displayTodayDate();
 };
