@@ -138,13 +138,20 @@ const displayMovements = function (account, sort = false) {
       if (daysPassed === 1) return 'Yesterday';
       if (daysPassed <= 7) return `${daysPassed} days ago`;
 
-      const [day, month, year] = [
-        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
-        `${dateObj.getDate()}`.padStart(2, 0),
-        `${dateObj.getMonth() + 1}`.padStart(2, 0),
-        dateObj.getFullYear(),
-      ];
-      return `${day}/${month}/${year}`;
+      // const [day, month, year] = [
+      //   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+      //   `${dateObj.getDate()}`.padStart(2, 0),
+      //   `${dateObj.getMonth() + 1}`.padStart(2, 0),
+      //   dateObj.getFullYear(),
+      // ];
+
+      const userLocale = navigator.language;
+      console.log(userLocale);
+      const dateOptions = {
+        dateStyle: 'short',
+      };
+      const formatDate = new Intl.DateTimeFormat(userLocale, dateOptions);
+      return `${formatDate.format(dateObj)}`;
     };
 
     const movementDateEl = createHTMLElement({
@@ -297,7 +304,7 @@ const onLogin = function (event) {
     // // internationalization, later in this section.
     // // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString
     // // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
-    // // labelDate.textContent = now.toLocaleString('bg-BG', {timeZone: 'UTC'});
+    // // labelDate.textContent = now.toLocaleString('bg-BG', {timeZone: 'UTC'})
     // const [day, month, year, hours, minutes, seconds] = [
     //   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
     //   `${now.getDate()}`.padStart(2, 0),
@@ -319,15 +326,16 @@ const onLogin = function (event) {
     // new Intl.DateTimeFormat('locale'); locale -> 'language-country' -> en-US
     // this creates a formatter for given language and country.
     // And on the formatter, we can call .format method
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
     // timeStyle: 'short', 'medium', 'long', 'full'
     // dateStyle: 'short', 'medium', 'long', 'full'
 
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions
     // https://stackoverflow.com/questions/1091372/getting-the-clients-time-zone-and-offset-in-javascript
     // timeZone: 'UTC', 'Europe/Sofia', 'Europe/Paris', 'America/Los_Angeles'
-
+    // 11:04
     const options = {
-      dateStyle: 'medium',
+      dateStyle: 'short',
       timeStyle: 'medium',
       // timeZone: 'Europe/London',
     };
@@ -339,7 +347,11 @@ const onLogin = function (event) {
     const userLocale = navigator.language;
     console.log(userLocale);
 
-    const dateTimeFormat = new Intl.DateTimeFormat(userLocale, options);
+    const dateTimeFormat = new Intl.DateTimeFormat(
+      // loggedInAccount.locale,
+      userLocale,
+      options,
+    );
 
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions
     // console.log(dateTimeFormat.resolvedOptions());
