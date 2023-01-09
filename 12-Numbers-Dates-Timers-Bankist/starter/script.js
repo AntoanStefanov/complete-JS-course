@@ -327,14 +327,22 @@ const onLogin = function (event) {
     // timeZone: 'UTC', 'Europe/Sofia', 'Europe/Paris', 'America/Los_Angeles'
 
     const options = {
-      dateStyle: 'short',
+      dateStyle: 'medium',
       timeStyle: 'medium',
-      // timeZone: 'America/Los_Angeles',
+      // timeZone: 'Europe/London',
     };
-    const dateTimeFormat = new Intl.DateTimeFormat('bg-BG', options); // ar-SY
+
+    // Get locale/timezone from user's browser. // 'en-UK' / 'Europe/London'
+    // https://stackoverflow.com/questions/1091372/getting-the-clients-time-zone-and-offset-in-javascript
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions
+
+    const userLocale = navigator.language;
+    console.log(userLocale);
+
+    const dateTimeFormat = new Intl.DateTimeFormat(userLocale, options);
 
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions
-    console.log(dateTimeFormat.resolvedOptions());
+    // console.log(dateTimeFormat.resolvedOptions());
 
     labelDate.textContent = dateTimeFormat.format(now);
   };
