@@ -292,29 +292,41 @@ const onLogin = function (event) {
 
   const displayCurrentTime = () => {
     // two ways of filling 0 before unit.
+    // const now = new Date();
+    // const displayZeroBeforeUnit = (unit) => (unit < 10 ? `0${unit}` : unit);
+    // // internationalization, later in this section.
+    // // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString
+    // // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
+    // // labelDate.textContent = now.toLocaleString('bg-BG', {timeZone: 'UTC'});
+    // const [day, month, year, hours, minutes, seconds] = [
+    //   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+    //   `${now.getDate()}`.padStart(2, 0),
+    //   `${now.getMonth() + 1}`.padStart(2, 0),
+    //   now.getFullYear(),
+    //   now.getHours(),
+    //   `${now.getMinutes()}`.padStart(2, 0),
+    //   `${now.getSeconds()}`.padStart(2, 0),
+    // ];
+    // labelDate.textContent = `${day}/${month}/${year}, ${displayZeroBeforeUnit
+    //   hours,
+    // )}:${minutes}:${seconds}`;
 
+    // Internalization API, formatting the date/time.
     const now = new Date();
-
-    const displayZeroBeforeUnit = (unit) => (unit < 10 ? `0${unit}` : unit);
-
-    // internationalization, later in this section.
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
-    // labelDate.textContent = now.toLocaleString('bg-BG', {timeZone: 'UTC'});
-
-    const [day, month, year, hours, minutes, seconds] = [
-      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
-      `${now.getDate()}`.padStart(2, 0),
-      `${now.getMonth() + 1}`.padStart(2, 0),
-      now.getFullYear(),
-      now.getHours(),
-      `${now.getMinutes()}`.padStart(2, 0),
-      `${now.getSeconds()}`.padStart(2, 0),
-    ];
-
-    labelDate.textContent = `${day}/${month}/${year}, ${displayZeroBeforeUnit(
-      hours,
-    )}:${minutes}:${seconds}`;
+    // new Intl.DateTimeFormat('locale'); locale -> 'language-country' -> en-US
+    // this creates a formatter for given language and country.
+    // And on the formatter, we can call .format method
+    // timeStyle: 'short', 'medium', 'long', 'full'
+    // dateStyle: 'short', 'medium', 'long', 'full'
+    // timeZone: 'UTC', 'Europe/Sofia', 'Europe/Paris', 'America/Los_Angeles'
+    const options = {
+      dateStyle: 'medium',
+      timeStyle: 'medium',
+      timeZone: 'America/Los_Angeles',
+    };
+    const dateTimeFormat = new Intl.DateTimeFormat('en-US', options); // ar-SY
+    console.log(dateTimeFormat.resolvedOptions());
+    labelDate.textContent = dateTimeFormat.format(now);
   };
 
   displayCurrentTime();
