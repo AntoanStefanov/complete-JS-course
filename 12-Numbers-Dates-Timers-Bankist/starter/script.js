@@ -8,7 +8,7 @@ const account1 = {
   pin: 1111,
 
   movementsDates: [
-    '2022-12-31T10:17:24.185Z',
+    '2022-12-31T20:17:24.185Z',
     '2023-01-01T10:17:24.185Z',
     '2023-01-02T19:02:28.795Z',
     '2023-01-03T19:02:28.795Z',
@@ -159,9 +159,18 @@ const displayMovements = function (account, sort = false) {
       textContent: `${movementDate(account.movementsDates[index])}`,
     });
 
+    const userLocale = navigator.language;
+    const options = {
+      style: 'currency',
+      currency: loggedInAccount.currency,
+      // currencyDisplay: 'narrowSymbol',
+    };
+    const numFormatter = new Intl.NumberFormat(userLocale, options);
+
     const movementValueEl = createHTMLElement({
       classNames: ['movements__value'],
-      textContent: `${movement.toFixed(2)}€`,
+      // textContent: `${movement.toFixed(2)}€`,
+      textContent: `${numFormatter.format(movement)}`,
     });
 
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/append
