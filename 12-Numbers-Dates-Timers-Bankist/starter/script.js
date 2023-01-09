@@ -312,20 +312,30 @@ const onLogin = function (event) {
     // )}:${minutes}:${seconds}`;
 
     // Internalization API, formatting the date/time.
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat#instance_methods
+    // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648909#questions
+
     const now = new Date();
     // new Intl.DateTimeFormat('locale'); locale -> 'language-country' -> en-US
     // this creates a formatter for given language and country.
     // And on the formatter, we can call .format method
     // timeStyle: 'short', 'medium', 'long', 'full'
     // dateStyle: 'short', 'medium', 'long', 'full'
+
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions
+    // https://stackoverflow.com/questions/1091372/getting-the-clients-time-zone-and-offset-in-javascript
     // timeZone: 'UTC', 'Europe/Sofia', 'Europe/Paris', 'America/Los_Angeles'
+
     const options = {
-      dateStyle: 'medium',
+      dateStyle: 'short',
       timeStyle: 'medium',
-      timeZone: 'America/Los_Angeles',
+      // timeZone: 'America/Los_Angeles',
     };
-    const dateTimeFormat = new Intl.DateTimeFormat('en-US', options); // ar-SY
+    const dateTimeFormat = new Intl.DateTimeFormat('bg-BG', options); // ar-SY
+
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions
     console.log(dateTimeFormat.resolvedOptions());
+
     labelDate.textContent = dateTimeFormat.format(now);
   };
 
