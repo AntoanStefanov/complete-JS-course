@@ -346,7 +346,7 @@ const onLogin = function (event) {
 
     const userLocale = navigator.language;
     console.log(userLocale);
-
+    // https://www.browserstack.com/guide/change-time-zone-in-chrome-for-testing
     const dateTimeFormat = new Intl.DateTimeFormat(
       // loggedInAccount.locale,
       userLocale,
