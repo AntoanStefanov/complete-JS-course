@@ -199,7 +199,14 @@ const updateUI = function (account) {
 
   const displayBalance = function () {
     const balance = calcBalance();
-    labelBalance.textContent = `${balance.toFixed(2)}€`;
+    const userLocale = navigator.language;
+    const options = {
+      style: 'currency',
+      currency: loggedInAccount.currency,
+      // currencyDisplay: 'narrowSymbol',
+    };
+    const numFormatter = new Intl.NumberFormat(userLocale, options);
+    labelBalance.textContent = `${numFormatter.format(balance)}`;
   };
   displayBalance();
 
@@ -215,7 +222,14 @@ const updateUI = function (account) {
 
   const displayIncome = function () {
     const income = calcIncome();
-    labelSumIn.textContent = `${income.toFixed(2)}€`;
+    const userLocale = navigator.language;
+    const options = {
+      style: 'currency',
+      currency: loggedInAccount.currency,
+      // currencyDisplay: 'narrowSymbol',
+    };
+    const numFormatter = new Intl.NumberFormat(userLocale, options);
+    labelSumIn.textContent = `${numFormatter.format(income)}`;
   };
   displayIncome();
 
@@ -231,7 +245,14 @@ const updateUI = function (account) {
 
   const displayOutcome = function () {
     const outcome = calcOutcome();
-    labelSumOut.textContent = `${Math.abs(outcome).toFixed(2)}€`;
+    const userLocale = navigator.language;
+    const options = {
+      style: 'currency',
+      currency: loggedInAccount.currency,
+      signDisplay: 'never',
+    };
+    const numFormatter = new Intl.NumberFormat(userLocale, options);
+    labelSumOut.textContent = `${numFormatter.format(outcome)}`;
   };
   displayOutcome();
 
@@ -250,7 +271,13 @@ const updateUI = function (account) {
 
   const displayInterest = function () {
     const interest = calcInterest();
-    labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+    const userLocale = navigator.language;
+    const options = {
+      style: 'currency',
+      currency: loggedInAccount.currency,
+    };
+    const numFormatter = new Intl.NumberFormat(userLocale, options);
+    labelSumInterest.textContent = `${numFormatter.format(interest)}`;
   };
   displayInterest();
 };
@@ -377,8 +404,8 @@ btnLogin.addEventListener('click', onLogin);
 
 // Fake login, so we dont need to reset all the time
 
-inputLoginUsername.value = 'js';
-inputLoginPin.value = 1111;
+inputLoginUsername.value = 'jd';
+inputLoginPin.value = 2222;
 btnLogin.click();
 
 const onTransfer = function (event) {
