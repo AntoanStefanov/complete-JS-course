@@ -454,7 +454,7 @@ const onLoanRequest = function (event) {
         updateUI(loggedInAccount);
       }
     },
-    2000,
+    2.5 * 1000,
     approved,
   );
 };
