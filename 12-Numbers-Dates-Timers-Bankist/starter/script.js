@@ -184,6 +184,7 @@ const displayMovements = function (account, sort = false) {
   containerMovements.appendChild(movementsFrag);
 };
 
+let logoutTimerID;
 const updateUI = function (account) {
   displayMovements(loggedInAccount);
 
@@ -279,6 +280,28 @@ const updateUI = function (account) {
     labelSumInterest.textContent = `${numFormatter.format(interest)}`;
   };
   displayInterest();
+
+  const startInactiveTimer = () => {
+    // set time to 5 mins.(3secs for testing)
+    let secondsLeft = 100; // 300 (5 mins)
+    const timer = () => {
+      const minutes = `${Math.trunc(secondsLeft / 60)}`.padStart(2, 0);
+      const seconds = `${secondsLeft % 60}`.padStart(2, 0);
+      labelTimer.textContent = `${minutes}:${seconds}`;
+      if (secondsLeft === 0) {
+        clearInterval(timerID); // timerID is accessible through closure, debug
+        containerApp.style.opacity = 0;
+        displayMessage('close');
+      }
+      secondsLeft--;
+    };
+    timer();
+    const timerID = setInterval(timer, 1000);
+    return timerID;
+  };
+
+  if (logoutTimerID) clearInterval(logoutTimerID);
+  logoutTimerID = startInactiveTimer();
 };
 
 const createUsernames = function (accounts) {
@@ -303,7 +326,6 @@ createUsernames(accounts);
 
 // Event handler
 // Enter in input fields of form or clicking the login btn'll trigger the event.
-let logoutTimerID;
 const onLogin = function (event) {
   // default behavior, when we click a submit button, is the page to reload.
   // PAGE RELOADS, BECAUSE THIS IS A BUTTON IN A FORM ELEMENT.
@@ -398,29 +420,6 @@ const onLogin = function (event) {
   // https://developer.mozilla.org/en-US/docs/Web/API/setInterval
   // https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
   setInterval(displayCurrentTime, 1_000); // every 1 second.
-
-  const startLogoutTimer = () => {
-    // set time to 5 mins.(3secs for testing)
-    let secondsLeft = 100; // 300 (5 mins)
-    const timer = () => {
-      const minutes = `${Math.trunc(secondsLeft / 60)}`.padStart(2, 0);
-      const seconds = `${secondsLeft % 60}`.padStart(2, 0);
-      console.log(secondsLeft);
-      labelTimer.textContent = `${minutes}:${seconds}`;
-      if (secondsLeft === 0) {
-        clearInterval(timerID); // timerID is accessible through closure, debug
-        containerApp.style.opacity = 0;
-        displayMessage('close');
-      }
-      secondsLeft--;
-    };
-    timer();
-    const timerID = setInterval(timer, 1000);
-    return timerID;
-  };
-
-  if (logoutTimerID) clearInterval(logoutTimerID);
-  logoutTimerID = startLogoutTimer();
 };
 btnLogin.addEventListener('click', onLogin);
 
@@ -503,6 +502,7 @@ const onClose = function (event) {
   // https://sentry.io/answers/remove-specific-item-from-array/
   accounts.splice(accountIndex, 1);
   containerApp.style.opacity = 0;
+  if (logoutTimerID) clearInterval(logoutTimerID);
   displayMessage('close');
 };
 btnClose.addEventListener('click', onClose);
