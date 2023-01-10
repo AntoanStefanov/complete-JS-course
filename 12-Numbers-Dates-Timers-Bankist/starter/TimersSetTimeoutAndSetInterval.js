@@ -27,10 +27,11 @@ setTimeout((food) => console.log(`Here is the ${food} Delivery`), 2000, food);
 // wrapper function, bind
 
 // We can cancel a timeout
-const timeoutID = setTimeout(
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648919#questions
+const pizzaTimeout = setTimeout(
   (food) => console.log(`Here is the ${food} Delivery`),
   3000,
   'Pizza',
 );
 
-clearTimeout(timeoutID);
+clearTimeout(pizzaTimeout); // delete/clear/cancel the timer.
