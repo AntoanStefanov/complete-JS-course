@@ -303,11 +303,14 @@ createUsernames(accounts);
 
 // Event handler
 // Enter in input fields of form or clicking the login btn'll trigger the event.
+let logoutTimerID;
 const onLogin = function (event) {
   // default behavior, when we click a submit button, is the page to reload.
   // PAGE RELOADS, BECAUSE THIS IS A BUTTON IN A FORM ELEMENT.
   // Stop the reloading.
   event.preventDefault(); // prevent the form from submitting.
+
+  if (logoutTimerID) clearInterval(logoutTimerID);
 
   // we take value property of input elements.
   const username = inputLoginUsername.value;
@@ -400,7 +403,7 @@ const onLogin = function (event) {
 
   const startLogoutTimer = () => {
     // set time to 5 mins.(3secs for testing)
-    let secondsLeft = 4; // 300 (5 mins)
+    let secondsLeft = 100; // 300 (5 mins)
     const timer = () => {
       const minutes = `${Math.trunc(secondsLeft / 60)}`.padStart(2, 0);
       const seconds = `${secondsLeft % 60}`.padStart(2, 0);
@@ -415,8 +418,10 @@ const onLogin = function (event) {
     };
     timer();
     const timerID = setInterval(timer, 1000);
+    return timerID;
   };
-  startLogoutTimer();
+  logoutTimerID = startLogoutTimer();
+  console.log(logoutTimerID);
 };
 btnLogin.addEventListener('click', onLogin);
 
