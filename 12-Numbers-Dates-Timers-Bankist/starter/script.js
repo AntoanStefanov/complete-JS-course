@@ -310,8 +310,6 @@ const onLogin = function (event) {
   // Stop the reloading.
   event.preventDefault(); // prevent the form from submitting.
 
-  if (logoutTimerID) clearInterval(logoutTimerID);
-
   // we take value property of input elements.
   const username = inputLoginUsername.value;
   const pin = Number(inputLoginPin.value);
@@ -420,8 +418,9 @@ const onLogin = function (event) {
     const timerID = setInterval(timer, 1000);
     return timerID;
   };
+
+  if (logoutTimerID) clearInterval(logoutTimerID);
   logoutTimerID = startLogoutTimer();
-  console.log(logoutTimerID);
 };
 btnLogin.addEventListener('click', onLogin);
 
