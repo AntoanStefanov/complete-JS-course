@@ -35,3 +35,11 @@ const pizzaTimeout = setTimeout(
 );
 
 clearTimeout(pizzaTimeout); // delete/clear/cancel the timer.
+
+// setInterval
+// run function over and over again. for example, every 5 seconds or 10 mins.
+
+setInterval(() => {
+  const now = new Date();
+  console.log(now);
+}, 1.0 * 1000);
