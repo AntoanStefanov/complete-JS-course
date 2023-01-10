@@ -146,7 +146,6 @@ const displayMovements = function (account, sort = false) {
       // ];
 
       const userLocale = navigator.language;
-      console.log(userLocale);
       const dateOptions = {
         dateStyle: 'short',
       };
@@ -381,7 +380,6 @@ const onLogin = function (event) {
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions
 
     const userLocale = navigator.language;
-    console.log(userLocale);
     // https://www.browserstack.com/guide/change-time-zone-in-chrome-for-testing
     const dateTimeFormat = new Intl.DateTimeFormat(
       // loggedInAccount.locale,
@@ -399,6 +397,26 @@ const onLogin = function (event) {
   // https://developer.mozilla.org/en-US/docs/Web/API/setInterval
   // https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
   setInterval(displayCurrentTime, 1_000); // every 1 second.
+
+  const startLogoutTimer = () => {
+    // set time to 5 mins.(3secs for testing)
+    let secondsLeft = 4; // 300 (5 mins)
+    const timer = () => {
+      const minutes = `${Math.trunc(secondsLeft / 60)}`.padStart(2, 0);
+      const seconds = `${secondsLeft % 60}`.padStart(2, 0);
+      console.log(secondsLeft);
+      labelTimer.textContent = `${minutes}:${seconds}`;
+      if (secondsLeft === 0) {
+        clearInterval(timerID); // timerID is accessible through closure, debug
+        containerApp.style.opacity = 0;
+        displayMessage('close');
+      }
+      secondsLeft--;
+    };
+    timer();
+    const timerID = setInterval(timer, 1000);
+  };
+  startLogoutTimer();
 };
 btnLogin.addEventListener('click', onLogin);
 
@@ -491,5 +509,3 @@ const onSort = function () {
   isSorted = !isSorted;
 };
 btnSort.addEventListener('click', onSort);
-
-// 176. Adding dates to 'Bankist' App
