@@ -445,11 +445,18 @@ const onLoanRequest = function (event) {
     (movement) => movement > (amount * 10) / 100,
   );
 
-  if (approved) {
-    loggedInAccount.movements.push(amount);
-    loggedInAccount.movementsDates.push(new Date().toISOString());
-    updateUI(loggedInAccount);
-  }
+  // timeout for loan, banks take some time for approval.
+  setTimeout(
+    () => {
+      if (approved) {
+        loggedInAccount.movements.push(amount);
+        loggedInAccount.movementsDates.push(new Date().toISOString());
+        updateUI(loggedInAccount);
+      }
+    },
+    2000,
+    approved,
+  );
 };
 btnLoan.addEventListener('click', onLoanRequest);
 
