@@ -60,4 +60,19 @@ messageButton.textContent = 'Got it.';
 messageButton.classList.add('btn', 'btn--close-cookie');
 
 message.append(messageButton);
-document.querySelector('.header').prepend(message);
+const header = document.querySelector('.header');
+header.prepend(message);
+
+// 14:40
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648947#questions
+// DOM Element is unique, so it can exist at one place at a time.
+// kinda like human.
+
+// What if we want to insert multiple copies of the same element?
+// We would have to first copy the first element.
+// header.prepend(message.cloneNode(true));
+// true means: to copy all the child nodes of the element.
+
+// Two more methods. Before/After the given element - /sibling/.
+// header.before(message.cloneNode(true));
+// header.after(message.cloneNode(true));
