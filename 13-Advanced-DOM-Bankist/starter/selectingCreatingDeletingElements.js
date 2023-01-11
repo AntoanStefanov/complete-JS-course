@@ -49,4 +49,15 @@ console.log(message);
 // this element is not yet anywhere in our DOM.
 // We can modify it and then append/insert it to the DOM.
 // We can modify/add/remove anything from this element
-// We can behave with it the same as getting an el from the DOM.
+// We can behave with it the same as getting/selection an el from the DOM.
+
+// Let's add a class.
+message.classList.add('cookie-message');
+message.textContent = 'We use cookies.';
+
+const messageButton = document.createElement('button');
+messageButton.textContent = 'Got it.';
+messageButton.classList.add('btn', 'btn--close-cookie');
+
+message.append(messageButton);
+document.querySelector('.header').prepend(message);
