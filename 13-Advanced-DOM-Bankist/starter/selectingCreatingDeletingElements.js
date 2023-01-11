@@ -90,3 +90,7 @@ document.querySelector('.btn--close-cookie').addEventListener('click', () => {
   // message.parentElement.removeChild(message);
   // MOVING UP/DOWN THROUGH THE DOM TREE IS CALLED 'DOM TRAVERSING'.
 });
+
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648939#questions
+// Check DOM structure
