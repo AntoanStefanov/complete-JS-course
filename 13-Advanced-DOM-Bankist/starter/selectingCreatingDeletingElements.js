@@ -76,3 +76,17 @@ header.prepend(message);
 // Two more methods. Before/After the given element - /sibling/.
 // header.before(message.cloneNode(true));
 // header.after(message.cloneNode(true));
+
+// Remove element
+document.querySelector('.btn--close-cookie').addEventListener('click', () => {
+  // arrow fun, get the 'this' of the parent function,
+  // in this case, above the arrow fn is the global, so the 'this' is the window
+  console.log(this);
+
+  message.remove();
+  // remove method is very recent, before this method,
+  // all we could do was to remove child elements.
+  // We select parent and then remove child element.
+  // message.parentElement.removeChild(message);
+  // MOVING UP/DOWN THROUGH THE DOM TREE IS CALLED 'DOM TRAVERSING'.
+});
