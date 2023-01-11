@@ -32,3 +32,6 @@ const allButtons = document.getElementsByTagName('button');
 console.log(allButtons);
 document.querySelector('.btn--text.btn--scroll-to').remove();
 console.log(allButtons);
+
+// https://developer.mozilla.org/en-US/docs/Web/API/NodeList
+// nodeList is static. not 'live' like the HTMLCollection above.
