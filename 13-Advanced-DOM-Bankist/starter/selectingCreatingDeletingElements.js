@@ -24,7 +24,9 @@ console.log(document.querySelector('body'));
 const allSections = document.querySelectorAll('.section');
 console.log(allSections);
 
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection
 // HTMLCollection is a LIFE collection.(if DOM changes, so do the collection)
+// An HTMLCollection in the HTML DOM is live
 // getElementsByTagName -> returns HTMLCollection.
 const allButtons = document.getElementsByTagName('button');
 console.log(allButtons);
