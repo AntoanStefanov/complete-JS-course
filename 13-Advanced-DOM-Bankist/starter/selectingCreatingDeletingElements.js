@@ -35,3 +35,18 @@ console.log(allButtons);
 
 // https://developer.mozilla.org/en-US/docs/Web/API/NodeList
 // nodeList is static. not 'live' like the HTMLCollection above.
+
+// Creating and inserting elements.
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
+// .insertAdjacentHTML
+
+// Sometimes its more useful to actually built the element instead of inserting.
+
+// // tag name as arg | returns HTMLDivElement
+const message = document.createElement('div');
+console.log(message);
+// this element is not yet anywhere in our DOM.
+// We can modify it and then append/insert it to the DOM.
+// We can modify/add/remove anything from this element
+// We can behave with it the same as getting an el from the DOM.
