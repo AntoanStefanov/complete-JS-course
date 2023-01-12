@@ -111,8 +111,10 @@ console.log(logo.dataset.versionNumber); // '3.0'
 // very useful
 
 // Classes
-
-// classList -> https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList
+// classList -> https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+// inherits
+// DOMTokenList -> https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList
+// DOMtokenList is a live collection!
 // Check all this instance methods and MORE in the MDN link ABOVE.
 // logo.classList.add();
 // logo.classList.remove();
