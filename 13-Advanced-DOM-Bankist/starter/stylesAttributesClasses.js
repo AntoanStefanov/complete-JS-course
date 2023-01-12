@@ -44,3 +44,19 @@ console.log(computedStyle.height); // 50px
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/parseFloat
 createdMessage.style.height =
   Number.parseFloat(computedStyle.height) + 30 + 'px';
+
+// CSS custom properties(which we usually call 'CSS variables').
+// check style.css ->  :root {CSS variables}
+// If we can change these variables in the style.css through CSS,
+// we can change it through JS also.!
+
+// Let's first find where these variables are defined.
+// they are defined in the document root (:root in CSS),
+// in JS this is equivalent to the document(document element).
+console.log(document.documentElement); // or document.querySelector('html') ?
+
+// https://www.30secondsofcode.org/articles/s/css-root-vs-html
+// https://developer.mozilla.org/en-US/docs/Web/CSS/:root
+// https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
+// https://stackoverflow.com/questions/37801882/how-to-change-css-root-color-variables-in-javascript
+document.documentElement.style.setProperty('--color-primary', 'orangered');
