@@ -1,5 +1,6 @@
 /* The page is NOT responsive. You can implement responsiveness yourself if you wanna have some fun 😃 */
 
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties */
 :root {
   --color-primary: #5ec576;
   --color-secondary: #ffcb03;

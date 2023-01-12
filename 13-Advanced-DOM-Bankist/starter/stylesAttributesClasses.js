@@ -60,3 +60,4 @@ console.log(document.documentElement); // or document.querySelector('html') ?
 // https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
 // https://stackoverflow.com/questions/37801882/how-to-change-css-root-color-variables-in-javascript
 document.documentElement.style.setProperty('--color-primary', 'orangered');
+// https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
