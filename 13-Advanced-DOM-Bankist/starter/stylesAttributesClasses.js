@@ -97,6 +97,7 @@ console.log(logo.className);
 // There is also a special type of attributes.
 // that's data attributes.
 
+// https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
 // Data attributes
 // the data special kind of attributes start with the word "data".
 // /the added attribute -> data-version-number="3.0" to the logo/
@@ -105,3 +106,6 @@ console.log(logo.className);
 console.log(logo.dataset); // DOMStringMap {versionNumber: '3.0'}
 // camelCase in JS, dash(-) in HTML.
 console.log(logo.dataset.versionNumber); // '3.0'
+// A lot are used when we want to work with the UI and especially when
+// we need to store data in the user interface, so basically in the HTML code.
+// very useful
