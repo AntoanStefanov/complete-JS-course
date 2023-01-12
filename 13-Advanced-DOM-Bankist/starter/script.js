@@ -1,7 +1,8 @@
 'use strict';
 
 // Modal window
-
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648433#questions
+// 79. PROJECT #2: Modal Window - 81. Handling an "Esc" Keypress Event
 const openAccountModalWindow = function () {
   const modal = document.querySelector('.modal');
   const overlay = document.querySelector('.overlay');
@@ -37,6 +38,7 @@ const openAccountModalWindow = function () {
 
 openAccountModalWindow();
 
+// Smooth Scroll
 // 188. Implementing Smooth Scrolling
 /**
  * Two ways of applying smooth scroll
@@ -47,6 +49,7 @@ openAccountModalWindow();
  * 2nd the more modern way, which only works in super modern browsers.
  */
 const smoothScroll = function () {
+  // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648955#questions
   const btnToScroll = document.querySelector('.btn--scroll-to');
   const sectionToBeScrolled = document.getElementById('section--1');
 
@@ -100,13 +103,22 @@ const smoothScroll = function () {
     window.scrollTo(scrollOptions);
   };
 
+  // so that there is not error in the script
+  console.log(oldSchoolScrollListener);
+
   // 2nd way of doing it. modern web
   const modernWebScrollListener = function () {
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+    const scrollIntoViewOptions = {behavior: 'smooth'};
+    sectionToBeScrolled.scrollIntoView(scrollIntoViewOptions);
+
+    // Align with the bottom of the el. there is other way-options. CHECK DOCS:
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+    // sectionToBeScrolled.scrollIntoView(false, scrollIntoViewOptions);
   };
 
   // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
-  btnToScroll.addEventListener('click', oldSchoolScrollListener);
+  // btnToScroll.addEventListener('click', oldSchoolScrollListener);
   btnToScroll.addEventListener('click', modernWebScrollListener);
 };
 
