@@ -56,8 +56,7 @@ const smoothScroll = function () {
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
     const sectionCoordinates = sectionToBeScrolled.getBoundingClientRect();
 
-    // viewport ->
-    // the rectangle in which we can see the current portion of the page.
+    console.log(sectionCoordinates);
 
     // we can get the current scroll position
     console.log(
@@ -69,7 +68,29 @@ const smoothScroll = function () {
     );
 
     // We can read the height and width of the viewport
-    console.log();
+    // viewport ->
+    // the rectangle in which we can see the current portion of the page.
+    console.log(
+      'width/height of viewport: ',
+      document.documentElement.clientWidth,
+      document.documentElement.clientHeight,
+    );
+
+    // Scrolling
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo
+    // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648955#questions
+
+    // check docs, there is just to pass section.x, section.y
+    const scrollOptions = {
+      // NOT relative to the viewport, by adding the scrolled space.
+      // the section space until the viewport edge+the scrolled space in the bar
+      top: sectionCoordinates.top + window.pageYOffset, // top == y
+      left: sectionCoordinates.left + window.pageXOffset, // left == x
+    };
+    console.log(scrollOptions);
+    window.scrollTo(scrollOptions);
   };
 
   // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
