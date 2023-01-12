@@ -42,7 +42,7 @@ openAccountModalWindow();
  * Two ways of applying smooth scroll
  *
  * 1st will be a bit more old school, which will allow us to see
- * a couple of interesting stuff
+ * a couple of interesting stuff (manually calculating the values)
  *
  * 2nd the more modern way, which only works in super modern browsers.
  */
@@ -50,8 +50,8 @@ const smoothScroll = function () {
   const btnToScroll = document.querySelector('.btn--scroll-to');
   const sectionToBeScrolled = document.getElementById('section--1');
 
-  // 1st way of doing it.
-  const oldSchoolScrollListener = function (event) {
+  // 1st way of doing it. Old school, manually calculating the position.
+  const oldSchoolScrollListener = function () {
     // 1. we get the coordinates of the element that we want to scroll to.
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
     const sectionCoordinates = sectionToBeScrolled.getBoundingClientRect();
@@ -100,8 +100,14 @@ const smoothScroll = function () {
     window.scrollTo(scrollOptions);
   };
 
+  // 2nd way of doing it. modern web
+  const modernWebScrollListener = function () {
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+  };
+
   // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
   btnToScroll.addEventListener('click', oldSchoolScrollListener);
+  btnToScroll.addEventListener('click', modernWebScrollListener);
 };
 
 smoothScroll();
