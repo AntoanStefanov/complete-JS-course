@@ -61,3 +61,23 @@ console.log(document.documentElement); // or document.querySelector('html') ?
 // https://stackoverflow.com/questions/37801882/how-to-change-css-root-color-variables-in-javascript
 document.documentElement.style.setProperty('--color-primary', 'orangered');
 // https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+
+// Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo);
+console.dir(logo);
+// 11:28
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648951#questions
+console.log(logo.alt); // alt attribute
+console.log(logo.src); // src attribute
+console.log(logo.id);
+console.log(logo.className);
+
+// CHECK INHRETIANCE DIAGRAM -> SEARCH FOR the props and methods on left menu.
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement
+// check the instance properties on left side menu, and the inheritance diagram.
+// non-standrad img attributes
+// console.log(logo.attributes.attrName);
+// console.log(logo.getAttribute(attrName));
+// We can set attributes
+// console.log(logo.setAttribute(attrName));
