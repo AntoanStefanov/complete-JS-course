@@ -69,7 +69,12 @@ console.dir(logo);
 // 11:28
 // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648951#questions
 console.log(logo.alt); // alt attribute
+
+// http://127.0.0.1:8080/13-Advanced-DOM-Bankist/starter/img/logo.png
 console.log(logo.src); // src attribute
+// img/logo.png
+console.log(logo.getAttribute('src')); // src attribute
+
 console.log(logo.id);
 console.log(logo.className);
 
