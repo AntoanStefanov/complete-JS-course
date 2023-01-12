@@ -75,6 +75,13 @@ console.log(logo.src); // src attribute
 // img/logo.png
 console.log(logo.getAttribute('src')); // src attribute
 
+// Same is true for the href attribute. (above)
+const link = document.querySelector('.nav__link--btn');
+// http://127.0.0.1:8080/13-Advanced-DOM-Bankist/starter/#
+console.log(link.href);
+// #
+console.log(link.getAttribute('href'));
+
 console.log(logo.id);
 console.log(logo.className);
 
@@ -86,3 +93,15 @@ console.log(logo.className);
 // console.log(logo.getAttribute(attrName));
 // We can set attributes
 // console.log(logo.setAttribute(attrName));
+
+// There is also a special type of attributes.
+// that's data attributes.
+
+// Data attributes
+// the data special kind of attributes start with the word "data".
+// /the added attribute -> data-version-number="3.0" to the logo/
+// The special about this attr, is that now,
+// this attribute is at logo.dataset
+console.log(logo.dataset); // DOMStringMap {versionNumber: '3.0'}
+// camelCase in JS, dash(-) in HTML.
+console.log(logo.dataset.versionNumber); // '3.0'
