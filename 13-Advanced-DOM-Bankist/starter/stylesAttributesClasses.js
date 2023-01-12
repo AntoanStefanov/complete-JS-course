@@ -109,3 +109,12 @@ console.log(logo.dataset.versionNumber); // '3.0'
 // A lot are used when we want to work with the UI and especially when
 // we need to store data in the user interface, so basically in the HTML code.
 // very useful
+
+// Classes
+
+// classList -> https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList
+// Check all this instance methods and MORE in the MDN link ABOVE.
+// logo.classList.add();
+// logo.classList.remove();
+// logo.classList.toggle();
+// logo.classList.contains();
