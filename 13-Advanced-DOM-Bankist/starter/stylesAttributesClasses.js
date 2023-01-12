@@ -23,7 +23,6 @@ console.log(createdMessage.style.height); // returns '', not set like the above.
 // but https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
 const computedStyle = getComputedStyle(createdMessage);
 console.log(computedStyle);
-console.log(computedStyle.height); // 50px
 console.log(computedStyle.fontWeight); // 400, set in the style.css file.
 
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style#getting_style_information
@@ -33,3 +32,15 @@ console.log(computedStyle.fontWeight); // 400, set in the style.css file.
 // The style property represents only the CSS declarations set in the element's
 // inline style attribute, not those that come from style rules elsewhere,
 // such as style rules in the < head > section, or external style sheets.
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+// used to get the real style as it appears on the page.
+
+console.log(computedStyle.height); // 50px
+// What if we wanted to increase/decrease the height by 40px?
+
+// computedStyle.height returns 50px (this means "50px" string and px in it.)
+// so we need to use:
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/parseFloat
+createdMessage.style.height =
+  Number.parseFloat(computedStyle.height) + 30 + 'px';
