@@ -73,6 +73,8 @@ const smoothScroll = function () {
     // We can read the height and width of the viewport
     // viewport ->
     // the rectangle in which we can see the current portion of the page.
+    // NOT INCLUDING THE SCROLLBARS,
+    // just the dimensions of the viewport available for the ACTUAL content.
     console.log(
       'width/height of viewport: ',
       document.documentElement.clientWidth,
