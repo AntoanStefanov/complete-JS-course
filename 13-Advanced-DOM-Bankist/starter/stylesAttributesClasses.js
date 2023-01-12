@@ -9,7 +9,7 @@ console.log(createdMessage);
 
 // Styles - these styles are set as INLINE styles.In the style attr of the elem.
 createdMessage.style.backgroundColor = '#37383d';
-createdMessage.style.width = '120%';
+createdMessage.style.width = '100%';
 
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
 console.log(createdMessage.style);

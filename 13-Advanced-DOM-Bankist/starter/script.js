@@ -84,10 +84,17 @@ const smoothScroll = function () {
 
     // check docs, there is just to pass section.x, section.y
     const scrollOptions = {
-      // NOT relative to the viewport, by adding the scrolled space.
+      // NOT relative to the viewport. By adding the scrolled space ->
+      // ABSOLUTE position of the element based on the document.
       // the section space until the viewport edge+the scrolled space in the bar
+
+      // CURRENT POSITION RELATIVE TO THE VIEWPORT
+      //                +
+      // THE ALREADY SCROLLED SPACE/OFFSET based on the whole document itself.
+
       top: sectionCoordinates.top + window.pageYOffset, // top == y
       left: sectionCoordinates.left + window.pageXOffset, // left == x
+      behavior: 'smooth',
     };
     console.log(scrollOptions);
     window.scrollTo(scrollOptions);
