@@ -74,7 +74,29 @@ function eventListenerToRemove() {
 
   // Removing it
   // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
-  h1.removeEventListener('mouseenter', eventListenerToRemove);
+  // h1.removeEventListener('mouseenter', eventListenerToRemove);
+
+  // This can be used if we want to listen to the event ONCE,
+  // but there is a option on addEventListener for that design !!!! CHECK DOCS.
+  // the OPTION is called once.
+  // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
 }
 
-h1.addEventListener('mouseenter', eventListenerToRemove);
+h1.addEventListener(
+  'mouseenter',
+  eventListenerToRemove,
+  // { once: true }
+);
+// We can remove the event listener at any place in the code. not just in the
+// already added listener. Example, here:
+// h1.removeEventListener('mouseenter', eventListenerToRemove);
+
+// Or after some time has passed.
+setTimeout(
+  () => h1.removeEventListener('mouseenter', eventListenerToRemove),
+  5.0 * 1000,
+);
+
+// 3rd way of handling events, which is by using an HTML attribute.
+// IT SHOULD NOT BE USED, AS WELL AS 'on-event' PROPERTY,
+// USE ONLY addEventListener.!
