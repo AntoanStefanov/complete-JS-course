@@ -33,7 +33,7 @@ function bubbling() {
       event.currentTarget.style.backgroundColor = randomColor();
       console.log('NAV LINKS');
       console.log(event); // SAME EVENT EVERYWHERE
-
+    });
   document.querySelector('html').addEventListener('click', function () {
     console.log('eventListener added on the html element');
   });
