@@ -113,3 +113,6 @@ capturing();
 // because we’ve set two listeners: capturing and bubbling.
 // The target triggers at the end of the first and
 // at the beginning of the second phase.
+
+// The event param/arg in all of these handler functions is the SAME EVENT.
+// Because this EXACT event goes through the three phases of the propagation.
