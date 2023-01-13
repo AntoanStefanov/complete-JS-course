@@ -24,6 +24,7 @@ function bubbling() {
     .addEventListener('click', function (event) {
       event.currentTarget.style.backgroundColor = randomColor();
       console.log('Features link');
+      console.log(event); // SAME EVENT EVERYWHERE
     });
 
   document
@@ -31,7 +32,7 @@ function bubbling() {
     .addEventListener('click', function (event) {
       event.currentTarget.style.backgroundColor = randomColor();
       console.log('NAV LINKS');
-    });
+      console.log(event); // SAME EVENT EVERYWHERE
 
   document.querySelector('html').addEventListener('click', function () {
     console.log('eventListener added on the html element');
@@ -66,6 +67,7 @@ function capturing() {
     function (event) {
       event.currentTarget.style.backgroundColor = randomColor();
       console.log('CAPTURING - Features link');
+      console.log(event); // SAME EVENT EVERYWHERE
     },
     true,
   );
@@ -75,6 +77,8 @@ function capturing() {
   document.querySelector('.nav__links').addEventListener(
     'click',
     function (event) {
+      console.log(event); // SAME EVENT EVERYWHERE
+
       event.currentTarget.style.backgroundColor = randomColor();
       console.log('CAPTURING - NAV LINKS');
     },
@@ -115,4 +119,4 @@ capturing();
 // at the beginning of the second phase.
 
 // The event param/arg in all of these handler functions is the SAME EVENT.
-// Because this EXACT event goes through the three phases of the propagation.
+// BCS, this EXACT SAME event goes through the three phases of the propagation.
