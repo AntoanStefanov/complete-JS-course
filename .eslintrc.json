@@ -74,6 +74,10 @@
         // ],
         "object-curly-spacing": [
             "always"
+        ],
+        "strict": [
+            "error",
+            "global"
         ]
     }
 }
