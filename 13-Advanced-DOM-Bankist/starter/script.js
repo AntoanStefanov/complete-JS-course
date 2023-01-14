@@ -10,6 +10,7 @@ const openAccountModalWindow = function () {
   const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 
   const openModal = function (event) {
+    console.log(event);
     // https://stackoverflow.com/questions/1291942/what-does-javascriptvoid0-mean
     // https://stackoverflow.com/questions/1357118/event-preventdefault-vs-return-false
     event.preventDefault();
@@ -17,7 +18,9 @@ const openAccountModalWindow = function () {
     overlay.classList.remove('hidden');
   };
 
-  const closeModal = function () {
+  const closeModal = function (event) {
+    console.log(event);
+
     modal.classList.add('hidden');
     overlay.classList.add('hidden');
   };
@@ -109,11 +112,12 @@ const smoothScroll = function () {
   console.log(oldSchoolScrollListener);
 
   // 2nd way of doing it. modern web
-  const modernWebScrollListener = function () {
-    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
-    const scrollIntoViewOptions = {behavior: 'smooth'};
-    sectionToBeScrolled.scrollIntoView(scrollIntoViewOptions);
+  const modernWebScrollListener = function (event) {
+    console.log(event);
 
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+    const scrollIntoViewOptions = { behavior: 'smooth' };
+    sectionToBeScrolled.scrollIntoView(scrollIntoViewOptions);
     // Align with the bottom of the el. there is other way-options. CHECK DOCS:
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
     // sectionToBeScrolled.scrollIntoView(false, scrollIntoViewOptions);

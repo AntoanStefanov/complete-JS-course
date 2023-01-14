@@ -13,6 +13,8 @@ const navLinks = document.querySelector('.nav__links');
 // on their common ancestor.
 
 navLinks.addEventListener('click', function (event) {
+  console.log(event);
+
   event.preventDefault();
   // Without preventDefault()
   // the 'href="#section--1"' in the HTML document,
@@ -22,8 +24,17 @@ navLinks.addEventListener('click', function (event) {
 
   if (target.tagName.toLowerCase() !== 'a') return;
 
-  console.log(event.target.href);
-  const scrollIntoElementID = event.target.href.split('/').at(-1);
+  console.log(target.href); // THIS RETURNS the absolute path:
+  // http://127.0.0.1:8080/13-Advanced-DOM-Bankist/starter/#section--1
+
+  // WHILE THIS, RETURNS the relative path (exact value of the href attribute):
+  const hrefAttr = target.getAttribute('href'); // #section--1
+
+  if (hrefAttr === '#') return; // The 'open account' anchor.
+
+  // So, we use the second one,
+  const scrollIntoElementID = hrefAttr;
+
   const scrollIntoViewOptions = { behavior: 'smooth' };
 
   const HTMLElement = document.querySelector(scrollIntoElementID);
