@@ -65,18 +65,19 @@
                 "typeof": true
             }
         ],
-        // "max-len": [
-        //     "warn",
-        //     {
-        //         "code": 80,
-        //         "comments": 65
-        //     }
-        // ],
-        "object-curly-spacing": [
-            "always"
+        "max-len": [
+            "warn",
+            {
+                "code": 80,
+                "comments": 100
+            }
         ],
+        // OBJECT-CURLY-SPACING IS BLOCKING THE WHOLE ESLINT IF IT'S ON!!!!
+        // "object-curly-spacing": [
+        //     "always"
+        // ],
         "strict": [
-            "error",
+            "warn",
             "global"
         ]
     }
