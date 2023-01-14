@@ -54,5 +54,21 @@ h1El.lastElementChild.style.color = 'orangered';
 // Going upwards: parents
 
 // for direct: parent/s.
-console.log(h1El.parentNode);
-console.log(h1El.parentElement);
+console.log(h1El.parentNode); // returns parent node
+console.log(h1El.parentElement); // returns parent element node
+// In this case, it's the same.
+
+// However, most of the time, we need a parent el which is NOT direct parent.
+// In other words,
+// We might need to find a parent element, no matter how far away it is in
+// the DOM tree.
+
+// For that, we have the closest method.
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
+// check docs
+
+// P.S. If you need to find a method,
+// first check MDN > Element > Instance methods.
+
+// This method will be used later especially for event delegation. Note.
+console.log(h1El.closest('.header')); // CSS selector

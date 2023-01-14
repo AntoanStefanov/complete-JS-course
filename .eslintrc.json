@@ -65,13 +65,13 @@
                 "typeof": true
             }
         ],
-        // "max-len": [
-        //     "error",
-        //     {
-        //         "code": 80,
-        //         "comments": 65
-        //     }
-        // ]
+        "max-len": [
+            "warn",
+            {
+                "code": 80,
+                "comments": 65
+            }
+        ],
         "object-curly-spacing": [
             "always"
         ]
