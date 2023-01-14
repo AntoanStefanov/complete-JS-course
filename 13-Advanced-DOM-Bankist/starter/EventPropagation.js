@@ -30,10 +30,24 @@ function bubbling() {
   document
     .querySelector('.nav__links')
     .addEventListener('click', function (event) {
+      // STOP EVENT PROPAGATION
+      // event.stopPropagation();
+      // OUTPUT: 1 phase (capturing goes full on),
+      // 2 phase (target phase goes full on)
+      // 3 phase (bubbling STOPS, after this target phase completes)
+
+      // CAPTURING - eventListener added on window
+      // CAPTURING - eventListener added on the html element
+      // CAPTURING - NAV LINKS
+      // CAPTURING - Features link
+      // Features link
+      // NAV LINKS
+
       event.currentTarget.style.backgroundColor = randomColor();
       console.log('NAV LINKS');
       console.log(event); // SAME EVENT EVERYWHERE
     });
+
   document.querySelector('html').addEventListener('click', function () {
     console.log('eventListener added on the html element');
   });
@@ -88,6 +102,12 @@ function capturing() {
   document.querySelector('html').addEventListener(
     'click',
     function () {
+      // STOP EVENT PROPAGATION
+      // event.stopPropagation();
+      // OUTPUT:
+      // CAPTURING - eventListener added on window
+      // CAPTURING - eventListener added on the html element
+
       console.log('CAPTURING - eventListener added on the html element');
     },
     true,
@@ -120,3 +140,16 @@ capturing();
 
 // The event param/arg in all of these handler functions is the SAME EVENT.
 // BCS, this EXACT SAME event goes through the three phases of the propagation.
+
+// OUTPUT: 1 phase(CAPTURING) 2 phase(TARGET PHASE) 3 phase(BUBBLING )
+
+// CAPTURING - eventListener added on window
+// CAPTURING - eventListener added on the html element
+// CAPTURING - NAV LINKS
+// CAPTURING - Features link
+// Features link
+// NAV LINKS
+// eventListener added on the html element
+// eventListener added on window
+
+// Don’t stop PROPAGATION without a need!
