@@ -96,3 +96,7 @@ const siblings = h4El.parentElement.children;
 console.log([...siblings]);
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+
+[...siblings].forEach(function (el) {
+  if (el !== h4El) el.style.opacity = '70%'; // !== bcs the el itself is there.
+});
