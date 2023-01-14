@@ -72,3 +72,27 @@ console.log(h1El.parentElement); // returns parent element node
 
 // This method will be used later especially for event delegation. Note.
 console.log(h1El.closest('.header')); // CSS selector
+console.log(h1El.closest('h1')); // This returns the h1 element itself.
+
+// We can think of closest being the opposite of the querySelector.
+
+// Going sideways: siblings.
+
+// For some reason in JS, we can only access DIRECT siblings(previous&next ones)
+const h4El = document.querySelector('h4');
+console.log(h4El.previousElementSibling); // h1 (element node)
+console.log(h4El.previousSibling); // \n (text node)
+
+console.log(h4El.nextElementSibling); // button Element
+console.log(h4El.nextSibling); // \n
+
+// If we need all the siblings, not just previous or next one,
+// then we move up to the parent element, then we get all children.
+console.log(h4El.parentElement.children); // ofc, it includes itself.
+const siblings = h4El.parentElement.children;
+// siblings -> HTMLCollection -> Symbol(Symbol.iterator) : ƒ values()
+// This means that HTMLCollection is an iterator,
+// ...(spread operator) works with objects that are ITERABLE, so this would work
+console.log([...siblings]);
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
