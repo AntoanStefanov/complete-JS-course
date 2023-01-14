@@ -30,8 +30,13 @@ function bubbling() {
   document
     .querySelector('.nav__links')
     .addEventListener('click', function (event) {
+      // https://javascript.info/bubbling-and-capturing
+
       // STOP EVENT PROPAGATION
       // event.stopPropagation();
+
+      // event.stopImmediatePropagation();
+      // https://developer.mozilla.org/en-US/docs/Web/API/Event/stopImmediatePropagation
       // OUTPUT: 1 phase (capturing goes full on),
       // 2 phase (target phase goes full on)
       // 3 phase (bubbling STOPS, after this target phase completes)
@@ -43,7 +48,15 @@ function bubbling() {
       // Features link
       // NAV LINKS
 
-      event.currentTarget.style.backgroundColor = randomColor();
+      // event.currentTarget.style.backgroundColor = randomColor();
+      console.log('NAV LINKS');
+      console.log(event); // SAME EVENT EVERYWHERE
+    });
+
+  document
+    .querySelector('.nav__links')
+    .addEventListener('click', function (event) {
+      // event.currentTarget.style.backgroundColor = randomColor();
       console.log('NAV LINKS');
       console.log(event); // SAME EVENT EVERYWHERE
     });
@@ -92,8 +105,6 @@ function capturing() {
     'click',
     function (event) {
       console.log(event); // SAME EVENT EVERYWHERE
-
-      event.currentTarget.style.backgroundColor = randomColor();
       console.log('CAPTURING - NAV LINKS');
     },
     true,
