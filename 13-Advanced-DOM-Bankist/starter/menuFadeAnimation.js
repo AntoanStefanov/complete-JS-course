@@ -48,7 +48,9 @@ function menuFadeAnimation() {
 
   nav.addEventListener('mouseover', (event) => hoverHandler(event, '60%'));
   nav.addEventListener('mouseout', (event) => hoverHandler(event));
-  nav.addEventListener('mouseenter', (event) => console.log(event));
+
+  // nav.addEventListener('mouseenter', (event) => console.log(event));
+  // bubbles prop -> false. read below.
 
   // mouseover is similar to mouseenter, with the BIG diffenence that,
   // mouseenter EVENT does not bubble. (same event going upwards to the root.)
