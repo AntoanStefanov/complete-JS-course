@@ -8,7 +8,7 @@ function menuFadeAnimation() {
 
   /**
    * @param {Event} event
-   * @param {String} action
+   * @param {String} opacity
    */
   function hoverHandler(event, opacity = '100%') {
     const target = event.target;
