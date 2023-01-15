@@ -11,6 +11,9 @@ function menuFadeAnimation() {
    * @param {String} opacity
    */
   function hoverHandler(event, opacity = '100%') {
+    // https://javascript.info/bubbling-and-capturing#event-target
+    // event.currentTarget === this === the element on which the listener is attached.
+
     const target = event.target;
     const elTagName = target.tagName.toLowerCase();
 
@@ -45,6 +48,7 @@ function menuFadeAnimation() {
 
   nav.addEventListener('mouseover', (event) => hoverHandler(event, '60%'));
   nav.addEventListener('mouseout', (event) => hoverHandler(event));
+  nav.addEventListener('mouseenter', (event) => console.log(event));
 
   // mouseover is similar to mouseenter, with the BIG diffenence that,
   // mouseenter EVENT does not bubble. (same event going upwards to the root.)
