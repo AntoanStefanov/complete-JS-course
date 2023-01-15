@@ -38,10 +38,12 @@ console.log(h1El.querySelectorAll('.highlight'));
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/children
 
-// IF WE NEED DIRECT CHILDREN all child nodes(check what node actually contains):
+// IF WE NEED DIRECT CHILDREN all child nodes
+// (check what node actually contains):
 console.log(h1El.childNodes);
 
-// IF WE NEED DIRECT CHILDREN element nodes(check what Element actually contains):
+// IF WE NEED DIRECT CHILDREN element nodes
+// (check what Element actually contains):
 console.log(h1El.children);
 
 // the two above works only for direct children.
