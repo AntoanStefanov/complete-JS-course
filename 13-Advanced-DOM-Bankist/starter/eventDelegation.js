@@ -34,8 +34,7 @@ navLinks.addEventListener('click', function (event) {
 
   // So, we use the second one,
   const scrollIntoElementID = hrefAttr;
-
-  const scrollIntoViewOptions = { behavior: 'smooth' };
+  const scrollIntoViewOptions = {behavior: 'smooth'};
 
   const HTMLElement = document.querySelector(scrollIntoElementID);
   HTMLElement.scrollIntoView(scrollIntoViewOptions);
