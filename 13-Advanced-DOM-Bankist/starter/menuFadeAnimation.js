@@ -12,30 +12,30 @@ function menuFadeAnimation() {
    */
   function hoverHandler(event, opacity = '100%') {
     const target = event.target;
+    const elTagName = target.tagName.toLowerCase();
 
     // There are no child elements that we can accidentally hover over,
     // so we do NOT use closest method. check tabbedComponent, for more.
-    if (target.classList.contains('nav__link')) {
-      const anchorEl = target;
 
-      const anchorElSiblings = anchorEl
-        .closest('.nav__links')
-        .querySelectorAll('.nav__link');
+    if (elTagName !== 'a') return;
 
-      const logo = nav.querySelector('#logo');
+    // if (target.classList.contains('nav__link')) {
+    const anchorEl = target;
 
-      anchorElSiblings.forEach((anchor) => {
-        if (anchor !== anchorEl) {
-          anchor.style.opacity = opacity;
-        }
-      });
+    const anchorElSiblings = anchorEl
+      .closest('.nav__links')
+      .querySelectorAll('.nav__link');
 
-      logo.style.opacity = opacity;
-    }
+    const logo = nav.querySelector('#logo');
 
-    // if (ElTagName !== 'a' || ElTagName !== 'img') return;
-    // We cannot use this above, bcs Always will be => ElTagName === 'nav'
-    // we first hover over the nav to reach the a tag, so this will always return
+    anchorElSiblings.forEach((anchor) => {
+      if (anchor !== anchorEl) {
+        anchor.style.opacity = opacity;
+      }
+    });
+
+    logo.style.opacity = opacity;
+    // }
   }
 
   // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648983#questions
