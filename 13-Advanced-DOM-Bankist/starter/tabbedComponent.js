@@ -21,8 +21,8 @@ function tabbedComponent() {
     // (the text node for some reason is not clickable, it's part of the btn)
     const tab = target.closest('.operations__tab');
 
+    // Guard clauses.
     if (!tab) return;
-
     if (clickedTab === tab) return;
 
     deactivateTabAndContent(clickedTab, showedTabContent);
