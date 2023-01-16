@@ -38,15 +38,20 @@ function stickyNavAPI() {
     // entries.forEach((entry) => {
     //   console.log(entry);
     // });
+
     // entry.intersectionRatio <= 0.1
     //   ? nav.classList.add('sticky')
     //   : nav.classList.remove('sticky');
     // console.log(entry);
 
-    if (entry.intersectionRatio === 1) return;
-    // first load on page, header is fully visible.
+    entry.isIntersecting
+      ? nav.classList.remove('sticky')
+      : nav.classList.add('sticky');
 
-    nav.classList.toggle('sticky');
+    // if (entry.intersectionRatio === 1) return;
+    // // first load on page, header is fully visible.
+
+    // nav.classList.toggle('sticky');
   }
 
   const nav = document.querySelector('.nav');
