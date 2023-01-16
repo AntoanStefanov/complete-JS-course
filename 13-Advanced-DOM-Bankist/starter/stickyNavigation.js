@@ -28,3 +28,10 @@ function stickyNavigation() {
   });
 }
 stickyNavigation();
+
+// pretty bad for performance(using 'scroll' event).
+// scroll event fires all the time.
+
+// go with this, for this job:
+// https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648987#questions/13686796
