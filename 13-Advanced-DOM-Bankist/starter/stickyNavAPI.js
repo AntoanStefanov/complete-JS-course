@@ -12,6 +12,10 @@ function stickyNavAPI() {
   const options = {
     root: null, // viewport, if root is omitted, default is viewport, again.
 
+    // rootMargin: '200px', // IntersectionObserverEntry.rootBounds
+    // 22:01 min
+    // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648993#questions
+
     threshold: 0.1, // 10% -> call callback fn, on 10% element visibility.!!!
     // The default is 0 -> on 0.000001% element visibility, callback fn is called.
     // meaning as soon as even one pixel is visible, the callback will be run.
@@ -65,3 +69,5 @@ function stickyNavAPI() {
   // and intersectionRatio === 0, add (sticky)
 }
 stickyNavAPI();
+
+// bottom:847height:757left:90right:1118top:90width:1028x:90y:90
