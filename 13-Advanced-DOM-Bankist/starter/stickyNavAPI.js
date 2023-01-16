@@ -15,8 +15,11 @@ function stickyNavAPI() {
   const options = {
     root: null, // viewport, if root is omitted, default is viewport, again.
 
+    // https://stackoverflow.com/questions/11495200/how-do-negative
+    // -margins-in-css-work-and-why-is-margin-top-5-margin-bottom5
     rootMargin: `-${navHeight}px 0px 0px 0px`,
-    // IntersectionObserverEntry.rootBounds
+    // IntersectionObserverEntry.rootBounds (seach in MDN docs),check the height
+    // 917 viewport - 90 (navHeight) = 847 (the model box height after -margin)?
     // 22:01 min
     // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648993#questions
 
@@ -73,4 +76,4 @@ function stickyNavAPI() {
 }
 stickyNavAPI();
 
-// bottom:847height:757left:90right:1118top:90width:1028x:90y:90
+// 198. Revealing Elements on Scroll
