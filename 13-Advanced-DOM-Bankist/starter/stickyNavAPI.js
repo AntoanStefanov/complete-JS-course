@@ -9,14 +9,18 @@
  * Sticky Nav API.
  */
 function stickyNavAPI() {
+  const nav = document.querySelector('.nav');
+  const navHeight = nav.getBoundingClientRect().height;
+
   const options = {
     root: null, // viewport, if root is omitted, default is viewport, again.
 
-    // rootMargin: '200px', // IntersectionObserverEntry.rootBounds
+    rootMargin: `-${navHeight}px 0px 0px 0px`,
+    // IntersectionObserverEntry.rootBounds
     // 22:01 min
     // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648993#questions
 
-    threshold: 0.1, // 10% -> call callback fn, on 10% element visibility.!!!
+    threshold: 0, // 10% -> call callback fn, on 10% element visibility.!!!
     // The default is 0 -> on 0.000001% element visibility, callback fn is called.
     // meaning as soon as even one pixel is visible, the callback will be run.
 
@@ -60,7 +64,6 @@ function stickyNavAPI() {
     // nav.classList.toggle('sticky');
   }
 
-  const nav = document.querySelector('.nav');
   const observer = new IntersectionObserver(observerAction, options);
   const target = document.querySelector('.header');
   observer.observe(target);
