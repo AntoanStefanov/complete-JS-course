@@ -23,6 +23,8 @@ function stickyNavAPI() {
     // 10% -> treshold.
     // Conclusion: if 10% is crossed either way(up or down),
     // the callback will be called.
+
+    // When the target element intersects the treshold, the callback will be run
   };
 
   /**
