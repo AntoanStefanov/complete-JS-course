@@ -1,0 +1,294 @@
+Source: https://www.freecodecamp.org/learn/2022/responsive-web-design/
+https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-html-by-building-a-cat-photo-app
+
+step 2:  
+The lower the number, the higher the importance, so h2 elements have less importance than h1 elements. [1, 6]
+Only use one h1 element per page and place lower importance headings below higher importance headings.
+
+step 3:
+The p element is used to create a paragraph of text on websites.
+
+step 4:
+Commenting allows you to leave messages without affecting the browser display.
+It also allows you to make code inactive.
+
+step 5:
+HTML5 has some elements that identify different content areas.
+These elements make your HTML easier to read and help with Search Engine Optimization (SEO) and accessibility.
+
+Identify the main section of this page by adding a <main> opening tag before the h1 element, and a </main> closing tag after the p element.
+
+step 6:
+In the previous step, you put the h1, h2, comment, and p elements inside the main element.
+This is called nesting. Nested elements should be placed two spaces further to the right of the element they are nested in.
+This spacing is called indentation and it is used to make HTML easier to read.
+
+The h1 element, h2 element and the comment are indented two spaces more than the main element in the code below.
+Use the space bar on your keyboard to add two more spaces in front of the p element so that it is indented properly as well.
+
+step 7:
+You can add images to your website by using the img element.
+img elements have an opening tag without a closing tag.
+A tag for an element without a closing tag is known as a self-closing tag.
+
+step 8:
+HTML attributes are special words used inside the opening tag of an element to control the element's behavior.
+The src attribute in an img element specifies the image's URL (where the image is located).
+
+step 9:
+All img elements should have an alt attribute. 
+The alt attribute's text is used for screen readers to improve accessibility and is displayed if the image fails to load.
+For example, <img src="cat.jpg" alt="A cat"> has an alt attribute with the text A cat.
+
+step 10:
+You can link to another page with the anchor (a) element.
+For example, <a href='https://freecodecamp.org'></a> would link to freecodecamp.org.
+
+step 11:
+A link's text(anchor text) must be placed between the opening and closing tags of an anchor (a) element. For example,
+<a href="https://www.freecodecamp.org">click here to go to freeCodeCamp.org</a> is a link with the text click here to go to freeCodeCamp.org.
+
+step 14:
+Add a target attribute with the value _blank to the anchor (a) element's opening tag, so that the link opens in a new tab.
+
+step 16:
+Before adding any new content, you should make use of a section element to separate the cat photos content from the future content.
+Take your h2, comment, p, and anchor (a) elements and nest them in a section element.
+
+step 19:
+When you add a lower rank heading element to the page, it's implied that you're starting a new subsection.
+
+step 23:
+The figure element represents self-contained content and will allow you to associate an image with a caption.
+Nest the image you just added within a figure element.
+
+step 24:
+A figure caption (figcaption) element is used to add a caption to describe the image contained within the figure element.
+For example, <figcaption>A cute cat</figcaption> adds the caption A cute cat.
+
+After the image nested in the figure element, add a figcaption element with text set to:
+
+Cats love lasagna.
+
+step 25:
+Emphasize the word love in the figcaption element by wrapping it in an emphasis em element.
+
+step 27:
+The code for an ordered list (ol) is similar to an unordered list, but list items in an ordered list are numbered when displayed.
+
+step 30:
+To improve accessibility of the image you added, add an alt attribute with the text: Five cats looking around a field.
+
+step 35:
+Now you will add a web form to collect information from users.
+
+step 36:
+The action attribute indicates where form data should be sent. 
+For example, <form action="/submit-url"></form> tells the browser that the form data should be sent to the path /submit-url.
+
+37:
+The input element allows you several ways to collect data from a web form. Like img elements,
+input elements are self-closing and do not need closing tags.
+
+38:
+There are many kinds of inputs you can create using the type attribute.
+You can easily create a password field, reset button, or a control to let users select a file from their computer.
+
+39:
+In order for a form's data to be accessed by the location specified in the action attribute,
+you must give the text field a name attribute and assign it a value to represent the data being submitted.
+For example, you could use the following syntax for an email address text field: <input type="text" name="email">.
+
+40:
+Placeholder text is used to give people a hint about what kind of information to enter into an input.
+For example, <input type="text" placeholder="Email address">.
+
+41:
+To prevent a user from submitting your form when required information is missing,
+you need to add the required attribute to an input element. 
+
+There's no need to set a value to the required attribute.
+Instead, just add the word required to the input element, making sure there is space between it and other attributes.
+
+42:
+Use the button element to create a clickable button. For example, <button>Click Here</button> creates a button with the text Click Here.
+
+Add a button element with the text Submit below the input element.
+The default behavior of clicking a form button without any attributes submits the form to the location specified in the form's action attribute.
+
+43:
+Even though you added your button below the text input, they appear next to each other on the page.
+That's because both input and button elements are inline elements, which don't appear on new lines.
+
+The button you added will submit the form by default. However, relying on default behavior may cause confusion.
+Add the type attribute with the value submit to the button to make it clear that it is a submit button.
+
+44:
+You can use radio buttons for questions where you want only one answer out of multiple options.
+
+Here is an example of a radio button with the option of cat: <input type="radio"> cat. Remember that input elements are self-closing.
+
+Before the text input, add a radio button with the option set as:
+
+Indoor
+
+45:
+label elements are used to help associate the text for an input element with the input element itself
+(especially for assistive technologies like screen readers). 
+
+For example, <label><input type="radio"> cat</label> makes it so clicking the word cat also selects the corresponding radio button.
+
+Nest your radio button inside a label element.
+
+
+46:
+The id attribute is used to identify specific HTML elements. Each id attribute's value must be unique from all other id values for the entire page.
+
+Add an id attribute with the value indoor to the radio button. When elements have multiple attributes, the order of the attributes doesn't matter.
+
+
+47:
+Create another radio button below the first one. Nest it inside a label element with Outdoor as the label text. Give the radio button an id attribute with outdoor as the value.
+
+48:
+Notice that both radio buttons can be selected at the same time.
+To make it so selecting one radio button automatically deselects the other,
+both buttons must have a name attribute with the same value.
+
+Add the name attribute with the value indoor-outdoor to both radio buttons.
+
+49:
+If you select the Indoor radio button and submit the form,
+the form data for the button is based on its name and value attributes.
+Since your radio buttons do not have a value attribute,
+the form data will include indoor-outdoor=on, which is not useful when you have multiple buttons.
+
+Add a value attribute to both radio buttons. For convenience, set the button's value attribute to the same value as its id attribute.
+
+
+50:
+The fieldset element is used to group related inputs and labels together in a web form.
+ fieldset elements are block-level elements, meaning that they appear on a new line.
+
+Nest the Indoor and Outdoor radio buttons within a fieldset element, and don't forget to indent the radio buttons.
+
+51:
+The legend element acts as a caption for the content in the fieldset element.
+It gives users context about what they should enter into that part of the form.
+
+Add a legend element with the text Is your cat an indoor or outdoor cat? above both of the radio buttons.
+
+52:
+Next, you are going to add some new form input elements, so add another fieldset element directly below the current fieldset element.
+
+53:
+Add a legend element with the text What's your cat's personality? inside the second fieldset element.
+
+
+54:
+Forms commonly use checkboxes for questions that may have more than one answer.
+For example, here's a checkbox with the option of tacos: <input type="checkbox"> tacos.
+
+Under the legend element you just added, add an input with its type attribute set to checkbox and give it the option of:
+
+Loving
+
+55:
+Add an id attribute with the value loving to the checkbox input.
+
+56:
+There's another way to associate an input element's text with the element itself.
+You can nest the text within a label element and add a for attribute with the same value as the input element's id attribute.
+
+Associate the text Loving with the checkbox by only nesting the text Loving in a label element and place it to the right side of the checkbox input element.
+
+
+57:
+Add the name attribute with the value personality to the checkbox input element.
+
+While you won't notice this in the browser, doing this makes it easier for a server to process your web form, especially when there are multiple checkboxes.
+
+
+58:
+Add another checkbox after the one you just added. 
+The id attribute value should be lazy and the name attribute value should be the same as the last checkbox.
+
+Also add a label element to the right of the new checkbox with the text Lazy.
+Make sure to associate the label element with the new checkbox using the for attribute.
+
+59:
+Add a final checkbox after the previous one with an id attribute value of energetic.
+The name attribute should be the same as the previous checkbox.
+
+Also add a label element to the right of the new checkbox with text Energetic.
+Make sure to associate the label element with the new checkbox.
+
+60:
+Like radio buttons, form data for selected checkboxes are name / value attribute pairs.
+While the value attribute is optional, it's best practice to include it with any checkboxes or radio buttons on the page.
+
+Add a value attribute to each checkbox. For convenience, set each checkbox's value attribute to the same value as its id attribute.
+
+
+61:
+In order to make a checkbox checked or radio button selected by default, you need to add the checked attribute to it.
+There's no need to set a value to the checked attribute.
+Instead, just add the word checked to the input element, making sure there is space between it and other attributes.
+
+Make the first radio button and the first checkbox selected by default.
+
+62:
+Now you will add a footer section to the page.
+
+After the main element, add a footer element.
+
+63:
+Nest a p element with the text No Copyright - freeCodeCamp.org within the footer element.
+
+64:
+Make the text freeCodeCamp.org into a link by enclosing it in an anchor (a) element.
+The href attribute should be set to https://www.freecodecamp.org.
+
+65:
+Notice that everything you've added to the page so far is inside the body element.
+All page content elements that should be rendered to the page go inside the body element.
+However, other important information goes inside the head element.
+
+Add a head element above the body element.
+
+66:
+The title element determines what browsers show in the title bar or tab for the page.
+
+Add a title element within the head element using the text below:
+
+CatPhotoApp
+
+67:
+Notice that the entire contents of the page are nested within an html element.
+All other elements must be descendants of this html element.
+
+Add the lang attribute with the value en to the opening html tag
+to specify that the language of the page is English.
+
+68:
+All pages should begin with <!DOCTYPE html>. 
+This special string is known as a declaration
+and ensures the browser tries to meet industry-wide specifications.
+
+All HTML documents must start with a <!DOCTYPE> declaration.
+
+The declaration is not an HTML tag. It is an "information" to the browser about
+what document type to expect.
+
+Add this declaration as the first line of the code.
+
+69:
+You can set browser behavior by adding self-closing meta elements in the head.
+Here's an example:
+
+<meta attribute="value">
+
+Tell the browser to parse the markup into multiple languages
+by creating a meta element as a child of the head element.
+Set its charset attribute to UTF-8.
+
