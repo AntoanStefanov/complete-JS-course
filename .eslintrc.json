@@ -69,7 +69,7 @@
             "warn",
             {
                 "code": 80,
-                "comments": 100
+                "comments": 120
             }
         ],
         // OBJECT-CURLY-SPACING IS BLOCKING THE WHOLE ESLINT IF IT'S ON!!!!
