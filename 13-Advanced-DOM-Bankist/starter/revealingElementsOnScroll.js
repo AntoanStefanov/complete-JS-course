@@ -26,6 +26,7 @@ function revealingElements() {
    * @param {IntersectionObserver} observer
    */
   function observerHandler([entry], observer) {
+    // one treshold, one entry.
     console.log(entry);
     if (entry.isIntersecting) {
       entry.target.classList.remove('section--hidden');
@@ -35,7 +36,13 @@ function revealingElements() {
 
   const observer = new IntersectionObserver(observerHandler, observerOptions);
   // https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/observe
-  document.querySelectorAll('section').forEach((el) => observer.observe(el));
+  document.querySelectorAll('section').forEach((el) => {
+    observer.observe(el);
+
+    // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648995#questions
+    // 5:10
+    el.classList.add('section--hidden');
+  });
 }
 
 revealingElements();
