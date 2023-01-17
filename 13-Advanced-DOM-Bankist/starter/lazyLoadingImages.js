@@ -20,17 +20,38 @@
  */
 function lazyLoadingImages() {
   const observerOptions = {
-    threshold: 1, // 100 %
+    // one threshold, one entry (in callback fn).
+    threshold: 0, // 0 %
+    rootMargin: '0px 0px 200px 0px',
+    // adding 200px on the bottom of the viewport, so that imgs can load sooner.
+    // Ideally, we don't want our users to notice, that we are lazy loading
+    // these images. All of this, should basically happen in the background,
+    // without our users noticing it.
   };
 
   const loadingImageHandler = function ([entry], observer) {
     console.log(entry);
 
+    // Guard clause.
     if (!entry.isIntersecting) return;
 
     const lazyImgEl = entry.target;
-    lazyImgEl.classList.remove('lazy-img');
+
     lazyImgEl.setAttribute('src', lazyImgEl.dataset.src);
+
+    // lazyImgEl.classList.remove('lazy-img');
+
+    // using event listener instead of removing the class right away. CHECK VIDEO, why is that.
+    // https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648999#questions/14423474
+    // 12:33 min.
+
+    // when img loading finishes, it will fire this load event
+    lazyImgEl.addEventListener('load', () =>
+      // remove the blurry filter, once loading is DONE.
+      // Slow internet case. check video above 12:33min
+      lazyImgEl.classList.remove('lazy-img'),
+    );
+
     observer.unobserve(lazyImgEl);
   };
 
