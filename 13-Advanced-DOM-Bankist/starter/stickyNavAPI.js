@@ -15,6 +15,8 @@ function stickyNavAPI() {
   const options = {
     root: null, // viewport, if root is omitted, default is viewport, again.
 
+    // https://cloud.netlifyusercontent.com/assets/
+    // 344dbf88-fdf9-42bb-adb4-46f01eedd629/cbe79f7b-b5e0-4891-9322-aea13e2fe54e/margin-motion.gif
     // https://stackoverflow.com/questions/11495200/how-do-negative
     // -margins-in-css-work-and-why-is-margin-top-5-margin-bottom5
     rootMargin: `-${navHeight}px 0px 0px 0px`,
@@ -56,7 +58,7 @@ function stickyNavAPI() {
     //   ? nav.classList.add('sticky')
     //   : nav.classList.remove('sticky');
     // console.log(entry);
-
+    console.log(entry);
     entry.isIntersecting
       ? nav.classList.remove('sticky')
       : nav.classList.add('sticky');
@@ -75,5 +77,3 @@ function stickyNavAPI() {
   // and intersectionRatio === 0, add (sticky)
 }
 stickyNavAPI();
-
-// 198. Revealing Elements on Scroll

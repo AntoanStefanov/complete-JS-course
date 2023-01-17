@@ -10,7 +10,7 @@ function revealingElements() {
   const observerOptions = {
     // https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
     // treshold: 0.1, // 10%
-    rootMargin: '-200px', // ctrl+F in docs above 'rootMargin'. kinda CSS values
+    // rootMargin: '-200px', // ctrl+F in docs above 'rootMargin'. kinda CSS values
     // check viewport height and entry.rootBound height, there ur margin goes.
     // example:
     // viewport height: 917px
@@ -18,6 +18,10 @@ function revealingElements() {
     // /top, right, bottom, left/
     // entry.rootBound height: 517px./917(real height) - 200(top) - 200(bottom)/
     // We shinkred the height of the viewport, not on real, but in the observer.
+
+    // Jonas solution: without rootMargin(which I think is easier to understand)
+    // just using, threshold. with no rootMargin.
+    threshold: 0.15, // 15% element visibility, run the callback.
   };
 
   /**
@@ -28,10 +32,13 @@ function revealingElements() {
   function observerHandler([entry], observer) {
     // one treshold, one entry.
     console.log(entry);
-    if (entry.isIntersecting) {
-      entry.target.classList.remove('section--hidden');
-      observer.unobserve(entry.target);
-    }
+
+    // guard clause
+    if (!entry.isIntersecting) return; // if its not intersecting. return.
+
+    const section = entry.target;
+    section.classList.remove('section--hidden');
+    observer.unobserve(section);
   }
 
   const observer = new IntersectionObserver(observerHandler, observerOptions);
@@ -44,5 +51,6 @@ function revealingElements() {
     el.classList.add('section--hidden');
   });
 }
-
+// https://cloud.netlifyusercontent.com/assets/
+// 344dbf88-fdf9-42bb-adb4-46f01eedd629/cbe79f7b-b5e0-4891-9322-aea13e2fe54e/margin-motion.gif
 revealingElements();
