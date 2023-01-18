@@ -25,7 +25,7 @@ const closeModal = function () {
   overlay.classList.add('hidden');
 };
 
-btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
+btnsOpenModal.forEach((btn) => btn.addEventListener('click', openModal));
 
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
@@ -49,7 +49,7 @@ btnScrollTo.addEventListener('click', function (e) {
   console.log(
     'height/width viewport',
     document.documentElement.clientHeight,
-    document.documentElement.clientWidth
+    document.documentElement.clientWidth,
   );
 
   // Scrolling
@@ -64,7 +64,7 @@ btnScrollTo.addEventListener('click', function (e) {
   //   behavior: 'smooth',
   // });
 
-  section1.scrollIntoView({ behavior: 'smooth' });
+  section1.scrollIntoView({behavior: 'smooth'});
 });
 
 ///////////////////////////////////////
@@ -88,7 +88,7 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   // Matching strategy
   if (e.target.classList.contains('nav__link')) {
     const id = e.target.getAttribute('href');
-    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(id).scrollIntoView({behavior: 'smooth'});
   }
 });
 
@@ -102,8 +102,8 @@ tabsContainer.addEventListener('click', function (e) {
   if (!clicked) return;
 
   // Remove active classes
-  tabs.forEach(t => t.classList.remove('operations__tab--active'));
-  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+  tabs.forEach((t) => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach((c) => c.classList.remove('operations__content--active'));
 
   // Activate tab
   clicked.classList.add('operations__tab--active');
@@ -122,7 +122,7 @@ const handleHover = function (e) {
     const siblings = link.closest('.nav').querySelectorAll('.nav__link');
     const logo = link.closest('.nav').querySelector('img');
 
-    siblings.forEach(el => {
+    siblings.forEach((el) => {
       if (el !== link) el.style.opacity = this;
     });
     logo.style.opacity = this;
@@ -202,7 +202,7 @@ const imgObserver = new IntersectionObserver(loadImg, {
   rootMargin: '200px',
 });
 
-imgTargets.forEach(img => imgObserver.observe(img));
+imgTargets.forEach((img) => imgObserver.observe(img));
 
 ///////////////////////////////////////
 // Slider
@@ -220,7 +220,7 @@ const slider = function () {
     slides.forEach(function (_, i) {
       dotContainer.insertAdjacentHTML(
         'beforeend',
-        `<button class="dots__dot" data-slide="${i}"></button>`
+        `<button class="dots__dot" data-slide="${i}"></button>`,
       );
     });
   };
@@ -228,7 +228,7 @@ const slider = function () {
   const activateDot = function (slide) {
     document
       .querySelectorAll('.dots__dot')
-      .forEach(dot => dot.classList.remove('dots__dot--active'));
+      .forEach((dot) => dot.classList.remove('dots__dot--active'));
 
     document
       .querySelector(`.dots__dot[data-slide="${slide}"]`)
@@ -237,7 +237,7 @@ const slider = function () {
 
   const goToSlide = function (slide) {
     slides.forEach(
-      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`),
     );
   };
 
@@ -282,7 +282,7 @@ const slider = function () {
 
   dotContainer.addEventListener('click', function (e) {
     if (e.target.classList.contains('dots__dot')) {
-      const { slide } = e.target.dataset;
+      const {slide} = e.target.dataset;
       goToSlide(slide);
       activateDot(slide);
     }

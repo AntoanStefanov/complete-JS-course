@@ -160,7 +160,6 @@ function sliderComponent() {
   // Init
   initializeSlider();
 
-  // Event handlers.
   const goToSlide = function (toNextSlide = true) {
     const changeCurrentSlideNum = () => {
       toNextSlide ? currentSlideNum++ : currentSlideNum--;
@@ -196,6 +195,7 @@ function sliderComponent() {
     if (event.key === 'ArrowLeft') goToSlide(false);
   };
 
+  // Event handlers
   btnRight.addEventListener('click', goToSlide);
 
   btnLeft.addEventListener('click', () => goToSlide(false));
