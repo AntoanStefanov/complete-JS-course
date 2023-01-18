@@ -106,15 +106,6 @@ function sliderComponent() {
 
   let currentSlideNum = 0;
 
-  const goToCurrentSlide = () => {
-    slides.forEach((slide, index) => {
-      slide.style.transform = `translate(${100 * (index - currentSlideNum)}%)`;
-    });
-  };
-
-  // Initialize slider.
-  goToCurrentSlide();
-
   const activateDotEl = function () {
     const activationClass = 'dots__dot--active';
 
@@ -144,8 +135,18 @@ function sliderComponent() {
     if (dotToActivate) dotToActivate.classList.add('dots__dot--active');
   };
 
+  const goToCurrentSlide = () => {
+    slides.forEach((slide, index) => {
+      slide.style.transform = `translate(${100 * (index - currentSlideNum)}%)`;
+    });
+    activateDotEl();
+  };
+
+  // Initialize slider.
+  goToCurrentSlide();
+
   const goToSlide = function (toNextSlide = true) {
-    const changeCurrentSlide = () => {
+    const changeCurrentSlideNum = () => {
       toNextSlide ? currentSlideNum++ : currentSlideNum--;
 
       // If next slide is outside of slide. (right way)
@@ -155,11 +156,9 @@ function sliderComponent() {
       if (currentSlideNum === -1) currentSlideNum = slides.length - 1;
     };
 
-    changeCurrentSlide();
+    changeCurrentSlideNum();
 
     goToCurrentSlide();
-
-    activateDotEl();
   };
 
   const arrowKeyHandler = function (event) {
@@ -176,17 +175,16 @@ function sliderComponent() {
     currentSlideNum = +slideToGo;
 
     goToCurrentSlide();
-    activateDotEl();
   };
 
   btnRight.addEventListener('click', goToSlide);
 
   btnLeft.addEventListener('click', () => goToSlide(false));
 
+  dotsDiv.addEventListener('click', dotClickHandler);
+
   // https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event
   document.addEventListener('keydown', arrowKeyHandler);
-
-  dotsDiv.addEventListener('click', dotClickHandler);
 }
 
 sliderComponent();
