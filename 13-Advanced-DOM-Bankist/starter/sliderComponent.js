@@ -83,8 +83,10 @@ function sliderComponent() {
   const btnRight = document.querySelector('.slider__btn--right');
   const btnLeft = document.querySelector('.slider__btn--left');
   const dotsDiv = document.querySelector('.dots');
+
   let currentSlideNum = 0;
 
+  // Functions
   const createDotBtn = (dotNum) => {
     const dotEl = document.createElement('button');
 
@@ -155,14 +157,19 @@ function sliderComponent() {
     goToCurrentSlide();
   };
 
+  // Init
   initializeSlider();
 
+  // Event handlers.
   const goToSlide = function (toNextSlide = true) {
     const changeCurrentSlideNum = () => {
       toNextSlide ? currentSlideNum++ : currentSlideNum--;
 
       // If next slide is outside of slide. (right way)
-      if (currentSlideNum === slides.length) currentSlideNum = 0;
+      if (currentSlideNum === slides.length) {
+        currentSlideNum = 0;
+        return; // not checking next 'if'.
+      }
 
       // If previous slide is outside of slide. (left way)
       if (currentSlideNum === -1) currentSlideNum = slides.length - 1;
@@ -171,11 +178,6 @@ function sliderComponent() {
     changeCurrentSlideNum();
 
     goToCurrentSlide();
-  };
-
-  const arrowKeyHandler = function (event) {
-    if (event.key === 'ArrowRight') goToSlide();
-    if (event.key === 'ArrowLeft') goToSlide(false);
   };
 
   const dotClickHandler = function (event) {
@@ -187,6 +189,11 @@ function sliderComponent() {
     currentSlideNum = +slideToGo;
 
     goToCurrentSlide();
+  };
+
+  const arrowKeyHandler = function (event) {
+    if (event.key === 'ArrowRight') goToSlide();
+    if (event.key === 'ArrowLeft') goToSlide(false);
   };
 
   btnRight.addEventListener('click', goToSlide);
