@@ -11,12 +11,10 @@ function sliderComponent() {
 
   let nextSlideNum = 0;
 
-  const goTonextSlide = (nextSlideNum) => {
+  const goToSlide = (slideNum) => {
     slides.forEach(
       (slide, index) =>
-        (slide.style.transform = `translateX(${
-          100 * (index - nextSlideNum)
-        }%)`),
+        (slide.style.transform = `translateX(${100 * (index - slideNum)}%)`),
     );
   };
 
@@ -24,7 +22,7 @@ function sliderComponent() {
   // https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translateX | CSS function
 
   // INITIALIZING THE SLIDER. Why not do it in the HTML manually, I do not know.
-  goTonextSlide(nextSlideNum);
+  goToSlide(nextSlideNum);
 
   const rightBtnHandler = function () {
     nextSlideNum++;
@@ -37,7 +35,7 @@ function sliderComponent() {
     // If slides are 3, here nextSlideNum is 4(slides.length), so we zero it.
     if (nextSlideNum === slides.length) nextSlideNum = 0;
 
-    goTonextSlide(nextSlideNum);
+    goToSlide(nextSlideNum);
 
     // We want the active slide to have 0% translation,
     // to make it so, we want the substractaction to be equal to 0.
@@ -45,9 +43,11 @@ function sliderComponent() {
   };
 
   const leftBtnHandler = function () {
-    nextSlideNum--;
-    if (nextSlideNum === -1) nextSlideNum = slides.length - 1;
-    goTonextSlide(nextSlideNum);
+    let previousSlideNum = --nextSlideNum;
+
+    if (previousSlideNum === -1) previousSlideNum = slides.length - 1;
+
+    goToSlide(previousSlideNum);
   };
 
   btnRight.addEventListener('click', rightBtnHandler);
