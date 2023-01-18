@@ -83,6 +83,7 @@ function sliderComponent() {
   const btnRight = document.querySelector('.slider__btn--right');
   const btnLeft = document.querySelector('.slider__btn--left');
   const dotsDiv = document.querySelector('.dots');
+  let currentSlideNum = 0;
 
   const createDotBtn = (dotNum) => {
     const dotEl = document.createElement('button');
@@ -100,48 +101,61 @@ function sliderComponent() {
     slides.forEach((_, index) => dotsDiv.appendChild(createDotBtn(index)));
   // _ -> throwaway variable /no need for it/
 
-  createDotBtns();
+  const activateDotEl = function (slide) {
+    // Jonas solution:
 
-  let currentSlideNum = 0;
+    document
+      .querySelectorAll('.dots__dot')
+      .forEach((dot) => dot.classList.remove('dots__dot--active'));
 
-  const activateDotEl = function () {
-    const activationClass = 'dots__dot--active';
+    document
+      .querySelector(`.dots__dot[data-slide="${slide}"]`)
+      .classList.add('dots__dot--active');
 
-    const dotToActivate = [...dotsDiv.children].reduce(
-      (dotToActivate, currentDot) => {
-        // Remove current active dot.
+    // ......................
+    // My solution:
+    // const activationClass = 'dots__dot--active';
 
-        // if (currentDot.classList.contains(activationClass)) {
-        //   currentDot.classList.remove(activationClass);
-        // }
+    // const dotToActivate = [...dotsDiv.children].reduce(
+    //   (dotToActivate, currentDot) => {
+    //     // Remove current active dot.
 
-        // Remove the active class from all dots, even if it does NOT exist,
-        // but that's one operation, not two like the above way(contains, remove)
-        currentDot.classList.remove(activationClass);
+    //     // if (currentDot.classList.contains(activationClass)) {
+    //     //   currentDot.classList.remove(activationClass);
+    //     // }
 
-        // Find next dot to activate.
-        if (+currentDot.dataset.slide === currentSlideNum) {
-          dotToActivate = currentDot;
-        }
+    //     // Remove the active class from all dots, even if it does NOT exist,
+    //     // but that's one operation, not two like the above way(contains, remove)
+    //     currentDot.classList.remove(activationClass);
 
-        // return the next dot to activate.
-        return dotToActivate;
-      },
-      null,
-    );
+    //     // Find next dot to activate.
+    //     if (+currentDot.dataset.slide === currentSlideNum) {
+    //       dotToActivate = currentDot;
+    //     }
 
-    if (dotToActivate) dotToActivate.classList.add('dots__dot--active');
+    //     // return the next dot to activate.
+    //     return dotToActivate;
+    //   },
+    //   null,
+    // );
+
+    // if (dotToActivate) dotToActivate.classList.add(activationClass);
+    // ..................
   };
 
   const goToCurrentSlide = () => {
     slides.forEach((slide, index) => {
       slide.style.transform = `translate(${100 * (index - currentSlideNum)}%)`;
     });
-    activateDotEl();
+    activateDotEl(currentSlideNum);
   };
 
-  // Initialize slider.
-  goToCurrentSlide();
+  const initializeSlider = function () {
+    createDotBtns();
+    goToCurrentSlide();
+  };
+
+  initializeSlider();
 
   const goToSlide = function (toNextSlide = true) {
     const changeCurrentSlideNum = () => {
