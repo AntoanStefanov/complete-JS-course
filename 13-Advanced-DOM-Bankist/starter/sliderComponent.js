@@ -82,6 +82,27 @@ function sliderComponent() {
   const slides = document.querySelectorAll('.slide');
   const btnRight = document.querySelector('.slider__btn--right');
   const btnLeft = document.querySelector('.slider__btn--left');
+  const dotsDiv = document.querySelector('.dots');
+
+  const createDotBtn = (dotNum) => {
+    const dotEl = document.createElement('button');
+
+    dotEl.classList.add('dots__dot');
+
+    // activate first btn.
+    if (dotNum === 0) dotEl.classList.add('dots__dot--active');
+
+    // https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
+    dotEl.dataset.slide = dotNum; // setting data prop. if 2 words -> slideNum
+    // console.log(dotEl.dataset.slide); // getting data prop.
+
+    return dotEl;
+  };
+
+  const createDotBtns = () =>
+    slides.forEach((_, index) => dotsDiv.appendChild(createDotBtn(index)));
+
+  createDotBtns();
 
   let currentSlideNum = 0;
 
@@ -94,25 +115,76 @@ function sliderComponent() {
   // Initialize slider.
   goToCurrentSlide();
 
-  const rightBtnHandler = function () {
-    currentSlideNum++;
+  const activateDotEl = function () {
+    const activationClass = 'dots__dot--active';
 
-    if (currentSlideNum === slides.length) currentSlideNum = 0;
+    const dotToActivate = [...dotsDiv.children].reduce(
+      (dotToActivate, currentDot) => {
+        // Remove current active dot.
 
-    goToCurrentSlide();
+        // if (currentDot.classList.contains(activationClass)) {
+        //   currentDot.classList.remove(activationClass);
+        // }
+
+        // Remove the active class from all dots, even if it does NOT exist,
+        // but that's one operation, not two like the above way(contains, remove)
+        currentDot.classList.remove(activationClass);
+
+        // Find next dot to activate.
+        if (+currentDot.dataset.slide === currentSlideNum) {
+          dotToActivate = currentDot;
+        }
+
+        // return the next dot to activate.
+        return dotToActivate;
+      },
+      null,
+    );
+
+    if (dotToActivate) dotToActivate.classList.add('dots__dot--active');
   };
 
-  const leftBtnHandler = function () {
-    currentSlideNum--;
-
-    if (currentSlideNum === -1) currentSlideNum = slides.length - 1;
+  const goToSlide = function (toNextSlide = true) {
+    if (toNextSlide) {
+      currentSlideNum++;
+      // If next slide is outside of slide. (right way)
+      if (currentSlideNum === slides.length) currentSlideNum = 0;
+    } else {
+      currentSlideNum--;
+      // If previous slide is outside of slide. (left way)
+      if (currentSlideNum === -1) currentSlideNum = slides.length - 1;
+    }
 
     goToCurrentSlide();
+
+    activateDotEl();
   };
 
-  btnRight.addEventListener('click', rightBtnHandler);
+  const arrowKeyHandler = function (event) {
+    if (event.key === 'ArrowRight') goToSlide();
+    if (event.key === 'ArrowLeft') goToSlide(false);
+  };
 
-  btnLeft.addEventListener('click', leftBtnHandler);
+  const dotClickHandler = function (event) {
+    const target = event.target;
+
+    if (target.tagName.toLowerCase() !== 'button') return;
+
+    const slideToGo = target.dataset.slide;
+    currentSlideNum = +slideToGo;
+
+    goToCurrentSlide();
+    activateDotEl();
+  };
+
+  btnRight.addEventListener('click', goToSlide);
+
+  btnLeft.addEventListener('click', () => goToSlide(false));
+
+  // https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event
+  document.addEventListener('keydown', arrowKeyHandler);
+
+  dotsDiv.addEventListener('click', dotClickHandler);
 }
 
 sliderComponent();
