@@ -6,6 +6,8 @@
  */
 function sliderComponent() {
   const slides = document.querySelectorAll('.slide');
+  const btnLeft = document.querySelector('.slider__btn--left');
+  const btnRight = document.querySelector('.slider__btn--right');
 
   let nextSlideNum = 0;
 
@@ -24,18 +26,7 @@ function sliderComponent() {
   // INITIALIZING THE SLIDER. Why not do it in the HTML manually, I do not know.
   goTonextSlide(nextSlideNum);
 
-  // 0-slide: 0% | 1st-slide: 100% | 2nd-slide: 200% | 3rd-slide: 300% | ... |
-
-  // to see that the slides are one after the other,
-  // remove 'overflow' property from the slider itself.
-  // Or watch the video to see more techniques to see them.
-
-  // BUTTONS
-  const btnLeft = document.querySelector('.slider__btn--left');
-  const btnRight = document.querySelector('.slider__btn--right');
-
-  // Going to next slide(right). meaning removing 100% from X-axis in all slides
-  btnRight.addEventListener('click', () => {
+  const rightBtnHandler = function () {
     nextSlideNum++;
 
     // let's say nextSlideNum now is, 1. Then, we want this:
@@ -51,7 +42,16 @@ function sliderComponent() {
     // We want the active slide to have 0% translation,
     // to make it so, we want the substractaction to be equal to 0.
     // We do that by subtracting the index, by the index itself. 0-based.
-  });
+  };
+
+  const leftBtnHandler = function () {
+    nextSlideNum--;
+    if (nextSlideNum === -1) nextSlideNum = slides.length - 1;
+    goTonextSlide(nextSlideNum);
+  };
+
+  btnRight.addEventListener('click', rightBtnHandler);
+  btnLeft.addEventListener('click', leftBtnHandler);
 }
 
 sliderComponent();
