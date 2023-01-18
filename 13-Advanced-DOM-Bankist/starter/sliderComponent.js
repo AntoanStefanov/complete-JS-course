@@ -89,9 +89,6 @@ function sliderComponent() {
 
     dotEl.classList.add('dots__dot');
 
-    // activate first btn.
-    if (dotNum === 0) dotEl.classList.add('dots__dot--active');
-
     // https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
     dotEl.dataset.slide = dotNum; // setting data prop. if 2 words -> slideNum
     // console.log(dotEl.dataset.slide); // getting data prop.
@@ -101,6 +98,7 @@ function sliderComponent() {
 
   const createDotBtns = () =>
     slides.forEach((_, index) => dotsDiv.appendChild(createDotBtn(index)));
+  // _ -> throwaway variable /no need for it/
 
   createDotBtns();
 
