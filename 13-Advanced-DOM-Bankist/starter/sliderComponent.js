@@ -145,15 +145,13 @@ function sliderComponent() {
   };
 
   const goToSlide = function (toNextSlide = true) {
-    if (toNextSlide) {
-      currentSlideNum++;
-      // If next slide is outside of slide. (right way)
-      if (currentSlideNum === slides.length) currentSlideNum = 0;
-    } else {
-      currentSlideNum--;
-      // If previous slide is outside of slide. (left way)
-      if (currentSlideNum === -1) currentSlideNum = slides.length - 1;
-    }
+    toNextSlide ? currentSlideNum++ : currentSlideNum--;
+
+    // If next slide is outside of slide. (right way)
+    if (currentSlideNum === slides.length) currentSlideNum = 0;
+
+    // If previous slide is outside of slide. (left way)
+    if (currentSlideNum === -1) currentSlideNum = slides.length - 1;
 
     goToCurrentSlide();
 
