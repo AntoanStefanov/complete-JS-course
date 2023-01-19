@@ -1,7 +1,9 @@
 'use strict';
 
-// https://www.w3schools.com/tags/att_script_async.asp
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22649011#questions
+// https://javascript.plainenglish.io/async-and-defer-the-complete-guide-to-loading-javascript-properly-ce6edce1e6b5
+// https://www.w3schools.com/tags/att_script_async.asp
 
 // let's look at a couple of different events,
 // that occur in the DOM during a webpage's lifecycle.
@@ -55,3 +57,5 @@ document.addEventListener('DOMContentLoaded', function (event) {
 // we do NOT need to listen for the DOMContentLoaded event.
 
 // There are also other ways of loading JS files with script tag. next lecture.
+
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22649011#questions
