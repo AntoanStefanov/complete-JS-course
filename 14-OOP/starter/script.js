@@ -53,6 +53,28 @@
 
 // Objects inherit methods and properties from that prototype. /образец/
 
+// !
+// In 'classical OOP', the class inherits from other class.
+// in prototype inheritance, an instance inherits from a class.
+// !
+
 // const test = {};
 // test.__proto__ -> Object
 // test.__proto__.__proto__ -> null
+
+const x = [1, 2, 3];
+
+// map method is on the instance's prototype(Array prototype object).
+x.map((x) => x + 1);
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+// the method in MDN is actually called:
+// Array.prototype.map()
+
+// How to implement PROTOTYPAL INHERITANCE in JS:
+
+// 1. Constructor Function
+
+// 2. ES6 Classes
+
+// 3. Object.create()
