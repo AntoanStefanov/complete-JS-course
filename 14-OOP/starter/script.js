@@ -215,6 +215,7 @@ console.log(Object.prototype.__proto__ === null);
 // 211. Prototypal Inheritance on Built-In Objects
 
 console.log(tony.__proto__); // Person prototype property (Person.prototype)
+// Person prototype property is just a regular object, that's why:
 console.log(tony.__proto__.__proto__); // Object prototype property/Top of chain
 console.log(tony.__proto__.__proto__.__proto__); // null.
 
@@ -304,3 +305,22 @@ console.dir(Person.prototype.constructor); // check a function props /prototype/
 const arr = []; // new Array() === []
 console.log(arr.__proto__ === Array.prototype);
 // arr proto is the prototype property of the Array function(constructor).
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+// Array.prototype.filter()
+
+// The filter method, lives in the prototype property of the Array fn/constructor,
+// that's why in MDN is 'Array.prototype.filter()'
+
+console.dir(() => 2); // ARROW FUNCTION DOES NOT HAVE PROTOTYPE PROPERTY!!!
+console.dir(function () {
+  return 2;
+});
+
+// A function itself is also an object, therefore it also has a prototype.
+// That's why we can call methods on functions, it's because they are objects,
+// and objects have prototypes(__proto__),
+// called Function prototype,
+// bcs the function is created with the Function constructor function.
+// Person.__proto__.constructor => Function()/regular fn/, just like,
+// tony.__proto__.constructor => Person()/regular fn/
