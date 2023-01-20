@@ -108,7 +108,14 @@ function Person(name, birthYear) {
 // This above is function declaration, but function expression would also work.
 // Arrow function will NOT work, the 'this' of an arrow function is lexical.
 
-// calling the function/constructor with the new keyword.
+// Calling the function/constructor with the new keyword.
+// Behind the scenes are 4 steps of 'new' keyword:
+
+// 1. An empty object is created. {}
+// 2. Function is called. In the fn call, the 'this' is set to the empty obj./1/
+// 3. The created object is linked to a prototype/the obj recieves a prototype.
+// 4. The created object is automatically returned from the constructor fn.
+
 const me = new Person('Tony', 2000);
 const jonas = new Person('Jonas', 2015);
 console.log(me, jonas);
