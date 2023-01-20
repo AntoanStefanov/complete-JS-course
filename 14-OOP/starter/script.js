@@ -97,6 +97,7 @@ x.map((x) => x + 1);
  * Constructor function for a person.
  * constructor function has PascalCase convention().
  * This function produces an object, in this case for a Person.
+ * Just like __init__ in Python.
  * @param {String} name
  * @param {Number} birthYear
  */
@@ -107,6 +108,12 @@ function Person(name, birthYear) {
   // instance properties /available on all instances created through Person/
   this.name = name;
   this.birthYear = birthYear;
+
+  // NEVER CREATE A METHOD INSIDE A CONTRUCTOR FUNCTION.
+  // Attach methods on the prototype.
+  // this.calcAge = function () {
+  //   console.log(2037 - this.birthYear);
+  // };
 
   console.log(this); // {birthYear: 2000, name: 'Tony}
   // the object is returned automatically. /Chech 4 steps below/
@@ -138,3 +145,28 @@ console.log(tony instanceof Person); // true | tony is an instance of Person
 // }
 
 // const a = test('Tony', 22);
+
+// 209. Prototypes
+// Each function in JS, automatically has a property 'prototype'
+
+// const z = function () {
+//   console.log('2');
+// };
+
+// console.log(z.prototype);
+
+// All object created with a constructor function (ex.Person), will inherit:
+// Person.prototype. (The Person.prototype is just attached to the instances)
+// Person.prototype === tony.__proto__ === jonas.__proto__
+
+Person.prototype.calcAge = function () {
+  // this is set to the object that is calling the function(tony.calcAge),
+  // this === tony obj
+  console.log(2037 - this.birthAge);
+};
+
+// Person.prototype === tony.__proto__ === jonas.__proto__
+tony.calcAge();
+
+// No matter where the method is found: in an object or its prototype.
+// In a method call, this is always the object before the dot. /tony.calcAge()/
