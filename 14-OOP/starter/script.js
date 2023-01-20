@@ -2,6 +2,9 @@
 
 // 206. What is Object-Oriented Programming?
 
+// traditional OOP is -> class-based OOP
+// JS OOP is -> prototype-based OOP
+
 // A class itself is not an object.
 // chertej za kushta -> realna kushta.
 // Shablon(class) -> Obekt(instance/real object/)
@@ -78,3 +81,41 @@ x.map((x) => x + 1);
 // 2. ES6 Classes
 
 // 3. Object.create()
+
+// 208. Constructor Functions and the new Operator
+
+// We can use constructor function to build an object using a function.
+
+// A constructor function is actually a completely normal function.
+
+// The difference between constructor function and regular function is that
+// we call a constructor function with the new operator.
+
+// Constructor function for a person.
+
+/**
+ * Constructor function for a person.
+ * constructor function has PascalCase convention().
+ * This function produces an object, in this case for a Person.
+ * @param {String} name
+ * @param {Number} birthYear
+ */
+function Person(name, birthYear) {
+  this.name = name;
+  this.birthYear = birthYear;
+}
+
+// This above is function declaration, but function expression would also work.
+// Arrow function will NOT work, the 'this' of an arrow function is lexical.
+
+// calling the function/constructor with the new keyword.
+const me = new Person('Tony', 2000);
+const jonas = new Person('Jonas', 2015);
+console.log(me, jonas);
+
+// function test(name, age) {
+//   this.name = name;
+//   this.age = age;
+// }
+
+// const a = test('Tony', 22);
