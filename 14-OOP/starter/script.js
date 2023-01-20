@@ -218,78 +218,89 @@ console.log(tony.__proto__); // Person prototype property (Person.prototype)
 console.log(tony.__proto__.__proto__); // Object prototype property/Top of chain
 console.log(tony.__proto__.__proto__.__proto__); // null.
 
-// https://javascript.info/call-apply-decorators
-/**
- *
- * @param {num} numOne
- * @param {num} numTwo
- * @return {num}
- */
-function sum(numOne, numTwo) {
-  // Heavy CPU usage.
-  return numOne + numTwo;
-}
+const practice = function () {
+  // https://javascript.info/call-apply-decorators
+  /**
+   *
+   * @param {num} numOne
+   * @param {num} numTwo
+   * @return {num}
+   */
+  function sum(numOne, numTwo) {
+    // Heavy CPU usage.
+    return numOne + numTwo;
+  }
 
-const hash = function (numOne, numTwo) {
-  return `${numOne}+${numTwo}`;
-};
-
-const cachingDecorator = function (func, hash) {
-  const cache = new Map();
-  // func&hash args and cache map, will be stored in cachingDecorator CLOSURE.
-  return function (numOne, numTwo) {
-    const key = hash(numOne, numTwo);
-
-    if (cache.has(key)) return cache.get(key);
-
-    const result = func(numOne, numTwo);
-    cache.set(key, result);
-
-    return result;
+  const hash = function (numOne, numTwo) {
+    return `${numOne}+${numTwo}`;
   };
-};
 
-sum = cachingDecorator(sum, hash);
+  const cachingDecorator = function (func, hash) {
+    const cache = new Map();
+    // func&hash args and cache map, will be stored in cachingDecorator CLOSURE.
+    return function (numOne, numTwo) {
+      const key = hash(numOne, numTwo);
 
-console.log(sum(1, 1));
-console.log(sum(1, 1));
-sum(2, 2);
+      if (cache.has(key)) return cache.get(key);
 
-const company = {
-  sales: [
-    {name: 'John', salary: 1000},
-    {name: 'Alice', salary: 1600},
-  ],
-  development: {
-    sites: [
-      {name: 'Peter', salary: 2000},
-      {name: 'Alex', salary: 1800},
+      const result = func(numOne, numTwo);
+      cache.set(key, result);
+
+      return result;
+    };
+  };
+
+  sum = cachingDecorator(sum, hash);
+
+  console.log(sum(1, 1));
+  console.log(sum(1, 1));
+  sum(2, 2);
+
+  const company = {
+    sales: [
+      {name: 'John', salary: 1000},
+      {name: 'Alice', salary: 1600},
     ],
-    internals: [{name: 'Jack', salary: 1300}],
-  },
+    development: {
+      sites: [
+        {name: 'Peter', salary: 2000},
+        {name: 'Alex', salary: 1800},
+      ],
+      internals: [{name: 'Jack', salary: 1300}],
+    },
+  };
+
+  // https://javascript.info/recursion
+  /**
+   *
+   * @param {object} department
+   * @return {number} sum
+   */
+  function sumSalaries(department) {
+    // Base case.
+    if (Array.isArray(department)) {
+      return department.reduce(
+        (salariesSum, employee) => salariesSum + employee.salary,
+        0,
+      );
+    }
+
+    let sum = 0;
+    for (const departmentObj of Object.values(department)) {
+      sum += sumSalaries(departmentObj);
+    }
+
+    return sum;
+  }
+
+  sumSalaries(company);
 };
 
-// https://javascript.info/recursion
-/**
- *
- * @param {object} department
- * @return {number} sum
- */
-function sumSalaries(department) {
-  // Base case.
-  if (Array.isArray(department)) {
-    return department.reduce(
-      (salariesSum, employee) => salariesSum + employee.salary,
-      0,
-    );
-  }
+practice();
 
-  let sum = 0;
-  for (const departmentObj of Object.values(department)) {
-    sum += sumSalaries(departmentObj);
-  }
+console.log(Person.prototype.constructor); // points to the Person fn, ITSELF.
+console.dir(Person.prototype.constructor); // check a function props /prototype/
 
-  return sum;
-}
-
-sumSalaries(company);
+const arr = []; // new Array() === []
+console.log(arr.__proto__ === Array.prototype);
+// arr proto is the prototype property of the Array function(constructor).
