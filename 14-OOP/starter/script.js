@@ -324,3 +324,30 @@ console.dir(function () {
 // bcs the function is created with the Function constructor function.
 // Person.__proto__.constructor => Function()/regular fn/, just like,
 // tony.__proto__.constructor => Person()/regular fn/
+
+/**
+ * @param {String} make Factory
+ * @param {Number} speed KM/H
+ */
+function Car(make, speed) {
+  this.make = make;
+  this.speed = speed;
+}
+
+Car.prototype.accelerate = function () {
+  this.speed += 10;
+  console.log(this.speed);
+};
+
+Car.prototype.brake = function () {
+  this.speed -= 5;
+  console.log(this.speed);
+};
+
+const carBMW = new Car('BMW', 120);
+const carMercedes = new Car('Mercedes', 95);
+
+console.log(carBMW);
+carBMW.brake();
+console.log(carMercedes);
+carMercedes.accelerate();
