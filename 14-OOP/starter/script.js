@@ -203,7 +203,8 @@ console.log(Object.prototype.__proto__ === null);
 // Every function has a prototype PROPERTY which is set as __proto__ to the
 // newly created objects from that constructor function.
 
-// At the end of the day, __proto__ is just an object.
+// At the end of the day, __proto__ is just an object
+// or null at the end of the chain (Object.prototype.__proto__).
 
 // If instance of a constructor does not have OWN property/method,
 // goes up the the prototype chain(__proto__) to search for it.
