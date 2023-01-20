@@ -2,7 +2,7 @@
 
 // 206. What is Object-Oriented Programming?
 
-// traditional OOP is -> class-based OOP
+// classical OOP is -> class-based OOP
 // JS OOP is -> prototype-based OOP
 
 // A class itself is not an object.
@@ -101,24 +101,36 @@ x.map((x) => x + 1);
  * @param {Number} birthYear
  */
 function Person(name, birthYear) {
+  // Chech 4 steps below
+  console.log(this); // empty {}
+
+  // instance properties /available on all instances created through Person/
   this.name = name;
   this.birthYear = birthYear;
+
+  console.log(this); // {birthYear: 2000, name: 'Tony}
+  // the object is returned automatically. /Chech 4 steps below/
 }
 
 // This above is function declaration, but function expression would also work.
 // Arrow function will NOT work, the 'this' of an arrow function is lexical.
 
 // Calling the function/constructor with the new keyword.
-// Behind the scenes are 4 steps of 'new' keyword:
+// Behind the scenes are 4 steps of the 'new' keyword:
 
 // 1. An empty object is created. {}
 // 2. Function is called. In the fn call, the 'this' is set to the empty obj./1/
-// 3. The created object is linked to a prototype/the obj recieves a prototype.
+// 3. The created object is linked to a prototype/the obj recieves a prototype/
+// a prototype is attached to the created object. (Person.prototype)
 // 4. The created object is automatically returned from the constructor fn.
 
-const me = new Person('Tony', 2000);
+// instances/objects
+const tony = new Person('Tony', 2000);
 const jonas = new Person('Jonas', 2015);
-console.log(me, jonas);
+const matilda = new Person('Matilda', 2007);
+console.log(tony, jonas, matilda);
+
+console.log(tony instanceof Person); // true | tony is an instance of Person
 
 // function test(name, age) {
 //   this.name = name;
