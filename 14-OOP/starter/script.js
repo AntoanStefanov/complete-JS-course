@@ -170,3 +170,43 @@ tony.calcAge();
 
 // No matter where the method is found: in an object or its prototype.
 // In a method call, this is always the object before the dot. /tony.calcAge()/
+
+// tony
+// Person {name: 'Tony', birthYear: 2000}
+
+// Person.prototype
+// {constructor: ƒ} constructor: ƒ Person(name, birthYear)[[Prototype]]: Object
+
+// Person.prototype.__proto__
+// {constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+
+// Object.prototype
+// {constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+
+console.log(tony.__proto__ === Person.prototype);
+// tony's prototype === function Person prototype PROPERTY
+
+console.log(Person.prototype.__proto__ === Object.prototype);
+// function Person prototype PROPERTY ===  Object prototype PROPERTY
+
+console.log(Object.prototype.__proto__ === null);
+// Top of prototype chain -> null.
+
+// Tony object is created by the Person function constructor,
+// so tony's __proto__ is Person.prototype (property/just an object).
+
+// Person.prototype(property/just an object) is created by the Object function constructor,
+// so Person.prototype's __proto__ is Object.prototype (property/just an object)
+
+// Person is a constructor function, Object is a constructor function.
+
+// Every function has a prototype PROPERTY which is set as __proto__ to the
+// newly created objects from that constructor function.
+
+// At the end of the day, __proto__ is just an object.
+
+// If instance of a constructor does not have OWN property/method,
+// goes up the the prototype chain(__proto__) to search for it.
+
+// Every function has a prototype PROPERTY,
+// Every object has a real prototype, __proto__.
