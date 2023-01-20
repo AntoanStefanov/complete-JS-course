@@ -127,8 +127,8 @@ function Person(name, birthYear) {
 
 // 1. An empty object is created. {}
 // 2. Function is called. In the fn call, the 'this' is set to the empty obj./1/
-// 3. The created object is linked to a prototype/the obj recieves a prototype/
-// a prototype is attached to the created object. (Person.prototype)
+// 3. Function.prototype property (regular object) is set to,
+//        [[Prototype]] / __proto__ for the newly created object.
 // 4. The created object is automatically returned from the constructor fn.
 
 // instances/objects
