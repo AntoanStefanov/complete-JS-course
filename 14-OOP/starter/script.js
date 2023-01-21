@@ -415,6 +415,8 @@ const automobile = new Automobile('BMW', 150, 'green');
 automobile.info();
 
 // ES6 Classes
+// https://javascript.info/class#class-fields (class properties)
+// https://stackoverflow.com/questions/57608525/what-are-class-fields-in-javascript
 
 // Classes in JS, do NOT work like traditional classes.
 // Classes in JS are just syntatic sugar over what we learned, prototypes.
@@ -512,3 +514,86 @@ person1.sayHi();
 // But Some ppl dont agree with that, and think it's absolutely OKAY to use
 // classes, as long as you understand everything in the previous lectures,
 // prototype and prototypal inheritance.
+
+// 214. Setters and Getters
+
+// https://javascript.info/property-accessors
+
+// Every object in JS, can have setter and getter properties.
+// We call these special properties -> accessor properties
+
+// There are two kinds of object properties.
+
+// The first kind is data properties. We already know how to work with them.
+// All properties that we’ve been using until now were data properties.
+
+// The second type of property is something new. It’s an accessor property.
+// They are essentially functions that execute on getting and setting a value,
+// but look like regular properties to an external code.
+
+// Accessors properties are basically functions, but
+// outside looks like regular properties
+
+// using getters and setters in object literal.(any object can have these props)
+const person = {
+  firstName: 'John',
+  lastName: 'Rotyen',
+
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+
+  set fullName(value) {
+    [this.firstName, this.lastName] = value.split(' ');
+  },
+
+  sayHi() {
+    console.log(this.firstName + ' ' + this.lastName + ' ' + 'says Hi');
+  },
+
+  test: function () {
+    return 1;
+  },
+};
+
+console.log(person.fullName);
+person.sayHi();
+console.log((person.fullName = 'Roy Troy'));
+person.sayHi();
+
+// Classes also have getters/setters and they do indeed work the same way/above/
+
+class Person1 {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+
+  // Getters/setters can be very useful for data validation.
+
+  // just like any other methods, there are set on the F.prototype property,
+  // from there, on the prototype(__proto__) of the objects.
+  set fullName(name) {
+    if (!name.includes(' ')) return;
+    // stackoverflow, we call fullName setter recursively, if there is NO '_'.
+    this._fullName = name;
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+}
+
+const person2 = new Person1('Arti Edinov', 2000);
+person2.fullName = 'Zorro Asimov';
+const person3 = new Person1('Jessica Edinova', 2007);
+
+console.log(person2.fullName);
+console.log(person2.age);
+
+console.log(person3.fullName);
+console.log(person3.age);
