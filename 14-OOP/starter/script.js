@@ -443,6 +443,10 @@ class PersonCl {
   // PersonCl acts just like any other function constructor,
   // same as what we wrote above, just looks better, syntax sugar.
 
+  // this method will be automatically added to the PersonCl.prototype property,
+  // so that newly created objects, can reach it,
+  // bcs we set this property as prototype/__proto__/ . /'new' operator 4 steps/
+  // person1.__proto__ === PersonCl.prototype/property/.
   calcAge() {
     return 2037 - this.birthYear;
   }
@@ -450,6 +454,18 @@ class PersonCl {
 
 const person1 = new PersonCl('John', 2000); // constructor method will be called
 console.log(person1.calcAge());
+
+// PersonCl is class, but class is just a function, and each function has
+// prototype property. And this property is used as __proto__ of the objects.
+
+// We can also add a method manually, to see that PersonCl.prototype property,
+// is set as __proto__(prototype) of the objects.
+PersonCl.prototype.sayHi = function () {
+  console.log('Hello');
+};
+person1.sayHi();
+
+// class just hides the true nature of prototypal inheritance in JS.
 
 // just like functions, we have and class expressions.
 // const PersonCl = class {...};
@@ -465,10 +481,34 @@ console.log(person1.calcAge());
 //     return 1;
 //   },
 
-//   // This is the same as methods in class declarations.
+//   // This is the same as methods in the class.
 //   y() {
 //     return 2;
 //   },
 // };
 
 // console.log(xx.y());
+
+// 1. Classes are NOT hoisted,
+// even if they are class declarations, bcs fn declarations are hoisted.
+// ReferenceError: Cannot access 'PersonCl' before initialization /if you try/
+
+// 2. Just like functions(they are actually functions), classes are first-class
+// citizens(we can pass them into functions, return them from functions)
+
+// 3. Body of a class is always executed in strict mode. Even if not activated,
+// for the script, all code that is in the class is executed in strict mode.
+
+// constructor functions or classes ?
+
+// constructor functions are NOT old/depricated syntax,
+// 100% fine to use them.
+
+// Question of personal preference.
+
+// Some ppl say that classes are really bad in general, and no one should be
+// using them, simply bcs they hide the true nature of JS.
+
+// But Some ppl dont agree with that, and think it's absolutely OKAY to use
+// classes, as long as you understand everything in the previous lectures,
+// prototype and prototypal inheritance.
