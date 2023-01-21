@@ -565,8 +565,19 @@ person.sayHi();
 
 class Person1 {
   constructor(fullName, birthYear) {
+    // https://www.javascripttutorial.net/es6/javascript-getters-and-setters/
     this.fullName = fullName;
     this.birthYear = birthYear;
+  }
+
+  // static methods
+  static heyFromClass() {
+    console.log('Hey from class');
+  }
+
+  // instance methods/added to the F.prototype property aka to objects __proto__
+  hello() {
+    console.log(`Hello I am ${this.fullName}`);
   }
 
   // Getters/setters can be very useful for data validation.
@@ -597,3 +608,45 @@ console.log(person2.age);
 
 console.log(person3.fullName);
 console.log(person3.age);
+// https://www.javascripttutorial.net/es6/javascript-getters-and-setters/
+// https://javascript.info/property-accessors
+
+// 215. Static Methods
+
+// Usually, static methods are used to implement functions
+// that belong to the class as a whole, but not to any particular object of it.
+
+// they are attached literally on the class/fn constructor (Person.staticMethod)
+// console.dir(Person) -> there it is the static method, side by side with the
+// prototype property.
+// Therefore, the created objects do NOT inherit this method, bcs
+// the objects inherits from the prototype PROPERTY of the class/fn constructor.
+
+// So, we can use a static method on an array object ([1, 2, 3])
+
+// Example: Array.from
+
+// The reason for static methods, is simply, so that the developers know,
+// that it is related to Arrays(for example).
+
+// We could also say that the from method is in the Array namespace.
+
+// Number.parseFloat() is also a static method(attached on the F.constructor/class).
+// so we know that parseFloat method is related to Numbers.
+
+// We use this static methods, kinda like helpers, that should be related to
+// a certain F.constructor/class(Array, Number, Person, ...)
+
+Person1.hey = function () {
+  console.log('Hey');
+  console.log(this); // the constructor function(Person1).
+  // It's bcs we call the method with Person1/Person1.hey()/, so this is Person1
+
+  // !this === the object calling the method! (Person1.hey(), this === Person1)
+};
+
+Person1.hey();
+Person1.heyFromClass();
+
+person3.hello();
+// https://javascript.info/class#summary

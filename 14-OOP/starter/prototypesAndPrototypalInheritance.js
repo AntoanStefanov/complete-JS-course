@@ -5,6 +5,10 @@ function Vehicle(factory, maxSpeed) {
   this.maxSpeed = maxSpeed;
 }
 
+Vehicle.staticMethod = function () {
+  console.log('static method attached to Vehicle');
+};
+
 Vehicle.prototype.info = function () {
   console.log(`Made in ${this.factory}. Max speed: ${this.maxSpeed}`);
 };
