@@ -387,6 +387,10 @@ function Automobile(factory, maxSpeed, color) {
   this.color = color;
 }
 
+Automobile.prototype.startEngine = function () {
+  console.log(`Starting engine on car made in ${this.factory}`);
+};
+
 Object.setPrototypeOf(Automobile.prototype, Vehicle.prototype);
 // this sets a __proto__ to the prototype property (of the Constructor function)
 // Now, Vehicle.prototype is __proto__ for Automobile.prototype. (proto chain).
@@ -404,10 +408,6 @@ Object.setPrototypeOf(Automobile.prototype, Vehicle.prototype);
 // Automobile.prototype = Object.create(Vehicle.prototype); // keeps th proto clean
 // Automobile.prototype.constructor = Automobile; // repair the inherited cnstrctor
 
-Automobile.prototype.startEngine = function () {
-  console.log(`Starting engine on car made in ${this.factory}`);
-};
-
 const vehicle = new Vehicle('Pegeout', 120);
 vehicle.info();
 
@@ -415,3 +415,60 @@ const automobile = new Automobile('BMW', 150, 'green');
 automobile.info();
 
 // ES6 Classes
+
+// Classes in JS, do NOT work like traditional classes.
+// Classes in JS are just syntatic sugar over what we learned, prototypes.
+// They implement prototypal inheritance, behind the scenes.
+
+// classical OOP is -> class-based OOP
+// JS OOP is -> prototype-based OOP
+
+// class declaration
+class PersonCl {
+  // 1st. add constructor method. (constructor is a method of the class)
+  constructor(firstName, birthYear) {
+    // check the 4 steps of the 'new' operator, same thing here.
+    // properties are set here.
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // Methods. These methods will be on the prototype/__proto__/ of the object.
+  // Just like with the constructor function, prototypal inheritance.
+
+  // With no class declaration, we would write PersonCl.prototype.calcAge={...},
+  // to add a method for the newly created objects.
+
+  // person1.__proto__ === PersonCl.prototype /class is just a special function/
+  // PersonCl acts just like any other function constructor,
+  // same as what we wrote above, just looks better, syntax sugar.
+
+  calcAge() {
+    return 2037 - this.birthYear;
+  }
+}
+
+const person1 = new PersonCl('John', 2000); // constructor method will be called
+console.log(person1.calcAge());
+
+// just like functions, we have and class expressions.
+// const PersonCl = class {...};
+
+// There are class declarations/expressions, bcs classes are just special kind of
+// functions.
+
+// So, altough we use the class keyword, behind the scenes, classes are still
+// functions, therefore we have class expressions & class declarations.
+
+// const xx = {
+//   x: function () {
+//     return 1;
+//   },
+
+//   // This is the same as methods in class declarations.
+//   y() {
+//     return 2;
+//   },
+// };
+
+// console.log(xx.y());
