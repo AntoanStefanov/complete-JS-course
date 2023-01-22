@@ -726,3 +726,73 @@ console.log(carBMW1);
 carBMW1.brake();
 console.log(carMercedes1);
 carMercedes1.accelerate();
+
+// Code Challenge 3
+
+/*
+function Car(make, speed) {
+  this.make = make;
+  this.speed = speed;
+}
+
+Car.prototype.accelerate = function () {
+  this.speed += 10;
+  console.log(this.speed);
+};
+
+Car.prototype.brake = function () {
+  this.speed -= 5;
+  console.log(this.speed);
+};
+*/
+
+function ElectricCar(make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+}
+
+// https://stackoverflow.com/questions/6617780/how-to-call-parent-constructor
+
+// We want the EV.prototype property to inherit form the Car.prototype property.
+// set EV.prototype.__proto__ to Car.prototype.
+// EV constuctor is deleted here. Object.create -> {empty}.__proto__ -> Car1.prototype property
+ElectricCar.prototype = Object.create(Car.prototype);
+
+// return back the real constructor for ElectricCar.
+ElectricCar.prototype.constructor = ElectricCar; // repairThe inherited cnstrctr
+
+ElectricCar.prototype.chargeBattery = function (chargeTo) {
+  this.charge = chargeTo;
+};
+
+// Overwriting the accelerate method in Car.prototype(Parent) (POLYMORPHISM),
+// in order to give the ElectricCar objects different kind of acceleration,
+// in this case lowering the charge. /A regular car does NOT have charge/.
+
+// In other words the ElectricCar object has many forms of the accelerate method
+// One method, here in the ElectricCar.prototype and one in Car.prototype.
+// So, ElectricCar object has polymorphic behavior,
+// If ElectricCar does NOT have accelerate method, it will use Car.accelerate method,
+// Polymorphism -> OVERWRITING A PARENT CLASS METHOD /definition/.
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22649033#questions/13313662
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22649087#questions/13313662
+// 9:40
+ElectricCar.prototype.accelerate = function () {
+  this.speed += 20;
+  this.charge -= 1; // -1%.
+  console.log(
+    `${this.make} is going at ${this.speed} km/h,
+     with charge of ${this.charge}%`,
+  );
+};
+
+const tesla = new ElectricCar('Tesla', 120, 21);
+console.log(tesla);
+tesla.accelerate();
+console.log(tesla);
+tesla.chargeBattery(55);
+console.log(tesla);
+tesla.accelerate();
+console.log(tesla);
+tesla.brake();
+console.log(tesla);
