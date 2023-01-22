@@ -56,8 +56,19 @@ function Student(firstName, birthYear, course) {
   this.course = course;
 }
 
-// Set Student.prototype.__proto__ === Person.prototype/ inheritance chain /
+// https://stackoverflow.com/questions/6617780/how-to-call-parent-constructor
+
+// Set Student.prototype.__proto__ to Person.prototype/ inheritance chain /
 Student.prototype = Object.create(Person.prototype);
+// Student.prototype.__proto__ === Person.prototype | TRUE
+
+// WITHOUT that, objects inherit the Person constructor function,
+// reason is that Object.create() creates empty object,
+// and the initial constructor is deleted.
+// https://stackoverflow.com/questions/6617780/how-to-call-parent-constructor
+Student.prototype.constructor = Student; // repair the inherited constructor
+
+console.dir(Student.prototype.constructor);
 
 // method
 Student.prototype.introduce = function () {
@@ -69,4 +80,18 @@ const student1 = new Student('Sarah', 2002, 'JS');
 
 student1.introduce();
 
-// student1.calcAge();
+student1.calcAge();
+
+// student1.__proto__ === Student.prototype
+// Student.prototype.__proto__ === Person.prototype
+// Person.prototype.__proto__ === Object.prototype
+// Object.prototype.__proto__ === null
+
+console.log(student1 instanceof Student);
+console.log(student1 instanceof Person);
+console.log(student1 instanceof Object);
+
+// Above and above show the prototypal inheritance.
+
+// With ES6 classes works exactly the SAME internally, all that changes is
+// the syntax.
