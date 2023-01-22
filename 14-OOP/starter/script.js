@@ -123,12 +123,12 @@ function Person(name, birthYear) {
 // Arrow function will NOT work, the 'this' of an arrow function is lexical.
 
 // Calling the function/constructor with the new keyword.
-// Behind the scenes are 4 steps of the 'new' keyword:
+// Behind the scenes are 4 steps of the 'new' keyword/operator:
 
 // 1. An empty object is created. {}
 // 2. Function is called. In the fn call, the 'this' is set to the empty obj./1/
-// 3. Function.prototype property (regular object) is set to,
-//        [[Prototype]] / __proto__ for the newly created object.
+// 3. [[Prototype]] / __proto__ for the newly created object is set to,
+//      Function.prototype property (regular object)
 // 4. The created object is automatically returned from the constructor fn.
 
 // instances/objects
@@ -325,6 +325,7 @@ console.dir(function () {
 // Person.__proto__.constructor => Function()/regular fn/, just like,
 // tony.__proto__.constructor => Person()/regular fn/
 
+// Code Challenge 1
 /**
  * @param {String} make Factory
  * @param {Number} speed KM/H
@@ -650,3 +651,78 @@ Person1.heyFromClass();
 
 person3.hello();
 // https://javascript.info/class#summary
+
+// 216. Object.create
+
+// The third way of creating prototypal inheritance,
+// besides constructor function and class
+
+// We manually set the prototype with Object.create to object, with any other object.
+// not automatically(using the 'new' operator)
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
+const PersonProto = {
+  init(name, birthYear) {
+    this.name = name;
+    this.birthYear = birthYear;
+  },
+
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+};
+
+const person4 = Object.create(PersonProto);
+// person4.__proto__(the prototype) === PersonProto object.
+
+// Now, the the objects are LINKED through the .__proto__ property,
+// just like in F.constructors, classes.
+
+// If method/property is not in the created object,
+// JS will lookup in the prototype chain, to search for it.
+
+person4.birthYear = 2000;
+person4.calcAge();
+
+// Object.create is the LEAST used way of implementing prototypal inheritance.
+// But it's very important to know how it works.
+
+const person5 = Object.create(PersonProto);
+console.log(person5);
+// manually initialize the object props.
+person5.init('Sarah', 2002);
+console.log(person5);
+
+// Code Challenge 2
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed += 10;
+    console.log(this.speed);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(this.speed);
+  }
+
+  get speedUS() {
+    return this.speed / 1.6; // mi/h
+  }
+
+  set speedUS(speedUS) {
+    this.speed = speedUS * 1.6;
+  }
+}
+
+const carBMW1 = new CarCl('BMW', 120);
+const carMercedes1 = new CarCl('Mercedes', 95);
+
+console.log(carBMW1);
+carBMW1.brake();
+console.log(carMercedes1);
+carMercedes1.accelerate();
