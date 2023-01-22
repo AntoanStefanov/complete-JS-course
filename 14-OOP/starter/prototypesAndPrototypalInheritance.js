@@ -18,11 +18,18 @@ function Automobile(factory, maxSpeed, color) {
   this.color = color;
 }
 
+// https://stackoverflow.com/questions/6617780/how-to-call-parent-constructor
+
+// Automobile.prototype = Object.create(Vehicle.prototype); // keeps th proto clean
+// Automobile.prototype.constructor = Automobile; // repair the inherited cnstrctor
 Automobile.prototype.startEngine = function () {
   console.log(`Starting engine on car made in ${this.factory}`);
 };
 
+// ABOVE WAY OR BELOW WAY ? I think they kinda work the same.
+
 Object.setPrototypeOf(Automobile.prototype, Vehicle.prototype);
+
 // this sets a __proto__ to the prototype property (of the Constructor function)
 // Now, Vehicle.prototype is __proto__ for Automobile.prototype. (proto chain).
 // So, when we call automobile.info(),
@@ -31,13 +38,6 @@ Object.setPrototypeOf(Automobile.prototype, Vehicle.prototype);
 // Created objects with constructor fn, their __proto__ is the fn prototype property,
 // automobile.__proto__ === Automobile.prototype | true
 // automobile.__proto__.__proto__ === Vehicle.prototype | true
-
-// https://stackoverflow.com/questions/6617780/how-to-call-parent-constructor
-
-// OR (NOT REALLY)
-
-// Automobile.prototype = Object.create(Vehicle.prototype); // keeps th proto clean
-// Automobile.prototype.constructor = Automobile; // repair the inherited cnstrctor
 
 const vehicle = new Vehicle('Pegeout', 120);
 vehicle.info();
