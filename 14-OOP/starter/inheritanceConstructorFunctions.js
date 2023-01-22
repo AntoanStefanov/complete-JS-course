@@ -95,3 +95,11 @@ console.log(student1 instanceof Object);
 
 // With ES6 classes works exactly the SAME internally, all that changes is
 // the syntax.
+
+// Reason why the chain is kinda wrong... in Google Chrome
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22649085#questions/13313662
+// COMMENTS, ask for the same thing:
+// https://img-b.udemycdn.com/redactor/raw/q_and_a/2021-02-22_22-26-40-78727ff2021160971ee38d75e78fecf6.jpg
+
+// why some of the properties in console.dir() in __proto__ are kinda darker,
+// there is smth like a shadow on them.
