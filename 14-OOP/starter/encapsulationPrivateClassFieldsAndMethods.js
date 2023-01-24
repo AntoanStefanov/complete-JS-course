@@ -19,8 +19,19 @@
 // Private methods
 
 class Account {
+  // STATIC fields(PROPS AND METHODS) ARE SET ON THE ACCOUNT FUNCTION ITSELF.
+
+  // Static class FIELDS(PROPS&METHODS) are defined on the class itself.
+  // You cannot call a static method on an object, only on an object class.
+
+  // console.dir(Account).
+  static className = 'Account';
+  static _protectedClassName = 'Account';
+  static #privateClassName = 'Account';
+
+  // CLASS VARIABLES
   // Set on Instances! Not on the class/not on the prototype(like API methods)!!
-  // On the same level as the constructor properties.
+  // THE FIELDS/VARIABLES HERE ARE On the EXACTLY same level as the constructor properties.
 
   // FIELDS ARE JUST LIKE VARIABLES, JESUS CHRIST. On the same level as the constructor properties.
   //  this scope here, I think, works just as a closure scope.
@@ -45,6 +56,21 @@ class Account {
     this.#pin = pin; // private property (assigning an argument)
   }
 
+  // PUBLIC STATIC METHODS (there can also be static protected and private methods)
+  // console.dir(Account)
+  static getPrivateClassName() {
+    return this.#privateClassName;
+  }
+
+  static getProtectedClassName() {
+    return this._protectedClassName;
+  }
+
+  // Private methods (these are set in the object itself, not in the proto)
+  #isMovementsEmpty() {
+    return this._movements.length === 0;
+  }
+
   // Protected methods
   _transaction(amount) {
     this._movements.push(amount);
@@ -56,6 +82,12 @@ class Account {
   }
 
   // Public interface/API
+  isMovementsEmpty() {
+    // Private fields do not conflict with public ones. We can have both
+    // private #isMovementsEmpty and public isMovementsEmpty fields at the same time.
+    return this.#isMovementsEmpty();
+  }
+
   getOwner() {
     return this._owner;
   }
@@ -90,7 +122,10 @@ class Account {
 
 const acc1 = new Account('Antoan', 'EUR', 1111);
 console.log(acc1);
-
+console.log(acc1.isMovementsEmpty());
+console.log(Account.getPrivateClassName()); // readonly (static private prop)
+console.log(Account.getProtectedClassName()); // readonly(static protected prop)
+// Same readonly is needed for the static PROTECTED prop,
 console.log(acc1.getOwner()); // READ-ONLY
 console.log(acc1.getMovements()); // READ-ONLY
 console.log(acc1.getPIN()); // READ-ONLY
@@ -104,3 +139,14 @@ console.log(acc1);
 acc1.requestLoan(1000);
 
 console.log(acc1);
+
+class Test extends Account {
+  // Static public/protected properties and methods are inherited.
+}
+
+console.log(Test.className);
+console.log(Test._protectedClassName);
+
+// console.log(Test.#privateClassName); Error
+// Cannot read private member #privateClassName from an object whose class did not declare it
+// console.log(Test.getPrivateClassName()); // Error
