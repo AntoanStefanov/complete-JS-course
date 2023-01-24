@@ -7,17 +7,6 @@
 // Programmers should only access a field starting with _ from its class and classes inheriting from it.
 // Private fields start with #. JavaScript makes sure we can only access those from inside the class.
 
-// Private class fields and methods, are actually part of a bigger proposal,
-// for improving JS classes, which is simply called Class fields.
-
-// Properties are usually called 'fields'.
-
-// Public fields
-// --- We can think of a public field as a property that will be on all instances.
-// Private fields
-// Public methods
-// Private methods
-
 class Account {
   // Static public properties(fields)
   static className = 'Account';
