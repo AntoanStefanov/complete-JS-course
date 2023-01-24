@@ -115,6 +115,8 @@ class Account {
   #isMovementsEmpty() {
     return this._movements.length === 0;
   }
+
+  // Getters/Setters
 }
 
 const acc1 = new Account('Antoan', 'EUR', 1111);
