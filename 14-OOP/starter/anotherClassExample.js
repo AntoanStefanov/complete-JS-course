@@ -18,6 +18,7 @@ class Account {
     // console.log(`Thanks for opening an account ${owner}`);
   }
 
+  // This should NOT be in the public interface.
   transaction(amount) {
     this.movements.push(amount);
   }
@@ -32,6 +33,21 @@ class Account {
     // abtracts the fact that a withdrawal is a negative movement.
     // We use it like this: acc1.withdraw(100). Small Abstraction.
     this.transaction(-amount);
+  }
+
+  // In the public interface/API/, we only want the requestLoan method.
+  // In other words, we want only requestLoan method accessible outside.
+
+  approveLoan(amount) {
+    console.log('Approving loan... ' + amount);
+    return true;
+  }
+
+  requestLoan(amount) {
+    if (this.approveLoan(amount)) {
+      this.deposit(amount);
+      console.log('Loan approved!');
+    }
   }
 }
 
@@ -66,5 +82,22 @@ console.log(acc1);
 // Same goes, for example for the pin.
 // We can access the pin from outside of the account. Bad.
 // It should NOT be accessible from outside of the class/and class-children maybe/.
-// Real and important CONCERN, SAME GOES FOR METHODS, NOT ONLY PROPERTIES!
+// Real and important CONCERN!
 console.log(acc1.pin);
+
+// SAME GOES FOR METHODS, NOT ONLY PROPERTIES!
+// In the public interface/API/, we only want the requestLoan method.
+// In other words, we want only requestLoan method accessible outside.
+acc1.requestLoan(1000);
+
+// We do NOT want the approveLoan method to be accessible outside,
+// being in the public interface/API/.
+acc1.approveLoan(1000); // REALLY BAD... approving loan makes NO sense to be in
+// the public interface/API/.
+// IN the real world, we should NOT be allowed to access this kind of method.
+// This approveLoan method is for the INTERNAL INTERFACE. IT should be accessible
+// in the class /and class-children classes(maybe?)/.
+
+// ! That's why we NEED data encapsulation and data privacy !
+
+console.log(acc1);
