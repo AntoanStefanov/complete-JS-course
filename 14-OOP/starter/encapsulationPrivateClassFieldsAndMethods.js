@@ -32,6 +32,9 @@ class Account {
   // CLASS VARIABLES
   // Set on Instances! Not on the class/not on the prototype(like API methods)!!
   // THE FIELDS/VARIABLES HERE ARE On the EXACTLY same level as the constructor properties.
+  // NO AGRUMENTS NEEDED, if input data is needed to be passed,
+  // set property in the CONTRUCTOR fn, just like currency, owner needs data.
+  // #pin is needed here, just bcs if not defined here, error is thrown in constructor.
 
   // FIELDS ARE JUST LIKE VARIABLES, JESUS CHRIST. On the same level as the constructor properties.
   //  this scope here, I think, works just as a closure scope.
