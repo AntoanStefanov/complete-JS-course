@@ -69,6 +69,19 @@ class Account {
     return this._protectedClassName;
   }
 
+  static callPrivateAndProtectedStaticMethod() {
+    console.log(this.#privateStaticMethod());
+    console.log(this._protectedStatic());
+  }
+
+  static _protectedStatic() {
+    return 'protected static';
+  }
+
+  static #privateStaticMethod() {
+    return 'private static';
+  }
+
   // Private methods (these are set in the object itself, not in the proto),
   // maybe bcs if in proto, they could be accessed.
   #isMovementsEmpty() {
@@ -129,6 +142,7 @@ console.log(acc1);
 console.log(acc1.isMovementsEmpty());
 console.log(Account.getPrivateClassName()); // readonly (static private prop)
 console.log(Account.getProtectedClassName()); // readonly(static protected prop)
+console.log(Account.callPrivateAndProtectedStaticMethod());
 // Same readonly is needed for the static PROTECTED prop,
 console.log(acc1.getOwner()); // READ-ONLY
 console.log(acc1.getMovements()); // READ-ONLY
