@@ -49,7 +49,8 @@ class Account {
 
   // ONLY CLASS ACCESSIBILITY!
   // private instance fields(even we pass value in constructor, we need to define it here)
-  #pin; // if not defined here, this.#pin = pin -> ERROR
+  #pin; // if not defined here, this.#pin = pin -> ERROR (needs an enclosuring)
+  // define private field here(in closure), reassign it in constructor.
   // defining value here.
   #privateInstanceField = true; // private property (not assigning an argument)
 

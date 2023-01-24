@@ -8,6 +8,8 @@
 // Private fields start with #. JavaScript makes sure we can only access those from inside the class.
 
 class Account {
+  // Static - on the class itself. console.dir(Account)
+
   // Static public properties(fields)
   static className = 'Account';
   // Static protected properties(fields)
@@ -17,11 +19,11 @@ class Account {
 
   // NO INPUT DATA NEEDED | if needed create property in constructor fn.
 
-  // public properties(fields)
+  // public properties(fields) (on instances)
   locale = navigator.language;
-  // protected properties(fields)
+  // protected properties(fields) (on instances)
   _movements = [];
-  // private properties(fields)
+  // private properties(fields) (on instances)
   #privateInstanceField = true;
   #pin; // if input is needed for private prop, we always need to define it here
 
@@ -30,14 +32,14 @@ class Account {
 
     // public properties
     this.currency = currency;
-    // protected properties(fields)
+    // protected properties
     this._owner = owner;
-    // private properties(fields)
+    // private properties
     this.#pin = pin; // defining it above constructor is needed (enclosuring)
   }
 
   // STATIC METHODS - (Class methods, possible call only on classes)
-  // console.dir(Account)
+  // console.dir(Account) (we use them as helper functions) like Array.isArray
 
   // Static public methods
   static getPrivateClassName() {
@@ -112,6 +114,8 @@ class Account {
   }
 
   // Private methods
+  // private method are NOT on the objects __proto__,
+  // it's on the created instance itself.
   #isMovementsEmpty() {
     return this._movements.length === 0;
   }
