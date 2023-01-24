@@ -99,5 +99,7 @@ acc1.approveLoan(1000); // REALLY BAD... approving loan makes NO sense to be in
 // in the class /and class-children classes(maybe?)/.
 
 // ! That's why we NEED data encapsulation and data privacy !
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22649033#questions
+// ENCAPSULATION PRINCIPLES
 
 console.log(acc1);
