@@ -19,48 +19,38 @@
 // Private methods
 
 class Account {
-  // STATIC fields(PROPS AND METHODS) ARE SET ON THE ACCOUNT FUNCTION ITSELF.
-
-  // Static class FIELDS(PROPS&METHODS) are defined on the class itself.
-  // You cannot call a static method on an object, only on an object class.
-
-  // console.dir(Account).
+  // Static public properties(fields)
   static className = 'Account';
+  // Static protected properties(fields)
   static _protectedClassName = 'Account';
+  // Static private properties(fields)
   static #privateClassName = 'Account';
 
-  // CLASS FIELDS (VARIABLES)
-  // Set on Instances! Not on the class/not on the prototype(like API methods)!!
-  // THE FIELDS/VARIABLES HERE ARE On the EXACTLY same level as the constructor properties.
-  // NO AGRUMENTS NEEDED, if input data is needed to be passed,
-  // set property in the CONTRUCTOR fn, just like currency, owner needs data.
-  // #pin is needed here, just bcs if not defined here, error is thrown in constructor.
+  // NO INPUT DATA NEEDED | if needed create property in constructor fn.
 
-  // FIELDS ARE JUST LIKE VARIABLES, JESUS CHRIST. On the same level as the constructor properties.
-  //  this scope here, I think, works just as a closure scope.
-
-  // PART OF THE API AND CLASS AND CLASS-CHILDREN ACCESSIBLITY
-  // public instance fields(we do not pass any values for them/ex. we pass arg for pin /)
-  locale = navigator.language; // public property (not assigning an argument)
-
-  // ONLY CLASS AND CLASS-CHILDREN ACCESSIBLITY
-  // protected instance fields(we do not pass any values for them/ex. we pass arg for pin /)
-  _movements = []; // protected property (not assigning an argument)
-
-  // ONLY CLASS ACCESSIBILITY!
-  // private instance fields(even we pass value in constructor, we need to define it here)
-  #pin; // if not defined here, this.#pin = pin -> ERROR
-  // defining value here.
-  #privateInstanceField = true; // private property (not assigning an argument)
+  // public properties(fields)
+  locale = navigator.language;
+  // protected properties(fields)
+  _movements = [];
+  // private properties(fields)
+  #privateInstanceField = true;
+  #pin; // if input is needed for private prop, we always need to define it here
 
   constructor(owner, currency, pin) {
-    this.currency = currency; // public property (assigning an argument)
-    this._owner = owner; // protected property (assigning an argument)
-    this.#pin = pin; // private property (assigning an argument)
+    // IF INPUT DATA NEEDED. If it is not needed, create property above.
+
+    // public properties
+    this.currency = currency;
+    // protected properties(fields)
+    this._owner = owner;
+    // private properties(fields)
+    this.#pin = pin; // defining it above constructor is needed (enclosuring)
   }
 
-  // PUBLIC STATIC METHODS (there can also be static protected and private methods)
+  // STATIC METHODS - (Class methods, possible call only on classes)
   // console.dir(Account)
+
+  // Static public methods
   static getPrivateClassName() {
     return this.#privateClassName;
   }
@@ -74,31 +64,32 @@ class Account {
     console.log(this._protectedStatic());
   }
 
+  // Static protected methods
   static _protectedStatic() {
     return 'protected static';
   }
 
+  // Static private methods
   static #privateStaticMethod() {
     return 'private static';
   }
 
-  // Private methods (these are set in the object itself, not in the proto),
-  // maybe bcs if in proto, they could be accessed.
-  #isMovementsEmpty() {
-    return this._movements.length === 0;
+  // Public methods // Public interface/API
+  deposit(amount) {
+    this._transaction(amount);
   }
 
-  // Protected methods
-  _transaction(amount) {
-    this._movements.push(amount);
+  withdraw(amount) {
+    this._transaction(-amount);
   }
 
-  _approveLoan(amount) {
-    console.log('Approving loan... ' + amount);
-    return true;
+  requestLoan(amount) {
+    if (this._approveLoan(amount)) {
+      this.deposit(amount);
+      console.log('Loan approved!');
+    }
   }
 
-  // Public interface/API
   isMovementsEmpty() {
     // Private fields do not conflict with public ones. We can have both
     // private #isMovementsEmpty and public isMovementsEmpty fields at the same time.
@@ -121,19 +112,19 @@ class Account {
     return this.#privateInstanceField;
   }
 
-  deposit(amount) {
-    this._transaction(amount);
+  // Protected methods
+  _transaction(amount) {
+    this._movements.push(amount);
   }
 
-  withdraw(amount) {
-    this._transaction(-amount);
+  _approveLoan(amount) {
+    console.log('Approving loan... ' + amount);
+    return true;
   }
 
-  requestLoan(amount) {
-    if (this._approveLoan(amount)) {
-      this.deposit(amount);
-      console.log('Loan approved!');
-    }
+  // Private methods
+  #isMovementsEmpty() {
+    return this._movements.length === 0;
   }
 }
 
