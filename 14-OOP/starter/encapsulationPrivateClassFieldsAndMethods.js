@@ -66,7 +66,8 @@ class Account {
     return this._protectedClassName;
   }
 
-  // Private methods (these are set in the object itself, not in the proto)
+  // Private methods (these are set in the object itself, not in the proto),
+  // maybe bcs if in proto, they could be accessed.
   #isMovementsEmpty() {
     return this._movements.length === 0;
   }
