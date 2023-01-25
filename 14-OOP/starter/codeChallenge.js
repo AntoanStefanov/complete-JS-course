@@ -26,11 +26,11 @@ class CarCl {
 }
 
 class ElectricCarCl extends CarCl {
-  #charge; // needed for redefining it in constructor. works kinda like closure?
+  #charge; // initializing the needed private property.Works kinda like closure?
 
   constructor(make, speed, charge) {
     super(make, speed);
-    this.#charge = charge;
+    this.#charge = charge; // redefining the initial value of the private prop.
   }
 
   // public API /methods for external code, outside/
