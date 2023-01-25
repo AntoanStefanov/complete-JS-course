@@ -53,6 +53,7 @@ class Student {
   get hoursStudied() {
     return this.#studyHours;
   }
+
   get birthYear() {
     return this._birthYear;
   }
