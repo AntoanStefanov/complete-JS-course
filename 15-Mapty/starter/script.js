@@ -42,6 +42,7 @@ function app() {
       const {latitude, longitude} = geolocationPosition.coords;
       console.log(latitude, longitude);
       // console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
+      displayMapLeafletLibrary(latitude, longitude);
     };
 
     const errorCallback = function (_) {
@@ -50,6 +51,33 @@ function app() {
 
     // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition
     geolocation.getCurrentPosition(successCallback, errorCallback);
+  }
+
+  // 233. Displaying a Map Using Leaflet Library
+  function displayMapLeafletLibrary(...position) {
+    // position = [43.3527461, 25.1401631]
+
+    // https://stackoverflow.com/questions/44479562/l-is-not-defined-error-with-leaflet
+    const L = window.L;
+
+    // https://leafletjs.com/reference.html#map
+    const map = L.map('map', {
+      // https://leafletjs.com/reference.html#map-center
+      center: position,
+      // https://leafletjs.com/reference.html#map-zoom
+      zoom: 14,
+      // boxZoom: false,
+    });
+
+    // https://leafletjs.com/reference.html#tilelayer
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    // https://tile.openstreetmap.org/15/18672/11995.png -> tile
+
+    // https://leafletjs.com/reference.html#layer-addto
+    L.marker(position)
+      .addTo(map)
+      .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+      .openPopup();
   }
 
   getGeolocation();
