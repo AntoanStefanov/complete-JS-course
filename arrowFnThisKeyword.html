@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 'use strict';
+      const click = function () {
+        console.log('h', this);
+      };
+      function setArrowFnThis() {
+        // when intitializing an arrow function,
+        // the 'this' keyword is set to whatever the parent scope 'this' is.
+        // in this case 'setThis' fn is called with this=button,
+        // so when initializing the below arrow function, 'this' will be button.
+        const click1 = () => {
+          console.log('h', this);
+        };
+        return click1;
+      }
+
+      class Button {
+        obj = {
+          click: function () {
+            console.log(this.value);
+          },
+          x: 5,
+          y: 2,
+        };
+
+        click = () => {
+          console.log(this.value);
+        };
+
+        constructor(value) {
+          this.value = value;
+        }
+      }
+
+      const button = new Button('hello');
+
+      // 'THIS' ON ARROW FN IS SET based on the parent scope.
+      // the 'this' is set, when an arrow function is initialized (=),
+      // and the this keyword is set to whatever the parent scope 'this' is.
+      const click1 = setArrowFnThis.call(button);
+      const click4 = setArrowFnThis.call(button.obj);
+      a();
+      click4();
+      click();
+      click1();
+      button.click();
+      button.obj.click();
+      function a() {
+        console.log('a');
+      }
+      function asd() {
+        setTimeout(button.click, 1000); // hello
+        // button.click ARROW fn, was initialized:
+        // click = () => {
+        //   console.log(this.value);
+        // };.
+        // when 'button' object was created. l.44
+        // so when button.click was initialized, the current 'this' was the 'button'
+        // object itself. So when calling button.click in setTimeout,
+        // the 'this' is the button object itself.
+        // 1st arrow fn has NO 'this' keyword. It takes the parent scope 'this'
+        // 2nd it was initialized when creating the 'button' object,
+        // and when creating the 'button' object in the class,
+        //  the 'this' points to the 'button' object itself,
+        // so the arrow function takes the 'this' keyword as its own.
+      }
+      asd.call(button);
+    </script>
+  </body>
+</html>
