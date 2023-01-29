@@ -1,5 +1,7 @@
 'use strict';
 
+// import * as L from 'leaflet'
+
 function app() {
   // These variables were already here.
   const months = [
@@ -84,3 +86,6 @@ function app() {
 }
 
 app();
+
+// 233. Displaying a Map Using Leaflet Library -watch -> 00:00!
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22649175#questions
