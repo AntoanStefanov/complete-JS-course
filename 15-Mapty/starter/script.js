@@ -1,6 +1,9 @@
 'use strict';
 
 // import * as L from 'leaflet'
+// import {Loader} from '@googlemaps/js-api-loader';
+import {Loader} from '/node_modules/@googlemaps/js-api-loader/dist/index.esm.js';
+import config from '/config.js';
 
 function app() {
   // These variables were already here.
@@ -44,7 +47,8 @@ function app() {
       const {latitude, longitude} = geolocationPosition.coords;
       console.log(latitude, longitude);
       // console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
-      displayMapLeafletLibrary(latitude, longitude);
+      // displayMapLeafletLibrary(latitude, longitude);
+      displayGoogleMaps(latitude, longitude);
     };
 
     const errorCallback = function (_) {
@@ -82,10 +86,49 @@ function app() {
       .openPopup();
   }
 
+  // Initialize and add the map
+  function displayGoogleMaps(latitude, longitude) {
+    // https://developers.google.com/maps/documentation/javascript/adding-a-google-map#maps_add_map-html
+    // https://www.npmjs.com/package/@googlemaps/js-api-loader?activeTab=readme
+
+    const initialPosition = {lat: latitude, lng: longitude};
+    const mapOptions = {zoom: 13, center: initialPosition};
+
+    const loader = new Loader({
+      apiKey: config.GOOGLE_API_KEY,
+      version: 'weekly',
+      libraries: ['places'],
+    });
+
+    loader.load().then(display);
+
+    function display({maps: googleMaps}) {
+      const map = new googleMaps.Map(
+        document.getElementById('map'),
+        mapOptions,
+      );
+
+      const infoWindow = new googleMaps.InfoWindow({
+        content: 'Hello from info window',
+        ariaLabel: 'Home',
+      });
+
+      const marker = new googleMaps.Marker({
+        position: initialPosition,
+        map: map,
+        title: 'Marker Title',
+      });
+
+      marker.addListener('click', () => {
+        infoWindow.open({
+          anchor: marker,
+          map,
+        });
+      });
+    }
+  }
+
   getGeolocation();
 }
 
 app();
-
-// 233. Displaying a Map Using Leaflet Library -watch -> 00:00!
-// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22649175#questions
