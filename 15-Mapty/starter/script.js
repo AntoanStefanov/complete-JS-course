@@ -1,3 +1,4 @@
+// eslint-disable-next-line strict
 'use strict';
 
 // import * as L from 'leaflet'
@@ -113,6 +114,15 @@ function app() {
         ariaLabel: 'Home',
       });
 
+      // TOGGLE InfoWindow Object.
+      // https://stackoverflow.com/questions/12410062/check-if-infowindow-is-opened-google-maps-v3
+      // InfoWindow class extends MVCObject.
+      // https://developers.google.com/maps/documentation/javascript/reference/info-window#InfoWindow
+      // click MVCObject hyperlink in the above link, you go here:
+      // https://developers.google.com/maps/documentation/javascript/reference/event#MVCObject
+      // check for set method, and it's docs.
+      infoWindow.set('closed', true);
+
       const marker = new googleMaps.Marker({
         position: initialPosition,
         map: map,
@@ -125,6 +135,27 @@ function app() {
           map,
         });
       });
+
+      map.addListener('click', (ev) => {
+        const marker = new googleMaps.Marker({
+          position: {lat: ev.latLng.lat(), lng: ev.latLng.lng()},
+          map: map,
+          title: 'Marker Title',
+        });
+
+        marker.addListener('click', () => {
+          if (infoWindow.closed) {
+            infoWindow.open({
+              anchor: marker,
+              map,
+            });
+            infoWindow.closed = false;
+          } else {
+            infoWindow.close();
+            infoWindow.closed = true;
+          }
+        });
+      });
     }
   }
 
@@ -132,3 +163,5 @@ function app() {
 }
 
 app();
+
+// https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22649193#questions
