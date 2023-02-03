@@ -136,9 +136,9 @@ function app() {
         });
       });
 
-      map.addListener('click', (ev) => {
+      map.addListener('click', (event) => {
         const marker = new googleMaps.Marker({
-          position: {lat: ev.latLng.lat(), lng: ev.latLng.lng()},
+          position: {lat: event.latLng.lat(), lng: event.latLng.lng()},
           map: map,
           title: 'Marker Title',
         });
