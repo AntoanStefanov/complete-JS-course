@@ -50,25 +50,29 @@ class DoublyLinkedList {
   deleteLast() {
     if (this.isEmpty()) return;
 
-    const previousNode = this.#tail.previous;
+    if (this.#size === 1) {
+      this.#head = this.#tail = null;
+    } else {
+      const previousNode = this.#tail.previous;
 
-    // make previous node's next set to null.
-    previousNode.next = null;
+      // make previous node's next set to null.
+      previousNode.next = null;
 
-    // set tail to previous node.
-    this.#tail = previousNode;
+      // set tail to previous node.
+      this.#tail = previousNode;
 
-    // Object deletion. make it accessible to the garbage collector. aka null.
-    // https://stackoverflow.com/questions/16643156/how-to-delete-an-object-from-memory-using-jquery-javascript
+      // Object deletion. make it accessible to the garbage collector. aka null.
+      // https://stackoverflow.com/questions/16643156/how-to-delete-an-object-from-memory-using-jquery-javascript
 
-    // https://javascript.info/garbage-collection
-    // Garbage Collector will get the unaccessible node.
-    // "Outgoing references do not matter.
-    // Only incoming ones can make an object reachable."
+      // https://javascript.info/garbage-collection
+      // Garbage Collector will get the unaccessible node.
+      // "Outgoing references do not matter.
+      // Only incoming ones can make an object reachable."
 
-    // both 56 and 59 lines removes the only TWO references to the node.
-    // there are no other ways of getting that node, so with this said,
-    // garbage collector will get it.
+      // both 56 and 59 lines removes the only TWO references to the node.
+      // there are no other ways of getting that node, so with this said,
+      // garbage collector will get it.
+    }
 
     this.#size--;
   }
@@ -92,8 +96,12 @@ class DoublyLinkedList {
   deleteFirst() {
     if (this.isEmpty()) return;
 
-    this.#head.next.previous = null;
-    this.#head = this.#head.next;
+    if (this.#size === 1) {
+      this.#head = this.#tail = null;
+    } else {
+      this.#head.next.previous = null;
+      this.#head = this.#head.next;
+    }
     this.#size--;
   }
 }
@@ -105,3 +113,9 @@ DLL.addLast(3);
 DLL.deleteLast();
 DLL.addFirst(0);
 DLL.deleteFirst();
+
+const DLL1 = new DoublyLinkedList();
+DLL1.addLast(1);
+DLL1.addLast(2);
+DLL1.deleteLast();
+DLL1.deleteLast();
