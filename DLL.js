@@ -7,6 +7,10 @@ class Node {
     this.previous = previous;
     this.next = next;
   }
+
+  toString() {
+    return this.data;
+  }
 }
 
 class DoublyLinkedList {
@@ -24,6 +28,16 @@ class DoublyLinkedList {
 
   get tail() {
     return this.#tail;
+  }
+
+  print() {
+    const arrayNodes = [];
+    let currentNode = this.#head;
+    for (let i = 0; i < this.#size; i++) {
+      arrayNodes.push(currentNode);
+      currentNode = currentNode.next;
+    }
+    console.log(arrayNodes.join(' <--> '));
   }
 
   isEmpty() {
@@ -104,6 +118,42 @@ class DoublyLinkedList {
     }
     this.#size--;
   }
+
+  insert(index, data) {
+    if (index < 0 || index > this.#size) return;
+
+    if (index === 0) {
+      this.addFirst(data);
+      return;
+    }
+
+    if (index === this.#size) {
+      this.addLast(data);
+      return;
+    }
+
+    // insert(1, 7):
+    // 1, 2, 3
+    // 1, 7, 2, 3
+
+    let currentNode = this.#head;
+
+    // we get 2.
+    for (let currentIndex = 0; currentIndex < index; currentIndex++) {
+      currentNode = currentNode.next;
+    }
+
+    // set 7.previous to 2.previous
+    // set 7.next to 2
+    const newNode = new Node(data, currentNode.previous, currentNode);
+
+    // set 1.next to 7.
+    currentNode.previous.next = newNode;
+
+    // set 2.previous to 7
+    currentNode.previous = newNode;
+    this.#size++;
+  }
 }
 
 const DLL = new DoublyLinkedList();
@@ -119,3 +169,8 @@ DLL1.addLast(1);
 DLL1.addLast(2);
 DLL1.deleteLast();
 DLL1.deleteLast();
+DLL1.insert(0, 1);
+DLL1.insert(1, 2);
+DLL1.insert(2, 3);
+DLL1.insert(1, 7); // 1, 7, 2, 3
+DLL1.print();
