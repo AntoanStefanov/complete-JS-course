@@ -44,6 +44,10 @@ class DoublyLinkedList {
     this.#size--;
   }
 
+  #isIndexValid(index) {
+    return index >= 0 && index <= this.#size;
+  }
+
   print() {
     const arrayNodes = [];
     let currentNode = this.#head;
@@ -144,7 +148,7 @@ class DoublyLinkedList {
   }
 
   insert(index, data) {
-    if (index < 0 || index > this.#size) {
+    if (!this.#isIndexValid(index)) {
       console.log('Invalid index');
       return;
     }
@@ -180,6 +184,47 @@ class DoublyLinkedList {
     // set 2.previous to 7
     currentNode.previous = newNode;
     this.#size++;
+  }
+
+  delete(index) {
+    if (!this.#isIndexValid(index)) {
+      console.log('Invalid index');
+      return;
+    }
+
+    if (index === 0) {
+      this.deleteFirst();
+      return;
+    }
+
+    if (index === this.#size) {
+      this.deleteLast();
+      return;
+    }
+
+    // .delete(1)
+    // 1, 7, 2, 3
+    // we get 7.
+    let currentNode = this.#head;
+    for (let currentIndex = 0; currentIndex < index; currentIndex++) {
+      currentNode = currentNode.next;
+    }
+
+    // set 1.next to 2.
+    currentNode.previous.next = currentNode.next;
+    // set 2.prev to 1.
+    currentNode.next.previous = currentNode.previous;
+
+    // https://javascript.info/garbage-collection
+    // Garbage Collector will get the unaccessible node.
+    // "Outgoing references do not matter.
+    // Only incoming ones can make an object reachable."
+
+    // both 214 and 216 lines removes the only TWO references to the node.
+    // there are no other ways of getting that node, so with this said,
+    // garbage collector will get it.
+
+    this.#size--;
   }
 }
 
@@ -225,3 +270,11 @@ DLL2.addFirst(1);
 DLL2.addFirst(0);
 DLL2.insert(1, 7);
 DLL2.print();
+
+const DLL3 = new DoublyLinkedList();
+DLL3.addLast(1);
+DLL3.addLast(7);
+DLL3.addLast(2);
+DLL3.addLast(3);
+DLL3.delete(1);
+DLL3.print();
