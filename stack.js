@@ -22,12 +22,14 @@ const areBracketsValid = function (str) {
   for (const bracket of str) {
     if (isBracketOpen(bracket)) {
       openBracketsStack.push(bracket);
-    } else {
-      const lastOpenBracket = openBracketsStack.pop();
-      if (!(brackets[lastOpenBracket] === bracket)) {
-        console.log('Invalid.');
-        return;
-      }
+      continue;
+    }
+
+    const lastOpenBracket = openBracketsStack.pop();
+
+    if (!(brackets[lastOpenBracket] === bracket)) {
+      console.log('Invalid.');
+      return;
     }
   }
   console.log('Valid.');
