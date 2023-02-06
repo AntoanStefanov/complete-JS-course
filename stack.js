@@ -17,17 +17,20 @@ const openBracketsStack = [];
 const str = '[{}]';
 const str1 = '[]{}({})';
 const str2 = '{]';
+const str3 = '}';
 
 const areBracketsValid = function (str) {
-  for (const bracket of str) {
-    if (isBracketOpen(bracket)) {
-      openBracketsStack.push(bracket);
+  for (const currentBracket of str) {
+    if (isBracketOpen(currentBracket)) {
+      openBracketsStack.push(currentBracket);
       continue;
     }
 
     const lastOpenBracket = openBracketsStack.pop();
 
-    if (!(brackets[lastOpenBracket] === bracket)) {
+    const matchingClosingBracket = brackets[lastOpenBracket];
+
+    if (!(matchingClosingBracket === currentBracket)) {
       console.log('Invalid.');
       return;
     }
@@ -38,3 +41,4 @@ const areBracketsValid = function (str) {
 areBracketsValid(str);
 areBracketsValid(str1);
 areBracketsValid(str2);
+areBracketsValid(str3);
