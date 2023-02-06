@@ -18,6 +18,7 @@ const str = '[{}]';
 const str1 = '[]{}({})';
 const str2 = '{]';
 const str3 = '}';
+const str4 = '{{}';
 
 const areBracketsValid = function (str) {
   for (const currentBracket of str) {
@@ -35,10 +36,16 @@ const areBracketsValid = function (str) {
       return;
     }
   }
-  console.log('Valid.');
+  // str4 | '{{}'
+  if (openBracketsStack.length === 0) {
+    console.log('Valid.');
+  } else {
+    console.log('Invalid.');
+  }
 };
 
 areBracketsValid(str);
 areBracketsValid(str1);
 areBracketsValid(str2);
 areBracketsValid(str3);
+areBracketsValid(str4);
