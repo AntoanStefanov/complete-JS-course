@@ -69,6 +69,32 @@ class DoublyLinkedList {
     // both 56 and 59 lines removes the only TWO references to the node.
     // there are no other ways of getting that node, so with this said,
     // garbage collector will get it.
+
+    this.#size--;
+  }
+
+  addFirst(data) {
+    if (this.isEmpty()) {
+      this.#tail = this.#head = new Node(data, null, null);
+    } else {
+      // newHead: prev:null, next:head
+      const newHead = new Node(data, null, this.#head);
+
+      // head.prev = newHead.
+      this.#head.previous = newHead;
+
+      // set newHead as head.
+      this.#head = newHead;
+    }
+    this.#size++;
+  }
+
+  deleteFirst() {
+    if (this.isEmpty()) return;
+
+    this.#head.next.previous = null;
+    this.#head = this.#head.next;
+    this.#size--;
   }
 }
 
@@ -77,3 +103,5 @@ DLL.addLast(1);
 DLL.addLast(2);
 DLL.addLast(3);
 DLL.deleteLast();
+DLL.addFirst(0);
+DLL.deleteFirst();
