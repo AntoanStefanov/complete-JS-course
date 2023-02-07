@@ -49,3 +49,5 @@ areBracketsValid(str1);
 areBracketsValid(str2);
 areBracketsValid(str3);
 areBracketsValid(str4);
+
+// https://youtu.be/RBSGKlAvoiM?list=PLxfRCInfTk3X47CCNn1AHhzhuUFXp9mPA&t=4180
