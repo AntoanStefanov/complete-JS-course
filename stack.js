@@ -54,10 +54,9 @@ areBracketsValid(str4);
 
 class Stack {
   #list = [];
-  #size = 0;
 
   isEmpty() {
-    return this.#size === 0;
+    return this.#list.length === 0;
   }
 
   print() {
@@ -66,18 +65,15 @@ class Stack {
 
   push(item) {
     this.#list.push(item);
-    this.#size++;
   }
 
   pop() {
     if (this.isEmpty()) return;
-
-    this.#list.pop();
-    this.#size--;
+    return this.#list.pop();
   }
 
   get size() {
-    return this.#size;
+    return this.#list.length;
   }
 }
 
