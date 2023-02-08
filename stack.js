@@ -51,3 +51,37 @@ areBracketsValid(str3);
 areBracketsValid(str4);
 
 // https://youtu.be/RBSGKlAvoiM?list=PLxfRCInfTk3X47CCNn1AHhzhuUFXp9mPA&t=4180
+
+class Stack {
+  #list = [];
+  #size = 0;
+
+  isEmpty() {
+    return this.#size === 0;
+  }
+
+  print() {
+    console.log(this.#list);
+  }
+
+  push(item) {
+    this.#list.push(item);
+    this.#size++;
+  }
+
+  pop() {
+    if (this.isEmpty()) return;
+
+    this.#list.pop();
+    this.#size--;
+  }
+
+  get size() {
+    return this.#size;
+  }
+}
+
+const stack = new Stack();
+stack.push(1);
+console.log(stack);
+stack.print();
