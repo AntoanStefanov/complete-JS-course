@@ -100,7 +100,6 @@ function app() {
       version: 'weekly',
       libraries: ['places'],
     });
-
     loader.load().then(display);
 
     function display({maps: googleMaps}) {
