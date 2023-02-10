@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form</title>
   </head>
+  <!-- name attr is used to look for the value when the form is submitted. -->
+  <!-- name attr is like a key for the value. When submitted, we search by that key. -->
   <body>
     <!-- action attribute -> where the form is submitting to -->
     <!-- method attribute -> GET/POST request -->
@@ -19,7 +21,10 @@
     <!-- GET -> form data are appended to the action attribute URI with a '?' as separator,
        and the resulting URI is sent to the server.  -->
     <!-- above sentence is from hovering the "method" attr. -->
-    <form action="results.html" method="GET">
+    <!-- TO ACTUALLY SUBMIT THE FILE TO OUR SERVER, 
+      WE NEED THE enctype attr, set to multipart/form-data -->
+    <!-- multipart, because we send the file, part by part. files are large. -->
+    <form action="results.html" method="GET" enctype="multipart/form-data">
       <!-- All inputs in the form tag, will be submitted to wherever your form goes to -->
       <!-- By default, <form>...</form> the form will be submitted to the current page-->
 
@@ -102,6 +107,11 @@ My name is Tony.The value between the textarea tags is submitted, instead of usi
       </div>
       <!-- hidden input -->
       <input type="hidden" name="hidden" value="hi" />
+      <div>
+        <!-- file input -->
+        <label for="file">File</label>
+        <input id="file" type="file" name="file" />
+      </div>
       <div>
         <!-- nesting label tag, a lot ppl do this, with checkboxes and radio btns -->
         <!-- https://youtu.be/fNcJuPIZ2WE?t=345 -->
