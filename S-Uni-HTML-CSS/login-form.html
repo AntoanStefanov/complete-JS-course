@@ -2,13 +2,40 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <!-- action attribute -> where the form is submitting to -->
+    <!-- method attribute -> GET/POST request -->
+    <!-- POST is for server to safe the info -->
+    <!-- GET passes query in URL after '?', using input name&value attr  -->
+    <!-- "google.com/?user=Tori&password=123" -->
+    <!-- But, so what ? What if we pass the params in URL? So, what?! -->
+    <!-- https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data#the_method_attribute -->
+    <form action="results.html" method="GET">
+      <!-- All inputs in the form tag, will be submitted to wherever your form goes to -->
+      <!-- By default, <form>...</form> the form will be submitted to the current page-->
+
+      <!-- div(block element), so that inputs are on different lines. -->
+      <div>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label -->
+        <label>
+          Name:
+          <input type="text" name="name" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Password:
+          <input type="password" name="password" />
+        </label>
+      </div>
+      <!-- A way of submitting the form -->
+      <button>Submit</button>
+    </form>
+  </body>
 </html>
