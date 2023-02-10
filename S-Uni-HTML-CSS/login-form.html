@@ -16,6 +16,9 @@
     <!-- "google.com/?user=Tori&password=123" -->
     <!-- But, so what ? What if we pass the params in URL? So, what?! -->
     <!-- https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data#the_method_attribute -->
+    <!-- GET -> form data are appended to the action attribute URI with a '?' as separator,
+       and the resulting URI is sent to the server.  -->
+    <!-- above sentence is from hovering the "method" attr. -->
     <form action="results.html" method="GET">
       <!-- All inputs in the form tag, will be submitted to wherever your form goes to -->
       <!-- By default, <form>...</form> the form will be submitted to the current page-->
@@ -23,19 +26,100 @@
       <!-- div(block element), so that inputs are on different lines. -->
       <div>
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label -->
-        <label>
-          Name:
-          <input type="text" name="name" />
-        </label>
+        <!-- Label highlights the input when clicked on it. -->
+        <!-- ex. click on "Name:" text, so it will focus the input. -->
+        <!-- for="ELEMENT ID" -> clearer -->
+        <label for="name">Name:</label>
+        <!-- using value attribute to set default value -->
+        <input id="name" type="text" name="name" value="Tony" required />
       </div>
       <div>
+        <label for="age">Age:</label>
+        <!-- type="number" does NOT allow other characters, only nums -->
+        <!-- we can specify min and max for type="number" -->
+        <!-- step, using keyboard arrows, moves the number +-5  -->
+        <input id="age" type="number" name="age" min="1" max="200" step="5" />
+      </div>
+      <div>
+        <label for="date">Birthday:</label>
+        <!-- type="date", giving calendar, and date format. -->
+        <!-- just like type=num, we can specify min and max too. -->
+        <!-- cannot pick date before 09-02-2023 with min attr. -->
+        <input id="date" type="date" name="date" min="2023-02-09" />
+      </div>
+      <div>
+        <!-- checboxes, but what if we wanted a user to check only one box? -->
+        Favorite Food
+        <div>
+          <label for="banana">Banana</label>
+          <input id="banana" type="checkbox" name="banana" />
+        </div>
+        <div>
+          <label for="apple">Apple</label>
+          <input id="apple" type="checkbox" name="apple" />
+        </div>
+        <div>
+          <label for="kiwi">Kiwi</label>
+          <input id="kiwi" type="checkbox" name="kiwi" />
+        </div>
+      </div>
+      <div>
+        <!-- radio btns share EXACT SAME NAME, in order to select only one. -->
+        Gender
+        <div>
+          <label for="male-gender">Male</label>
+          <input id="male-gender" type="radio" name="gender" value="male" />
+        </div>
+        <div>
+          <label for="female-gender">Female</label>
+          <input id="female-gender" type="radio" name="gender" value="female" />
+        </div>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <!-- type="email" will verify the email addresses by default. -->
+        <!-- not the best email validation, but it's better than nothing. -->
+        <!-- type email, will give phone users special email keyboard. -->
+        <input id="email" type="email" name="email" required />
+      </div>
+      <div>
+        <!-- select tag works similarly to the input tag. -->
+        <label for="eyeColor">Eye Color</label>
+        <!-- multiple attribute for multiple choice (hold CTRL) -->
+        <select id="eyeColor" name="eyeColor" multiple>
+          <!-- <option>....</option> is same as <option label="..."></option>-->
+          <option value="green">Green</option>
+          <option label="Blue" value="blue"></option>
+        </select>
+      </div>
+      <div>
+        <!-- not an input tag, it's textarea tag. It's own element. -->
+        <label for="bio">Bio</label>
+        <!-- textarea and select are the only tag which are NOT using input tag. -->
+        <textarea id="bio" name="" cols="30" rows="10">
+My name is Tony.The value between the textarea tags is submitted, instead of using an attribute "value".</textarea
+        >
+      </div>
+      <!-- hidden input -->
+      <input type="hidden" name="hidden" value="hi" />
+      <div>
+        <!-- nesting label tag, a lot ppl do this, with checkboxes and radio btns -->
+        <!-- https://youtu.be/fNcJuPIZ2WE?t=345 -->
         <label>
           Password:
-          <input type="password" name="password" />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <!-- placeholder is just like a hint for input. -->
         </label>
       </div>
+      <!-- resetting form -->
+      <button type="reset">Reset</button>
       <!-- A way of submitting the form -->
-      <button>Submit</button>
+      <button type="submit">Submit</button>
     </form>
   </body>
 </html>
